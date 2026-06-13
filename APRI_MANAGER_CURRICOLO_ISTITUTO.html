@@ -238,6 +238,7 @@ tr:hover td{background:#fafcff}
   <button data-view="fonti">Riferimenti comuni</button>
   <button data-view="documenti">Documenti</button>
   <button data-view="documentiIstituzionali">Documenti istituzionali</button>
+  <button data-view="modelliSorgente">Modelli sorgente</button>
   <button data-view="matrice">Proposte di aggiornamento</button>
   <button data-view="workflow">Giornate di lavoro</button>
   <button data-view="sessione">Sessione lavoro</button>
@@ -259,6 +260,7 @@ tr:hover td{background:#fafcff}
   <section id="fonti" class="view"></section>
   <section id="documenti" class="view"></section>
   <section id="documentiIstituzionali" class="view"></section>
+  <section id="modelliSorgente" class="view"></section>
   <section id="matrice" class="view"></section>
   <section id="workflow" class="view"></section>
   <section id="sessione" class="view"></section>
@@ -522,7 +524,7 @@ function toggleSidebar(){document.body.classList.toggle("nav-open");}
 window.addEventListener("beforeunload", e => { if(dirty){ e.preventDefault(); e.returnValue=""; }});
 document.querySelectorAll("nav button[data-view]").forEach(btn => btn.addEventListener("click",()=>showView(btn.dataset.view)));
 function showView(id){document.querySelectorAll("nav button[data-view]").forEach(b=>b.classList.toggle("active",b.dataset.view===id));document.querySelectorAll("section.view").forEach(s=>s.classList.toggle("active",s.id===id));document.body.classList.remove("nav-open");renderView(id);}
-function renderView(id){({dashboard:renderDashboard,guida:renderGuida,istituto:renderIstituto,fonti:renderFonti,documenti:renderDocumenti,documentiIstituzionali:renderDocumentiIstituzionali,matrice:renderMatrice,workflow:renderWorkflow,sessione:renderSessione,gruppi:renderGruppi,decisioni:renderDecisioni,infanzia:()=>renderOrdine("infanzia"),primaria:()=>renderOrdine("primaria"),secondaria:()=>renderOrdine("secondaria_i_grado"),discipline:renderDiscipline,tecnologia:renderTecnologia,strumenti:renderStrumenti}[id]||renderDashboard)();}
+function renderView(id){({dashboard:renderDashboard,guida:renderGuida,istituto:renderIstituto,fonti:renderFonti,documenti:renderDocumenti,documentiIstituzionali:renderDocumentiIstituzionali,modelliSorgente:renderModelliSorgenteIstituzionali,matrice:renderMatrice,workflow:renderWorkflow,sessione:renderSessione,gruppi:renderGruppi,decisioni:renderDecisioni,infanzia:()=>renderOrdine("infanzia"),primaria:()=>renderOrdine("primaria"),secondaria:()=>renderOrdine("secondaria_i_grado"),discipline:renderDiscipline,tecnologia:renderTecnologia,strumenti:renderStrumenti}[id]||renderDashboard)();}
 function renderAll(){ensureScopeDefaults();document.getElementById("appSubtitle").textContent = `${state.istituto.denominazione || "Istituto"} · ${state.istituto.annoScolastico || ""} · ${currentScopeLabel()}`;updateNavigationVisibility();renderView(document.querySelector("section.view.active")?.id || "dashboard");}
 function badge(value){const v=String(value??"");const cls=["canonico","validata","approvato"].includes(v)?"ok":(["alta","urgente","da_verificare","aperta","in_revisione"].includes(v)?"warn":"");return `<span class="badge ${cls}">${esc(v||"-")}</span>`;}
 function renderLink(local, external){
@@ -601,7 +603,109 @@ function tableFonti(rows){if(!rows.length)return`<p class="empty">Nessuna fonte 
 
 function institutionalTemplates(){ensureRuntimeDefaults();return state.modelliDocumentoIstituzionale || [];}
 function institutionalTemplateById(id){return institutionalTemplates().find(t=>t.id===id) || institutionalTemplates()[0] || null;}
-function renderDocumentiIstituzionali(){
+const institutionalSourceTemplates = [
+  {
+    id: "curricolo-verticale-istituto",
+    title: "Curricolo verticale d'Istituto",
+    category: "Curricolo",
+    path: "templates/documenti-istituzionali/curricolo-verticale-istituto.md",
+    description: "Modello sorgente per il curricolo verticale dell'Istituto, dalla scuola dell'infanzia alla secondaria di I grado. Include finalità, profilo studente, competenze, traguardi, continuità verticale e inclusione."
+  },
+  {
+    id: "curricolo-ordine-scolastico",
+    title: "Curricolo per ordine scolastico",
+    category: "Curricolo",
+    path: "templates/documenti-istituzionali/curricolo-ordine-scolastico.md",
+    description: "Modello sorgente per il curricolo di un singolo ordine scolastico (infanzia, primaria, secondaria). Include competenze, traguardi, obiettivi, metodologie e valutazione."
+  },
+  {
+    id: "curricolo-disciplina-campo",
+    title: "Curricolo per disciplina/campo",
+    category: "Curricolo",
+    path: "templates/documenti-istituzionali/curricolo-disciplina-campo.md",
+    description: "Modello sorgente per il curricolo di una disciplina o campo disciplinare. Include finalità, traguardi, obiettivi, nuclei tematici, metodologie e collegamenti interdisciplinari."
+  },
+  {
+    id: "documento-finale-dipartimento",
+    title: "Documento finale di dipartimento",
+    category: "Documento dipartimento",
+    path: "templates/documenti-istituzionali/documento-finale-dipartimento.md",
+    description: "Modello sorgente per raccogliere decisioni e proposte condivise da un dipartimento disciplinare. Include ordine del giorno, sintesi lavori, decisioni e azioni successive."
+  },
+  {
+    id: "documento-gruppo-lavoro",
+    title: "Documento prodotto dal gruppo di lavoro",
+    category: "Documento gruppo",
+    path: "templates/documenti-istituzionali/documento-gruppo-lavoro.md",
+    description: "Modello sorgente per documentare il lavoro di un gruppo di lavoro tematico. Include mandato, ambito, attività svolte, proposte e questioni aperte."
+  },
+  {
+    id: "documento-revisione-aggiornamento",
+    title: "Documento di revisione e aggiornamento curricolare",
+    category: "Revisione",
+    path: "templates/documenti-istituzionali/documento-revisione-aggiornamento.md",
+    description: "Modello sorgente per descrivere modifiche, motivazioni e modalità di aggiornamento del curricolo. Include parti modificate, sintesi modifiche e verifiche richieste."
+  },
+  {
+    id: "documento-approvato-validato",
+    title: "Documento approvato/validato",
+    category: "Documento ufficiale",
+    path: "templates/documenti-istituzionali/documento-approvato-validato.md",
+    description: "Modello sorgente per documenti ufficiali dell'Istituto con validazione registrata. Include organo competente, data/atto e condizioni di validità."
+  },
+  {
+    id: "quadro-competenze-traguardi-obiettivi",
+    title: "Quadro competenze, traguardi e obiettivi",
+    category: "Quadro sintetico",
+    path: "templates/documenti-istituzionali/quadro-competenze-traguardi-obiettivi.md",
+    description: "Modello sorgente per sintesi strutturata di competenze, traguardi e obiettivi. Include progressione verticale e indicatori osservabili."
+  },
+  {
+    id: "quadro-valutazione-rubriche",
+    title: "Quadro valutazione e rubriche",
+    category: "Valutazione",
+    path: "templates/documenti-istituzionali/quadro-valutazione-rubriche.md",
+    description: "Modello sorgente per definire criteri e strumenti di valutazione. Include livelli, descrittori, evidenze osservabili e adattamenti per BES."
+  },
+  {
+    id: "allegato-educazione-civica-digitale-orientamento-inclusione",
+    title: "Allegato educazione civica/digitale/orientamento/inclusione",
+    category: "Allegato",
+    path: "templates/documenti-istituzionali/allegato-educazione-civica-digitale-orientamento-inclusione.md",
+    description: "Modello sorgente per completare documenti curricolari con approfondimenti specifici. Include attività, valutazione, inclusione e collegamenti interdisciplinari."
+  }
+];
+
+function renderModelliSorgenteIstituzionali(){
+  document.getElementById("modelliSorgente").innerHTML=`<div class="card"><h2>Modelli sorgente istituzionali</h2>
+  <p class="simple-help">Template Markdown non ufficiali, da validare prima dell'uso.</p>
+  <div class="notice warn">
+    <strong>Attenzione:</strong> questi modelli sono sorgenti non ufficiali. Servono come base di lavoro e non sostituiscono la validazione dell'istituzione scolastica.
+  </div>
+  <div class="notice">
+    <strong>Dati personali:</strong> non inserire dati personali, dati identificativi, nomi reali di studenti, famiglie, docenti o istituzioni senza verifica e procedure autorizzate.
+  </div>
+  <div class="notice">
+    <strong>Validazione umana:</strong> ogni documento compilato richiede validazione umana prima di essere considerato bozza, revisionato, validato o approvato.
+  </div>
+  <div class="notice">
+    <strong>Limitazione tecnica:</strong> questa sezione non genera DOCX o PDF e non modifica il motore di export. I template sono file Markdown sorgente da aprire e compilare manualmente.
+  </div>
+  <div class="notice warn">
+    <strong>Riferimenti normativi:</strong> il riferimento ad AgID e alle fonti normative ha valore prudenziale per leggibilità, accessibilità e chiarezza documentale; non costituisce certificazione di conformità.
+  </div>
+  <div class="institutional-template-grid">${institutionalSourceTemplates.map(t=>`<article class="institutional-template-card">
+    <h3>${esc(t.title)}</h3>
+    <div class="template-meta"><span class="badge">${esc(t.category)}</span><span class="badge warn">TEMPLATE SORGENTE — NON UFFICIALE</span></div>
+    <p>${esc(t.description)}</p>
+    <div class="template-sections"><strong>Percorso:</strong> <span class="path-pill" title="${esc(t.path)}">${esc(t.path)}</span></div>
+    <div class="toolbar">
+      <button type="button" class="action secondary mini" onclick="copyText('${jsAttr(t.path)}')">Copia percorso</button>
+    </div>
+    <div class="notice warn" style="margin-top:10px"><strong>Richiede validazione umana</strong></div>
+  </article>`).join("")}</div>
+  </div>`;
+}
  const templates=institutionalTemplates();
  const rules=state.regoleDocumentaliIstituzionali || {principi:[],formati:[]};
  document.getElementById("documentiIstituzionali").innerHTML=`<div class="card"><h2>Documenti istituzionali prodotti</h2>

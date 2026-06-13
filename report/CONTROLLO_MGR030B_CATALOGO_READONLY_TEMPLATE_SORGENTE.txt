@@ -1,0 +1,30 @@
+VERDICT: MGR_030B_CATALOGO_READONLY_TEMPLATE_SORGENTE_IMPLEMENTATO_LOCALMENTE
+
+HEAD before: 8f9a31cf539e94187472f275ddeeeefc5c2c16ee
+HEAD after: da definire dopo commit
+origin/main: 8f9a31cf539e94187472f275ddeeeefc5c2c16ee
+Working tree dirty-state accettata: modifica pregressa APRI_MANAGER_CURRICOLO_ISTITUTO.html coerente con MGR-030B
+
+File modificati:
+- APRI_MANAGER_CURRICOLO_ISTITUTO.html
+
+File creati:
+- report/MGR_030B_CATALOGO_READONLY_TEMPLATE_SORGENTE.md
+- report/CONTROLLO_MGR030B_CATALOGO_READONLY_TEMPLATE_SORGENTE.txt
+
+Controlli:
+- nuova voce sidebar Modelli sorgente presente
+- vista read-only presente
+- 10 template esposti
+- disclaimer presente
+- nota no dati personali presente
+- nota validazione umana presente
+- nota nessun DOCX/PDF presente
+- nessun pulsante export/DOCX/PDF/genera documento nella vista
+- state.modelliDocumentoIstituzionale non modificato
+- exportDocument non modificato
+- nessun DOCX/PDF generato
+- nessuna modifica backend/API/deploy/CDN/librerie
+
+Push:
+- false
