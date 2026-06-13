@@ -1,0 +1,47 @@
+CONTROLLO MGR-026 - EXPORT ISTITUZIONALI
+Data: 2026-06-13
+
+TASK
+Validazione e hardening export istituzionali per i 4 modelli minimi.
+
+CAUSA RESIDUA
+Il rischio residuo era il titolo generico "Documento curricolo" nel DOCX istituzionale.
+Il validatore finale conferma che il DOCX usa il titolo reale del modello.
+Durante il controllo e stata corretta anche la gestione del fallback in safeText(value, fallback).
+
+PATCH
+- APRI_MANAGER_CURRICOLO_ISTITUTO.html
+  - safeText ora rispetta il fallback esplicito.
+  - pipeline DOCX resta data-driven / WordprocessingML.
+  - nessun uso di buildPrintableHtml() per costruire word/document.xml.
+
+VALIDATORE
+Comando:
+node "C:\Users\anton\AppData\Local\Temp\kilo\mgr026-validate.js"
+
+Output finale:
+MGR026_VALIDATION_OK
+Report complessivo del curricolo d’istituto: ok
+Documento prodotto dal gruppo di lavoro: ok
+Documento finale di dipartimento: ok
+Documento approvato / validato: ok
+
+TEST BROWSER
+Eseguito su file locale APRI_MANAGER_CURRICOLO_ISTITUTO.html con Edge headless/CDP.
+Verificata apertura sezione Documenti istituzionali.
+Per ciascuno dei 4 modelli minimi sono stati cliccati:
+- Stampa/PDF
+- Word .doc
+- DOCX
+
+Esito browser:
+- pulsanti presenti sulle card istituzionali;
+- DOCX generati come pacchetto ZIP OOXML;
+- DOC Word-compatible generati come HTML Word-compatible;
+- stampa/PDF con titolo reale, header, tabelle e firme;
+- nessun undefined/null/[object Object] rilevato nei contenuti intercettati.
+
+VERDETTO
+PASSA validatore automatico.
+PASSA test browser assistito.
+Resta solo eventuale gate manuale umano di apertura file in Word/LibreOffice.
