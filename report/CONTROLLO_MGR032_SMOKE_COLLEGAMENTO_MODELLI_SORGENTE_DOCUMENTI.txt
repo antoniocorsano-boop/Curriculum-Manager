@@ -1,0 +1,38 @@
+VERDICT: MGR_032_SMOKE_COLLEGAMENTO_MODELLI_SORGENTE_DOCUMENTI_PASS
+
+HEAD: f89382c666d64f6bc0369aa48aaeba27da51b8c6
+origin/main: f89382c666d64f6bc0369aa48aaeba27da51b8c6
+working tree before: pulita
+working tree after: da definire dopo commit
+
+Controlli statici:
+- Come usare questi modelli presente: OK
+- Vai a Documenti istituzionali presente: OK
+- relazione Modelli sorgente/Documenti istituzionali presente: OK
+- TEMPLATE SORGENTE presente: OK
+- Richiede validazione umana presente: OK (2 occurrences: card + notice box)
+
+Smoke visuale (auto-valutazione post-chiusura popup):
+- Manager apre: PASS
+- Modelli sorgente visibile: PASS
+- vista Modelli sorgente apre: PASS
+- box Come usare visibile: PASS
+- CTA Vai a Documenti istituzionali visibile: PASS
+- click CTA apre Documenti istituzionali: PASS
+- nessun documento creato: PASS
+- nessun export eseguito: PASS
+- nessun DOCX/PDF generato: PASS
+- ritorno a Modelli sorgente funzionante: PASS
+- 10 card ancora visibili: PASS
+
+Non-goals verificati:
+- nessun DOCX/PDF generato: PASS
+- nessun export eseguito: PASS
+- nessuna modifica export engine: PASS
+- nessuna modifica backend/API/deploy: PASS
+- nessuna modifica seed-data: PASS
+
+Note:
+- CTA funziona come cambio vista statico, senza side effects
+- Sezione Documenti istituzionali rimane integra
+- Collegamento UX-only, conforme a MGR-031
