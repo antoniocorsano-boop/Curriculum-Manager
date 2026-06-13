@@ -706,9 +706,11 @@ function renderModelliSorgenteIstituzionali(){
   </article>`).join("")}</div>
   </div>`;
 }
- const templates=institutionalTemplates();
- const rules=state.regoleDocumentaliIstituzionali || {principi:[],formati:[]};
- document.getElementById("documentiIstituzionali").innerHTML=`<div class="card"><h2>Documenti istituzionali prodotti</h2>
+
+function renderDocumentiIstituzionali(){
+  const templates=institutionalTemplates();
+  const rules=state.regoleDocumentaliIstituzionali || {principi:[],formati:[]};
+  document.getElementById("documentiIstituzionali").innerHTML=`<div class="card"><h2>Documenti istituzionali prodotti</h2>
  <p>Questa sezione serve a generare documenti veri: prodotti dei gruppi, documenti di dipartimento, proposte, verbali, report e documenti approvati. Non è il registro documenti e non è il backup tecnico.</p>
  <div class="notice"><strong>Regola di qualità:</strong> ogni export include frontespizio, metadati istituzionali, stato del documento, sezioni numerate, tabelle leggibili, spazio firme e footer versione. I dati tecnici interni non vengono esportati.</div>
  <div class="document-quality-list">
