@@ -1,0 +1,35 @@
+MGR-029A — Controllo requisiti documenti istituzionali curricolari
+================================================================
+
+Baseline Git:
+  Branch:       main
+  HEAD locale:  806a51abc417bb869a4cd14ad8406553ce071007
+  origin/main: 8b7175005fc29c163c36944b1bda350b9caf9c20
+  Commit:       806a51a mgr: record visual Writer/Word compatibility gate blocked (no GUI)
+  Sync:         divergente (ahead 1, senza commit MGR-029A)
+  Working tree: modificata con nuovi file
+
+File dichiarati nel contratto:
+  report/MGR_029A_REQUISITI_DOCUMENTI_ISTITUZIONALI_CURRICOLARI.md
+  report/MGR_029A_CONTRATTO_REQUISITI_DOCUMENTI_ISTITUZIONALI_REPORT.md
+  report/CONTROLLO_MGR029A_REQUISITI_DOCUMENTI_ISTITUZIONALI.txt
+
+File vietati toccati:
+  APRI_MANAGER_CURRICOLO_ISTITUTO.html — NON modificato
+  motore DOCX/export — NON modificato
+  backend/API/auth/deploy/CDN — NON applicabile
+  docx/JSZip vendorizzati — NON modificati
+  dati reali — NON toccati
+
+Controlli finali:
+  git diff --check: da eseguire dopo il commit per confermare commenti/stile
+  git status --short --branch: da eseguire dopo il commit per confermare tree pulita
+
+Esito:
+  Contratto creato e documentato secondo requisiti MGR-029A.
+  11 sezioni coperte.
+  Fonti citate: DPR 275/1999, DM 254/2012, Direttiva 8 maggio 2002, linee guida AgID.
+  Verdict: MGR_029A_REQUISITI_DOCUMENTI_ISTITUZIONALI_APPROVATI
+
+Prossima slice consigliata:
+  MGR-029 — implementazione modelli documenti curricolari istituzionali.
