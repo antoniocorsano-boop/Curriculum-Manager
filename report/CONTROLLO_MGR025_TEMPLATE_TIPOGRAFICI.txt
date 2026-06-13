@@ -1,0 +1,26 @@
+MGR-025 CONTROLLO
+
+Sorgente: MGR-023 DOCX/ZIP allegati
+Output: MGR-025 Template tipografici istituzionali
+
+Controlli attesi:
+- Sezione Documenti istituzionali presente
+- 9 modelli istituzionali presenti
+- Export PDF/stampa presente per ogni modello
+- Export Word .doc presente per ogni modello
+- Export DOCX presente per ogni modello
+- Modelli esportabili/importabili come JSON
+- Build HTML istituzionale con frontespizio, tabelle, firme, footer
+- Nessun backend/API/auth/deploy
+- Nessuna libreria esterna
+- Nessun prompt()/confirm() aggiunto
+
+Validazioni eseguite:
+- Parsing seed JSON: OK
+- Modelli istituzionali presenti: 9
+- Sintassi JavaScript: OK
+- Integrità ZIP: OK
+- Campione DOCX creato con header/footer/tabelle/firme: OK
+- Render DOCX a PNG: 2 pagine, OK
+- PDF campione generato da DOCX: OK
+- Ispezione visuale PNG: nessun clipping/overlap evidente, tabelle leggibili, header/footer presenti
