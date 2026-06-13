@@ -1,0 +1,33 @@
+VERDICT: MGR_035A_READY_FOR_STANDARD_HTML_JS_EXTRACTION
+
+Preflight checks:
+- Working tree clean: PASS
+- HEAD == origin/main: PASS (82ff763)
+- Branch main: PASS
+
+Audit findings:
+- Monolite HTML/CSS/JS: 2189 righe
+- Seed data embedded in script tag: presente
+- Router view system: presente (renderView/showView)
+- Modelli sorgente view: presente (MGR-030B)
+- IndexedDB per allegati: presente (FILE_DB_NAME)
+- LocalStorage key: manager_curricolo_istituto_v3_6
+
+Architecture analysis:
+- HTML structure: header + nav + main + section views
+- CSS: inline in <style>, variabili custom, responsive, print
+- JS: monolitico, funzioni globali, nessun framework
+
+Recommended extraction order:
+1. sourceTemplateCatalog.js (dati statici)
+2. styles.css (base CSS + template styles)
+3. index.html (skeleton)
+4. app.js (router + utils)
+5. modelliSorgenteView.js (sezione target)
+
+Risk assessment: LOW
+- Modelli sorgente è read-only, statico
+- Nessun export/DOCX coinvolto
+- Nessuna logica di stato complessa
+
+Ready for MGR-035B: YES
