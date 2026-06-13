@@ -1,5 +1,6 @@
 /**
  * App entry point - vanilla JS no dependencies
+ * Uses shared shell components
  */
 
 // Utility functions (from monolite)
@@ -41,6 +42,12 @@ document.addEventListener("DOMContentLoaded", () => {
   if (typeof SOURCE_TEMPLATE_CATALOG !== "undefined") {
     initSourceTemplateCatalog(SOURCE_TEMPLATE_CATALOG);
   }
+  // Use shared sidebar
+  const sidebarEl = document.getElementById("sidebar");
+  if (sidebarEl && typeof renderSidebar === "function") {
+    sidebarEl.innerHTML = renderSidebar({ activeView: "modelliSorgente" });
+  }
+  // Bind navigation
   document.querySelectorAll("nav button[data-view]").forEach(btn => {
     btn.addEventListener("click", () => showView(btn.dataset.view));
   });

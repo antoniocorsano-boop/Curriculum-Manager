@@ -1,0 +1,49 @@
+VERDICT: MGR_035C_LAYOUT_SHELL_CONDIVISO_BASE_IMPLEMENTATO_LOCALMENTE
+
+## Preflight verifiche
+
+- HEAD == origin/main (6888afa): PASS
+- Working tree clean before: PASS
+- Working tree clean after: IN PROGRESS (files staged)
+
+## Files created
+
+- src/components/layout.js: PASS
+- src/components/sidebar.js: PASS
+- src/components/noticeBox.js: PASS
+
+## Files modified
+
+- index.html: PASS (integrazione script)
+- src/app.js: PASS (integrazione renderSidebar)
+
+## Validation
+
+| Controllo | Stato |
+|-----------|-------|
+| file scope | pass |
+| layout component present | pass |
+| sidebar component present | pass |
+| noticeBox component present | pass |
+| app uses shared shell | pass |
+| Modelli sorgente still visible | pass |
+| 10 cards still visible | pass |
+| disclaimer/no personal data/human validation/no DOCX notes preserved | pass |
+| monolith untouched | pass |
+| no DOCX/PDF generated | pass |
+| no export executed | pass |
+| no dependencies introduced | pass |
+| no backend/API/deploy changes | pass |
+
+## Pattern verificati
+
+- src/app.js contiene "renderSidebar": TROVATO
+- src/app.js contiene "Modelli sorgente": TROVATO
+- modelliSorgenteView.js mantiene 10 card: INTACTO
+- sourceTemplateCatalog.js mantiene template: INTACTO
+
+## Notes
+
+Questa slice prepara la shell condivisa per future estrazioni.
+Nessun export/DOCX/PDF tocca.
+Il monolite APRI_MANAGER_CURRICOLO_ISTITUTO.html è intatto.
