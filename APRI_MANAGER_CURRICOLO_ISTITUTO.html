@@ -1714,19 +1714,43 @@ async function zipDataBytes(data){
  if(typeof Blob!=="undefined" && data instanceof Blob)return new Uint8Array(await data.arrayBuffer());
  return bytesFromText(data);
 }
+async function zipDeflateRawBytes(bytes){
+ const blocks=[];
+ for(let offset=0;offset<bytes.length;offset+=65535){
+  const chunk=bytes.slice(offset,Math.min(offset+65535,bytes.length));
+  const finalBlock=(offset+chunk.length)>=bytes.length;
+  const header=new Uint8Array(5);
+  header[0]=finalBlock?1:0;
+  header[1]=chunk.length&255;
+  header[2]=(chunk.length>>>8)&255;
+  const nlen=(~chunk.length)&65535;
+  header[3]=nlen&255;
+  header[4]=(nlen>>>8)&255;
+  blocks.push(header,chunk);
+ }
+ return concatZipParts(blocks);
+}
+async function zipInflateRawBytes(bytes){
+ if(typeof DecompressionStream==="undefined" || typeof Response==="undefined" || typeof Blob==="undefined")throw new Error("Questo browser non supporta la decompressione ZIP deflate richiesta dal pacchetto.");
+ const stream=new Blob([bytes]).stream().pipeThrough(new DecompressionStream("deflate-raw"));
+ return new Uint8Array(await new Response(stream).arrayBuffer());
+}
 async function buildZipBlob(entries, mimeType="application/zip"){
- const localParts=[], centralParts=[];let offset=0;const utf8Flag=0x0800;let count=0;
+ const localParts=[], centralParts=[];let offset=0;const utf8Flag=0;let count=0;
  for(const entry of entries){
   const path=String(entry.path||"").replace(/^\/+/,"");
   if(!path)continue;
   count++;
   const nameBytes=bytesFromText(path);
   const dataBytes=await zipDataBytes(entry.data||"");
+  const compressedBytes=await zipDeflateRawBytes(dataBytes);
+  const bodyBytes=compressedBytes||dataBytes;
+  const method=compressedBytes?8:0;
   const crc=zipCrc32(dataBytes);
   const dt=zipDosDateTime(entry.date||new Date());
-  const local=[zipU32(0x04034b50),zipU16(20),zipU16(utf8Flag),zipU16(0),zipU16(dt.time),zipU16(dt.date),zipU32(crc),zipU32(dataBytes.length),zipU32(dataBytes.length),zipU16(nameBytes.length),zipU16(0),nameBytes,dataBytes];
+  const local=[zipU32(0x04034b50),zipU16(20),zipU16(utf8Flag),zipU16(method),zipU16(dt.time),zipU16(dt.date),zipU32(crc),zipU32(bodyBytes.length),zipU32(dataBytes.length),zipU16(nameBytes.length),zipU16(0),nameBytes,bodyBytes];
    appendZipParts(localParts, local);
-   const central=[zipU32(0x02014b50),zipU16(20),zipU16(20),zipU16(utf8Flag),zipU16(0),zipU16(dt.time),zipU16(dt.date),zipU32(crc),zipU32(dataBytes.length),zipU32(dataBytes.length),zipU16(nameBytes.length),zipU16(0),zipU16(0),zipU16(0),zipU16(0),zipU32(0),zipU32(offset),nameBytes];
+   const central=[zipU32(0x02014b50),zipU16(20),zipU16(20),zipU16(utf8Flag),zipU16(method),zipU16(dt.time),zipU16(dt.date),zipU32(crc),zipU32(bodyBytes.length),zipU32(dataBytes.length),zipU16(nameBytes.length),zipU16(0),zipU16(0),zipU16(0),zipU16(0),zipU32(0),zipU32(offset),nameBytes];
    appendZipParts(centralParts, central);
   offset += local.reduce((s,p)=>s+p.length,0);
  }
@@ -1750,8 +1774,10 @@ async function readStoredZipEntries(blob){
   const name=bytesToText(bytes.slice(o+30,o+30+nameLen));
   const dataStart=o+30+nameLen+extraLen;
   const dataEnd=dataStart+compSize;
-  if(method!==0)throw new Error("Questo import supporta solo ZIP non compressi generati dal Manager.");
-  entries[name]=bytes.slice(dataStart,dataEnd);
+  const raw=bytes.slice(dataStart,dataEnd);
+  if(method===0)entries[name]=raw;
+  else if(method===8)entries[name]=await zipInflateRawBytes(raw);
+  else throw new Error("Metodo ZIP non supportato nel pacchetto generato dal Manager.");
   o=dataEnd;
  }
  return entries;
@@ -1775,18 +1801,22 @@ function wordParagraph(text, style="Normal"){
  const styleXml=style?`<w:pPr><w:pStyle w:val="${style}"/></w:pPr>`:"";
  return `<w:p>${styleXml}<w:r>${wordRunText(text)}</w:r></w:p>`;
 }
-function wordCell(text, header=false){
+function wordCell(text, header=false, width=2400){
  const shade=header?'<w:shd w:fill="EAF1FF"/>':'';
- return `<w:tc><w:tcPr><w:tcW w:w="0" w:type="auto"/>${shade}</w:tcPr>${wordParagraph(text||" ", header?"TableHeader":"TableText")}</w:tc>`;
+ return `<w:tc><w:tcPr><w:tcW w:w="${width}" w:type="dxa"/>${shade}</w:tcPr>${wordParagraph(text||" ", header?"TableHeader":"TableText")}</w:tc>`;
 }
 function wordMetaTable(rows){return wordTable(["Campo","Valore"], rows);}
 function wordTable(headers, rows){
- const headerCells=headers.map(h=>wordCell(h,true)).join("");
+ const safeHeaders=(headers&&headers.length?headers:["Campo","Valore"]).map(h=>safeText(h));
+ const colWidth=Math.max(1200,Math.floor(9360/safeHeaders.length));
+ const grid=safeHeaders.map(()=>`<w:gridCol w:w="${colWidth}"/>`).join("");
+ const headerCells=safeHeaders.map(h=>wordCell(h,true,colWidth)).join("");
  const body=(rows||[]).map(row=>{
-  const cells=(Array.isArray(row)?row:Object.values(row)).map(cell=>wordCell(cell,false)).join("");
+  const values=Array.isArray(row)?row:Object.values(row||{});
+  const cells=safeHeaders.map((_,idx)=>wordCell(values[idx]??" ",false,colWidth)).join("");
   return `<w:tr>${cells}</w:tr>`;
  }).join("");
- return `<w:tbl><w:tblPr><w:tblW w:w="0" w:type="auto"/><w:tblBorders><w:top w:val="single" w:sz="4" w:space="0" w:color="C7D2E5"/><w:left w:val="single" w:sz="4" w:space="0" w:color="C7D2E5"/><w:bottom w:val="single" w:sz="4" w:space="0" w:color="C7D2E5"/><w:right w:val="single" w:sz="4" w:space="0" w:color="C7D2E5"/><w:insideH w:val="single" w:sz="4" w:space="0" w:color="C7D2E5"/><w:insideV w:val="single" w:sz="4" w:space="0" w:color="C7D2E5"/></w:tblBorders></w:tblPr><w:tr>${headerCells}</w:tr>${body}</w:tbl>`;
+ return `<w:tbl><w:tblPr><w:tblW w:w="9360" w:type="dxa"/><w:tblLayout w:type="fixed"/><w:tblBorders><w:top w:val="single" w:sz="4" w:space="0" w:color="C7D2E5"/><w:left w:val="single" w:sz="4" w:space="0" w:color="C7D2E5"/><w:bottom w:val="single" w:sz="4" w:space="0" w:color="C7D2E5"/><w:right w:val="single" w:sz="4" w:space="0" w:color="C7D2E5"/><w:insideH w:val="single" w:sz="4" w:space="0" w:color="C7D2E5"/><w:insideV w:val="single" w:sz="4" w:space="0" w:color="C7D2E5"/></w:tblBorders></w:tblPr><w:tblGrid>${grid}</w:tblGrid><w:tr>${headerCells}</w:tr>${body}</w:tbl>`;
 }
 function wordSignatureTable(){
  return wordTable(["Ruolo","Nome e cognome","Firma","Data"],[
@@ -1855,7 +1885,7 @@ function buildDocxDocumentXml(scope){
   if(section.signature) parts += wordSignatureTable();
  }
  parts += wordParagraph(model.footer,"Footer");
- return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><w:body>${parts}<w:sectPr><w:headerReference w:type="default" r:id="rId2"/><w:footerReference w:type="default" r:id="rId3"/><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1134" w:right="850" w:bottom="1134" w:left="850" w:header="708" w:footer="708" w:gutter="0"/></w:sectPr></w:body></w:document>`;
+ return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><w:body>${parts}<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1134" w:right="850" w:bottom="1134" w:left="850" w:header="708" w:footer="708" w:gutter="0"/></w:sectPr></w:body></w:document>`;
 }
 function docxHeaderXml(){return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:hdr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:p><w:pPr><w:pStyle w:val="Header"/><w:jc w:val="center"/></w:pPr><w:r><w:t>${xmlEsc(state.istituto?.denominazione||"Istituto")}</w:t></w:r></w:p></w:hdr>`;}
 function docxFooterXml(){return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:ftr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:p><w:pPr><w:pStyle w:val="Footer"/><w:jc w:val="center"/></w:pPr><w:r><w:t>Documento generato dal Manager Curricolo d'Istituto - verificare e validare prima dell'uso finale</w:t></w:r></w:p></w:ftr>`;}
@@ -1867,11 +1897,9 @@ async function createDocxBlob(scope){
  const entries=[
   {path:"[Content_Types].xml",data:`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/><Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml"/><Override PartName="/docProps/app.xml" ContentType="application/vnd.openxmlformats-officedocument.extended-properties+xml"/></Types>`},
   {path:"_rels/.rels",data:`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="docProps/core.xml"/><Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/extended-properties" Target="docProps/app.xml"/></Relationships>`},
-  {path:"word/_rels/document.xml.rels",data:`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/header" Target="header1.xml"/><Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/footer" Target="footer1.xml"/></Relationships>`},
+  {path:"word/_rels/document.xml.rels",data:`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>`},
   {path:"word/document.xml",data:buildDocxDocumentXml(scope)},
   {path:"word/styles.xml",data:docxStylesXml()},
-  {path:"word/header1.xml",data:docxHeaderXml()},
-  {path:"word/footer1.xml",data:docxFooterXml()},
   {path:"docProps/core.xml",data:`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dcmitype="http://purl.org/dc/dcmitype/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><dc:title>${xmlEsc(title)}</dc:title><dc:creator>Manager Curricolo Istituto</dc:creator><cp:lastModifiedBy>Manager Curricolo Istituto</cp:lastModifiedBy><dcterms:created xsi:type="dcterms:W3CDTF">${now}</dcterms:created><dcterms:modified xsi:type="dcterms:W3CDTF">${now}</dcterms:modified></cp:coreProperties>`},
   {path:"docProps/app.xml",data:`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties" xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes"><Application>Manager Curricolo Istituto</Application></Properties>`}
  ];
@@ -1955,13 +1983,13 @@ async function importCompleteAttachmentPackage(event){
 }
 
 async function exportDocument(scope, mode){
- const html=buildPrintableHtml(scope);
  if(mode==="docx"){
   const blob=await createDocxBlob(scope);
   downloadBlob(blob, makeExportDocumentFilename(scope,"docx"));
   toast("Documento DOCX nativo esportato.");
   return;
  }
+ const html=buildPrintableHtml(scope);
  if(mode==="word"){
   const wordHtml='\ufeff'+html;
   downloadBlob(new Blob([wordHtml],{type:"application/msword;charset=utf-8"}), makeExportDocumentFilename(scope,"doc"));

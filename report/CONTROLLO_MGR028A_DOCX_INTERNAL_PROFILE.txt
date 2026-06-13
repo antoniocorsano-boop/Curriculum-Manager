@@ -1,0 +1,53 @@
+MGR-028A - CONTROLLO PROFILO DOCX INTERNO
+
+Baseline:
+- Branch: main
+- HEAD locale/origin atteso: 6bd0f3facf1cfe0c424c2ba943219fb0653587f2
+
+Scope:
+- APRI_MANAGER_CURRICOLO_ISTITUTO.html
+- report/MGR_028A_DOCX_INTERNAL_PROFILE_HARDENING_REPORT.md
+- report/CONTROLLO_MGR028A_DOCX_INTERNAL_PROFILE.txt
+- report/verifiche_mgr028a/
+
+Patch:
+- ZIP interno: metodo 8 DEFLATE raw con blocchi stored, CRC e dimensioni coerenti.
+- ZIP interno: niente data descriptor/streaming.
+- Reader ZIP interno: supporto metodo 0 e metodo 8.
+- DOCX: rimossi header/footer Word reali non necessari.
+- DOCX: mantenuti intestazione/footer nel corpo documento.
+- Tabelle: tblPr, tblGrid, gridCol non zero, tcPr e paragrafo in ogni cella.
+- Branch export: DOCX diretto da createDocxBlob(scope), HTML solo per Word .doc/stampa.
+
+Modelli verificati:
+- Report complessivo del curricolo d'istituto
+- Documento prodotto dal gruppo di lavoro
+- Documento finale di dipartimento
+- Documento approvato / validato
+
+Validatore:
+- Script: report/verifiche_mgr028a/mgr028a-validate.js
+- Output: MGR028A_VALIDATION_OK
+- File validati: 4 DOCX
+- Entry per DOCX: 7
+- Tabelle per DOCX: 7
+- Celle per DOCX: 340
+- Central directory: presente
+- EOCD: presente
+
+Vincoli rispettati:
+- Nessuna libreria esterna introdotta.
+- Nessun docx/jszip vendorizzato.
+- Nessun CDN.
+- Nessun backend/API/auth/deploy.
+- DOCX non derivato da buildPrintableHtml().
+- DOCX non chiama buildPrintableHtml() nel branch mode === "docx".
+- DOCX data-driven / WordprocessingML.
+- Stampa/PDF e Word .doc restano HTML-based.
+
+Limiti residui:
+- Writer interno ancora minimale.
+- MGR-028B necessario per apertura reale Word/LibreOffice.
+
+Verdict:
+MGR_028A_DOCX_PROFILE_HARDENED_READY_FOR_WORD_TEST
