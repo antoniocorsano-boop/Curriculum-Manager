@@ -1,0 +1,43 @@
+MGR-028C — Visual Writer/Word Compatibility Gate
+=================================================
+
+Baseline Git:
+  Branch:       main
+  HEAD locale:  8b7175005fc29c163c36944b1bda350b9caf9c20
+  origin/main:  8b7175005fc29c163c36944b1bda350b9caf9c20
+  Commit:       8b71750 mgr: record LibreOffice headless compatibility check
+  Sync:         true
+  Working tree: pulita
+
+Software:
+  LibreOffice:  installato in C:\Program Files\LibreOffice\program\soffice.exe
+  Microsoft Word: non disponibile
+  GUI:          non disponibile in ambiente CLI
+
+Documenti da aprire:
+  1. report/verifiche_mgr028a/Report_complessivo_del_curricolo_istituto.docx
+  2. report/verifiche_mgr028a/Documento_prodotto_dal_gruppo_di_lavoro.docx
+  3. report/verifiche_mgr028a/Documento_finale_di_dipartimento.docx
+  4. report/verifiche_mgr028a/Documento_approvato_validato.docx
+
+Esito apertura visuale:
+  LibreOffice Writer: BLOCCATO (GUI non disponibile)
+  Microsoft Word:     non disponibile
+
+Layout:
+  non verificato visivamente
+
+Problemi trovati:
+  - Ambiente CLI non interattivo
+  - Microsoft Word non disponibile
+
+Patch applicate:
+  - Nessuna
+
+Verdetto finale:
+  MGR_028C_BLOCKED_GUI_NOT_AVAILABLE
+
+Prossima slice consigliata:
+  - Rieseguire MGR-028C su macchina con GUI
+  - Aprire DOCX in LibreOffice Writer con controllo visivo
+  - Verificare layout, tabelle, firme in modalità grafica
