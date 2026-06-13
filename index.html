@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Manager Curricolo d'Istituto - Modelli sorgente</title>
+  <link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+  <header>
+    <h1 id="appTitle">Manager Curricolo d'Istituto</h1>
+    <p id="appSubtitle">Estratto: Modelli sorgente istituzionali</p>
+  </header>
+
+  <div class="layout">
+    <nav id="sidebar">
+      <div class="nav-title">Navigazione</div>
+      <button data-view="modelliSorgente" class="active">Modelli sorgente</button>
+    </nav>
+
+    <main>
+      <section id="modelliSorgente" class="view active"></section>
+    </main>
+  </div>
+
+  <script src="src/data/sourceTemplateCatalog.js"></script>
+  <script src="src/views/modelliSorgenteView.js"></script>
+  <script src="src/app.js"></script>
+</body>
+</html>

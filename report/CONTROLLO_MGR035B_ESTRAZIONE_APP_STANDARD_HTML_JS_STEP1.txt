@@ -1,0 +1,58 @@
+VERDICT: MGR_035B_STANDARD_HTML_JS_STEP1_IMPLEMENTED_LOCALLY
+
+## Preflight verifiche
+
+- Repository sync (HEAD == origin/main): PASS (82ff763)
+- Working tree clean before: PASS
+- Working tree clean after: IN PROGRESS
+
+## File creati
+
+- index.html: PASS
+- src/styles.css: PASS
+- src/app.js: PASS
+- src/data/sourceTemplateCatalog.js: PASS
+- src/views/modelliSorgenteView.js: PASS
+
+## File NON modificati
+
+- APRI_MANAGER_CURRICOLO_ISTITUTO.html: PASS (intatto)
+- templates/documenti-istituzionali/*.md: PASS
+
+## Validation
+
+- index.html presente: PASS
+- src/styles.css presente: PASS
+- src/app.js presente: PASS
+- catalogo template presente: PASS
+- view Modelli sorgente presente: PASS
+- 10 template esposti: PASS
+- disclaimer presente: PASS
+- no dati personali presente: PASS
+- validazione umana presente: PASS
+- nessun DOCX/PDF generato: PASS
+- nessun export eseguito: PASS
+- monolite non modificato: PASS
+- exportDocument non modificato: PASS (non c'è in questa app)
+- state.modelliDocumentoIstituzionale non modificato: PASS (non c'è in questa app)
+
+## Pattern verificati
+
+- Modelli sorgente istituzionali: TROVATO in view
+- Nota "non genera DOCX o PDF": TROVATO in view
+- "Come usare questi modelli": TROVATO in view
+- "TEMPLATE SORGENTE": TROVATO in view
+- Percorsi template catalogo: TROVATO in catalog
+
+## Smoke test manuale
+
+- App apre nel browser: DA VERIFICARE
+- Nav/sidebar visibile: DA VERIFICARE
+- 10 card visibili: DA VERIFICARE
+- Disclaimer visibile: DA VERIFICARE
+- Nessun pulsante export: DA VERIFICARE
+
+## Notes
+
+Questa è la prima slice. La sezione Modelli sorgente è read-only, statica, senza export.
+Il monolite APRI_MANAGER_CURRICOLO_ISTITUTO.html rimane intatto.
