@@ -1,0 +1,27 @@
+VERDICT: MGR_031_COLLEGAMENTO_CONTROLLATO_IMPLEMENTATO_LOCALMENTE
+
+HEAD before: 35259a229da32c7f9d1ebf31cd659410d2d8ddb7
+HEAD after: da definire dopo commit
+origin/main: 35259a229da32c7f9d1ebf31cd659410d2d8ddb7
+Working tree clean: verificata
+
+File modificati:
+- APRI_MANAGER_CURRICOLO_ISTITUTO.html
+
+File creati:
+- report/MGR_031_COLLEGAMENTO_CONTROLLATO_CATALOGO_SORGENTE_FLUSSO_DOCUMENTI.md
+- report/CONTROLLO_MGR031_COLLEGAMENTO_CONTROLLATO_CATALOGO_SORGENTE_FLUSSO_DOCUMENTI.txt
+
+Controlli:
+- box "Come usare questi modelli" presente
+- relazione Modelli sorgente / Documenti istituzionali chiarita
+- CTA sicura presente
+- 10 card ancora presenti
+- nessun DOCX/PDF generato
+- nessun export eseguito
+- exportDocument non modificato
+- state.modelliDocumentoIstituzionale non modificato
+- nessuna modifica backend/API/deploy/CDN/librerie
+
+Push:
+- false
