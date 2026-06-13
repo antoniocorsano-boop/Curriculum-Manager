@@ -5,7 +5,8 @@
 
 function renderSidebar({ activeView = "modelliSorgente" } = {}) {
   const views = [
-    { id: "modelliSorgente", label: "Modelli sorgente" }
+    { id: "modelliSorgente", label: "Modelli sorgente" },
+    { id: "documentiIstituzionali", label: "Documenti istituzionali" }
   ];
 
   const navButtons = views.map(v => `

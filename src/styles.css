@@ -199,6 +199,28 @@ button.action.secondary {
   margin: 8px 0 10px;
 }
 
+/* Institutional document grid */
+.institutional-document-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.institutional-document-card {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+  padding: 14px;
+  box-shadow: var(--shadow);
+}
+
+.institutional-document-card h3 {
+  margin: 0 0 6px;
+  font-size: 17px;
+  color: #182033;
+}
+
 /* Path pill */
 .path-pill {
   font-family: ui-monospace, SFMono-Regular, Consolas, monospace;

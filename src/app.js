@@ -31,14 +31,15 @@ function showView(id) {
 
 function renderView(id) {
   const renderers = {
-    modelliSorgente: renderModelliSorgenteView
+    modelliSorgente: renderModelliSorgenteView,
+    documentiIstituzionali: renderDocumentiIstituzionaliView
   };
   if (renderers[id]) renderers[id]();
 }
 
 // Event handlers
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize catalog from global
+  // Initialize catalogs from global
   if (typeof SOURCE_TEMPLATE_CATALOG !== "undefined") {
     initSourceTemplateCatalog(SOURCE_TEMPLATE_CATALOG);
   }

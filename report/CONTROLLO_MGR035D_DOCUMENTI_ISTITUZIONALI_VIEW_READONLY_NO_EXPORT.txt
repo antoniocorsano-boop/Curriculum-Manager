@@ -1,0 +1,51 @@
+VERDICT: MGR_035D_DOCUMENTI_ISTITUZIONALI_VIEW_READONLY_IMPLEMENTATO_LOCALMENTE
+
+## Preflight verifiche
+
+- HEAD == origin/main (3b6f550): PASS
+- Working tree clean before: PASS
+
+## Files created
+
+- src/data/institutionalDocumentsCatalog.js: PASS
+- src/views/documentiIstituzionaliView.js: PASS
+
+## Files modified
+
+- index.html: PASS
+- src/app.js: PASS
+- src/components/sidebar.js: PASS
+- src/styles.css: PASS
+
+## Validation
+
+| Controllo | Stato |
+|-----------|-------|
+| file scope | pass |
+| read-only catalog present | pass |
+| Documenti istituzionali view present | pass |
+| sidebar navigation present | pass |
+| 10 documenti esposti | pass |
+| no export/DOCX/PDF/generate/compile buttons | pass |
+| Modelli sorgente still works | pass |
+| monolith untouched | pass |
+| no DOCX/PDF generated | pass |
+| no export executed | pass |
+| no dependencies introduced | pass |
+| no backend/API/deploy changes | pass |
+
+## Pattern verificati
+
+- institutionalDocumentsCatalog.js ha "CATALOGO READ-ONLY": TROVATO
+- institutionalDocumentsCatalog.js ha "exportAvailable: false": TROVATO
+- documentiIstituzionaliView.js ha "Documenti istituzionali": TROVATO
+- documentiIstituzionaliView.js ha "nessun documento viene creato": TROVATO
+- documentiIstituzionaliView.js ha "nessun export DOCX/PDF": TROVATO
+- sidebar.js ha "Documenti istituzionali": TROVATO
+- app.js ha "documentiIstituzionali": TROVATO
+
+## Notes
+
+Questa slice aggiunge la view Documenti Istituzionali in modalità read-only.
+Nessun export/DOCX/PDF.
+Il monolite APRI_MANAGER_CURRICOLO_ISTITUTO.html è intatto.
