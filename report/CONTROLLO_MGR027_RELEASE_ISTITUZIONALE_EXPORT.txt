@@ -1,0 +1,50 @@
+CONTROLLO MGR-027 - RELEASE ISTITUZIONALE EXPORT
+Data: 2026-06-13
+
+BASELINE
+Branch: main
+Commit base MGR-026: adeb1bc08f4cad195c8a288d29a5e78608be7a8e
+Verdict MGR-026: MGR_026_CLOSED_REMOTE_WITH_HUMAN_GATE
+
+SCOPE
+Release documentale e pacchetto distribuibile.
+Nessuna modifica al motore documentale.
+Nessuna nuova funzione applicativa.
+Nessun backend, API, auth, deploy, CDN o libreria esterna.
+
+FILE RELEASE
+- APRI_MANAGER_CURRICOLO_ISTITUTO.html
+- README.md
+- ISTRUZIONI_OPERATIVE_EXPORT.md
+- report/MGR_027_RELEASE_ISTITUZIONALE_EXPORT_REPORT.md
+- report/CONTROLLO_MGR027_RELEASE_ISTITUZIONALE_EXPORT.txt
+- report/MGR_026_EXPORT_ISTITUZIONALE_VALIDATION_REPORT.md
+- report/CONTROLLO_MGR026_EXPORT_ISTITUZIONALE.txt
+
+ISTRUZIONI COPERTE
+- dirigente scolastico
+- referente curricolo
+- gruppo/dipartimento
+- documento approvato / validato
+- documento prodotto dal gruppo di lavoro
+- stampa/PDF
+- Word .doc
+- DOCX
+- backup
+- ripristino sessione
+- gestione problemi Word/LibreOffice
+
+LIMITI DICHIARATI
+Il Manager produce documenti predisposti per revisione, stampa, condivisione e lavoro in Word.
+Non firma digitalmente.
+Non protocolla.
+Non conserva a norma.
+Non produce PDF/A certificato.
+Non sostituisce delibera o validazione formale.
+
+GATE RESIDUO
+Aprire almeno un DOCX reale in Microsoft Word o LibreOffice prima della distribuzione ampia.
+Il gate e di compatibilita applicativa, non un bug bloccante noto.
+
+VERDETTO
+MGR_027_RELEASE_READY_WITH_HUMAN_GATE
