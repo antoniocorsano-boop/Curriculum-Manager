@@ -1,0 +1,45 @@
+VERDICT: MGR_029_TEMPLATE_SORGENTE_IMPLEMENTATI_CON_LIMITI
+
+HEAD before: 482e97c677333fc2b62e7b842e21b4538ad4e3aa
+HEAD after: da definire dopo commit
+Commit creato: da definire dopo commit
+Commit hash: da definire dopo commit
+Working tree clean: true prima del commit, da verificare dopo
+
+File creati:
+- report/MGR_029_PIANO_IMPLEMENTAZIONE_MODELLI_DOCUMENTI_ISTITUZIONALI.md
+- report/CONTROLLO_MGR029_IMPLEMENTAZIONE_MODELLI_DOCUMENTI_ISTITUZIONALI.txt
+- templates/documenti-istituzionali/README.md
+- templates/documenti-istituzionali/curricolo-verticale-istituto.md
+- templates/documenti-istituzionali/curricolo-ordine-scolastico.md
+- templates/documenti-istituzionali/curricolo-disciplina-campo.md
+- templates/documenti-istituzionali/documento-finale-dipartimento.md
+- templates/documenti-istituzionali/documento-gruppo-lavoro.md
+- templates/documenti-istituzionali/documento-revisione-aggiornamento.md
+- templates/documenti-istituzionali/documento-approvato-validato.md
+- templates/documenti-istituzionali/quadro-competenze-traguardi-obiettivi.md
+- templates/documenti-istituzionali/quadro-valutazione-rubriche.md
+- templates/documenti-istituzionali/allegato-educazione-civica-digitale-orientamento-inclusione.md
+
+Controlli pre-commit:
+- 10 template presenti: PASS
+- README presente: PASS
+- piano presente: PASS
+- controllo presente: PASS
+- disclaimer presente in ogni template: PASS (10/10)
+- nota no dati personali presente in ogni template: PASS (10/10)
+- placeholder [DA COMPILARE: ...] presenti: PASS (180 occorrenze totali)
+- nessun DOCX generato: PASS
+- nessun PDF generato: PASS
+- nessuna modifica a APRI_MANAGER_CURRICOLO_ISTITUTO.html: PASS
+- nessuna modifica a motore DOCX/export: PASS
+- nessuna modifica a backend/API/auth/deploy/CDN/librerie esterne: PASS
+- git diff --check: PASS (nessun errore)
+
+Limiti:
+- template sorgente non ufficiali
+- validazione umana obbligatoria
+- AgID solo riferimento prudenziale
+- gate visuale esterno
+
+Audit pre-commit: PASS — pronto per commit
