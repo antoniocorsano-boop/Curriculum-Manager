@@ -1,0 +1,64 @@
+MGR-028B — Word/LibreOffice Real Test
+======================================
+
+Baseline Git:
+  Branch:       main
+  HEAD locale:  e0514a913ffa68315a70bc41a03c7c44eabf4f99
+  origin/main:  e0514a913ffa68315a70bc41a03c7c44eabf4f99
+  Commit:       e0514a9 mgr: harden internal docx profile
+  Sync:         true
+  Working tree: pulita
+
+Software:
+  LibreOffice:  rilevato in C:\Program Files\LibreOffice\program\soffice.exe
+  Microsoft Word: non disponibile
+
+Documenti testati:
+  1. report/verifiche_mgr028a/Report_complessivo_del_curricolo_istituto.docx
+  2. report/verifiche_mgr028a/Documento_prodotto_dal_gruppo_di_lavoro.docx
+  3. report/verifiche_mgr028a/Documento_finale_di_dipartimento.docx
+  4. report/verifiche_mgr028a/Documento_approvato_validato.docx
+
+Metodo:
+  - Conversione headless DOCX -> PDF (LibreOffice Writer)
+  - Profilo temporaneo locale: report/verifiche_mgr028b/lo-profile
+  - Flag: --headless --nologo --nofirststartwizard --norestore
+
+Esito conversione:
+  - Tutti e 4 i DOCX convertiti con ExitCode 0
+  - PDF generati in report/verifiche_mgr028b/
+  - Dimensioni PDF: ~191 KB ciascuno
+
+PDF generati:
+  Report_complessivo_del_curricolo_istituto.pdf    191.463 bytes
+  Documento_prodotto_dal_gruppo_di_lavoro.pdf      191.419 bytes
+  Documento_finale_di_dipartimento.pdf             191.255 bytes
+  Documento_approvato_validato.pdf                 191.186 bytes
+
+Apertura Word:
+  - Non disponibile, test non eseguito
+
+Apertura LibreOffice Writer (visiva):
+  - Non eseguita per assenza di ambiente grafico interattivo
+  - Verdetto: HEADLESS_PASSED_VISUAL_GATE_PENDING
+
+Messaggi di riparazione:
+  - Nessuno rilevato in headless conversion
+
+Layout:
+  - Non verificato visivamente (solo headless)
+
+Problemi trovati:
+  - Microsoft Word non disponibile
+  - Ambiente CLI non interattivo: apertura visuale non possibile
+
+Patch applicate:
+  - Nessuna
+
+Verdetto finale:
+  MGR_028B_HEADLESS_PASSED_VISUAL_GATE_PENDING
+
+Prossima slice consigliata:
+  - Apertura visuale in LibreOffice Writer su macchina con GUI
+  - Verifica layout, intestazioni, sezioni, tabelle, firme
+  - Test su Microsoft Word se disponibile
