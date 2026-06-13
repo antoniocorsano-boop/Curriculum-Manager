@@ -66,6 +66,8 @@ Nota: questo modello non utilizza dati personali, dati identificativi, nomi real
 
 [DA COMPILARE: collegamenti con altre discipline o aree.]
 
+Compilare solo se i collegamenti sono effettivi e deliberati/coerenti con il curricolo.
+
 ---
 
 ## Validazione umana richiesta

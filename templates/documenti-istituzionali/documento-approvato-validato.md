@@ -52,7 +52,7 @@ Nota: questo modello non utilizza dati personali, dati identificativi, nomi real
 
 ## Condizioni di validità
 
-[DA COMPILARE: condizioni, limiti e durata della validità.]
+[DA COMPILARE: indicare solo durata, limiti, organo competente, eventuale delibera o condizioni formali già note. Non inventare atti o validità non verificati.]
 
 ---
 

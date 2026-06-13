@@ -59,6 +59,8 @@ Nota: questo modello non utilizza dati personali, dati identificativi, nomi real
 
 [DA COMPILARE: indicazioni per l’uso da parte dei docenti.]
 
+Sezione breve, massimo 3 righe. Non trasformare in manuale d’uso.
+
 ---
 
 ## Inclusione e adattamenti

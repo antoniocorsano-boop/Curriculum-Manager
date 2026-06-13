@@ -27,13 +27,13 @@ Nota: questo modello non utilizza dati personali, dati identificativi, nomi real
 
 ## Mandato del gruppo
 
-[DA COMPILARE: sintesi del mandato ricevuto, delle finalità e dei tempi.]
+[DA COMPILARE: cosa viene richiesto al gruppo: finalità, obiettivi, tempi.]
 
 ---
 
 ## Ambito di lavoro
 
-[DA COMPILARE: descrizione dell’ambito tematico.]
+[DA COMPILARE: su cosa lavora il gruppo: tematica, ordine, disciplina o campo.]
 
 ---
 

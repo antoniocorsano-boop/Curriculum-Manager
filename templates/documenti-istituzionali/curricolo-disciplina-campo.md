@@ -30,6 +30,8 @@ Nota: questo modello non utilizza dati personali, dati identificativi, nomi real
 
 [DA COMPILARE: descrizione sintetica della disciplina o campo e del suo ruolo nel curricolo.]
 
+Compilare solo se serve distinguere disciplina, campo di esperienza o area curricolare.
+
 ---
 
 ## Finalità

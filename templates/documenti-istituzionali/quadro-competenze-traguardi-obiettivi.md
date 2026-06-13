@@ -62,9 +62,11 @@ Nota: questo modello non utilizza dati personali, dati identificativi, nomi real
 
 ---
 
-## Note di coerenza
+## Verifiche di coerenza effettuate
 
-[DA COMPILARE: note sulla coerenza con il curricolo verticale e i documenti di dipartimento.]
+[DA COMPILARE: solo dopo controllo umano. Indicare se e come sono state verificate coerenza con curricolo verticale e documenti di dipartimento.]
+
+Sezione opzionale: compilare solo dopo controllo umano.
 
 ---
 

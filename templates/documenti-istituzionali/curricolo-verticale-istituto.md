@@ -35,11 +35,15 @@ Nota: questo modello non utilizza dati personali, dati identificativi, nomi real
 
 [DA COMPILARE: elenco sintetico dei riferimenti normativi e documentali. Non sostituisce la verifica della normativa vigente a cura dell’Istituto.]
 
+Compilare solo se necessario. Evitare ripetizioni rispetto ai dati generali.
+
 ---
 
 ## Finalità formative
 
-[DA COMPILARE: finalità generali del curricolo per l’intero ordine di scuola, in forma sintetica e verificabile.]
+[DA COMPILARE: sintesi dei principi che guidano il curricolo verticale d’Istituto, in coerenza con l’autonomia scolastica e il PTOF.]
+
+Sintesi breve, massimo 3 righe.
 
 ---
 

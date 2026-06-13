@@ -43,3 +43,10 @@ Limiti:
 - gate visuale esterno
 
 Audit pre-commit: PASS — pronto per commit
+
+MGR-029C-FIX:
+- applicati affinamenti semantici minori;
+- sezioni opzionali chiarite;
+- placeholder resi più specifici dove necessario;
+- nessuna modifica a export/DOCX/Manager/backend/API/deploy;
+- nessun DOCX/PDF generato.
