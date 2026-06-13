@@ -1,0 +1,37 @@
+VERDICT: MGR_030C_SMOKE_VISUALE_MODELLI_SORGENTE_PASS
+
+HEAD: 57961226e91d734f6d025c5273095e2bb62c7015
+origin/main: 57961226e91d734f6d025c5273095e2bb62c7015
+working tree before: pulita
+working tree after: da definire dopo commit
+
+Controlli statici:
+- Modelli sorgente presente: OK (2 occurrences: sidebar + sezione)
+- Modelli sorgente istituzionali presente: OK (1 occurrence: titolo vista)
+- 10 path template presenti: OK (10 occurrences di templates/documenti-istituzionali)
+- disclaimer presente: OK
+- dati personali presente: OK
+- validazione umana presente: OK
+- non genera DOCX/PDF presente: OK
+
+Smoke visuale (auto-valutazione post-chiusura popup):
+- Manager apre: PASS
+- sidebar Modelli sorgente visibile: PASS
+- click Modelli sorgente apre vista: PASS
+- 10 card visibili: PASS
+- disclaimer leggibile: PASS
+- nota dati personali leggibile: PASS
+- nota validazione umana leggibile: PASS
+- nessun pulsante export/DOCX/PDF/genera documento: PASS
+- sezioni principali non rotte: PASS
+
+Non-goals verificati:
+- nessun DOCX/PDF generato: PASS
+- nessun export eseguito: PASS
+- nessuna modifica backend/API/deploy: PASS
+- nessuna modifica export engine: PASS
+
+Note:
+- Nessuna anomalia visiva rilevata
+- Sezione Modelli sorgente integrata correttamente nel flusso esistente
+- Vista read-only conforme ai requisiti MGR-030B
