@@ -1,5 +1,10 @@
 # REPO-MOVELOG
 
+## MGR-047 (2026-06-14)
+- HTML print document pack completato
+- Sezione pacchetto stampa nella matrice revisione
+- CSS print ottimizzato per textarea draft note
+
 ## MGR-046 (2026-06-14)
 - Data export Markdown/JSON completato
 - Pulsanti export nella matrice revisione (JSON + MD)

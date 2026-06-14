@@ -42,6 +42,11 @@ function renderMatriceRevisioneView() {
           <button type="button" class="action secondary" onclick="exportRevisionMatrixMarkdown()" style="margin-left:8px">Esporta Markdown</button>
         </div>
 
+        <div class="card" style="margin-top:12px">
+          <h3>Pacchetto stampa - Matrice revisione</h3>
+          <p class="simple-help">Include tutti i documenti con priorità, prossima azione e note locali. Salva come PDF tramite browser.</p>
+        </div>
+
 <div class="revision-matrix">
           ${catalog.map(renderRevisionMatrixRow).join("")}
         </div>
