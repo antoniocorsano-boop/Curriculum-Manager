@@ -1,5 +1,12 @@
 # REPO-MOVELOG
 
+## MGR-072 (2026-06-14)
+- DOCUMENT_OUTPUT_CENTER_CONTRACT definito in modalità docs-only
+- Sei stati output locale: bozza non modificata, modificata localmente, salvata, pronta per stampa, da rivedere, completata manualmente
+- Azioni consentite: apri, continua bozza, stampa bozza, reset singolo, segna da rivedere, segna completato manualmente
+- Azioni vietate: DOCX, PDF programmatico, Drive, OAuth, backend, sync remota, invio automatico, firma digitale, protocollazione
+- Persistenza vincolata a localStorage; completamento manuale distinto dall'approvazione istituzionale
+
 ## MGR-068 (2026-06-14)
 - LOCAL_DRAFT_STATE_AND_RESET completato
 - Chiave storage aggiornata a curriculumManager.documentDrafts.<documentId>
