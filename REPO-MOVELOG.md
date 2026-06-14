@@ -1,12 +1,13 @@
 # REPO-MOVELOG
 
-## MGR-063B (2026-06-14)
-- DOCUMENT_FIRST_READING_VIEW_HOTFIX implementato
-- Vista documento ora mostra "Bozza di lavoro" in evidenza
-- Guida rapida in <details> richiudibile
-- CTA "Apri documento" come primaria
+## MGR-064 (2026-06-14)
+- DOCUMENT_SOURCE_IMPORT_EDITABLE_REVIEW_CONTRACT definito in modalità audit-only
+- Inventario documenti Curriculum Manager e SchoolDocs
+- Gap: UDA, rubrica, griglia, programmazione, verbale mancanti
+- Modello dati: DocumentSource, EditableDocument, DocumentChange, RevisionEntry, SmartViewerState
+- Sequenza proposta: MGR-065 → MGR-066 → MGR-067 → MGR-068 → MGR-069
 
-## MGR-063 (2026-06-14)
+## MGR-063B (2026-06-14)
 - DOCUMENT_CONTENT_COVERAGE_AND_READING_VIEW implementato
 - documentContentCatalog.js creato con strutture per tutti i documenti
 - showDocumentDetail() mostra sezioni, check, output
