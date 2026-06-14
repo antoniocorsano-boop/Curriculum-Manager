@@ -49,6 +49,7 @@ function renderModelliSorgenteView() {
   const showProfileConfig = !hasWorkProfile(profile) && profileConfigSeen !== "true";
   const savedRole = profile.role || loadRolePath();
   const currentPhase = getCurrentPhase();
+  const suggestedPath = getSuggestedPath(profile.role, profile);
 
   const onboardingSeen = localStorage.getItem(ONBOARDING_DISMISSED_KEY);
   const onboardingHtml = onboardingSeen ? "" : `
@@ -69,24 +70,25 @@ function renderModelliSorgenteView() {
     <div class="card" style="border-left:4px solid var(--primary); padding:18px; margin-bottom:20px">
       <span class="badge ok">Percorso guidato</span>
       <h2 style="margin-top:8px; margin-bottom:4px">Percorso di aggiornamento del curricolo</h2>
-      <p class="simple-help">Vedi la fase, prepara il lavoro e produci il pacchetto di lavoro necessario.</p>
+      <p class="simple-help">In base al tuo profilo di lavoro, puoi iniziare da qui.</p>
       <div class="toolbar" style="margin-top:14px">
-        <button type="button" id="homePrimaryCta" class="action">Apri il percorso guidato</button>
+        <button type="button" id="homePrimaryCta" class="action">Apri il percorso suggerito</button>
         <button type="button" id="homeRevisionCta" class="action secondary" style="margin-left:8px">Vai alla revisione</button>
       </div>
       <div class="grid cols-2" style="margin-top:18px">
         <div>
           <div class="template-meta" style="margin-bottom:8px">
-            <span class="badge warn">${esc(currentPhase.status || "Da avviare")}</span>
-            <span class="badge secondary">${esc(currentPhase.title)}</span>
+            <span class="badge warn">${esc(suggestedPath.status)}</span>
+            <span class="badge secondary">${esc(suggestedPath.title)}</span>
           </div>
-          <p style="font-size:13px; margin:4px 0"><strong>Cosa fare ora:</strong> ${esc(currentPhase.doNow)}</p>
-          <p style="font-size:13px; margin:4px 0"><strong>Materiale da consegnare:</strong> ${esc(currentPhase.deliver)}</p>
-          <button type="button" id="currentPhaseCta" class="action secondary" style="font-size:12px; margin-top:8px">Apri questa fase</button>
+          <p style="font-size:13px; margin:4px 0"><strong>Azione consigliata:</strong> ${esc(suggestedPath.doNow)}</p>
+          <p style="font-size:13px; margin:4px 0"><strong>Output:</strong> ${esc(suggestedPath.deliver)}</p>
+          <button type="button" id="currentPhaseCta" class="action secondary" style="font-size:12px; margin-top:8px">Vai alla fase</button>
         </div>
         <div>
           <div style="font-size:13px; margin-bottom:6px"><strong>Profilo:</strong> <span id="profileSummary">${renderProfileSummary(profile)}</span></div>
           <div style="font-size:13px; margin-bottom:6px"><strong>Ruolo:</strong> <span id="roleSummary">${renderRoleSummary(profile.role)}</span></div>
+          ${renderSuggestedContext(profile)}
           <div class="toolbar" style="margin:0; gap:6px">
             <button type="button" id="editWorkProfileButton" class="action secondary" style="font-size:12px">Modifica profilo</button>
             <button type="button" id="resetWorkProfileButton" class="action secondary" style="font-size:12px; background:#fff0f0; border-color:#efb5b5; color:#912828">Reset profilo</button>
@@ -298,6 +300,35 @@ function renderRoleSummary(roleId) {
   return role ? esc(role.title) : esc(roleId);
 }
 
+function getSuggestedPath(roleId, profile) {
+  const role = window.ROLE_WORK_PATHS_CATALOG?.find(r => r.id === roleId);
+  if (!roleId) {
+    return {
+      title: "Orientamento",
+      status: "Profilo non configurato",
+      doNow: "Completa il profilo per ricevere un orientamento più preciso.",
+      deliver: "Quadro delle aree da aggiornare.",
+      action: "modelliSorgente"
+    };
+  }
+  return {
+    title: role.title,
+    status: "Pronto",
+    doNow: role.objective,
+    deliver: role.output,
+    action: role.actions?.[0] || "matriceRevisione"
+  };
+}
+
+function renderSuggestedContext(profile) {
+  if (!profile.role && !profile.discipline) return "";
+  const parts = [];
+  if (profile.discipline) parts.push(`<div style="font-size:12px; margin-bottom:4px"><strong>Ambito:</strong> ${esc(profile.discipline)}</div>`);
+  if (profile.school) parts.push(`<div style="font-size:12px; margin-bottom:4px"><strong>Scuola:</strong> ${esc(profile.school)}</div>`);
+  if (profile.orderLevel) parts.push(`<div style="font-size:12px; margin-bottom:4px"><strong>Ordine:</strong> ${esc(profile.orderLevel)}</div>`);
+  return `<div style="margin-top:8px; padding-top:8px; border-top:1px solid var(--line)">${parts.join("")}</div>`;
+}
+
 function getCurrentPhase() {
   const phase = (window.PROCESS_TIMELINE_CATALOG || [])[0];
   if (!phase) {
@@ -320,36 +351,40 @@ function getCurrentPhase() {
 }
 
 function bindHomeEvents() {
-  const skipOnboarding = document.getElementById("skipOnboardingButton");
-  if (skipOnboarding) skipOnboarding.addEventListener("click", skipOnboardingHandler);
+   const skipOnboarding = document.getElementById("skipOnboardingButton");
+   if (skipOnboarding) skipOnboarding.addEventListener("click", skipOnboardingHandler);
 
-  const startWorkflowButton = document.getElementById("startWorkflowButton");
-  if (startWorkflowButton) startWorkflowButton.addEventListener("click", startWorkflow);
+   const startWorkflowButton = document.getElementById("startWorkflowButton");
+   if (startWorkflowButton) startWorkflowButton.addEventListener("click", startWorkflow);
 
-  const homePrimary = document.getElementById("homePrimaryCta");
-  if (homePrimary) homePrimary.addEventListener("click", openHomeGuidedPath);
+   const homePrimary = document.getElementById("homePrimaryCta");
+   if (homePrimary) homePrimary.addEventListener("click", openHomeGuidedPath);
 
-  const homeRevision = document.getElementById("homeRevisionCta");
-  if (homeRevision) homeRevision.addEventListener("click", () => showView("matriceRevisione"));
+   const homeRevision = document.getElementById("homeRevisionCta");
+   if (homeRevision) homeRevision.addEventListener("click", () => showView("matriceRevisione"));
 
-  const currentPhaseCta = document.getElementById("currentPhaseCta");
-  if (currentPhaseCta) currentPhaseCta.addEventListener("click", () => showView(getCurrentPhase().action));
+   const currentPhaseCta = document.getElementById("currentPhaseCta");
+   if (currentPhaseCta) currentPhaseCta.addEventListener("click", () => {
+     const profile = loadWorkProfile();
+     const path = getSuggestedPath(profile.role, profile);
+     showView(path.action);
+   });
 
-  const timelineBtn = document.getElementById("timelineToggleBtn");
-  if (timelineBtn) timelineBtn.addEventListener("click", toggleTimeline);
+   const timelineBtn = document.getElementById("timelineToggleBtn");
+   if (timelineBtn) timelineBtn.addEventListener("click", toggleTimeline);
 
-  const activityDocuments = document.getElementById("activityDocumentsCta");
-  if (activityDocuments) activityDocuments.addEventListener("click", () => showView("documentiIstituzionali"));
+   const activityDocuments = document.getElementById("activityDocumentsCta");
+   if (activityDocuments) activityDocuments.addEventListener("click", () => showView("documentiIstituzionali"));
 
-  const activityRevision = document.getElementById("activityRevisionCta");
-  if (activityRevision) activityRevision.addEventListener("click", () => showView("matriceRevisione"));
+   const activityRevision = document.getElementById("activityRevisionCta");
+   if (activityRevision) activityRevision.addEventListener("click", () => showView("matriceRevisione"));
 
-  const activityMaterials = document.getElementById("activityMaterialsCta");
-  if (activityMaterials) activityMaterials.addEventListener("click", toggleMaterialsSection);
+   const activityMaterials = document.getElementById("activityMaterialsCta");
+   if (activityMaterials) activityMaterials.addEventListener("click", toggleMaterialsSection);
 
-  const closeMaterials = document.getElementById("closeMaterialsButton");
-  if (closeMaterials) closeMaterials.addEventListener("click", toggleMaterialsSection);
-}
+   const closeMaterials = document.getElementById("closeMaterialsButton");
+   if (closeMaterials) closeMaterials.addEventListener("click", toggleMaterialsSection);
+ }
 
 function bindWorkProfileEvents() {
   const form = document.getElementById("workProfileForm");
@@ -366,10 +401,10 @@ function bindWorkProfileEvents() {
 }
 
 function openHomeGuidedPath() {
-  setTimelineVisible(true);
-  const section = document.getElementById("timelineSection");
-  if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
-}
+   const profile = loadWorkProfile();
+   const path = getSuggestedPath(profile.role, profile);
+   showView(path.action);
+ }
 
 function toggleMaterialsSection() {
   const section = document.getElementById("templatesSection");

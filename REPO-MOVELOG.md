@@ -1,5 +1,12 @@
 # REPO-MOVELOG
 
+## MGR-062 (2026-06-14)
+- WORK_SCOPE_ROUTING implementato
+- getSuggestedPath() deriva percorso dal ruolo
+- renderSuggestedContext() mostra contesto profilo
+- openHomeGuidedPath() naviga alla vista suggerita
+- Azioni: Documenti, Revisione, Materiali sempre accessibili
+
 ## MGR-061 (2026-06-14)
 - USER_PROFILE_ONBOARDING_CONFIG implementato
 - ROLE_OPTIONS dropdown per ruolo obbligatorio al primo accesso
