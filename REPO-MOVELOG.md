@@ -1,5 +1,10 @@
 # REPO-MOVELOG
 
+## MGR-051 (2026-06-14)
+- Smart onboarding skippable completato
+- Onboarding card con "Salta introduzione" e "Inizia dal percorso guidato"
+- localStorage cmOnboardingSeen per persistenza
+
 ## MGR-050 (2026-06-14)
 - Workflow visual guidance light completato
 - 8 step workflow con nodi cliccabili nella matrice revisione

@@ -11,11 +11,25 @@ function initSourceTemplateCatalog(catalog) {
 }
 
 function renderModelliSorgenteView() {
-  const el = document.getElementById("modelliSorgente");
-  el.innerHTML = `
-    <div class="card">
-      <h2>Modelli sorgente istituzionali</h2>
-      <p class="simple-help">Template Markdown non ufficiali, da validare prima dell'uso.</p>
+   const el = document.getElementById("modelliSorgente");
+
+   const onboardingSeen = localStorage.getItem("cmOnboardingSeen");
+   const onboardingHtml = onboardingSeen ? "" : `
+     <div class="card" id="onboardingCard" style="border-left:4px solid var(--primary); margin-bottom:20px">
+       <h3>Benvenuto in Curriculum Manager</h3>
+       <p style="margin-top:8px">Strumento read-only per la gestione curricolare dell'istituto. Segui il percorso guidato per iniziare.</p>
+       <div class="toolbar" style="margin-top:12px">
+         <button type="button" class="action secondary" onclick="skipOnboarding()">Salta introduzione</button>
+         <button type="button" class="action" style="margin-left:8px" onclick="startWorkflow()">Inizia dal percorso guidato</button>
+       </div>
+     </div>
+   `;
+
+   el.innerHTML = `
+     ${onboardingHtml}
+     <div class="card">
+       <h2>Modelli sorgente istituzionali</h2>
+       <p class="simple-help">Template Markdown non ufficiali, da validare prima dell'uso.</p>
 
       <div class="notice warn">
         <strong>Attenzione:</strong> questi modelli sono sorgenti non ufficiali. Servono come base di lavoro e non sostituiscono la validazione dell'istituto scolastico.
@@ -79,6 +93,26 @@ function renderTemplateCard(t) {
       </div>
     </article>
   `;
+}
+
+// Onboarding functions - client-side, skippable
+function skipOnboarding() {
+  localStorage.setItem("cmOnboardingSeen", "true");
+  document.getElementById("onboardingCard").style.display = "none";
+}
+
+function startWorkflow() {
+  localStorage.setItem("cmOnboardingSeen", "true");
+  showView("matriceRevisione");
+  setTimeout(() => {
+    const workflowBtn = document.querySelector("button[onclick='toggleWorkflow()']");
+    if (workflowBtn) workflowBtn.click();
+  }, 300);
+}
+
+function showOnboarding() {
+  localStorage.removeItem("cmOnboardingSeen");
+  renderModelliSorgenteView();
 }
 
 // Copy path handler - simple implementation

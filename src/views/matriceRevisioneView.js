@@ -41,6 +41,7 @@ function renderMatriceRevisioneView() {
           <button type="button" class="action secondary" onclick="exportRevisionMatrixJSON()" style="margin-left:8px">Esporta JSON</button>
           <button type="button" class="action secondary" onclick="exportRevisionMatrixMarkdown()" style="margin-left:8px">Esporta Markdown</button>
           <button type="button" class="action secondary" onclick="toggleWorkflow()" style="margin-left:8px">Toggle workflow</button>
+          <button type="button" class="action secondary" onclick="showOnboarding()" style="margin-left:8px">Mostra introduzione</button>
         </div>
 
         <div class="card" id="workflowSection" style="display:none; margin-top:12px">
@@ -153,7 +154,7 @@ function renderRevisionMatrixRow(item) {
 function renderWorkflowMap() {
   const catalog = window.WORKFLOW_PROCESS_CATALOG || [];
   const el = document.getElementById("workflowMap");
-  
+
   const nodes = catalog.map((step, idx) => {
     const statusClass = step.status === "COMPLETATO" ? "ok" : step.status === "FUTURA" ? "" : "warn";
     return `
