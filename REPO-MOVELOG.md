@@ -1,5 +1,10 @@
 # REPO-MOVELOG
 
+## MGR-049 (2026-06-14)
+- Release candidate V1 completato
+- 3 viste, dettaglio documento, note locali, export MD/JSON, stampa/PDF
+- Nessun DOCX per V1
+
 ## MGR-048 (2026-06-14)
 - DOCX export gate contract completato
 - Decisione: A) nessun DOCX per V1, solo HTML/PDF + Markdown/JSON
