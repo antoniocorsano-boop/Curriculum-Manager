@@ -40,6 +40,13 @@ function renderMatriceRevisioneView() {
           <button type="button" class="action secondary" onclick="resetAllDraftNotes()" style="margin-left:8px">Reset bozze locali</button>
           <button type="button" class="action secondary" onclick="exportRevisionMatrixJSON()" style="margin-left:8px">Esporta JSON</button>
           <button type="button" class="action secondary" onclick="exportRevisionMatrixMarkdown()" style="margin-left:8px">Esporta Markdown</button>
+          <button type="button" class="action secondary" onclick="toggleWorkflow()" style="margin-left:8px">Toggle workflow</button>
+        </div>
+
+        <div class="card" id="workflowSection" style="display:none; margin-top:12px">
+          <h3>Percorso guidato Curriculum Manager</h3>
+          <p class="simple-help">Workflow consigliato per la revisione documentale.</p>
+          <div id="workflowMap"></div>
         </div>
 
         <div class="card" style="margin-top:12px">
@@ -141,4 +148,30 @@ function renderRevisionMatrixRow(item) {
       </div>
     </article>
   `;
+}
+
+function renderWorkflowMap() {
+  const catalog = window.WORKFLOW_PROCESS_CATALOG || [];
+  const el = document.getElementById("workflowMap");
+  
+  const nodes = catalog.map((step, idx) => {
+    const statusClass = step.status === "COMPLETATO" ? "ok" : step.status === "FUTURA" ? "" : "warn";
+    return `
+      <div class="workflow-node" style="margin-bottom:12px; padding:10px; border-left:4px solid var(--${step.status === "COMPLETATO" ? "ok" : step.status === "FUTURA" ? "muted" : "primary"})">
+        <strong style="display:block; margin-bottom:4px">${idx + 1}. ${_esc(step.title)}</strong>
+        <p style="margin:0 0 6px; font-size:13px; color:var(--muted)">${_esc(step.description)}</p>
+        <span class="badge ${statusClass}">${_esc(step.status)}</span>
+        ${step.primaryAction ? `<button type="button" class="action secondary" style="margin-left:8px; font-size:11px" onclick="showView('${step.primaryAction}')">Vai</button>` : ""}
+      </div>
+    `;
+  }).join("");
+  
+  el.innerHTML = `<div style="display:flex; flex-wrap:wrap; gap:14px">${nodes}</div>`;
+}
+
+function toggleWorkflow() {
+  const section = document.getElementById("workflowSection");
+  const isHidden = section.style.display === "none";
+  section.style.display = isHidden ? "block" : "none";
+  if (isHidden) renderWorkflowMap();
 }

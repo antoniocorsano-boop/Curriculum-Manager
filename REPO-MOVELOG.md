@@ -1,5 +1,10 @@
 # REPO-MOVELOG
 
+## MGR-050 (2026-06-14)
+- Workflow visual guidance light completato
+- 8 step workflow con nodi cliccabili nella matrice revisione
+- Nessuna libreria esterna
+
 ## MGR-049 (2026-06-14)
 - Release candidate V1 completato
 - 3 viste, dettaglio documento, note locali, export MD/JSON, stampa/PDF
