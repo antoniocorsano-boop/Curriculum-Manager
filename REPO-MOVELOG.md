@@ -1,5 +1,10 @@
 # REPO-MOVELOG
 
+## MGR-039 (2026-06-14)
+- Export strategy audit completato
+- Strategia: E) Ibrida (HTML/PDF prima, DOCX dopo gate dedicato)
+- Prossimo slice: MGR-040 (print button client-side)
+
 ## MGR-038 (2026-06-14)
 - Visual gate audit completato
 - Status: VISUAL_GATE_PASSED_WITH_MINOR_NOTES
