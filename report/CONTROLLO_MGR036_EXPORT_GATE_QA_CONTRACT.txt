@@ -1,0 +1,40 @@
+VERDICT: MGR_036_EXPORT_GATE_QA_CONTRACT_CREATED
+
+## Preflight verifiche
+
+- HEAD == origin/main (5b197ac): PASS
+- Working tree clean before: PASS
+
+## Files created
+
+- report/MGR_036_EXPORT_GATE_QA_CONTRACT.md: PASS
+- report/CONTROLLO_MGR036_EXPORT_GATE_QA_CONTRACT.txt: CREATED
+
+## Validation
+
+| Controllo | Stato |
+|-----------|-------|
+| file scope docs-only | pass |
+| export gate contract present | pass |
+| LibreOffice gate present | pass |
+| Microsoft Word gate present | pass |
+| print/PDF manual gate present | pass |
+| 10 document types classified | pass |
+| risks documented | pass |
+| export prohibitions documented | pass |
+| no code modified | pass |
+| no DOCX/PDF generated | pass |
+| no export executed | pass |
+| no dependencies introduced | pass |
+| no backend/API/deploy changes | pass |
+
+## Gate definiti
+
+- GATE 1-10: Tutti specificati
+- LibreOffice: Richiesto
+- Microsoft Word: Richiesto
+- Stampa/PDF manuale: Richiesto
+
+## Notes
+
+Documentazione prudenziale per export futuro. Nessuna implementazione mai fatta senza superare tutti i gate.
