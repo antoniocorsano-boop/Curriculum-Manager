@@ -1,5 +1,12 @@
 # REPO-MOVELOG
 
+## MGR-065 (2026-06-14)
+- DOCUMENT_SOURCE_IMPORT_MAP creato in src/data/documentSourceImportMap.js
+- 11 mappature tra SchoolDocs e Curriculum Manager documenti
+- Documenti mappati: UDA, rubrica, griglia, programmazioni, verbale, schede revisione
+- Priorità: high (7), medium (2), low (1), reference (2)
+- Tutti i documenti: isOfficial: false, humanValidationRequired: true
+
 ## MGR-064 (2026-06-14)
 - DOCUMENT_SOURCE_IMPORT_EDITABLE_REVIEW_CONTRACT definito in modalità audit-only
 - Inventario documenti Curriculum Manager e SchoolDocs
