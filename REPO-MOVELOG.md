@@ -1,9 +1,15 @@
 # REPO-MOVELOG
 
+## MGR-040 (2026-06-14)
+- Print button client-side implementato
+- View: matriceRevisione
+- Metodo: window.print() - zero dipendenze
+- Status: MGR_040_PRINT_BUTTON_CLIENT_SIDE_READY
+
 ## MGR-039 (2026-06-14)
 - Export strategy audit completato
 - Strategia: E) Ibrida (HTML/PDF prima, DOCX dopo gate dedicato)
-- Prossimo slice: MGR-040 (print button client-side)
+- Prossimo slice: MGR-040 (print button client-side) - completato
 
 ## MGR-038 (2026-06-14)
 - Visual gate audit completato
