@@ -1,5 +1,5 @@
 /**
- * Documenti istituzionali view - read-only catalog
+ * Documenti istituzionali view - read-only catalog with structured content
  * No export, no DOCX/PDF generation
  */
 
@@ -12,11 +12,6 @@ function _esc(value) {
     "'": '&#39;'
   }[c]));
 }
-
-/**
- * Documenti istituzionali view - work document collection
- * Pattern: User need → gruppo → documento → azione → output
- */
 
 function renderDocumentiIstituzionaliView() {
   const catalog = window.INSTITUTIONAL_DOCUMENTS_CATALOG || [];
@@ -85,7 +80,7 @@ function renderDocumentCard(doc) {
       </div>
       <p style="font-size:13px">${_esc(doc.description)}</p>
       <div style="margin-top:8px">
-        <button type="button" class="action secondary" style="font-size:12px">Apri scheda</button>
+        <button type="button" class="action secondary" style="font-size:12px">Leggi contenuto</button>
       </div>
     </article>
   `;
@@ -108,38 +103,13 @@ function bindDocumentDetailEvents() {
 }
 
 function getDocumentDetailMeta(doc) {
-  if (doc.id === "curricolo-verticale-istituto") {
-    return {
-      phase: "Documento guida",
-      purpose: "Orientare l'intero percorso di aggiornamento curricolare.",
-      checks: "Coerenza tra profilo dello studente, competenze, traguardi, obiettivi, valutazione, inclusione e orientamento.",
-      output: "Quadro di riferimento per tutte le revisioni successive."
-    };
-  }
-
-  if (doc.id.includes("dipartimento") || doc.id.includes("gruppo")) {
-    return {
-      phase: "Preparazione lavoro nei gruppi",
-      purpose: "Preparare materiali condivisi prima del confronto collegiale.",
-      checks: "Mandato, ambito, decisioni, proposte, documenti citati e punti ancora aperti.",
-      output: "Bozza di lavoro da portare al gruppo o al dipartimento."
-    };
-  }
-
-  if (doc.id.includes("revisione") || doc.id.includes("approvato")) {
-    return {
-      phase: "Output da consolidare",
-      purpose: "Raccogliere l'esito della revisione e tracciare la validazione.",
-      checks: "Motivazioni, parti modificate, organo competente, data/atto e condizioni di validità.",
-      output: "Documento consolidato per verifica umana e archiviazione."
-    };
-  }
-
+  const content = window.DOCUMENT_CONTENT_CATALOG?.[doc.id] || {};
   return {
-    phase: "Fase di revisione",
-    purpose: "Portare nel confronto il quadro disciplinare o trasversale da rivedere.",
-    checks: "Progressione verticale, competenze, traguardi, obiettivi, metodologie, valutazione e collegamenti interdisciplinari.",
-    output: "Materiale di confronto per aggiornare il curricolo."
+    phase: content.phase || "Fase di revisione",
+    purpose: content.purpose || "Portare nel confronto il materiale da rivedere.",
+    checks: content.checks?.join(", ") || "Progressione verticale, competenze, traguardi, obiettivi.",
+    output: content.output || "Materiale di confronto per aggiornare il curricolo.",
+    sections: content.sections || []
   };
 }
 
@@ -157,6 +127,19 @@ function showDocumentDetail(docId) {
   });
 
   detailEl.style.display = "block";
+
+  const sectionsHtml = meta.sections.length > 0
+    ? `<div class="card" style="margin-top:14px; box-shadow:none; padding:12px">
+        <h3 style="font-size:16px; margin-top:0">Struttura di lavoro da completare</h3>
+        ${meta.sections.map(s => `
+          <div style="margin-bottom:8px">
+            <strong>${_esc(s.title)}</strong>: <span style="color:var(--muted)">${_esc(s.description)}</span>
+          </div>
+        `).join("")}
+      </div>`
+    : `<div class="notice" style="margin-top:14px">Nessuna struttura disponibile. Usa il template sorgente.</div>`;
+
+  const addNoteHtml = `<button type="button" id="addDocumentNoteButton" class="action secondary" style="margin-top:14px; font-size:12px">Aggiungi osservazione</button>`;
 
   detailEl.innerHTML = `
     <div class="card">
@@ -188,23 +171,17 @@ function showDocumentDetail(docId) {
           ${_esc(meta.checks)}
         </div>
         <div class="notice warn" style="margin:0">
-          <strong>Output prepara:</strong><br>
+          <strong>Output atteso</strong><br>
           ${_esc(meta.output)}
         </div>
       </div>
 
-      <div class="card" style="margin-top:14px; box-shadow:none; padding:12px">
-        <h3 style="font-size:16px; margin-top:0">Riferimenti del documento</h3>
-        <div class="template-meta">
-          <span class="badge">${_esc(doc.category)}</span>
-          <span class="badge secondary">${doc.exportAvailable ? "Export disponibile" : "Export non disponibile"}</span>
-        </div>
-        ${doc.sourceTemplatePath ? `<div style="margin-top:10px"><strong>Template sorgente:</strong><br><span class="path-pill" title="${_esc(doc.sourceTemplatePath)}">${_esc(doc.sourceTemplatePath)}</span></div>` : ""}
-      </div>
+      ${sectionsHtml}
 
       <div class="notice warn">
         <strong>Stato:</strong> bozza / da confermare nel gruppo
       </div>
+      ${addNoteHtml}
     </div>
   `;
 
@@ -213,6 +190,15 @@ function showDocumentDetail(docId) {
 
   const matrixButton = document.getElementById("openLinkedMatrixButton");
   if (matrixButton) matrixButton.addEventListener("click", () => showView("matriceRevisione"));
+
+  const addNoteButton = document.getElementById("addDocumentNoteButton");
+  if (addNoteButton) addNoteButton.addEventListener("click", () => {
+    showView("matriceRevisione");
+    setTimeout(() => {
+      const noteDoc = document.getElementById(`draftNote-${_esc(docId)}`);
+      if (noteDoc) noteDoc.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 300);
+  });
 
   requestAnimationFrame(() => detailEl.scrollIntoView({ behavior: "smooth", block: "start" }));
 }

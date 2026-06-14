@@ -1,5 +1,12 @@
 # REPO-MOVELOG
 
+## MGR-063 (2026-06-14)
+- DOCUMENT_CONTENT_COVERAGE_AND_READING_VIEW implementato
+- documentContentCatalog.js creato con strutture per tutti i documenti
+- showDocumentDetail() mostra sezioni, check, output
+- Pulsante "Aggiungi osservazione" collega a matrice revisione
+- Nessun documento senza contenuto leggibile
+
 ## MGR-062 (2026-06-14)
 - WORK_SCOPE_ROUTING implementato
 - getSuggestedPath() deriva percorso dal ruolo
