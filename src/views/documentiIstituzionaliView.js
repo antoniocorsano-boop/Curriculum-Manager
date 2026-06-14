@@ -38,16 +38,17 @@ function renderDocumentiIstituzionaliView() {
         <strong>Limitazione tecnica:</strong> nessun export DOCX/PDF è disponibile in questa vista. I template sono file Markdown sorgente da aprire e compilare manualmente.
       </div>
 
-      <div class="institutional-document-grid">
+      <div class="institutional-document-grid" id="documentList">
         ${catalog.map(renderDocumentCard).join("")}
       </div>
+      <div id="documentDetail" style="display:none"></div>
     </div>
   `;
 }
 
 function renderDocumentCard(doc) {
   return `
-    <article class="institutional-document-card">
+    <article class="institutional-document-card" onclick="showDocumentDetail('${doc.id}')" style="cursor:pointer">
       <h3>${_esc(doc.title)}</h3>
       <div class="template-meta">
         <span class="badge">${_esc(doc.category)}</span>
@@ -59,8 +60,43 @@ function renderDocumentCard(doc) {
         <span class="path-pill" title="${_esc(doc.sourceTemplatePath)}">${_esc(doc.sourceTemplatePath)}</span>
       </div>
       <div class="notice">
-        <strong>Note:</strong> Export non disponibile in questa vista. Richiede validazione umana.
+        <strong>Note:</strong> Clicca per dettaglio. Richiede validazione umana.
       </div>
     </article>
   `;
+}
+
+function showDocumentDetail(docId) {
+  const doc = window.INSTITUTIONAL_DOCUMENTS_CATALOG.find(d => d.id === docId);
+  if (!doc) return;
+
+  document.getElementById("documentList").style.display = "none";
+  const detailEl = document.getElementById("documentDetail");
+  detailEl.style.display = "block";
+  detailEl.innerHTML = `
+    <div class="card">
+      <button type="button" class="action secondary" onclick="backToDocumentList()" style="margin-bottom:12px">Torna ai documenti</button>
+      <h2>${_esc(doc.title)}</h2>
+      <div class="template-meta">
+        <span class="badge">${_esc(doc.category)}</span>
+        <span class="badge warn">${_esc(doc.status)}</span>
+      </div>
+      <p>${_esc(doc.description)}</p>
+      <div class="template-sections">
+        <strong>Template sorgente:</strong>
+        <span class="path-pill">${_esc(doc.sourceTemplatePath)}</span>
+      </div>
+      <div class="notice warn">
+        <strong>Stato:</strong> Bozza / Da validare / Non pubblicabile
+      </div>
+      <div class="notice">
+        <strong>Nota:</strong> Richiede validazione umana prima di ogni uso. Dati personali: non ammessi.
+      </div>
+    </div>
+  `;
+}
+
+function backToDocumentList() {
+  document.getElementById("documentDetail").style.display = "none";
+  document.getElementById("documentList").style.display = "grid";
 }

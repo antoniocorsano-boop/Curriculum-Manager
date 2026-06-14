@@ -1,5 +1,10 @@
 # REPO-MOVELOG
 
+## MGR-043 (2026-06-14)
+- Document detail view implementata
+- Click su card documento apre vista dettaglio read-only
+- Pulsante "Torna ai documenti" per ritorno alla lista
+
 ## MGR-042 (2026-06-14)
 - Print output polish completato
 - CSS @media print migliorato per leggibilità PDF/browser
