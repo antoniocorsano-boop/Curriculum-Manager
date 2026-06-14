@@ -1,5 +1,11 @@
 # REPO-MOVELOG
 
+## MGR-041 (2026-06-14)
+- Demo readiness QA completato
+- Status: MGR_041_DEMO_READY_WITH_NOTES
+- Print button funzionante nella matrice revisione
+- Problemi minori: statusbar, .mini, .simple-help styling
+
 ## MGR-040 (2026-06-14)
 - Print button client-side implementato
 - View: matriceRevisione
