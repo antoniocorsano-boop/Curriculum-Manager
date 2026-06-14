@@ -170,7 +170,7 @@ function showDocumentDetail(docId) {
        ${editableSections.length > 0
          ? `<div style="font-size:14px; line-height:1.5">
              ${editableSections.map((s) => `
-               <div style="margin-bottom:16px">
+               <div style="margin-bottom:20px">
                  <label style="display:block; font-weight:600; margin-bottom:6px">${_esc(s.order)}. ${_esc(s.heading)}</label>
                  <textarea 
                    data-section="${_esc(s.sectionId)}" 
@@ -178,6 +178,9 @@ function showDocumentDetail(docId) {
                    placeholder="${_esc(s.placeholder)}"
                    class="editable-draft-textarea"
                    style="width:100%; min-height:80px; font-size:13px; padding:8px; border:1px solid var(--line); border-radius:4px; resize:vertical">${_esc(s.body)}</textarea>
+                 <div class="print-draft-content" style="display:none">
+                   <p>${_esc(s.body || "(sezione vuota)")}</p>
+                 </div>
                </div>
              `).join("")}
            </div>`
@@ -218,13 +221,14 @@ function showDocumentDetail(docId) {
 
        ${guideHtml}
 
-       <div class="toolbar" style="margin-top:16px; gap:8px; flex-wrap:wrap">
-         <button type="button" id="saveDraftButton" class="action">Salva bozza</button>
-         <button type="button" id="resetDraftButton" class="action secondary">Ripristina bozza iniziale</button>
-         <button type="button" id="prepareForRevisionButton" class="action secondary" style="display:none">Pronto per revisione</button>
-         <button type="button" id="openLinkedMatrixButton" class="action secondary">Apri revisione collegata</button>
-         <button type="button" id="addDocumentNoteButton" class="action secondary">Aggiungi osservazione</button>
-       </div>
+<div class="toolbar" style="margin-top:16px; gap:8px; flex-wrap:wrap">
+          <button type="button" id="saveDraftButton" class="action">Salva bozza</button>
+          <button type="button" id="resetDraftButton" class="action secondary">Ripristina bozza iniziale</button>
+          <button type="button" id="printDraftButton" class="action secondary">Stampa bozza</button>
+          <button type="button" id="prepareForRevisionButton" class="action secondary" style="display:none">Pronto per revisione</button>
+          <button type="button" id="openLinkedMatrixButton" class="action secondary">Apri revisione collegata</button>
+          <button type="button" id="addDocumentNoteButton" class="action secondary">Aggiungi osservazione</button>
+        </div>
      </div>
    `;
 
@@ -234,14 +238,17 @@ function showDocumentDetail(docId) {
    const saveDraftButton = document.getElementById("saveDraftButton");
    if (saveDraftButton) saveDraftButton.addEventListener("click", () => saveEditableDocumentDraft(docId));
 
-   const resetDraftButton = document.getElementById("resetDraftButton");
-   if (resetDraftButton) resetDraftButton.addEventListener("click", () => {
-     if (confirm("Riepristinare la bozza iniziale? Perderai tutte le modifiche non salvate.")) {
-       resetEditableDocumentDraft(docId);
-     }
-   });
+const resetDraftButton = document.getElementById("resetDraftButton");
+    if (resetDraftButton) resetDraftButton.addEventListener("click", () => {
+      if (confirm("Riepristinare la bozza iniziale? Perderai tutte le modifiche non salvate.")) {
+        resetEditableDocumentDraft(docId);
+      }
+    });
 
-   const matrixButton = document.getElementById("openLinkedMatrixButton");
+    const printDraftButton = document.getElementById("printDraftButton");
+    if (printDraftButton) printDraftButton.addEventListener("click", () => window.print());
+
+    const matrixButton = document.getElementById("openLinkedMatrixButton");
    if (matrixButton) matrixButton.addEventListener("click", () => showView("matriceRevisione"));
 
    const addNoteButton = document.getElementById("addDocumentNoteButton");
