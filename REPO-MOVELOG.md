@@ -4,9 +4,11 @@
 - USER_PROFILE_ONBOARDING_CONFIG implementato
 - ROLE_OPTIONS dropdown per ruolo obbligatorio al primo accesso
 - PROFILE_STORAGE_KEY = "curriculumManager.userProfile"
+- ONBOARDING_DISMISSED_KEY = "curriculumManager.onboardingDismissed"
 - Pulsante "Reset profilo" aggiunto in home
 - Messaggio "Questi dati restano solo su questo dispositivo"
 - Ruolo sempre visibile nella home
+- Vincolo sicurezza: chiavi separate, nessun dato personale hardcoded
 
 ## MGR-059 (2026-06-14)
 - PROCESS_COMPLETION_UX_CONTRACT redatto in modalità docs-only
