@@ -1,5 +1,10 @@
 # REPO-MOVELOG
 
+## MGR-042 (2026-06-14)
+- Print output polish completato
+- CSS @media print migliorato per leggibilità PDF/browser
+- Font, margini, page break ottimizzati
+
 ## MGR-041 (2026-06-14)
 - Demo readiness QA completato
 - Status: MGR_041_DEMO_READY_WITH_NOTES
