@@ -19,23 +19,11 @@ function renderDocumentiIstituzionaliView() {
 
   el.innerHTML = `
     <div class="card">
-      <h2>Documenti istituzionali</h2>
-      <p class="simple-help">Catalogo read-only dei documenti istituzionali collegati ai template sorgente.</p>
+      <h2>Documenti di lavoro</h2>
+      <p class="simple-help">Apri la scheda per capire cosa serve preparare.</p>
 
-      <div class="notice warn">
-        <strong>Attenzione:</strong> nessun documento viene creato in questa vista. Questo è solo un catalogo informativo.
-      </div>
-
-      <div class="notice">
-        <strong>Dati personali:</strong> non inserire dati personali, dati identificativi, nomi reali di studenti, famiglie, docenti o istituzioni senza verifica e procedure autorizzate.
-      </div>
-
-      <div class="notice">
-        <strong>Validazione umana:</strong> ogni documento compilato richiede validazione umana prima di essere considerato bozza, revisionato, validato o approvato.
-      </div>
-
-      <div class="notice warn">
-        <strong>Limitazione tecnica:</strong> nessun export DOCX/PDF è disponibile in questa vista. I template sono file Markdown sorgente da aprire e compilare manualmente.
+      <div class="notice" style="margin-bottom:12px">
+        <strong>Nota:</strong> ogni documento è una bozza di lavoro fino alla validazione del gruppo.
       </div>
 
       <div class="institutional-document-grid" id="documentList">
@@ -52,15 +40,11 @@ function renderDocumentCard(doc) {
       <h3>${_esc(doc.title)}</h3>
       <div class="template-meta">
         <span class="badge">${_esc(doc.category)}</span>
-        <span class="badge warn">CATALOGO READ-ONLY — NON UFFICIALE</span>
+        <span class="badge secondary" style="margin-left:6px">Documento di lavoro</span>
       </div>
-      <p>${_esc(doc.description)}</p>
-      <div class="template-sections">
-        <strong>Template sorgente:</strong>
-        <span class="path-pill" title="${_esc(doc.sourceTemplatePath)}">${_esc(doc.sourceTemplatePath)}</span>
-      </div>
-      <div class="notice">
-        <strong>Note:</strong> Clicca per dettaglio. Richiede validazione umana.
+      <p style="font-size:13px">${_esc(doc.description)}</p>
+      <div style="margin-top:8px">
+        <button type="button" class="action secondary" style="font-size:12px">Apri scheda</button>
       </div>
     </article>
   `;
@@ -77,20 +61,14 @@ function showDocumentDetail(docId) {
     <div class="card">
       <button type="button" class="action secondary" onclick="backToDocumentList()" style="margin-bottom:12px">Torna ai documenti</button>
       <h2>${_esc(doc.title)}</h2>
-      <div class="template-meta">
-        <span class="badge">${_esc(doc.category)}</span>
-        <span class="badge warn">${_esc(doc.status)}</span>
-      </div>
       <p>${_esc(doc.description)}</p>
-      <div class="template-sections">
-        <strong>Template sorgente:</strong>
-        <span class="path-pill">${_esc(doc.sourceTemplatePath)}</span>
+      <div style="margin:12px 0; padding:10px; background:var(--panel); border-left:3px solid var(--primary)">
+        <strong>A cosa serve:</strong> ${doc.description}<br>
+        <strong>Quando usarlo:</strong> in fase di revisione e consolidamento<br>
+        <strong>Cosa produce:</strong> bozza per confronto e validazione
       </div>
       <div class="notice warn">
-        <strong>Stato:</strong> Bozza / Da validare / Non pubblicabile
-      </div>
-      <div class="notice">
-        <strong>Nota:</strong> Richiede validazione umana prima di ogni uso. Dati personali: non ammessi.
+        <strong>Stato:</strong> bozza / da confermare nel gruppo
       </div>
     </div>
   `;

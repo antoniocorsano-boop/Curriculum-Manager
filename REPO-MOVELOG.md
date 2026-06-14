@@ -1,5 +1,10 @@
 # REPO-MOVELOG
 
+## MGR-057 (2026-06-14)
+- User flow copy and card simplification completato
+- Documenti: tono "Documento di lavoro", dettaglio semplificato
+- Matrice: etichette operative, pulsanti rinominati
+
 ## MGR-056 (2026-06-14)
 - Process timeline user guidance completato
 - Home rivista con "Dove sono nel percorso?"

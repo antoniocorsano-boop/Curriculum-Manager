@@ -18,30 +18,21 @@ function renderMatriceRevisioneView() {
    const catalog = window.REVISION_MATRIX_CATALOG || [];
    const el = document.getElementById("matriceRevisione");
 
-   el.innerHTML = `
-     <div class="card">
-       <h2>Matrice revisione</h2>
-       <p class="simple-help">Controllo read-only dei documenti istituzionali.</p>
+el.innerHTML = `
+      <div class="card">
+        <h2>Lavoro di revisione</h2>
+        <p class="simple-help">Annota osservazioni, integrazioni o modifiche da portare al confronto.</p>
 
-       <div class="notice">
-         <strong>Nota:</strong> la matrice è informativa. Nessun documento viene creato in questa vista.
-       </div>
+        <div class="notice" style="margin-bottom:12px">
+          <strong>Nota:</strong> ogni annotazione è una bozza di lavoro fino alla validazione del gruppo.
+        </div>
 
-<div class="notice warn">
-        <strong>Attenzione:</strong> nessun export DOCX è disponibile. Stampa/PDF tramite browser. Esportazione JSON/MD delle bozze locali. Validazione umana prima di qualsiasi uso.
-      </div>
-
-       <div class="notice">
-         <strong>Dati personali:</strong> non inserire dati personali, dati identificativi, nomi reali di studenti, famiglie, docenti o istituzioni.
-       </div>
-
-<div class="toolbar no-print">
-          <button type="button" class="action secondary" onclick="window.print()">Stampa / Salva in PDF</button>
-          <button type="button" class="action secondary" onclick="resetAllDraftNotes()" style="margin-left:8px">Reset bozze locali</button>
-          <button type="button" class="action secondary" onclick="exportRevisionMatrixJSON()" style="margin-left:8px">Esporta JSON</button>
-          <button type="button" class="action secondary" onclick="exportRevisionMatrixMarkdown()" style="margin-left:8px">Esporta Markdown</button>
-          <button type="button" class="action secondary" onclick="toggleWorkflow()" style="margin-left:8px">Toggle workflow</button>
-          <button type="button" class="action secondary" onclick="showOnboarding()" style="margin-left:8px">Mostra introduzione</button>
+        <div class="toolbar no-print">
+          <button type="button" class="action secondary" onclick="window.print()">Prepara per il confronto</button>
+          <button type="button" class="action secondary" onclick="resetAllDraftNotes()" style="margin-left:8px">Reset annotazioni</button>
+          <button type="button" class="action secondary" onclick="exportRevisionMatrixJSON()" style="margin-left:8px">Scarica copia dati</button>
+          <button type="button" class="action secondary" onclick="exportRevisionMatrixMarkdown()" style="margin-left:8px">Scarica bozza testuale</button>
+          <button type="button" class="action secondary" onclick="toggleWorkflow()" style="margin-left:8px">Mostra percorso</button>
         </div>
 
         <div class="card" id="workflowSection" style="display:none; margin-top:12px">
@@ -50,12 +41,7 @@ function renderMatriceRevisioneView() {
           <div id="workflowMap"></div>
         </div>
 
-        <div class="card" style="margin-top:12px">
-          <h3>Pacchetto stampa - Matrice revisione</h3>
-          <p class="simple-help">Include tutti i documenti con priorità, prossima azione e note locali. Salva come PDF tramite browser.</p>
-        </div>
-
-<div class="revision-matrix">
+        <div class="revision-matrix">
           ${catalog.map(renderRevisionMatrixRow).join("")}
         </div>
       </div>
@@ -135,17 +121,14 @@ function renderRevisionMatrixRow(item) {
         <span class="badge">${_esc(item.category)}</span>
         <span class="${statusBadge}">${_esc(item.status)}</span>
       </div>
-      <div class="row"><strong>Area revisione</strong>${_esc(item.revisionArea)}</div>
-      <div class="row"><strong>Controlli richiesti</strong>
+      <div class="row"><strong>Cosa stiamo rivedendo</strong>${_esc(item.revisionArea)}</div>
+      <div class="row"><strong>Da controllare</strong>
         <ul class="revision-check-list">${checksList}</ul>
       </div>
-      <div class="row"><strong>Criticità / Priorità</strong><span class="badge">${priorityLabel}</span></div>
-      <div class="row"><strong>Prossima azione</strong>${_esc(item.requiredChecks?.[0] || "Nessuna")}</div>
-      <div class="row"><strong>Bozza locale (non ufficiale)</strong>
-        <textarea class="draft-note-input" data-id="${item.id}" placeholder="Aggiungi nota locale..." style="width:100%;height:60px;font-size:12px;margin-top:4px" onchange="saveDraftNote('${item.id}', this.value)">${_esc(draftNote)}</textarea>
-      </div>
-      <div class="notice warn">
-        <strong>Note:</strong> Export non disponibile. Validazione umana richiesta. Dati personali: non ammessi.
+      <div class="row"><strong>Quanto è urgente</strong><span class="badge">${priorityLabel}</span></div>
+      <div class="row"><strong>Cosa fare ora</strong>${_esc(item.requiredChecks?.[0] || "Nessuna")}</div>
+      <div class="row"><strong>Annotazione di lavoro</strong>
+        <textarea class="draft-note-input" data-id="${item.id}" placeholder="Aggiungi osservazione..." style="width:100%;height:60px;font-size:12px;margin-top:4px" onchange="saveDraftNote('${item.id}', this.value)">${_esc(draftNote)}</textarea>
       </div>
     </article>
   `;
