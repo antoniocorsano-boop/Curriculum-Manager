@@ -4,6 +4,7 @@
 - Data export Markdown/JSON completato
 - Pulsanti export nella matrice revisione (JSON + MD)
 - Blob client-side, nessun server
+- Include draft notes localStorage
 
 ## MGR-045 (2026-06-14)
 - Local edit draft mode completato
