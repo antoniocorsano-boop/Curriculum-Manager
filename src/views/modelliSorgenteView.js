@@ -3,18 +3,25 @@
  * Extracted from APRI_MANAGER_CURRICOLO_ISTITUTO.html MGR-030B
  */
 
-const WORK_PROFILE_STORAGE_KEY = "cmWorkProfile";
-const WORK_PROFILE_CONFIG_SEEN_KEY = "cmWorkProfileConfigSeen";
-
 const WORK_PROFILE_FIELDS = [
   { id: "firstName", label: "Nome", placeholder: "Il tuo nome" },
   { id: "lastName", label: "Cognome", placeholder: "Il tuo cognome" },
   { id: "school", label: "Scuola / plesso", placeholder: "es. Primaria Don Lorenzo Milani" },
   { id: "orderLevel", label: "Ordine / livello", placeholder: "Infanzia, primaria, secondaria..." },
   { id: "discipline", label: "Disciplina / ambito", placeholder: "es. Italiano, matematica, sostegno..." },
-  { id: "department", label: "Dipartimento / sezione / intersezione", placeholder: "es. Dipartimento STEM, sezione B..." },
-  { id: "role", label: "Ruolo di lavoro", placeholder: "Docente, coordinatore, gruppo curricolo..." }
+  { id: "department", label: "Dipartimento / sezione / intersezione", placeholder: "es. Dipartimento STEM, sezione B..." }
 ];
+
+const ROLE_OPTIONS = [
+  { value: "", label: "Seleziona ruolo..." },
+  { value: "docente", label: "Docente" },
+  { value: "coordinatore", label: "Coordinatore dipartimento" },
+  { value: "gruppo", label: "Gruppo curricolo" },
+  { value: "staff", label: "Funzione strumentale" }
+];
+
+const PROFILE_STORAGE_KEY = "curriculumManager.userProfile";
+const PROFILE_CONFIG_SEEN_KEY = "curriculumManager.profileConfigSeen";
 
 // Utility functions (shared with app.js)
 function esc(value) {
@@ -37,10 +44,10 @@ function jsAttr(value) {
 function renderModelliSorgenteView() {
   const el = document.getElementById("modelliSorgente");
   const profile = loadWorkProfile();
-  const profileConfigSeen = localStorage.getItem(WORK_PROFILE_CONFIG_SEEN_KEY);
+  const profileConfigSeen = localStorage.getItem(PROFILE_CONFIG_SEEN_KEY);
   const showProfileConfig = !hasWorkProfile(profile) && profileConfigSeen !== "true";
   const savedRole = profile.role || loadRolePath();
-  const currentPhase = getCurrentPhase(profile);
+  const currentPhase = getCurrentPhase();
 
   const onboardingSeen = localStorage.getItem("cmOnboardingSeen");
   const onboardingHtml = onboardingSeen ? "" : `
@@ -55,36 +62,35 @@ function renderModelliSorgenteView() {
   `;
 
   el.innerHTML = `
-    ${renderWorkProfileConfigCard(showProfileConfig)}
+    ${renderWorkProfileConfigCard(showProfileConfig, profile)}
     ${onboardingHtml}
 
-    <div class="card" style="border-left:4px solid var(--primary); padding:18px">
+    <div class="card" style="border-left:4px solid var(--primary); padding:18px; margin-bottom:20px">
       <span class="badge ok">Percorso guidato</span>
-      <h2 style="margin-top:8px">Percorso di aggiornamento del curricolo</h2>
+      <h2 style="margin-top:8px; margin-bottom:4px">Percorso di aggiornamento del curricolo</h2>
       <p class="simple-help">Vedi la fase, prepara il lavoro e produci il pacchetto di lavoro necessario.</p>
       <div class="toolbar" style="margin-top:14px">
         <button type="button" id="homePrimaryCta" class="action">Apri il percorso guidato</button>
         <button type="button" id="homeRevisionCta" class="action secondary" style="margin-left:8px">Vai alla revisione</button>
       </div>
-    </div>
-
-    <div class="grid cols-2" style="margin-top:14px">
-      <div class="card">
-        <h3 style="font-size:16px; margin-top:0">Fase consigliata</h3>
-        <div class="template-meta">
-          <span class="badge warn">${esc(currentPhase.status || "Da avviare")}</span>
-          <span class="badge secondary">${esc(currentPhase.title)}</span>
+      <div class="grid cols-2" style="margin-top:18px">
+        <div>
+          <div class="template-meta" style="margin-bottom:8px">
+            <span class="badge warn">${esc(currentPhase.status || "Da avviare")}</span>
+            <span class="badge secondary">${esc(currentPhase.title)}</span>
+          </div>
+          <p style="font-size:13px; margin:4px 0"><strong>Cosa fare ora:</strong> ${esc(currentPhase.doNow)}</p>
+          <p style="font-size:13px; margin:4px 0"><strong>Materiale da consegnare:</strong> ${esc(currentPhase.deliver)}</p>
+          <button type="button" id="currentPhaseCta" class="action secondary" style="font-size:12px; margin-top:8px">Apri questa fase</button>
         </div>
-        <p style="font-size:13px"><strong>Cosa fare ora:</strong> ${esc(currentPhase.doNow)}</p>
-        <p style="font-size:13px"><strong>Materiale da consegnare:</strong> ${esc(currentPhase.deliver)}</p>
-        <button type="button" id="currentPhaseCta" class="action secondary" style="font-size:12px">Apri questa fase</button>
-      </div>
-
-      <div class="card">
-        <h3 style="font-size:16px; margin-top:0">Il tuo profilo di lavoro</h3>
-        ${renderReadableWorkProfile(profile)}
-        <div class="toolbar" style="margin:10px 0 0">
-          <button type="button" id="editWorkProfileButton" class="action secondary" style="font-size:12px">Modifica profilo</button>
+        <div>
+          <div style="font-size:13px; margin-bottom:6px"><strong>Profilo:</strong> <span id="profileSummary">${renderProfileSummary(profile)}</span></div>
+          <div style="font-size:13px; margin-bottom:6px"><strong>Ruolo:</strong> <span id="roleSummary">${renderRoleSummary(profile.role)}</span></div>
+          <div class="toolbar" style="margin:0; gap:6px">
+            <button type="button" id="editWorkProfileButton" class="action secondary" style="font-size:12px">Modifica profilo</button>
+            <button type="button" id="resetWorkProfileButton" class="action secondary" style="font-size:12px; background:#fff0f0; border-color:#efb5b5; color:#912828">Reset profilo</button>
+          </div>
+          <div style="font-size:11px; color:var(--muted); margin-top:6px">Questi dati restano solo su questo dispositivo.</div>
         </div>
       </div>
     </div>
@@ -209,14 +215,19 @@ function renderTemplateCard(t) {
   `;
 }
 
-function renderWorkProfileConfigCard(show) {
+function renderWorkProfileConfigCard(show, currentProfile) {
   if (!show) return "";
+  const profile = currentProfile || {};
 
-  const fields = WORK_PROFILE_FIELDS.map(field => `
+  const textFields = WORK_PROFILE_FIELDS.map(field => `
     <label style="display:block; margin-bottom:10px">
       <strong>${esc(field.label)}</strong>
-      <input type="text" name="${esc(field.id)}" placeholder="${esc(field.placeholder)}" required style="width:100%; margin-top:4px; padding:8px; border:1px solid var(--line); border-radius:8px; font-size:14px">
+      <input type="text" name="${esc(field.id)}" value="${esc(profile[field.id] || "")}" placeholder="${esc(field.placeholder)}" style="width:100%; margin-top:4px; padding:8px; border:1px solid var(--line); border-radius:8px; font-size:14px">
     </label>
+  `).join("");
+
+  const roleOptions = ROLE_OPTIONS.map(opt => `
+    <option value="${opt.value}" ${profile.role === opt.value ? "selected" : ""}>${opt.label}</option>
   `).join("");
 
   return `
@@ -225,7 +236,13 @@ function renderWorkProfileConfigCard(show) {
       <p style="margin-top:8px">Poche risposte aiutano il Manager a suggerirti il percorso più utile. Il profilo resta solo in questo browser: niente login, niente invio dati.</p>
       <form id="workProfileForm" style="margin-top:12px">
         <div class="grid cols-2">
-          ${fields}
+          ${textFields}
+          <label style="display:block; margin-bottom:10px">
+            <strong>Ruolo di lavoro</strong>
+            <select name="role" style="width:100%; margin-top:4px; padding:8px; border:1px solid var(--line); border-radius:8px; font-size:14px">
+              ${roleOptions}
+            </select>
+          </label>
         </div>
         <div class="toolbar" style="margin-top:12px">
           <button type="submit" class="action">Salva profilo</button>
@@ -269,13 +286,24 @@ function renderReadableWorkProfile(profile) {
   `;
 }
 
+function renderProfileSummary(profile) {
+  const parts = [profile.school, profile.orderLevel].filter(Boolean);
+  return parts.length > 0 ? esc(parts.join(" / ")) : '<span style="color:var(--muted)">Non configurato</span>';
+}
+
+function renderRoleSummary(roleId) {
+  if (!roleId) return '<span style="color:var(--muted)">Seleziona ruolo</span>';
+  const role = window.ROLE_WORK_PATHS_CATALOG?.find(r => r.id === roleId);
+  return role ? esc(role.title) : esc(roleId);
+}
+
 function getCurrentPhase() {
   const phase = (window.PROCESS_TIMELINE_CATALOG || [])[0];
   if (!phase) {
     return {
       title: "Avvio",
       status: "Da avviare",
-      doNow: "Rileggere il curricolo e individuare le aree da rivedere.",
+      doNow: "Seleziona il tuo ruolo per vedere il percorso suggerito.",
       deliver: "Quadro delle aree da aggiornare.",
       action: "modelliSorgente"
     };
@@ -329,8 +357,8 @@ function bindWorkProfileEvents() {
   const skipButton = document.getElementById("skipWorkProfileButton");
   if (skipButton) skipButton.addEventListener("click", skipWorkProfileConfig);
 
-  const configureButton = document.getElementById("configureWorkProfileButton");
-  if (configureButton) configureButton.addEventListener("click", openWorkProfileConfig);
+  const resetButton = document.getElementById("resetWorkProfileButton");
+  if (resetButton) resetButton.addEventListener("click", resetWorkProfile);
 
   const editButton = document.getElementById("editWorkProfileButton");
   if (editButton) editButton.addEventListener("click", openWorkProfileConfig);
@@ -437,14 +465,14 @@ function renderProcessTimeline() {
 
 function loadWorkProfile() {
   try {
-    return JSON.parse(localStorage.getItem(WORK_PROFILE_STORAGE_KEY) || "{}");
+    return JSON.parse(localStorage.getItem(PROFILE_STORAGE_KEY) || "{}");
   } catch {
     return {};
   }
 }
 
 function saveWorkProfile(profile) {
-  localStorage.setItem(WORK_PROFILE_STORAGE_KEY, JSON.stringify(profile));
+  localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(profile));
 }
 
 function hasWorkProfile(profile) {
@@ -458,18 +486,28 @@ function saveWorkProfileFromForm(event) {
   WORK_PROFILE_FIELDS.forEach(field => {
     profile[field.id] = form.elements[field.id].value.trim();
   });
+  if (form.elements.role) {
+    profile.role = form.elements.role.value;
+  }
   saveWorkProfile(profile);
-  localStorage.setItem(WORK_PROFILE_CONFIG_SEEN_KEY, "true");
+  localStorage.setItem(PROFILE_CONFIG_SEEN_KEY, "true");
   renderModelliSorgenteView();
 }
 
 function skipWorkProfileConfig() {
-  localStorage.setItem(WORK_PROFILE_CONFIG_SEEN_KEY, "true");
+  localStorage.setItem(PROFILE_CONFIG_SEEN_KEY, "true");
   renderModelliSorgenteView();
 }
 
 function openWorkProfileConfig() {
-  localStorage.removeItem(WORK_PROFILE_CONFIG_SEEN_KEY);
+  localStorage.removeItem(PROFILE_CONFIG_SEEN_KEY);
+  renderModelliSorgenteView();
+}
+
+function resetWorkProfile() {
+  localStorage.removeItem(PROFILE_STORAGE_KEY);
+  localStorage.removeItem(PROFILE_CONFIG_SEEN_KEY);
+  localStorage.removeItem("cmRolePath");
   renderModelliSorgenteView();
 }
 

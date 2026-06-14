@@ -1,5 +1,13 @@
 # REPO-MOVELOG
 
+## MGR-061 (2026-06-14)
+- USER_PROFILE_ONBOARDING_CONFIG implementato
+- ROLE_OPTIONS dropdown per ruolo obbligatorio al primo accesso
+- PROFILE_STORAGE_KEY = "curriculumManager.userProfile"
+- Pulsante "Reset profilo" aggiunto in home
+- Messaggio "Questi dati restano solo su questo dispositivo"
+- Ruolo sempre visibile nella home
+
 ## MGR-059 (2026-06-14)
 - PROCESS_COMPLETION_UX_CONTRACT redatto in modalità docs-only
 - Contratto di prodotto e UX che blocca la direzione prima di nuove implementazioni
