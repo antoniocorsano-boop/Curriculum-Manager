@@ -1,5 +1,9 @@
 # REPO-MOVELOG
 
+## MGR-055 (2026-06-14)
+- File protocol frame self load hotfix
+- Aggiunto controllo sicurezza file:// in app.js
+
 ## MGR-054 (2026-06-14)
 - File protocol script boot hotfix completato
 - Rimosso doppio SOURCE_TEMPLATE_CATALOG

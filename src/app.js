@@ -40,6 +40,11 @@ function renderView(id) {
 
 // Event handlers
 document.addEventListener("DOMContentLoaded", () => {
+  // File:// protocol safety - no iframe navigation
+  if (window !== window.top && window.location.protocol === "file:") {
+    window.top.location = window.location;
+    return;
+  }
   // Catalogs are loaded globally via script tags - no init needed
   // Use shared sidebar
   const sidebarEl = document.getElementById("sidebar");
