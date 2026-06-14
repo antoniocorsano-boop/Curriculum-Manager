@@ -1,5 +1,10 @@
 # REPO-MOVELOG
 
+## MGR-044 (2026-06-14)
+- Revision workflow read-only plus completato
+- Aggiunti: priorità, prossima azione, status dinamico
+- Status dinamico: badge ok/warn in base a humanValidationRequired
+
 ## MGR-043 (2026-06-14)
 - Document detail view implementata
 - Click su card documento apre vista dettaglio read-only

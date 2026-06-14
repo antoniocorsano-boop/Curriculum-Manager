@@ -47,18 +47,22 @@ function renderMatriceRevisioneView() {
 
 function renderRevisionMatrixRow(item) {
   const checksList = (item.requiredChecks || []).map(c => `<li>${_esc(c)}</li>`).join("");
+  const priorityLabel = "Media";
+  const statusBadge = item.humanValidationRequired ? "badge warn" : "badge ok";
 
   return `
     <article class="revision-matrix-card">
       <h3>${_esc(item.documentTitle)}</h3>
       <div class="template-meta">
         <span class="badge">${_esc(item.category)}</span>
-        <span class="badge warn">DA REVISIONARE — READ-ONLY</span>
+        <span class="${statusBadge}">${_esc(item.status)}</span>
       </div>
       <div class="row"><strong>Area revisione</strong>${_esc(item.revisionArea)}</div>
       <div class="row"><strong>Controlli richiesti</strong>
         <ul class="revision-check-list">${checksList}</ul>
       </div>
+      <div class="row"><strong>Criticità / Priorità</strong><span class="badge">${priorityLabel}</span></div>
+      <div class="row"><strong>Prossima azione</strong>${_esc(item.requiredChecks?.[0] || "Nessuna")}</div>
       <div class="notice warn">
         <strong>Note:</strong> Export non disponibile. Validazione umana richiesta. Dati personali: non ammessi.
       </div>
