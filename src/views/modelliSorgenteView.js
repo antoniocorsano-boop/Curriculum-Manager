@@ -3,12 +3,23 @@
  * Extracted from APRI_MANAGER_CURRICOLO_ISTITUTO.html MGR-030B
  */
 
-// Import catalog - will be loaded via script tag in index.html
-let SOURCE_TEMPLATE_CATALOG = [];
-
-function initSourceTemplateCatalog(catalog) {
-  SOURCE_TEMPLATE_CATALOG = catalog || [];
+// Utility functions (shared with app.js)
+function esc(value) {
+  return String(value ?? "").replace(/[&<>"']/g, c => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  }[c]));
 }
+
+function jsAttr(value) {
+  return String(value ?? "").replace(/\\/g, "\\\\").replace(/'/g, "\\'").replace(/\n/g, " ");
+}
+
+// SOURCE_TEMPLATE_CATALOG is loaded globally from sourceTemplateCatalog.js
+// No init needed - catalog is already available as window.SOURCE_TEMPLATE_CATALOG
 
 function renderModelliSorgenteView() {
    const el = document.getElementById("modelliSorgente");

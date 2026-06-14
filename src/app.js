@@ -40,10 +40,7 @@ function renderView(id) {
 
 // Event handlers
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize catalogs from global
-  if (typeof SOURCE_TEMPLATE_CATALOG !== "undefined") {
-    initSourceTemplateCatalog(SOURCE_TEMPLATE_CATALOG);
-  }
+  // Catalogs are loaded globally via script tags - no init needed
   // Use shared sidebar
   const sidebarEl = document.getElementById("sidebar");
   if (sidebarEl && typeof renderSidebar === "function") {

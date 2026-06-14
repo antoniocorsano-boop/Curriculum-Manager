@@ -1,5 +1,11 @@
 # REPO-MOVELOG
 
+## MGR-054 (2026-06-14)
+- File protocol script boot hotfix completato
+- Rimosso doppio SOURCE_TEMPLATE_CATALOG
+- Aggiunte esc/jsAttr locali in modelliSorgenteView.js
+- App funzionante via file://
+
 ## MGR-053 (2026-06-14)
 - Role work paths completato
 - 4 profili: Docente, Coordinatore, Gruppo curricolo, Staff
