@@ -13,44 +13,50 @@ function initSourceTemplateCatalog(catalog) {
 function renderModelliSorgenteView() {
    const el = document.getElementById("modelliSorgente");
 
-   const onboardingSeen = localStorage.getItem("cmOnboardingSeen");
-   const onboardingHtml = onboardingSeen ? "" : `
-     <div class="card" id="onboardingCard" style="border-left:4px solid var(--primary); margin-bottom:20px">
-       <h3>Benvenuto in Curriculum Manager</h3>
-       <p style="margin-top:8px">Strumento read-only per la gestione curricolare dell'istituto. Segui il percorso guidato per iniziare.</p>
-       <div class="toolbar" style="margin-top:12px">
-         <button type="button" class="action secondary" onclick="skipOnboarding()">Salta introduzione</button>
-         <button type="button" class="action" style="margin-left:8px" onclick="startWorkflow()">Inizia dal percorso guidato</button>
-       </div>
-     </div>
-   `;
+const onboardingSeen = localStorage.getItem("cmOnboardingSeen");
+    const onboardingHtml = onboardingSeen ? "" : `
+      <div class="card" id="onboardingCard" style="border-left:4px solid var(--primary); margin-bottom:20px">
+        <h3>Benvenuto in Curriculum Manager</h3>
+        <p style="margin-top:8px">Strumento read-only per la gestione curricolare dell'istituto. Segui il percorso guidato per iniziare.</p>
+        <div class="toolbar" style="margin-top:12px">
+          <button type="button" class="action secondary" onclick="skipOnboarding()">Salta introduzione</button>
+          <button type="button" class="action" style="margin-left:8px" onclick="startWorkflow()">Inizia dal percorso guidato</button>
+        </div>
+      </div>
+    `;
 
-el.innerHTML = `
+    // Pre-select saved role
+    const savedRole = loadRolePath();
+
+    el.innerHTML = `
       ${onboardingHtml}
       <div class="card">
         <h2>Dashboard Curriculum Manager</h2>
         <p class="simple-help">Stato processo curricolare e azioni rapide.</p>
 
-        <div class="grid cols-2">
-          <div>
-            <div class="card">
-              <h3 style="font-size:16px; margin-top:0">Stato processo</h3>
-              <div class="row"><strong>Documenti</strong><span class="badge">10 in catalogo</span></div>
-              <div class="row"><strong>Template</strong><span class="badge">10 sorgenti</span></div>
-              <div class="row"><strong>Note locali</strong><span class="badge ok">0 attive</span></div>
-            </div>
-          </div>
-          <div>
-            <div class="card">
-              <h3 style="font-size:16px; margin-top:0">Azioni rapide</h3>
-              <div class="toolbar">
-                <button type="button" class="action secondary" onclick="showView('documentiIstituzionali')">Consulta documenti</button>
-                <button type="button" class="action secondary" onclick="showView('matriceRevisione')" style="margin-left:8px">Apri matrice</button>
-                <button type="button" class="action secondary" onclick="toggleWorkflow()" style="margin-left:8px">Workflow guidato</button>
-              </div>
-            </div>
-          </div>
-        </div>
+<div class="grid cols-2">
+           <div>
+             <div class="card">
+               <h3 style="font-size:16px; margin-top:0">Stato processo</h3>
+               <div class="row"><strong>Documenti</strong><span class="badge">10 in catalogo</span></div>
+               <div class="row"><strong>Template</strong><span class="badge">10 sorgenti</span></div>
+               <div class="row"><strong>Note locali</strong><span class="badge ok">0 attive</span></div>
+             </div>
+           </div>
+           <div>
+             <div class="card">
+               <h3 style="font-size:16px; margin-top:0">Il mio ruolo</h3>
+               <select id="roleSelector" onchange="saveRolePath(this.value)" style="width:100%;padding:8px;font-size:14px;border-radius:8px;border:1px solid var(--line)">
+                 <option value="">Seleziona ruolo...</option>
+                 <option value="docente">Docente</option>
+                 <option value="coordinatore">Coordinatore dipartimento</option>
+                 <option value="gruppo">Gruppo curricolo</option>
+                 <option value="staff">Funzione strumentale</option>
+               </select>
+               <div id="roleDetails" style="margin-top:10px; font-size:12px; color:var(--muted)"></div>
+             </div>
+           </div>
+         </div>
 
         <h2 style="margin-top:20px">Modelli sorgente istituzionali</h2>
         <p class="simple-help">Template Markdown non ufficiali, da validare prima dell'uso.</p>
@@ -150,4 +156,20 @@ function copyPath(path) {
   }).catch(() => {
     alert("Non riesco a copiare. Percorso: " + path);
   });
+}
+
+// Role work paths - client-side, no auth
+function loadRolePath() {
+  return localStorage.getItem("cmRolePath") || "";
+}
+
+function saveRolePath(roleId) {
+  localStorage.setItem("cmRolePath", roleId);
+  const path = window.ROLE_WORK_PATHS_CATALOG?.find(r => r.id === roleId);
+  const detailsEl = document.getElementById("roleDetails");
+  if (path && detailsEl) {
+    detailsEl.innerHTML = `<strong>Obiettivo:</strong> ${path.objective}<br><strong>Output:</strong> ${path.output}`;
+  } else if (detailsEl) {
+    detailsEl.innerHTML = "";
+  }
 }

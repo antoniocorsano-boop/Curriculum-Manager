@@ -1,5 +1,10 @@
 # REPO-MOVELOG
 
+## MGR-053 (2026-06-14)
+- Role work paths completato
+- 4 profili: Docente, Coordinatore, Gruppo curricolo, Staff
+- Role selector in dashboard con obiettivo/output
+
 ## MGR-052 (2026-06-14)
 - Dashboard process overview completato
 - Stato processo + azioni rapide in vista modelliSorgente
