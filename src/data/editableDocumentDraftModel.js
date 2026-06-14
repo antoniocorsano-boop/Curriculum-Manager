@@ -4,7 +4,7 @@
  * file:// compatible - localStorage only
  */
 
-const DRAFT_STORAGE_KEY = "curriculumManager.editableDrafts";
+const DRAFT_STORAGE_KEY = "curriculumManager.documentDrafts";
 
 function getEditableDraftKey(documentId) {
   return `${DRAFT_STORAGE_KEY}.${documentId}`;

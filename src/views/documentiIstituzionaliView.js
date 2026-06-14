@@ -133,26 +133,36 @@ function showDocumentDetail(docId) {
    const draftState = window.EDITABLE_DOCUMENT_STATE;
 
    let editableSections = [];
+   let hasUnsavedChanges = false;
    if (meta.sections.length > 0) {
      const savedDraft = draftState ? draftState.loadEditableDraft(docId) : null;
-     editableSections = meta.sections.map((s, i) => ({
-       sectionId: `section-${i + 1}`,
-       heading: s.title,
-       body: savedDraft && savedDraft.sections ? savedDraft.sections[i]?.body || "" : "",
-       placeholder: s.description || "Inserisci contenuto...",
-       order: i + 1,
-       linkedRevisionArea: s.title,
-       outputRole: "contenuto modificabile"
-     }));
+     editableSections = meta.sections.map((s, i) => {
+       const draftBody = savedDraft && savedDraft.sections ? savedDraft.sections[i]?.body || "" : "";
+       if (draftBody && draftBody.trim().length > 0) {
+         hasUnsavedChanges = true;
+       }
+       return {
+         sectionId: `section-${i + 1}`,
+         heading: s.title,
+         body: draftBody,
+         placeholder: s.description || "Inserisci contenuto...",
+         order: i + 1,
+         linkedRevisionArea: s.title,
+         outputRole: "contenuto modificabile"
+       };
+     });
    }
 
    const draftStatus = draftState ? draftState.getDraftStatus(docId) : "nessuna-bozza";
    const lastSaved = draftState ? draftState.getDraftLastSaved(docId) : null;
-   const statusText = draftStatus === "bozza-salvata" 
-     ? `Salvato su questo dispositivo: ${lastSaved ? lastSaved.toLocaleDateString() + " " + lastSaved.toLocaleTimeString() : ""}`
-     : draftStatus === "bozza-non-salvata" 
-     ? "Modifiche non salvate" 
-     : "Bozza non ancora salvata";
+   let statusText = "";
+   if (draftStatus === "bozza-salvata") {
+     statusText = `Salvato su questo dispositivo: ${lastSaved ? lastSaved.toLocaleDateString() + " " + lastSaved.toLocaleTimeString() : ""}`;
+   } else if (hasUnsavedChanges) {
+     statusText = "Bozza modificata localmente";
+   } else {
+     statusText = "Bozza non modificata";
+   }
 
    const documentBodyHtml = `
      <div class="card editable-document-section" style="margin-bottom:16px; padding:16px">
@@ -225,7 +235,11 @@ function showDocumentDetail(docId) {
    if (saveDraftButton) saveDraftButton.addEventListener("click", () => saveEditableDocumentDraft(docId));
 
    const resetDraftButton = document.getElementById("resetDraftButton");
-   if (resetDraftButton) resetDraftButton.addEventListener("click", () => resetEditableDocumentDraft(docId));
+   if (resetDraftButton) resetDraftButton.addEventListener("click", () => {
+     if (confirm("Riepristinare la bozza iniziale? Perderai tutte le modifiche non salvate.")) {
+       resetEditableDocumentDraft(docId);
+     }
+   });
 
    const matrixButton = document.getElementById("openLinkedMatrixButton");
    if (matrixButton) matrixButton.addEventListener("click", () => showView("matriceRevisione"));
@@ -275,7 +289,7 @@ function showDocumentDetail(docId) {
 
    const statusEl = document.querySelector(".editable-document-section div:last-child");
    if (statusEl) {
-     statusEl.textContent = "Bozza ripristinata. Modifiche non salvate.";
+     statusEl.textContent = "Bozza non modificata";
    }
  }
 

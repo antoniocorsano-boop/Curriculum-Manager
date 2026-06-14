@@ -1,5 +1,11 @@
 # REPO-MOVELOG
 
+## MGR-068 (2026-06-14)
+- LOCAL_DRAFT_STATE_AND_RESET completato
+- Chiave storage aggiornata a curriculumManager.documentDrafts.<documentId>
+- Stato bozza: non modificata / modificata localmente / salvata
+- Reset singolo documento con conferma esplicita
+
 ## MGR-066 (2026-06-14)
 - EDITABLE_DOCUMENT_DRAFT_MODEL implementato
 - documentiIstituzionaliView.js con sezioni editabili
