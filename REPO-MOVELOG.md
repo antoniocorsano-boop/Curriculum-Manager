@@ -1,5 +1,13 @@
 # REPO-MOVELOG
 
+## MGR-066 (2026-06-14)
+- EDITABLE_DOCUMENT_DRAFT_MODEL implementato
+- documentiIstituzionaliView.js con sezioni editabili
+- Salvataggio bozza in localStorage (curriculumManager.editableDrafts.<documentId>)
+- Pulsanti: "Salva bozza", "Ripristina bozza iniziale"
+- Stato salvato mostrato dopo modifica
+- Nessun bridge revisione ancora
+
 ## MGR-065 (2026-06-14)
 - DOCUMENT_SOURCE_IMPORT_MAP creato in src/data/documentSourceImportMap.js
 - 11 mappature tra SchoolDocs e Curriculum Manager documenti
