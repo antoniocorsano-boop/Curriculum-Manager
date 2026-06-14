@@ -1,25 +1,22 @@
 # MGR-057: User Flow Copy and Card Simplification
 
-## Modifiche Documenti Istruiti
-- Titolo: "Documenti di lavoro" (anziché "Documenti istituzionali")
-- Tone: "Apri la scheda per capire cosa serve preparare"
-- Card: badge "Documento di lavoro" anziché "CATALOGO READ-ONLY — NON UFFICIALE"
-- Dettaglio: "A cosa serve / Quando usarlo / Cosa produce"
+## Pattern Applicato
+User need → gruppo → documento → azione → output
 
-## Modifiche Matrice Revisione
-- Titolo: "Lavoro di revisione"
-- Tone: "Annota osservazioni, integrazioni o modifiche da portare al confronto"
-- Pulsanti: "Prepara per il confronto", "Scarica copia dati", "Scarica bozza testuale"
-- Etichette card:
-  - "Cosa stiamo rivedendo"
-  - "Da controllare"
-  - "Quanto è urgente"
-  - "Cosa fare ora"
-  - "Annotazione di lavoro"
-- Rimosse notice "Export non disponibile" e "Dati personali"
+## Sezioni Documenti
+1. **Documento guida del percorso** - Curricolo verticale d'istituto (card evidenziata)
+2. **Documenti per la revisione** - Ordine scolastico, disciplina, quadro competenze
+3. **Documenti del gruppo** - Dipartimento, gruppo lavoro
+4. **Output da preparare** - Revisione, approvato, valutazione, allegato
+
+## Dettaglio Documento
+- Perché l'ho aperta?
+- A quale fase serve?
+- Cosa devo controllare?
+- Output prepara
+- Azioni: Torna, Apri matrice collegata
 
 ## Vincoli Rispettati
 - ✅ Nessun backend
 - ✅ Nessuna dipendenza
-- ✅ Nessun DOCX/PDF programmatico
-- ✅ Funzioni esistenti mantenute
+- ✅ Pattern locale puro JS/HTML/CSS
