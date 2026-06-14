@@ -1,5 +1,10 @@
 # REPO-MOVELOG
 
+## MGR-048 (2026-06-14)
+- DOCX export gate contract completato
+- Decisione: A) nessun DOCX per V1, solo HTML/PDF + Markdown/JSON
+- Gate dedicato richiesto prima di DOCX
+
 ## MGR-047 (2026-06-14)
 - HTML print document pack completato
 - Sezione pacchetto stampa nella matrice revisione
