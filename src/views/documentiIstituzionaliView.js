@@ -25,7 +25,7 @@ function renderDocumentiIstituzionaliView() {
   el.innerHTML = `
     <div class="card">
       <h2>Documenti di lavoro</h2>
-      <p class="simple-help">Apri la scheda per capire cosa serve preparare.</p>
+      <p class="simple-help">Apri un documento per consultarne il contenuto o struttura di lavoro.</p>
 
       <div class="notice" style="margin-bottom:16px">
         <strong>Nota:</strong> ogni documento è una bozza di lavoro fino alla validazione del gruppo.
@@ -35,28 +35,28 @@ function renderDocumentiIstituzionaliView() {
         <div class="card institutional-document-guide-card" data-document-id="${_esc(guideDoc.id)}" style="border-left:4px solid var(--primary); margin-bottom:20px">
           <h3 style="margin-top:0">Documento guida del percorso</h3>
           <p style="font-size:13px">${_esc(guideDoc.title)} - ${_esc(guideDoc.description.substring(0, 100))}...</p>
-          <button type="button" class="action" data-document-detail-trigger data-document-id="${_esc(guideDoc.id)}">Apri scheda guida</button>
+          <button type="button" class="action" data-document-detail-trigger data-document-id="${_esc(guideDoc.id)}">Apri documento</button>
         </div>
       ` : ""}
 
       ${groupDocs.length ? `
-        <h3 style="margin-top:20px">Documenti per la revisione</h3>
-        <p style="font-size:13px; color:var(--muted)">Per preparare il lavoro nei gruppi.</p>
+        <h3 style="margin-top:20px">Documenti di revisione</h3>
+        <p style="font-size:13px; color:var(--muted)">Per la revisione documentale.</p>
         <div class="institutional-document-grid" style="margin-bottom:20px">
           ${groupDocs.map(renderDocumentCard).join("")}
         </div>
       ` : ""}
 
       ${revisionDocs.length ? `
-        <h3>Documenti del gruppo</h3>
-        <p style="font-size:13px; color:var(--muted)">Materiali da portare al confronto.</p>
+        <h3>Documenti di gruppo</h3>
+        <p style="font-size:13px; color:var(--muted)">Materiale di lavoro condiviso.</p>
         <div class="institutional-document-grid" style="margin-bottom:20px">
           ${revisionDocs.map(renderDocumentCard).join("")}
         </div>
       ` : ""}
 
       ${outputDocs.length ? `
-        <h3>Output da preparare</h3>
+        <h3>Output documentale</h3>
         <p style="font-size:13px; color:var(--muted)">Contributono alla bozza finale.</p>
         <div class="institutional-document-grid">
           ${outputDocs.map(renderDocumentCard).join("")}
@@ -80,7 +80,7 @@ function renderDocumentCard(doc) {
       </div>
       <p style="font-size:13px">${_esc(doc.description)}</p>
       <div style="margin-top:8px">
-        <button type="button" class="action secondary" style="font-size:12px">Leggi contenuto</button>
+        <button type="button" class="action" style="font-size:12px">Apri documento</button>
       </div>
     </article>
   `;
@@ -128,60 +128,55 @@ function showDocumentDetail(docId) {
 
   detailEl.style.display = "block";
 
-  const sectionsHtml = meta.sections.length > 0
-    ? `<div class="card" style="margin-top:14px; box-shadow:none; padding:12px">
-        <h3 style="font-size:16px; margin-top:0">Struttura di lavoro da completare</h3>
-        ${meta.sections.map(s => `
-          <div style="margin-bottom:8px">
-            <strong>${_esc(s.title)}</strong>: <span style="color:var(--muted)">${_esc(s.description)}</span>
-          </div>
-        `).join("")}
-      </div>`
-    : `<div class="notice" style="margin-top:14px">Nessuna struttura disponibile. Usa il template sorgente.</div>`;
+  const documentBodyHtml = `
+    <div class="card" style="margin-bottom:16px; box-shadow:none; padding:16px">
+      <h3 style="font-size:18px; margin-top:0; color:var(--primary)">Bozza di lavoro</h3>
+      ${meta.sections.length > 0
+        ? `<div style="font-size:14px; line-height:1.5">
+            ${meta.sections.map((s, i) => `
+              <div style="margin-bottom:16px">
+                <strong>${i + 1}. ${_esc(s.title)}</strong>
+                <p style="margin:6px 0 0; color:var(--muted)">${_esc(s.description)}</p>
+              </div>
+            `).join("")}
+          </div>`
+        : `<p style="color:var(--muted)">Nessuna struttura disponibile. Usa il template sorgente.</p>`
+      }
+    </div>
+  `;
 
-  const addNoteHtml = `<button type="button" id="addDocumentNoteButton" class="action secondary" style="margin-top:14px; font-size:12px">Aggiungi osservazione</button>`;
+  const guideHtml = `
+    <details class="card" style="margin-top:16px; padding:12px">
+      <summary style="cursor:pointer; font-weight:600; margin-bottom:8px">Guida rapida</summary>
+      <div style="font-size:13px; line-height:1.4">
+        <div style="margin-bottom:8px"><strong>Fase:</strong> ${_esc(meta.phase)}</div>
+        <div style="margin-bottom:8px"><strong>Output:</strong> ${_esc(meta.output)}</div>
+        <div style="margin-bottom:8px"><strong>Check:</strong> ${_esc(meta.checks)}</div>
+      </div>
+    </details>
+  `;
 
   detailEl.innerHTML = `
     <div class="card">
       <div class="toolbar no-print" style="margin-top:0">
         <button type="button" id="backToDocumentListButton" class="action secondary">Torna ai documenti</button>
-        <button type="button" id="openLinkedMatrixButton" class="action secondary">Apri matrice collegata</button>
       </div>
 
-      <div style="display:flex; justify-content:space-between; gap:12px; align-items:flex-start; border-bottom:1px solid var(--line); padding-bottom:12px; margin-bottom:14px">
-        <div>
-          <span class="badge warn">${_esc(meta.phase)}</span>
-          <h2 style="margin-top:8px">${_esc(doc.title)}</h2>
-          <p style="margin:0; color:var(--muted)">${_esc(doc.description)}</p>
-        </div>
+      <div style="border-bottom:1px solid var(--line); padding-bottom:12px; margin-bottom:14px">
+        <span class="badge warn">${_esc(meta.phase)}</span>
         <span class="badge ${doc.requiresHumanValidation ? "warn" : "ok"}">${_esc(doc.status || "Catalogo read-only")}</span>
+        <h2 style="margin-top:8px">${_esc(doc.title)}</h2>
+        <p style="margin:0; color:var(--muted)">${_esc(doc.description)}</p>
       </div>
 
-      <div class="grid cols-2">
-        <div class="notice" style="margin:0">
-          <strong>Perché l'ho aperta?</strong><br>
-          ${_esc(meta.purpose)}
-        </div>
-        <div class="notice warn" style="margin:0">
-          <strong>A quale fase serve?</strong><br>
-          ${_esc(meta.phase)}
-        </div>
-        <div class="notice" style="margin:0">
-          <strong>Cosa devo controllare?</strong><br>
-          ${_esc(meta.checks)}
-        </div>
-        <div class="notice warn" style="margin:0">
-          <strong>Output atteso</strong><br>
-          ${_esc(meta.output)}
-        </div>
-      </div>
+      ${documentBodyHtml}
 
-      ${sectionsHtml}
+      ${guideHtml}
 
-      <div class="notice warn">
-        <strong>Stato:</strong> bozza / da confermare nel gruppo
+      <div class="toolbar" style="margin-top:16px; gap:8px">
+        <button type="button" id="openLinkedMatrixButton" class="action">Apri revisione collegata</button>
+        <button type="button" id="addDocumentNoteButton" class="action secondary">Aggiungi osservazione</button>
       </div>
-      ${addNoteHtml}
     </div>
   `;
 

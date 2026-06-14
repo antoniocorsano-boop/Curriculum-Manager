@@ -1,5 +1,11 @@
 # REPO-MOVELOG
 
+## MGR-063B (2026-06-14)
+- DOCUMENT_FIRST_READING_VIEW_HOTFIX implementato
+- Vista documento ora mostra "Bozza di lavoro" in evidenza
+- Guida rapida in <details> richiudibile
+- CTA "Apri documento" come primaria
+
 ## MGR-063 (2026-06-14)
 - DOCUMENT_CONTENT_COVERAGE_AND_READING_VIEW implementato
 - documentContentCatalog.js creato con strutture per tutti i documenti
