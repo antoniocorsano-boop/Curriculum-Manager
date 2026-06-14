@@ -8,6 +8,13 @@
 - Stati minimi del lavoro definiti (Da avviare → Consolidato → Esportato/stampato)
 - Sequenza implementativa vincolata: UserProfile → WorkScope → DocumentContent → WorkItemState → OutputCenter → PackageImportExport → SyncModel → DriveGate → UploadPilot → CollaborativeRelease
 
+## MGR-060 (2026-06-14)
+- USER_PROFILE_ONBOARDING_CONFIG_SELECTION_AUDIT completato in modalità audit-only
+- Profilo: 7 campi definiti, tutti opzionali, solo role per instradamento
+- Storage: localStorage solo, nessun server, nessun invio dati
+- Rischi privacy: bassi, dato da migliorare reset esplicito
+- File ammessi per MGR-061: solo modelliSorgenteView.js
+
 ## MGR-057 (2026-06-14)
 - User flow copy and card simplification completato
 - Documenti: tono "Documento di lavoro", dettaglio semplificato
