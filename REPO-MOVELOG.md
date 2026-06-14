@@ -1,5 +1,10 @@
 # REPO-MOVELOG
 
+## MGR-052 (2026-06-14)
+- Dashboard process overview completato
+- Stato processo + azioni rapide in vista modelliSorgente
+- Grid cols-2 con badge e pulsanti di navigazione
+
 ## MGR-051 (2026-06-14)
 - Smart onboarding skippable completato
 - Onboarding card con "Salta introduzione" e "Inizia dal percorso guidato"

@@ -25,11 +25,35 @@ function renderModelliSorgenteView() {
      </div>
    `;
 
-   el.innerHTML = `
-     ${onboardingHtml}
-     <div class="card">
-       <h2>Modelli sorgente istituzionali</h2>
-       <p class="simple-help">Template Markdown non ufficiali, da validare prima dell'uso.</p>
+el.innerHTML = `
+      ${onboardingHtml}
+      <div class="card">
+        <h2>Dashboard Curriculum Manager</h2>
+        <p class="simple-help">Stato processo curricolare e azioni rapide.</p>
+
+        <div class="grid cols-2">
+          <div>
+            <div class="card">
+              <h3 style="font-size:16px; margin-top:0">Stato processo</h3>
+              <div class="row"><strong>Documenti</strong><span class="badge">10 in catalogo</span></div>
+              <div class="row"><strong>Template</strong><span class="badge">10 sorgenti</span></div>
+              <div class="row"><strong>Note locali</strong><span class="badge ok">0 attive</span></div>
+            </div>
+          </div>
+          <div>
+            <div class="card">
+              <h3 style="font-size:16px; margin-top:0">Azioni rapide</h3>
+              <div class="toolbar">
+                <button type="button" class="action secondary" onclick="showView('documentiIstituzionali')">Consulta documenti</button>
+                <button type="button" class="action secondary" onclick="showView('matriceRevisione')" style="margin-left:8px">Apri matrice</button>
+                <button type="button" class="action secondary" onclick="toggleWorkflow()" style="margin-left:8px">Workflow guidato</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 style="margin-top:20px">Modelli sorgente istituzionali</h2>
+        <p class="simple-help">Template Markdown non ufficiali, da validare prima dell'uso.</p>
 
       <div class="notice warn">
         <strong>Attenzione:</strong> questi modelli sono sorgenti non ufficiali. Servono come base di lavoro e non sostituiscono la validazione dell'istituto scolastico.
