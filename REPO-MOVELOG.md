@@ -1,5 +1,11 @@
 # REPO-MOVELOG
 
+## MGR-056 (2026-06-14)
+- Process timeline user guidance completato
+- Home rivista con "Dove sono nel percorso?"
+- 6 fasi del processo timeline aggiunte
+- Modelli spostati in "Materiali di lavoro"
+
 ## MGR-055 (2026-06-14)
 - File protocol frame self load hotfix
 - Aggiunto controllo sicurezza file:// in app.js

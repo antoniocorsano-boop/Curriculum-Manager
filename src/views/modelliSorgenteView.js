@@ -39,42 +39,51 @@ const onboardingSeen = localStorage.getItem("cmOnboardingSeen");
     // Pre-select saved role
     const savedRole = loadRolePath();
 
-    el.innerHTML = `
+el.innerHTML = `
       ${onboardingHtml}
       <div class="card">
-        <h2>Dashboard Curriculum Manager</h2>
-        <p class="simple-help">Stato processo curricolare e azioni rapide.</p>
+        <h2>Percorso di aggiornamento del curricolo</h2>
+        <p class="simple-help">Segui le fasi di lavoro, annota le decisioni e prepara gli output necessari.</p>
 
-<div class="grid cols-2">
-           <div>
-             <div class="card">
-               <h3 style="font-size:16px; margin-top:0">Stato processo</h3>
-               <div class="row"><strong>Documenti</strong><span class="badge">10 in catalogo</span></div>
-               <div class="row"><strong>Template</strong><span class="badge">10 sorgenti</span></div>
-               <div class="row"><strong>Note locali</strong><span class="badge ok">0 attive</span></div>
-             </div>
-           </div>
-           <div>
-             <div class="card">
-               <h3 style="font-size:16px; margin-top:0">Il mio ruolo</h3>
-               <select id="roleSelector" onchange="saveRolePath(this.value)" style="width:100%;padding:8px;font-size:14px;border-radius:8px;border:1px solid var(--line)">
-                 <option value="">Seleziona ruolo...</option>
-                 <option value="docente">Docente</option>
-                 <option value="coordinatore">Coordinatore dipartimento</option>
-                 <option value="gruppo">Gruppo curricolo</option>
-                 <option value="staff">Funzione strumentale</option>
-               </select>
-               <div id="roleDetails" style="margin-top:10px; font-size:12px; color:var(--muted)"></div>
-             </div>
-           </div>
-         </div>
+        <div class="card" id="timelineSection" style="margin-bottom:16px">
+          <h3 style="font-size:16px; margin-top:0">Dove sono nel percorso?</h3>
+          <p style="font-size:13px; color:var(--muted)">Il sistema accompagna il lavoro dalla rilettura del curricolo alla preparazione degli output.</p>
+          <button type="button" class="action secondary" onclick="toggleTimeline()" id="timelineToggleBtn">Mostra fasi lavoro</button>
+          <div id="timelineDetail" style="display:none; margin-top:12px"></div>
+        </div>
 
-        <h2 style="margin-top:20px">Modelli sorgente istituzionali</h2>
+        <div class="grid cols-2">
+          <div>
+            <div class="card">
+              <h3 style="font-size:16px; margin-top:0">Stato processo</h3>
+              <div class="row"><strong>Documenti</strong><span class="badge">10 in catalogo</span></div>
+              <div class="row"><strong>Template</strong><span class="badge">10 sorgenti</span></div>
+              <div class="row"><strong>Note locali</strong><span class="badge ok">0 attive</span></div>
+            </div>
+          </div>
+          <div>
+            <div class="card">
+              <h3 style="font-size:16px; margin-top:0">Il mio ruolo</h3>
+              <select id="roleSelector" onchange="saveRolePath(this.value)" style="width:100%;padding:8px;font-size:14px;border-radius:8px;border:1px solid var(--line)">
+                <option value="">Seleziona ruolo...</option>
+                <option value="docente">Docente</option>
+                <option value="coordinatore">Coordinatore dipartimento</option>
+                <option value="gruppo">Gruppo curricolo</option>
+                <option value="staff">Funzione strumentale</option>
+              </select>
+              <div id="roleDetails" style="margin-top:10px; font-size:12px; color:var(--muted)"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" id="templatesSection" style="display:none">
+        <h2>Materiali di lavoro</h2>
         <p class="simple-help">Template Markdown non ufficiali, da validare prima dell'uso.</p>
 
-      <div class="notice warn">
-        <strong>Attenzione:</strong> questi modelli sono sorgenti non ufficiali. Servono come base di lavoro e non sostituiscono la validazione dell'istituto scolastico.
-      </div>
+       <div class="notice warn">
+          <strong>Attenzione:</strong> questi modelli sono sorgenti non ufficiali. Servono come base di lavoro e non sostituiscono la validazione dell'istituto scolastico.
+        </div>
 
       <div class="notice">
         <strong>Dati personali:</strong> non inserire dati personali, dati identificativi, nomi reali di studenti, famiglie, docenti o istituzioni senza verifica e procedure autorizzate.
@@ -183,4 +192,26 @@ function saveRolePath(roleId) {
   } else if (detailsEl) {
     detailsEl.innerHTML = "";
   }
+}
+
+function toggleTimeline() {
+  const detail = document.getElementById("timelineDetail");
+  const btn = document.getElementById("timelineToggleBtn");
+  const isHidden = detail.style.display === "none";
+  detail.style.display = isHidden ? "block" : "none";
+  btn.textContent = isHidden ? "Nascondi fasi lavoro" : "Mostra fasi lavoro";
+  if (isHidden) renderProcessTimeline();
+}
+
+function renderProcessTimeline() {
+  const catalog = window.PROCESS_TIMELINE_CATALOG || [];
+  const el = document.getElementById("timelineDetail");
+  el.innerHTML = catalog.map((phase, idx) => `
+    <div style="padding:10px; border-left:3px solid var(--primary); margin-bottom:10px; background:var(--panel)">
+      <strong>${idx + 1}. ${esc(phase.title)}</strong>
+      <p style="margin:4px 0; font-size:13px">${esc(phase.objective)}</p>
+      <span class="badge warn" style="font-size:11px">${esc(phase.status)}</span>
+      <button type="button" class="action secondary" style="margin-left:8px; font-size:11px" onclick="showView('${phase.action}')">Vai alla fase</button>
+    </div>
+  `).join("");
 }
