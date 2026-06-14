@@ -1,5 +1,6 @@
 /**
  * Matrice revisione view - read-only revision control matrix
+ * Local draft notes support via localStorage
  * No export, no DOCX/PDF generation
  */
 
@@ -36,6 +37,7 @@ function renderMatriceRevisioneView() {
 
        <div class="toolbar no-print">
          <button type="button" class="action secondary" onclick="window.print()">Stampa / Salva in PDF</button>
+         <button type="button" class="action secondary" onclick="resetAllDraftNotes()" style="margin-left:8px">Reset bozze locali</button>
        </div>
 
        <div class="revision-matrix">
@@ -45,10 +47,31 @@ function renderMatriceRevisioneView() {
    `;
  }
 
+function loadDraftNote(itemId) {
+  try {
+    const drafts = JSON.parse(localStorage.getItem("cmDraftNotes") || "{}");
+    return drafts[itemId] || "";
+  } catch { return ""; }
+}
+
+function saveDraftNote(itemId, note) {
+  try {
+    const drafts = JSON.parse(localStorage.getItem("cmDraftNotes") || "{}");
+    drafts[itemId] = note;
+    localStorage.setItem("cmDraftNotes", JSON.stringify(drafts));
+  } catch {}
+}
+
+function resetAllDraftNotes() {
+  localStorage.removeItem("cmDraftNotes");
+  renderMatriceRevisioneView();
+}
+
 function renderRevisionMatrixRow(item) {
   const checksList = (item.requiredChecks || []).map(c => `<li>${_esc(c)}</li>`).join("");
   const priorityLabel = "Media";
   const statusBadge = item.humanValidationRequired ? "badge warn" : "badge ok";
+  const draftNote = loadDraftNote(item.id);
 
   return `
     <article class="revision-matrix-card">
@@ -63,6 +86,9 @@ function renderRevisionMatrixRow(item) {
       </div>
       <div class="row"><strong>Criticità / Priorità</strong><span class="badge">${priorityLabel}</span></div>
       <div class="row"><strong>Prossima azione</strong>${_esc(item.requiredChecks?.[0] || "Nessuna")}</div>
+      <div class="row"><strong>Bozza locale (non ufficiale)</strong>
+        <textarea class="draft-note-input" data-id="${item.id}" placeholder="Aggiungi nota locale..." style="width:100%;height:60px;font-size:12px;margin-top:4px" onchange="saveDraftNote('${item.id}', this.value)">${_esc(draftNote)}</textarea>
+      </div>
       <div class="notice warn">
         <strong>Note:</strong> Export non disponibile. Validazione umana richiesta. Dati personali: non ammessi.
       </div>

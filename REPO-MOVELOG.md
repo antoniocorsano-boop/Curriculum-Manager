@@ -1,5 +1,10 @@
 # REPO-MOVELOG
 
+## MGR-045 (2026-06-14)
+- Local edit draft mode completato
+- Bozza locale per note revisione in matrice
+- localStorage con chiave cmDraftNotes, pulsante reset
+
 ## MGR-044 (2026-06-14)
 - Revision workflow read-only plus completato
 - Aggiunti: priorità, prossima azione, status dinamico
