@@ -1,5 +1,13 @@
 # REPO-MOVELOG
 
+## MGR-059 (2026-06-14)
+- PROCESS_COMPLETION_UX_CONTRACT redatto in modalità docs-only
+- Contratto di prodotto e UX che blocca la direzione prima di nuove implementazioni
+- Formula obbligatoria: user need → fase → documento/attività → azione umana → output → stato finale
+- Pattern visuale vincolato: dove sono, cosa faccio, perché, cosa posso fare, cosa produco
+- Stati minimi del lavoro definiti (Da avviare → Consolidato → Esportato/stampato)
+- Sequenza implementativa vincolata: UserProfile → WorkScope → DocumentContent → WorkItemState → OutputCenter → PackageImportExport → SyncModel → DriveGate → UploadPilot → CollaborativeRelease
+
 ## MGR-057 (2026-06-14)
 - User flow copy and card simplification completato
 - Documenti: tono "Documento di lavoro", dettaglio semplificato
