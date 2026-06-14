@@ -21,6 +21,7 @@ const ROLE_OPTIONS = [
 ];
 
 const PROFILE_STORAGE_KEY = "curriculumManager.userProfile";
+const ONBOARDING_DISMISSED_KEY = "curriculumManager.onboardingDismissed";
 const PROFILE_CONFIG_SEEN_KEY = "curriculumManager.profileConfigSeen";
 
 // Utility functions (shared with app.js)
@@ -49,7 +50,7 @@ function renderModelliSorgenteView() {
   const savedRole = profile.role || loadRolePath();
   const currentPhase = getCurrentPhase();
 
-  const onboardingSeen = localStorage.getItem("cmOnboardingSeen");
+  const onboardingSeen = localStorage.getItem(ONBOARDING_DISMISSED_KEY);
   const onboardingHtml = onboardingSeen ? "" : `
     <div class="card" id="onboardingCard" style="border-left:4px solid var(--primary); margin-bottom:20px">
       <h3>Benvenuto in Curriculum Manager</h3>
@@ -389,12 +390,12 @@ function setTimelineVisible(visible) {
 
 // Onboarding functions - client-side, skippable
 function skipOnboardingHandler() {
-  localStorage.setItem("cmOnboardingSeen", "true");
+  localStorage.setItem(ONBOARDING_DISMISSED_KEY, "true");
   document.getElementById("onboardingCard").style.display = "none";
 }
 
 function startWorkflow() {
-  localStorage.setItem("cmOnboardingSeen", "true");
+  localStorage.setItem(ONBOARDING_DISMISSED_KEY, "true");
   showView("matriceRevisione");
   setTimeout(() => {
     const workflowBtn = document.querySelector("button[onclick='toggleWorkflow()']");
@@ -403,7 +404,7 @@ function startWorkflow() {
 }
 
 function showOnboarding() {
-  localStorage.removeItem("cmOnboardingSeen");
+  localStorage.removeItem(ONBOARDING_DISMISSED_KEY);
   renderModelliSorgenteView();
 }
 
@@ -422,16 +423,14 @@ function copyPath(path) {
 
 // Role work paths - client-side, no auth
 function loadRolePath() {
-  return localStorage.getItem("cmRolePath") || "";
+  const profile = loadWorkProfile();
+  return profile.role || "";
 }
 
 function saveRolePath(roleId) {
-  localStorage.setItem("cmRolePath", roleId);
   const profile = loadWorkProfile();
-  if (profile.role !== roleId) {
-    profile.role = roleId;
-    saveWorkProfile(profile);
-  }
+  profile.role = roleId;
+  saveWorkProfile(profile);
   renderRoleDetails(roleId);
 }
 
@@ -507,7 +506,6 @@ function openWorkProfileConfig() {
 function resetWorkProfile() {
   localStorage.removeItem(PROFILE_STORAGE_KEY);
   localStorage.removeItem(PROFILE_CONFIG_SEEN_KEY);
-  localStorage.removeItem("cmRolePath");
   renderModelliSorgenteView();
 }
 
