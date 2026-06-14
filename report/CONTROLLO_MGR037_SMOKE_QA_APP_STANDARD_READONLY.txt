@@ -1,0 +1,38 @@
+VERDICT: MGR_037_SMOKE_QA_APP_STANDARD_READONLY_PASS
+
+## Preflight verifiche
+
+- HEAD == origin/main (fd706c0): PASS
+- Working tree clean before: PASS
+
+## Files created
+
+- report/MGR_037_SMOKE_QA_APP_STANDARD_READONLY.md: CREATED
+- report/CONTROLLO_MGR037_SMOKE_QA_APP_STANDARD_READONLY.txt: THIS FILE
+
+## Validation
+
+| Controllo | Stato |
+|-----------|-------|
+| file scope QA-only | pass |
+| app opens (static scan) | pass |
+| sidebar visible | pass |
+| Modelli sorgente view | pass |
+| Documenti istituzionali view | pass |
+| Matrice revisione view | pass |
+| navigation across 3 views | pass |
+| 10 source templates visible | pass |
+| 10 institutional documents visible | pass |
+| 10 revision cards visible | pass |
+| no operational export/DOCX/PDF buttons | pass |
+| no generate/compile/approve/validate actions | pass |
+| no personal data workflow | pass |
+| no code modified | pass |
+| no DOCX/PDF generated | pass |
+| no export executed | pass |
+| no dependencies introduced | pass |
+| no backend/API/deploy changes | pass |
+
+## Notes
+
+Smoke QA statico superato. App read-only solida e pronta per gate visuale. Non procedere con export finché non si superano i gate MGR-036.
