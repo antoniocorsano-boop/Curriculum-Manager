@@ -32,7 +32,8 @@ function showView(id) {
 function renderView(id) {
   const renderers = {
     modelliSorgente: renderModelliSorgenteView,
-    documentiIstituzionali: renderDocumentiIstituzionaliView
+    documentiIstituzionali: renderDocumentiIstituzionaliView,
+    matriceRevisione: renderMatriceRevisioneView
   };
   if (renderers[id]) renderers[id]();
 }
