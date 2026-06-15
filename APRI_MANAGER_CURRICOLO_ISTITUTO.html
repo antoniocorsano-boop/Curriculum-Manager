@@ -252,6 +252,7 @@ tr:hover td{background:#fafcff}
   <div class="nav-title">Sezioni specifiche</div>
   <button data-view="tecnologia">Tecnologia</button>
   <button data-view="strumenti">Salvataggio e controlli</button>
+  <button data-view="wiki">Guida e aiuto</button>
 </nav>
 <main>
   <section id="dashboard" class="view active"></section>
@@ -272,6 +273,7 @@ tr:hover td{background:#fafcff}
   <section id="discipline" class="view"></section>
   <section id="tecnologia" class="view"></section>
   <section id="strumenti" class="view"></section>
+  <section id="wiki" class="view"></section>
 </main>
 </div>
 
@@ -293,6 +295,248 @@ tr:hover td{background:#fafcff}
 
 <script id="seed-data" type="application/json">{"schemaVersion":"2.0A","managerVersion":"3.6-mgr025-template-tipografici-istituzionali","createdAt":"2026-06-12","stato":"documentale_istituzionale_integrazione_pronta_per_test","noteUso":["MGR-025: aggiunto modello documentale istituzionale aggiornabile con template tipografici, export stampa/PDF, Word .doc e DOCX nativo per documenti prodotti/approvati.","I documenti istituzionali sono distinti da registro documenti, allegati e backup tecnico.","MGR-023: aggiunti DOCX nativo, ZIP allegati e pacchetto completo con IndexedDB.","MGR-022: aggiunto export documentale mirato per stampa/PDF e Word-compatible; corretto import sessione portabile modello/schema.","MGR-020: corretta la modale Modifica/Aggiungi che mostrava undefined; nessuna nuova funzione introdotta.","La distribuzione resta ZIP locale offline; nessun backend, API, autenticazione o deploy."],"istituto":{"denominazione":"I.C. Calvario-Covotta “don Lorenzo Milani”","codiceMeccanografico":"AVIC849003","comunePrincipale":"Ariano Irpino","provincia":"AV","plessi":[{"nome":"Da verificare","ordine":"infanzia","comune":"Da verificare","note":""},{"nome":"Da verificare","ordine":"primaria","comune":"Da verificare","note":""},{"nome":"Da verificare","ordine":"secondaria_i_grado","comune":"Da verificare","note":""}],"ordiniScuolaAttivi":["infanzia","primaria","secondaria_i_grado"],"annoScolastico":"2026/2027","versioneCurricolo":"bozza_v2_0","statoAggiornamento":"in_revisione","responsabili":{"dirigenteScolastico":"","referenteCurricolo":"","referentiOrdine":[],"referentiDisciplina":[],"gruppiVerticali":[]},"fontiObbligatorie":["PTOF","RAV","PdM","Indicazioni Nazionali 2012","Indicazioni Nazionali 2025","Educazione civica","Inclusione","Orientamento","Quadri europei competenze"]},"statiAmmessi":{"documento":["canonico","bozza","supporto","storico","superato"],"revisione":["aperta","in_revisione","validata","respinta","rinviata"],"curricolo":["bozza","dipartimento","collegio","approvato","archiviato"],"priorita":["bassa","media","alta","urgente"],"ambitoDocumento":["generale","infanzia","primaria","secondaria_i_grado","tecnologia","disciplina","processo"],"tipoDocumento":["fonte_istituzionale","dossier","curricolo","matrice","uda","rubrica","griglia","verbale","report","allegato","backup","guida"]},"fontiGenerali":[{"id":"fonte_guida_processo_riferimenti","titolo":"Guida processo e riferimenti normativi/documentali","tipo":"guida","ambito":"generale","stato":"canonico","canonico":true,"urlEsterna":"","fileLocale":"./docs_generali/guida/GUIDA_PROCESSO_E_RIFERIMENTI.html","noteUso":"Aprire per orientare il lavoro: processo, fonti essenziali, uso pratico nel Manager."},{"id":"fonte_indice_fonti_verificate","titolo":"Indice fonti ufficiali e file da includere","tipo":"fonte_istituzionale","ambito":"generale","stato":"canonico","canonico":true,"urlEsterna":"","fileLocale":"./docs_generali/fonti/FONTI_UFFICIALI_E_FILE_DA_INCLUDERE.html","noteUso":"Aprire per verificare link ufficiali, copie Drive/KB e file da includere nel pacchetto."},{"id":"fonte_ptof_2022_2025","titolo":"PTOF 2022-2025","tipo":"fonte_istituzionale","ambito":"generale","stato":"da_verificare","canonico":true,"urlEsterna":"https://www.icdonmilaniariano.edu.it/wp-content/uploads/2024/04/PTOF-22-25-1.pdf","fileLocale":"./docs_generali/fonti/PTOF_22_25_1_link.html","noteUso":"Link ufficiale rilevato; serve verificare se esiste PTOF 2025-2028 più aggiornato."},{"id":"fonte_rav_2024_2025","titolo":"RAV 2024/2025 - AVIC849003","tipo":"fonte_istituzionale","ambito":"generale","stato":"canonico","canonico":true,"urlEsterna":"https://drive.google.com/file/d/1HK_c7S5we7rcUrfIqBVDoxe4dAUEKpNf/view?usp=drivesdk","fileLocale":"./docs_generali/fonti/RAV_202425_AVIC849003_link.html","noteUso":"File RAV trovato in Drive; da collegare alla copia ufficiale o alla copia KB canonica."},{"id":"fonte_nuove_indicazioni_2025","titolo":"Nuove Indicazioni 2025","tipo":"fonte_istituzionale","ambito":"generale","stato":"supporto","canonico":true,"urlEsterna":"https://drive.google.com/file/d/1fX8QG1xW7hgFzBGgJa0RzCwSFkFJk31w/view?usp=drivesdk","fileLocale":"./docs_generali/fonti/Nuove_Indicazioni_2025_link.html","noteUso":"File trovato in Drive; verificare se è documento definitivo o materiale di dibattito."},{"id":"fonte_cantiere_curricolo_2025","titolo":"Cantiere Curricolo 2025","tipo":"fonte_istituzionale","ambito":"generale","stato":"supporto","canonico":true,"urlEsterna":"https://drive.google.com/file/d/1gcEuoTpdsZju-SpxQxepAk_fobEuOmlw/view?usp=drivesdk","fileLocale":"./docs_generali/fonti/Cantiere_Curricolo_2025_link.html","noteUso":"Documento già rilevato nella cartella KB."},{"id":"fonte_cronoprogramma","titolo":"Cronoprogramma aggiornamento Curricolo Verticale","tipo":"processo","ambito":"generale","stato":"canonico","canonico":true,"urlEsterna":"","fileLocale":"./docs_generali/Cronoprogramma_Aggiornamento_Curricolo_Verticale.docx","noteUso":"Guida le azioni delle giornate di lavoro."}],"ordiniScuola":[{"id":"infanzia","nome":"Scuola dell'infanzia","tipoProgressione":"anni_3_5","anniClassi":["3 anni","4 anni","5 anni"],"profilo":"Campo educativo orientato allo sviluppo dell'identità, dell'autonomia, della competenza e della cittadinanza.","elementiCurricolo":["campi_esperienza"],"statoRevisione":"aperta"},{"id":"primaria","nome":"Scuola primaria","tipoProgressione":"classi_i_v","anniClassi":["I","II","III","IV","V"],"profilo":"Primo segmento disciplinare del primo ciclo, con valutazione descrittiva e progressione curricolare per obiettivi.","elementiCurricolo":["discipline","educazione_civica","orientamento"],"statoRevisione":"aperta"},{"id":"secondaria_i_grado","nome":"Scuola secondaria di I grado","tipoProgressione":"classi_i_iii","anniClassi":["I","II","III"],"profilo":"Secondo segmento del primo ciclo, con sviluppo disciplinare, orientamento, competenze e raccordo con l'esame conclusivo.","elementiCurricolo":["discipline","educazione_civica","orientamento"],"statoRevisione":"aperta"}],"discipline":[{"id":"infanzia_se_altro","ordine":"infanzia","nome":"Il sé e l'altro","tipo":"campo_esperienza","statoRevisione":"aperta"},{"id":"infanzia_corpo_movimento","ordine":"infanzia","nome":"Il corpo e il movimento","tipo":"campo_esperienza","statoRevisione":"aperta"},{"id":"infanzia_immagini_suoni_colori","ordine":"infanzia","nome":"Immagini, suoni, colori","tipo":"campo_esperienza","statoRevisione":"aperta"},{"id":"infanzia_discorsi_parole","ordine":"infanzia","nome":"I discorsi e le parole","tipo":"campo_esperienza","statoRevisione":"aperta"},{"id":"infanzia_conoscenza_mondo","ordine":"infanzia","nome":"La conoscenza del mondo","tipo":"campo_esperienza","statoRevisione":"aperta"},{"id":"primaria_italiano","ordine":"primaria","nome":"Italiano","tipo":"disciplina","statoRevisione":"aperta"},{"id":"primaria_inglese","ordine":"primaria","nome":"Lingua inglese","tipo":"disciplina","statoRevisione":"aperta"},{"id":"primaria_storia","ordine":"primaria","nome":"Storia","tipo":"disciplina","statoRevisione":"aperta"},{"id":"primaria_geografia","ordine":"primaria","nome":"Geografia","tipo":"disciplina","statoRevisione":"aperta"},{"id":"primaria_matematica","ordine":"primaria","nome":"Matematica","tipo":"disciplina","statoRevisione":"aperta"},{"id":"primaria_scienze","ordine":"primaria","nome":"Scienze","tipo":"disciplina","statoRevisione":"aperta"},{"id":"primaria_tecnologia","ordine":"primaria","nome":"Tecnologia","tipo":"disciplina","statoRevisione":"aperta"},{"id":"primaria_arte","ordine":"primaria","nome":"Arte e immagine","tipo":"disciplina","statoRevisione":"aperta"},{"id":"primaria_musica","ordine":"primaria","nome":"Musica","tipo":"disciplina","statoRevisione":"aperta"},{"id":"primaria_ed_fisica","ordine":"primaria","nome":"Educazione fisica","tipo":"disciplina","statoRevisione":"aperta"},{"id":"primaria_irc","ordine":"primaria","nome":"Religione / attività alternativa","tipo":"disciplina","statoRevisione":"aperta"},{"id":"secondaria_italiano","ordine":"secondaria_i_grado","nome":"Italiano","tipo":"disciplina","statoRevisione":"aperta"},{"id":"secondaria_storia","ordine":"secondaria_i_grado","nome":"Storia","tipo":"disciplina","statoRevisione":"aperta"},{"id":"secondaria_geografia","ordine":"secondaria_i_grado","nome":"Geografia","tipo":"disciplina","statoRevisione":"aperta"},{"id":"secondaria_matematica","ordine":"secondaria_i_grado","nome":"Matematica","tipo":"disciplina","statoRevisione":"aperta"},{"id":"secondaria_scienze","ordine":"secondaria_i_grado","nome":"Scienze","tipo":"disciplina","statoRevisione":"aperta"},{"id":"secondaria_tecnologia","ordine":"secondaria_i_grado","nome":"Tecnologia","tipo":"disciplina","statoRevisione":"aperta","sezioneSpecifica":"tecnologia"},{"id":"secondaria_inglese","ordine":"secondaria_i_grado","nome":"Lingua inglese","tipo":"disciplina","statoRevisione":"aperta"},{"id":"secondaria_seconda_lingua","ordine":"secondaria_i_grado","nome":"Seconda lingua comunitaria","tipo":"disciplina","statoRevisione":"aperta"},{"id":"secondaria_arte","ordine":"secondaria_i_grado","nome":"Arte e immagine","tipo":"disciplina","statoRevisione":"aperta"},{"id":"secondaria_musica","ordine":"secondaria_i_grado","nome":"Musica","tipo":"disciplina","statoRevisione":"aperta"},{"id":"secondaria_ed_fisica","ordine":"secondaria_i_grado","nome":"Educazione fisica","tipo":"disciplina","statoRevisione":"aperta"},{"id":"secondaria_irc","ordine":"secondaria_i_grado","nome":"Religione / attività alternativa","tipo":"disciplina","statoRevisione":"aperta"},{"id":"educazione_civica","ordine":"trasversale","nome":"Educazione civica","tipo":"trasversale","statoRevisione":"aperta"},{"id":"orientamento","ordine":"trasversale","nome":"Orientamento","tipo":"trasversale","statoRevisione":"aperta"},{"id":"inclusione","ordine":"trasversale","nome":"Inclusione","tipo":"trasversale","statoRevisione":"aperta"}],"schedaDisciplinaTemplate":{"campi":["profiloDisciplinare","nucleiFondanti","traguardiCompetenze","conoscenzeEssenziali","abilita","evidenzeOsservabili","compitiAutentici","rubriche","udaDocumentiCollegati","matriceVariazioni","statoRevisione","decisioni"]},"documenti":[{"id":"doc_guida_processo_riferimenti_v27","titolo":"Guida processo e riferimenti normativi/documentali","tipo":"guida","ambito":"generale","versione":"v2.7","stato":"canonico","canonico":true,"fileLocale":"./docs_generali/guida/GUIDA_PROCESSO_E_RIFERIMENTI.html","urlEsterna":"","collegatoA":["guida","fonti_generali","processo"],"sostituisce":[],"sostituitoDa":"","responsabile":"","dataAggiornamento":"2026-06-12","fonteOrigine":"Manager Curricolo v2.7","noteVersione":"Guida leggera e documentata al processo di aggiornamento del curricolo.","note":"Documento interno di orientamento."},{"id":"doc_nuove_indicazioni_2025_link","titolo":"Nuove Indicazioni 2025 - link Drive","tipo":"fonte_istituzionale","ambito":"generale","versione":"fonte","stato":"canonico","canonico":true,"fileLocale":"./docs_generali/fonti/Nuove_Indicazioni_2025_link.html","urlEsterna":"https://drive.google.com/file/d/1fX8QG1xW7hgFzBGgJa0RzCwSFkFJk31w/view?usp=drivesdk","collegatoA":["fonti_generali"],"sostituisce":[],"sostituitoDa":"","note":"File Drive da verificare come definitivo o materiale di dibattito.","responsabile":"","dataAggiornamento":"2026-06-12","storiaVersioni":[],"fonteOrigine":"","noteVersione":"File Drive da verificare come definitivo o materiale di dibattito."},{"id":"doc_rav_2024_2025_link","titolo":"RAV 2024/2025 - link Drive","tipo":"fonte_istituzionale","ambito":"generale","versione":"fonte","stato":"canonico","canonico":true,"fileLocale":"./docs_generali/fonti/RAV_202425_AVIC849003_link.html","urlEsterna":"https://drive.google.com/file/d/1HK_c7S5we7rcUrfIqBVDoxe4dAUEKpNf/view?usp=drivesdk","collegatoA":["fonti_generali"],"sostituisce":[],"sostituitoDa":"","note":"Copia Drive del RAV AVIC849003.","responsabile":"","dataAggiornamento":"2026-06-12","storiaVersioni":[],"fonteOrigine":"","noteVersione":"Copia Drive del RAV AVIC849003."},{"id":"doc_ptof_2022_2025_link","titolo":"PTOF 2022-2025 - link ufficiale","tipo":"fonte_istituzionale","ambito":"generale","versione":"fonte","stato":"canonico","canonico":true,"fileLocale":"./docs_generali/fonti/PTOF_22_25_1_link.html","urlEsterna":"https://www.icdonmilaniariano.edu.it/wp-content/uploads/2024/04/PTOF-22-25-1.pdf","collegatoA":["fonti_generali"],"sostituisce":[],"sostituitoDa":"","note":"Link ufficiale rilevato; verificare eventuale PTOF 2025-2028.","responsabile":"","dataAggiornamento":"2026-06-12","storiaVersioni":[],"fonteOrigine":"","noteVersione":"Link ufficiale rilevato; verificare eventuale PTOF 2025-2028."},{"id":"doc_fonti_indice_v23","titolo":"Indice fonti ufficiali e file da includere","tipo":"fonte_istituzionale","ambito":"generale","versione":"fonte","stato":"canonico","canonico":true,"fileLocale":"./docs_generali/fonti/FONTI_UFFICIALI_E_FILE_DA_INCLUDERE.html","urlEsterna":"","collegatoA":["fonti_generali"],"sostituisce":[],"sostituitoDa":"","note":"Indice operativo delle fonti.","responsabile":"","dataAggiornamento":"2026-06-12","storiaVersioni":[],"fonteOrigine":"","noteVersione":"Indice operativo delle fonti."},{"id":"doc_spec_manager_v2","titolo":"Specifica funzionale Manager Curricolo d'Istituto v2.0","tipo":"report","ambito":"processo","versione":"v2.0A","stato":"canonico","canonico":true,"fileLocale":"./report/Specifiche_Manager_Curricolo_Istituto_v2_0.docx","urlEsterna":"","collegatoA":["manager_v2","processo","kb"],"sostituisce":[],"sostituitoDa":"","note":"Documento guida per la ricostruzione del Manager.","responsabile":"","dataAggiornamento":"2026-06-12","storiaVersioni":[],"fonteOrigine":"","noteVersione":"Documento guida per la ricostruzione del Manager."},{"id":"doc_guida_manager_primo_ciclo","titolo":"Guida docente Manager Primo Ciclo","tipo":"guida","ambito":"processo","versione":"v1.0","stato":"canonico","canonico":true,"fileLocale":"./report/04_Guida_Docente_Manager_Primo_Ciclo_v1_0.docx","urlEsterna":"","collegatoA":["manager_v2","processo"],"sostituisce":[],"sostituitoDa":"","note":"Guida operativa per usare il Manager durante le giornate di lavoro.","responsabile":"","dataAggiornamento":"2026-06-12","storiaVersioni":[],"fonteOrigine":"","noteVersione":"Guida operativa per usare il Manager durante le giornate di lavoro."},{"id":"doc_report_pacchetto_v14","titolo":"Report gestione pacchetto Primo Ciclo v1.4","tipo":"report","ambito":"processo","versione":"v1.4","stato":"canonico","canonico":true,"fileLocale":"./report/00_Report_Gestione_Pacchetto_Primo_Ciclo_v1_4.docx","urlEsterna":"","collegatoA":["processo"],"sostituisce":[],"sostituitoDa":"","note":"Report storico del pacchetto precedente.","responsabile":"","dataAggiornamento":"2026-06-12","storiaVersioni":[],"fonteOrigine":"","noteVersione":"Report storico del pacchetto precedente."},{"id":"doc_cronoprogramma","titolo":"Cronoprogramma aggiornamento Curricolo Verticale","tipo":"fonte_istituzionale","ambito":"generale","versione":"2026","stato":"canonico","canonico":true,"fileLocale":"./docs_generali/Cronoprogramma_Aggiornamento_Curricolo_Verticale.docx","urlEsterna":"","collegatoA":["workflow"],"sostituisce":[],"sostituitoDa":"","note":"Riferimento operativo delle giornate di lavoro.","responsabile":"","dataAggiornamento":"2026-06-12","storiaVersioni":[],"fonteOrigine":"","noteVersione":"Riferimento operativo delle giornate di lavoro."},{"id":"doc_fonti_generali","titolo":"Fonti istituzionali e analisi generale","tipo":"fonte_istituzionale","ambito":"generale","versione":"v1.0","stato":"canonico","canonico":true,"fileLocale":"./docs_generali/FONTI_ISTITUZIONALI_E_ANALISI.html","urlEsterna":"","collegatoA":["fonti_generali"],"sostituisce":[],"sostituitoDa":"","note":"Pagina locale di orientamento alle fonti comuni.","responsabile":"","dataAggiornamento":"2026-06-12","storiaVersioni":[],"fonteOrigine":"","noteVersione":"Pagina locale di orientamento alle fonti comuni."},{"id":"doc_dossier_infanzia","titolo":"Dossier Scuola dell'Infanzia","tipo":"dossier","ambito":"infanzia","versione":"v1.0","stato":"canonico","canonico":true,"fileLocale":"./docs_infanzia/10_Dossier_Scuola_Infanzia_v1_0.docx","urlEsterna":"","collegatoA":["infanzia"],"sostituisce":[],"sostituitoDa":"","note":"","responsabile":"","dataAggiornamento":"2026-06-12","storiaVersioni":[],"fonteOrigine":"","noteVersione":""},{"id":"doc_matrici_infanzia","titolo":"Matrici Campi di Esperienza Infanzia","tipo":"matrice","ambito":"infanzia","versione":"v1.0","stato":"canonico","canonico":true,"fileLocale":"./docs_infanzia/11_Matrici_Campi_Infanzia_v1_0.docx","urlEsterna":"","collegatoA":["infanzia"],"sostituisce":[],"sostituitoDa":"","note":"","responsabile":"","dataAggiornamento":"2026-06-12","storiaVersioni":[],"fonteOrigine":"","noteVersione":""},{"id":"doc_dossier_primaria","titolo":"Dossier Scuola Primaria","tipo":"dossier","ambito":"primaria","versione":"v1.1","stato":"canonico","canonico":true,"fileLocale":"./docs_primaria/01_Dossier_Scuola_Primaria_v1_1.docx","urlEsterna":"","collegatoA":["primaria"],"sostituisce":[],"sostituitoDa":"","note":"","responsabile":"","dataAggiornamento":"2026-06-12","storiaVersioni":[],"fonteOrigine":"","noteVersione":""},{"id":"doc_matrici_primaria","titolo":"Matrici Curricolo Primaria I-V","tipo":"matrice","ambito":"primaria","versione":"v1.0","stato":"canonico","canonico":true,"fileLocale":"./docs_primaria/02_Matrici_Curricolo_Primaria_I_V_v1_0.docx","urlEsterna":"","collegatoA":["primaria"],"sostituisce":[],"sostituitoDa":"","note":"","responsabile":"","dataAggiornamento":"2026-06-12","storiaVersioni":[],"fonteOrigine":"","noteVersione":""},{"id":"doc_rubriche_primaria","titolo":"Rubriche Valutazione Primaria","tipo":"rubrica","ambito":"primaria","versione":"v1.0","stato":"canonico","canonico":true,"fileLocale":"./docs_primaria/03_Rubriche_Valutazione_Primaria_v1_0.docx","urlEsterna":"","collegatoA":["primaria"],"sostituisce":[],"sostituitoDa":"","note":"","responsabile":"","dataAggiornamento":"2026-06-12","storiaVersioni":[],"fonteOrigine":"","noteVersione":""},{"id":"doc_dossier_secondaria","titolo":"Dossier Scuola Secondaria di I grado","tipo":"dossier","ambito":"secondaria_i_grado","versione":"v1.0","stato":"canonico","canonico":true,"fileLocale":"./docs_secondaria/12_Dossier_Scuola_Secondaria_I_Grado_v1_0.docx","urlEsterna":"","collegatoA":["secondaria_i_grado"],"sostituisce":[],"sostituitoDa":"","note":"","responsabile":"","dataAggiornamento":"2026-06-12","storiaVersioni":[],"fonteOrigine":"","noteVersione":""},{"id":"doc_matrici_secondaria","titolo":"Matrici Curricolo Secondaria di I grado","tipo":"matrice","ambito":"secondaria_i_grado","versione":"v1.0","stato":"canonico","canonico":true,"fileLocale":"./docs_secondaria/13_Matrici_Curricolo_Secondaria_I_Grado_v1_0.docx","urlEsterna":"","collegatoA":["secondaria_i_grado"],"sostituisce":[],"sostituitoDa":"","note":"","responsabile":"","dataAggiornamento":"2026-06-12","storiaVersioni":[],"fonteOrigine":"","noteVersione":""},{"id":"doc_rubriche_secondaria","titolo":"Rubriche Valutazione Secondaria di I grado","tipo":"rubrica","ambito":"secondaria_i_grado","versione":"v1.0","stato":"canonico","canonico":true,"fileLocale":"./docs_secondaria/14_Rubriche_Valutazione_Secondaria_I_Grado_v1_0.docx","urlEsterna":"","collegatoA":["secondaria_i_grado"],"sostituisce":[],"sostituitoDa":"","note":"","responsabile":"","dataAggiornamento":"2026-06-12","storiaVersioni":[],"fonteOrigine":"","noteVersione":""},{"id":"doc_report_tecnologia","titolo":"Report Normalizzazione Tecnologia","tipo":"report","ambito":"tecnologia","versione":"v1.0","stato":"canonico","canonico":true,"fileLocale":"./docs_tecnologia/00_Report_Normalizzazione_Tecnologia_v1_0.docx","urlEsterna":"","collegatoA":["secondaria_tecnologia","primaria_tecnologia"],"sostituisce":[],"sostituitoDa":"","note":"Materiale specifico di Tecnologia.","responsabile":"","dataAggiornamento":"2026-06-12","storiaVersioni":[],"fonteOrigine":"","noteVersione":"Materiale specifico di Tecnologia."},{"id":"doc_dossier_tecnologia","titolo":"Dossier Studio Tecnologia","tipo":"dossier","ambito":"tecnologia","versione":"v1.0","stato":"canonico","canonico":true,"fileLocale":"./docs_tecnologia/01_Dossier_Studio_Tecnologia_v1_0.docx","urlEsterna":"","collegatoA":["secondaria_tecnologia","primaria_tecnologia"],"sostituisce":[],"sostituitoDa":"","note":"Materiale specifico di Tecnologia. Non va nelle fonti generali.","responsabile":"","dataAggiornamento":"2026-06-12","storiaVersioni":[],"fonteOrigine":"","noteVersione":"Materiale specifico di Tecnologia. Non va nelle fonti generali."},{"id":"doc_curricolo_tecnologia","titolo":"Curricolo Verticale Tecnologia","tipo":"curricolo","ambito":"tecnologia","versione":"v1.0","stato":"canonico","canonico":true,"fileLocale":"./docs_tecnologia/02_Curricolo_Verticale_Tecnologia_v1_0.docx","urlEsterna":"","collegatoA":["secondaria_tecnologia","primaria_tecnologia"],"sostituisce":[],"sostituitoDa":"","note":"Da usare solo nella sezione Tecnologia o nelle schede Tecnologia.","responsabile":"","dataAggiornamento":"2026-06-12","storiaVersioni":[],"fonteOrigine":"","noteVersione":"Da usare solo nella sezione Tecnologia o nelle schede Tecnologia."},{"id":"doc_programmazione_tecnologia","titolo":"Programmazione Annuale Tecnologia 2026-2027","tipo":"curricolo","ambito":"tecnologia","versione":"v1.0","stato":"canonico","canonico":true,"fileLocale":"./docs_tecnologia/03_Programmazione_Annuale_Tecnologia_2026_2027_v1_0.docx","urlEsterna":"","collegatoA":["secondaria_tecnologia"],"sostituisce":[],"sostituitoDa":"","note":"Materiale specifico di Tecnologia.","responsabile":"","dataAggiornamento":"2026-06-12","storiaVersioni":[],"fonteOrigine":"","noteVersione":"Materiale specifico di Tecnologia."},{"id":"doc_uda_tecnologia","titolo":"UDA Tecnologia 2026-2027","tipo":"uda","ambito":"tecnologia","versione":"v1.0","stato":"canonico","canonico":true,"fileLocale":"./docs_tecnologia/04_UDA_Tecnologia_2026_2027_v1_0.docx","urlEsterna":"","collegatoA":["secondaria_tecnologia"],"sostituisce":[],"sostituitoDa":"","note":"Materiale specifico di Tecnologia.","responsabile":"","dataAggiornamento":"2026-06-12","storiaVersioni":[],"fonteOrigine":"","noteVersione":"Materiale specifico di Tecnologia."},{"id":"doc_progettazione_12_uda_tecnologia","titolo":"Progettazione 12 UDA Tecnologia 2026-2027","tipo":"uda","ambito":"tecnologia","versione":"v1.0","stato":"canonico","canonico":true,"fileLocale":"./docs_tecnologia/05_Progettazione_12_UDA_Tecnologia_2026_2027_v1_0.docx","urlEsterna":"","collegatoA":["secondaria_tecnologia"],"sostituisce":[],"sostituitoDa":"","note":"Materiale specifico di Tecnologia.","responsabile":"","dataAggiornamento":"2026-06-12","storiaVersioni":[],"fonteOrigine":"","noteVersione":"Materiale specifico di Tecnologia."},{"id":"doc_rubriche_tecnologia","titolo":"Rubriche, griglie e monitoraggio Tecnologia","tipo":"rubrica","ambito":"tecnologia","versione":"v1.0","stato":"canonico","canonico":true,"fileLocale":"./docs_tecnologia/06_Rubriche_Griglie_Monitoraggio_Tecnologia_v1_0.docx","urlEsterna":"","collegatoA":["secondaria_tecnologia"],"sostituisce":[],"sostituitoDa":"","note":"Materiale specifico di Tecnologia.","responsabile":"","dataAggiornamento":"2026-06-12","storiaVersioni":[],"fonteOrigine":"","noteVersione":"Materiale specifico di Tecnologia."},{"id":"doc_allegati_tecnologia","titolo":"Allegati operativi Tecnologia","tipo":"allegato","ambito":"tecnologia","versione":"v1.0","stato":"canonico","canonico":true,"fileLocale":"./docs_tecnologia/07_Allegati_Operativi_Tecnologia_v1_0.docx","urlEsterna":"","collegatoA":["secondaria_tecnologia"],"sostituisce":[],"sostituitoDa":"","note":"Materiale specifico di Tecnologia.","responsabile":"","dataAggiornamento":"2026-06-12","storiaVersioni":[],"fonteOrigine":"","noteVersione":"Materiale specifico di Tecnologia."},{"id":"doc_quadro_sinottico_tecnologia","titolo":"Quadro sinottico Tecnologia","tipo":"matrice","ambito":"tecnologia","versione":"v1.0","stato":"canonico","canonico":true,"fileLocale":"./docs_tecnologia/Quadro_Sinottico_Tecnologia_v1_0.html","urlEsterna":"","collegatoA":["secondaria_tecnologia"],"sostituisce":[],"sostituitoDa":"","note":"Materiale specifico di Tecnologia.","responsabile":"","dataAggiornamento":"2026-06-12","storiaVersioni":[],"fonteOrigine":"","noteVersione":"Materiale specifico di Tecnologia."},{"id":"doc_guida_tecnologia","titolo":"Guida docente Manager Curricolo Tecnologia","tipo":"guida","ambito":"tecnologia","versione":"v1.0","stato":"canonico","canonico":true,"fileLocale":"./docs_tecnologia/Guida_Docente_Manager_Curricolo_Tecnologia_v1_0.docx","urlEsterna":"","collegatoA":["secondaria_tecnologia"],"sostituisce":[],"sostituitoDa":"","note":"Materiale specifico di Tecnologia.","responsabile":"","dataAggiornamento":"2026-06-12","storiaVersioni":[],"fonteOrigine":"","noteVersione":"Materiale specifico di Tecnologia."}],"matriciRevisione":[{"id":"rev_template_001","ordine":"primaria","disciplinaCampo":"primaria_italiano","classeAnno":"I-V","nucleoFondante":"","curricoloVigente":"","fonteNuova":"","variazioneProposta":"","motivazione":"","evidenza":"","priorita":"media","responsabile":"","stato":"aperta","note":"Riga modello: duplicare e compilare per ogni variazione."},{"id":"rev_template_002","ordine":"infanzia","disciplinaCampo":"infanzia_conoscenza_mondo","classeAnno":"3-5 anni","nucleoFondante":"","curricoloVigente":"","fonteNuova":"","variazioneProposta":"","motivazione":"","evidenza":"","priorita":"media","responsabile":"","stato":"aperta","note":"Riga modello per campi di esperienza."},{"id":"rev_template_003","ordine":"secondaria_i_grado","disciplinaCampo":"secondaria_tecnologia","classeAnno":"I-III","nucleoFondante":"Digitale, dati, informatica, IA e cittadinanza tecnologica","curricoloVigente":"","fonteNuova":"Indicazioni 2025 / PTOF / quadri europei","variazioneProposta":"Integrare uso critico di dati, rete e IA nelle attività progettuali.","motivazione":"Allineamento a cittadinanza digitale, competenze STEM e responsabilità tecnologica.","evidenza":"Prodotto/documentazione/protocollo di uso consapevole del digitale.","priorita":"alta","responsabile":"","stato":"aperta","note":"Esempio compilato per verificare rendering e filtri; modificabile."}],"workflow":[{"id":"giorno_15_giugno","data":"2026-06-15","titolo":"Rilettura curricolo vigente","azioniManager":["Aprire fonti generali","Compilare punti di forza","Registrare criticità","Annotare elementi da mantenere"],"outputAtteso":"Mappa iniziale di punti di forza, criticità e priorità."},{"id":"giorno_16_giugno","data":"2026-06-16","titolo":"Confronto con Indicazioni e organizzazione gruppi","azioniManager":["Consultare Indicazioni 2012/2025","Assegnare ordini, discipline e referenti","Aprire matrici di revisione"],"outputAtteso":"Gruppi/referenti e quadro di lavoro condiviso."},{"id":"giorno_17_giugno","data":"2026-06-17","titolo":"Compilazione matrici","azioniManager":["Compilare variazioni per ordine e disciplina","Collegare fonti e motivazioni","Impostare priorità e stato"],"outputAtteso":"Bozza di proposte di revisione curricolare."},{"id":"giorno_18_giugno","data":"2026-06-18","titolo":"Consolidamento proposte","azioniManager":["Filtrare variazioni aperte","Validare o rinviare decisioni","Esportare report e CSV"],"outputAtteso":"Sintesi organizzata per revisione collegiale."},{"id":"giorni_22_23_giugno","data":"2026-06-22/2026-06-23","titolo":"Allineamento finale","azioniManager":["Integrare contributi mancanti","Verificare documenti collegati","Esportare backup JSON"],"outputAtteso":"Pacchetto dati pronto per validazione e successiva redazione."}],"decisioni":[{"id":"dec_001","titolo":"Validare struttura Manager v2.0","ambito":"processo","descrizione":"Confermare insieme che il modello dati e la struttura informativa sono adeguati prima di consolidare l'HTML.","stato":"aperta","priorita":"alta","responsabile":"","dataScadenza":""}],"dashboard":{"metriche":["ordiniScuolaTotali","disciplineTotali","documentiCanonici","documentiDaVerificare","variazioniAperte","variazioniAltaPriorita","decisioniAperte","percentualeCompletamento"],"domandeGuida":["Da dove partiamo oggi e quali fonti dobbiamo consultare?","Quali ordini di scuola hanno già una revisione avviata?","Quali discipline o campi hanno matrici da completare?","Quali documenti sono canonici e quali sono solo materiali di supporto?","Quali proposte sono più urgenti o strategiche?","Quali decisioni devono essere condivise prima della validazione?"]},"regoleValidazione":["Ogni documento deve avere id, titolo, tipo, ambito, versione e stato.","Ogni disciplina deve appartenere a un ordine di scuola o all'ambito trasversale.","Le fonti generali non devono contenere documenti specifici di Tecnologia.","Ogni riga di matrice deve avere ordine, disciplina/campo, variazione proposta, motivazione e stato.","L'export JSON deve essere reimportabile senza perdita di dati.","Il reset deve richiedere conferma esplicita.","Il backup JSON deve essere sempre visibile."],"testAccettazione":[{"id":"test_001","descrizione":"Cambio denominazione istituto: la dashboard e le intestazioni si aggiornano.","esitoAtteso":"La nuova denominazione compare in tutte le viste principali."},{"id":"test_002","descrizione":"Aggiungo un documento al registro.","esitoAtteso":"Il documento compare nel registro, nei filtri e nell'export JSON."},{"id":"test_003","descrizione":"Aggiungo una variazione curricolare.","esitoAtteso":"La variazione compare nella matrice, nel conteggio dashboard e nell'export CSV."},{"id":"test_004","descrizione":"Filtro per Primaria.","esitoAtteso":"Sono visibili solo elementi di Primaria e trasversali collegati."},{"id":"test_005","descrizione":"Apro Riferimenti comuni.","esitoAtteso":"Non compaiono documenti specifici di Tecnologia."},{"id":"test_006","descrizione":"Esporto e reimporto JSON.","esitoAtteso":"Nessuna perdita dati."},{"id":"test_007","descrizione":"Apro il pacchetto su altro PC dopo estrazione ZIP.","esitoAtteso":"I link locali funzionano."}],"impostazioniExport":{"formati":["json","csv","html_stampa"],"nomiFile":{"backupJson":"backup_manager_curricolo_istituto_v2.json","matriceCsv":"matrice_revisione_curricolo.csv","registroDocumentiCsv":"registro_documenti_curricolo.csv"}},"allegati":{},"guidaProcesso":{"titolo":"Guida rapida al processo di aggiornamento del curricolo","tono":"didascalico, leggero, operativo","passi":[{"id":"g1","titolo":"Partire dal contesto dell'Istituto","descrizione":"Prima di modificare il curricolo, chiarire anno scolastico, versione del curricolo, responsabili e fonti comuni.","sezioneManager":"Impostazioni Istituto"},{"id":"g2","titolo":"Leggere le fonti comuni","descrizione":"Non tutte le fonti servono allo stesso modo. Prima leggere quelle generali, poi usare quelle specifiche solo dove sono pertinenti.","sezioneManager":"Riferimenti comuni"},{"id":"g3","titolo":"Scegliere livello e disciplina","descrizione":"Lavorare per ordine di scuola e per disciplina/campo evita confusione e rende il lavoro assegnabile.","sezioneManager":"Infanzia / Primaria / Secondaria / Discipline"},{"id":"g4","titolo":"Scrivere proposte motivate","descrizione":"Ogni variazione deve spiegare cosa cambia, perché cambia, con quale fonte e quale evidenza.","sezioneManager":"Proposte di aggiornamento"},{"id":"g5","titolo":"Controllare documenti e versioni","descrizione":"Ogni documento deve avere stato, versione e ruolo: canonico, bozza, supporto, storico o superato.","sezioneManager":"Documenti"},{"id":"g6","titolo":"Chiudere con decisioni ed export","descrizione":"Le decisioni aperte vanno tracciate. A fine sessione esportare JSON/CSV per non perdere il lavoro.","sezioneManager":"Decisioni del gruppo / Strumenti"}],"riferimenti":[{"id":"norm_autonomia_dpr_275_1999","gruppo":"Quadro generale","titolo":"D.P.R. 275/1999 — Autonomia scolastica","tipo":"normativa","usoPratico":"Ricorda che il curricolo è costruito dalla scuola nell'ambito dell'autonomia, dentro il quadro nazionale.","doveSiUsa":"Impostazioni Istituto, Riferimenti comuni, Proposte di aggiornamento","link":"https://www.normattiva.it/uri-res/N2Ls?urn:nir:presidente.repubblica:decreto:1999-03-08;275","stato":"link_normattiva"},{"id":"norm_indicazioni_2012_dm_254","gruppo":"Curricolo primo ciclo","titolo":"D.M. 254/2012 — Indicazioni nazionali per il curricolo","tipo":"normativa","usoPratico":"È la base per traguardi, obiettivi di apprendimento, campi di esperienza e discipline.","doveSiUsa":"Riferimenti comuni, Infanzia, Primaria, Secondaria, Proposte di aggiornamento","link":"https://www.mim.gov.it/documents/20182/51310/DM+254_2012.pdf","stato":"link_mim_da_verificare"},{"id":"doc_indicazioni_nuovi_scenari","gruppo":"Curricolo primo ciclo","titolo":"Indicazioni nazionali e nuovi scenari","tipo":"documento_di_lavoro","usoPratico":"Aiuta a leggere le Indicazioni 2012 alla luce di cittadinanza, sostenibilità, digitale e competenze.","doveSiUsa":"Riferimenti comuni, Proposte di aggiornamento","link":"https://www.mim.gov.it/documents/20182/0/Indicazioni+nazionali+e+nuovi+scenari/","stato":"link_mim_da_verificare"},{"id":"norm_valutazione_dlgs_62_2017","gruppo":"Valutazione","titolo":"D.Lgs. 62/2017 — Valutazione e certificazione competenze","tipo":"normativa","usoPratico":"Serve per collegare curricolo, valutazione, certificazione delle competenze ed esame conclusivo.","doveSiUsa":"Rubriche, Documenti, Proposte di aggiornamento","link":"https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2017-04-13;62","stato":"link_normattiva"},{"id":"norm_certificazione_dm_742_2017","gruppo":"Valutazione","titolo":"D.M. 742/2017 — Certificazione competenze primo ciclo","tipo":"normativa","usoPratico":"Aiuta ad allineare curricolo, traguardi e competenze in uscita.","doveSiUsa":"Rubriche, Proposte di aggiornamento, Secondaria","link":"https://www.mim.gov.it/documents/20182/0/DM+742_2017.pdf","stato":"link_mim_da_verificare"},{"id":"norm_educazione_civica_l_92_2019","gruppo":"Educazione civica","titolo":"Legge 92/2019 — Introduzione dell'insegnamento dell'educazione civica","tipo":"normativa","usoPratico":"Serve per integrare educazione civica in modo trasversale nel curricolo.","doveSiUsa":"Discipline / campi, Proposte di aggiornamento, Documenti","link":"https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2019-08-20;92","stato":"link_normattiva"},{"id":"norm_educazione_civica_dm_183_2024","gruppo":"Educazione civica","titolo":"D.M. 183/2024 — Linee guida Educazione civica","tipo":"normativa","usoPratico":"Da usare per aggiornare nuclei, obiettivi e collegamenti trasversali di educazione civica.","doveSiUsa":"Riferimenti comuni, Discipline trasversali, Proposte di aggiornamento","link":"https://www.mim.gov.it/web/guest/-/decreto-ministeriale-n-183-del-7-settembre-2024","stato":"link_mim_da_verificare"},{"id":"norm_orientamento_dm_328_2022","gruppo":"Orientamento","titolo":"D.M. 328/2022 — Linee guida per l'orientamento","tipo":"normativa","usoPratico":"Serve per raccordare curricolo, didattica orientativa, competenze e scelte future degli studenti.","doveSiUsa":"Secondaria, Discipline trasversali, Proposte di aggiornamento","link":"https://www.mim.gov.it/documents/20182/0/m_pi.AOOGABMI.Registro+Decreti%28R%29.0000328.22-12-2022.pdf","stato":"link_mim_da_verificare"},{"id":"norm_stem_dm_184_2023","gruppo":"STEM e digitale","titolo":"D.M. 184/2023 — Linee guida STEM","tipo":"normativa","usoPratico":"Utile per raccordare matematica, scienze, tecnologia, digitale e pensiero computazionale.","doveSiUsa":"Primaria, Secondaria, Tecnologia, Proposte di aggiornamento","link":"https://www.mim.gov.it/web/guest/-/decreto-ministeriale-n-184-del-15-settembre-2023","stato":"link_mim_da_verificare"},{"id":"norm_inclusione_dlgs_66_2017","gruppo":"Inclusione","titolo":"D.Lgs. 66/2017 — Inclusione scolastica","tipo":"normativa","usoPratico":"Aiuta a leggere il curricolo in chiave inclusiva, accessibile e personalizzabile.","doveSiUsa":"Discipline trasversali, Proposte di aggiornamento, Documenti","link":"https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2017-04-13;66","stato":"link_normattiva"},{"id":"ue_competenze_chiave_2018","gruppo":"Competenze","titolo":"Raccomandazione UE 22 maggio 2018 — Competenze chiave","tipo":"quadro_europeo","usoPratico":"Rende leggibile il curricolo come sviluppo progressivo di competenze.","doveSiUsa":"Proposte di aggiornamento, Rubriche, Profilo competenze","link":"https://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32018H0604(01)","stato":"link_ue"},{"id":"doc_ptof","gruppo":"Documenti d'Istituto","titolo":"PTOF d'Istituto","tipo":"documento_istituto","usoPratico":"Dà indirizzo e coerenza al curricolo rispetto all'identità della scuola.","doveSiUsa":"Impostazioni Istituto, Riferimenti comuni, Proposte di aggiornamento","link":"https://www.icdonmilaniariano.edu.it/wp-content/uploads/2024/04/PTOF-22-25-1.pdf","stato":"link_scuola_rilevato"},{"id":"doc_rav_pdm","gruppo":"Documenti d'Istituto","titolo":"RAV / Piano di Miglioramento","tipo":"documento_istituto","usoPratico":"Aiuta a capire priorità, criticità e traguardi da riflettere nel curricolo.","doveSiUsa":"Riferimenti comuni, Proposte di aggiornamento, Dashboard","link":"https://drive.google.com/file/d/1HK_c7S5we7rcUrfIqBVDoxe4dAUEKpNf/view?usp=drivesdk","stato":"copia_drive_rilevata"},{"id":"doc_cronoprogramma","gruppo":"Documenti di processo","titolo":"Cronoprogramma aggiornamento curricolo verticale","tipo":"documento_processuale","usoPratico":"Traduce le giornate di lavoro in azioni concrete.","doveSiUsa":"Giornate di lavoro, Guida, Dashboard","link":"./docs_generali/Cronoprogramma_Aggiornamento_Curricolo_Verticale.docx","stato":"file_locale"}]},"workflowProgress":{"giorno_15_giugno":{"stato":"da_avviare","azioniCompletate":{"0":false,"1":false,"2":false,"3":false},"noteLavoro":"","responsabile":"","ultimoAggiornamento":""},"giorno_16_giugno":{"stato":"da_avviare","azioniCompletate":{"0":false,"1":false,"2":false},"noteLavoro":"","responsabile":"","ultimoAggiornamento":""},"giorno_17_giugno":{"stato":"da_avviare","azioniCompletate":{"0":false,"1":false,"2":false},"noteLavoro":"","responsabile":"","ultimoAggiornamento":""},"giorno_18_giugno":{"stato":"da_avviare","azioniCompletate":{"0":false,"1":false,"2":false},"noteLavoro":"","responsabile":"","ultimoAggiornamento":""},"giorni_22_23_giugno":{"stato":"da_avviare","azioniCompletate":{"0":false,"1":false,"2":false},"noteLavoro":"","responsabile":"","ultimoAggiornamento":""}},"locale":"it-IT","impostazioniConsegna":{"nomeFilePrefix":"curricolo","emailOggettoPrefix":"Consegna aggiornamento curricolo","istruzioni":"Esportare il file della propria sezione e inviarlo al referente curricolo come allegato email."},"autosave":{"enabled":true,"delayMs":1200,"messaggio":"Le modifiche vengono salvate automaticamente nel browser. Per spostare il lavoro su altro PC esportare la sessione."},"sessioneAttiva":null,"sessioneLavoro":{"enabled":true,"titolo":"Sessione di lavoro guidata","passiStandard":[{"id":"guida","titolo":"Leggi la guida","sezione":"guida","istruzione":"Rileggi il processo e il riferimento utile prima di modificare il curricolo."},{"id":"fonti","titolo":"Controlla le fonti","sezione":"fonti","istruzione":"Verifica quale fonte sostiene il lavoro del gruppo."},{"id":"workflow","titolo":"Segui il workflow","sezione":"workflow","istruzione":"Spunta le azioni della giornata o dello step scelto."},{"id":"matrice","titolo":"Compila la matrice","sezione":"matrice","istruzione":"Scrivi proposte motivate e complete."},{"id":"documenti","titolo":"Controlla i documenti","sezione":"documenti","istruzione":"Aggiorna versioni, stato e allegati."},{"id":"gruppi","titolo":"Esporta e consegna","sezione":"gruppi","istruzione":"Esporta il file della sezione o la sessione da inviare al referente."}]},"uiScope":{"ruolo":"docente_gruppo","ordine":"","discipline":[],"nomeGruppo":"","modalita":"ambito_selezionato"},"ruoliApplicazione":[{"id":"docente_gruppo","nome":"Docente / gruppo di lavoro","descrizione":"Vede e lavora solo sull'ambito scelto."},{"id":"coordinatore","nome":"Coordinatore / referente","descrizione":"Vede tutto e raccoglie le consegne dei gruppi."},{"id":"admin","nome":"Amministratore","descrizione":"Vede tutto e gestisce impostazioni, controlli e struttura."}],"modelliDocumentoIstituzionale":[{"id":"report_curricolo_istituto","titolo":"Report complessivo del curricolo d’istituto","categoria":"istituto","versioneModello":"1.0","statoModello":"attivo","statoDocumentoDefault":"bozza","destinatari":"Dirigente, referente curricolo, dipartimenti, collegio docenti","scopo":"Restituire in forma istituzionale il quadro complessivo di fonti, discipline, documenti, proposte e decisioni.","sezioni":["Frontespizio","Dati di identificazione","Sintesi istruttoria","Fonti e riferimenti","Quadro discipline/campi","Documenti prodotti o approvati","Proposte di aggiornamento","Decisioni e punti aperti","Validazione e firme"],"formati":["print_pdf","doc","docx"]},{"id":"documento_gruppo_lavoro","titolo":"Documento prodotto dal gruppo di lavoro","categoria":"gruppo","versioneModello":"1.0","statoModello":"attivo","statoDocumentoDefault":"bozza_gruppo","destinatari":"Referente curricolo o referente di dipartimento","scopo":"Raccogliere il prodotto del gruppo con proposte, documenti allegati, evidenze e note di consegna.","sezioni":["Frontespizio","Ambito del gruppo","Sintesi del lavoro","Proposte formulate","Documenti citati/prodotti","Criticità","Consegna al referente","Firme gruppo"],"formati":["print_pdf","doc","docx"]},{"id":"documento_dipartimento","titolo":"Documento finale di dipartimento","categoria":"dipartimento","versioneModello":"1.0","statoModello":"attivo","statoDocumentoDefault":"validato_referente","destinatari":"Dipartimento, referente curricolo, dirigente","scopo":"Formalizzare l’esito del dipartimento per una disciplina o area con quadro fonti, scelte e proposte validate.","sezioni":["Frontespizio","Composizione/ambito dipartimento","Quadro curricolare","Proposte validate","Documenti approvati","Decisioni residue","Firme e validazione"],"formati":["print_pdf","doc","docx"]},{"id":"proposta_aggiornamento_curricolo","titolo":"Proposta di aggiornamento del curricolo","categoria":"proposta","versioneModello":"1.0","statoModello":"attivo","statoDocumentoDefault":"in_revisione","destinatari":"Referente curricolo, dirigente, organi collegiali","scopo":"Presentare variazioni motivate e tracciabili, con fonte, evidenza e priorità.","sezioni":["Frontespizio","Oggetto della proposta","Quadro vigente","Fonte/riferimento","Variazione proposta","Motivazione","Evidenze","Impatto sul curricolo","Esito istruttorio"],"formati":["print_pdf","doc","docx"]},{"id":"documento_approvato_validato","titolo":"Documento approvato / validato","categoria":"approvazione","versioneModello":"1.0","statoModello":"attivo","statoDocumentoDefault":"approvato","destinatari":"Archivio d’istituto, dirigente, referenti","scopo":"Esportare solo il quadro dei documenti validati o canonici, con metadati essenziali e tracciabilità.","sezioni":["Frontespizio","Estremi documento","Elenco documenti validati","Riferimenti","Note di archiviazione","Firme/validazione"],"formati":["print_pdf","doc","docx"]},{"id":"verbale_sintesi_giornata","titolo":"Verbale / sintesi della giornata di lavoro","categoria":"verbale","versioneModello":"1.0","statoModello":"attivo","statoDocumentoDefault":"bozza","destinatari":"Partecipanti, referente, archivio processo","scopo":"Sintetizzare attività svolte, output, decisioni, criticità e azioni successive.","sezioni":["Frontespizio","Data e oggetto","Attività svolte","Output prodotti","Decisioni","Azioni successive","Firme"],"formati":["print_pdf","doc","docx"]},{"id":"quadro_sinottico_decisioni","titolo":"Quadro sinottico delle decisioni","categoria":"decisioni","versioneModello":"1.0","statoModello":"attivo","statoDocumentoDefault":"in_revisione","destinatari":"Referente, dirigente, gruppi di lavoro","scopo":"Rendere leggibili decisioni aperte, responsabilità, priorità e stato di avanzamento.","sezioni":["Frontespizio","Sintesi decisioni","Tabella decisioni","Punti aperti","Azioni richieste"],"formati":["print_pdf","doc","docx"]},{"id":"report_disciplina_area","titolo":"Report per disciplina / area / ordine","categoria":"disciplina","versioneModello":"1.0","statoModello":"attivo","statoDocumentoDefault":"bozza","destinatari":"Docenti della disciplina, referente curricolo, dipartimento","scopo":"Produrre un documento leggibile per l’ambito selezionato, con discipline, documenti, proposte e fonti pertinenti.","sezioni":["Frontespizio","Ambito selezionato","Quadro discipline/campi","Documenti collegati","Proposte di aggiornamento","Decisioni e note","Validazione"],"formati":["print_pdf","doc","docx"]},{"id":"documento_consegna_referente","titolo":"Documento di consegna al referente","categoria":"consegna","versioneModello":"1.0","statoModello":"attivo","statoDocumentoDefault":"consegnato_referente","destinatari":"Referente curricolo o referente dipartimento","scopo":"Accompagnare la consegna del gruppo con dati, elenco materiali, proposte e note operative.","sezioni":["Frontespizio","Mittente e ambito","Materiali consegnati","Proposte incluse","Note operative","Dichiarazione di consegna"],"formati":["print_pdf","doc","docx"]}],"regoleDocumentaliIstituzionali":{"versione":"1.0","principi":["distinzione tra documento istituzionale, registro documenti, allegato e backup","frontespizio e metadati essenziali sempre presenti","sezioni numerate e tabelle leggibili","stati documentali espliciti","assenza di campi tecnici interni nell’export","mai undefined/null nei documenti esportati"],"formati":["stampa/PDF tramite browser","Word .doc compatibile","DOCX nativo OOXML minimale","JSON solo per modelli e backup, non come documento istituzionale"],"riferimentiTecnici":["AgID documento informatico e Allegato 2 formati","accessibilità documenti non web","linguaggio chiaro PA/Designers Italia"]}}</script>
 <script>
+/**
+ * Wiki/help catalog - documentation and user guidance for Curriculum Manager
+ * Read-only help content, no external dependencies
+ */
+
+const WIKI_CATALOG = [
+  {
+    id: "introduzione",
+    title: "Introduzione al Manager Curricolo",
+    category: "Guida iniziale",
+    content: `
+Il Manager Curricolo d'Istituto è uno strumento semplice e gratuito per aiutare le scuole nella gestione del loro curricolo. Funziona interamente nel tuo browser, senza bisogno di installazione, connessione internet o account.
+
+### Cosa puoi fare
+- Visualizzare e utilizzare modelli di documenti istituzionali
+- Esportare documenti in vari formati (Stampa/PDF, Word .doc, DOCX)
+- Tenere traccia dello stato di avanzamento dei lavori
+- Annotare osservazioni e decisioni durante il processo di revisione
+
+### Come iniziare
+1. Apri il file **APRI_MANAGER_CURRICOLO_ISTITUTO.html** nel tuo browser
+2. Esplora le tre sezioni principali tramite il menu laterale: Materiali, Documenti, Revisione
+3. Inizia dai **Materiali** per vedere i modelli disponibili
+4. Passa a **Documenti** per lavorare sui documenti istituzionali
+5. Usa **Revisione** per tenere traccia dei controlli e delle annotazioni
+
+Tutti i tuoi dati (appunti, stato dei documenti) rimangono solo sul tuo computer. nulla viene inviato a server esterni.
+    `
+  },
+  {
+    id: "esportazione",
+    title: "Come esportare i documenti",
+    category: "Funzionalità",
+    content: `
+Il Manager offre diversi modi per esportare il tuo lavoro, a seconda delle tue esigenze.
+
+### Stampa/PDF
+Utilizza la funzione di stampa standard del browser per creare un PDF:
+1. Apri il documento che vuoi esportare
+2. Clicca su **Prepara per il confronto** o usa Ctrl+P (Cmd+P su Mac)
+3. Nella finestra di stampa, scegli "Salva come PDF" invece di una stampante fisica
+4. Regola le impostazioni di layout se necessario e salva il file
+
+### Word .doc
+Crea un file compatibile con Microsoft Word:
+1. Dalla sezione Documenti o Revisione, cerca l'opzione di esportazione
+2. Seleziona **Esporta come Word .doc**
+3. Il file verrà salvato con estensione .doc e potrà essere aperto e modificato in Word
+4. Nota: questo formato è ottimizzato per modifiche rapide, non per formattazione avanzata
+
+### DOCX nativo
+Crea un documento Word moderno e completo:
+1. Cerca l'opzione **Esporta come DOCX**
+2. Questa funzione crea un file .docx completo con struttura XML
+3. Compatibile con tutte le versioni recenti di Word e LibreOffice
+4. Ideale per condividere documenti che devono mantenere la formattazione
+
+### Backup e sessioni
+Salva il tuo lavoro per riprenderlo più tardi o trasferirlo su un altro computer:
+1. Cerca l'opzione **Esporta dati** o **Backup sessione**
+2. Viene creato un file JSON che contiene tutti i tuoi appunti e lo stato corrente
+3. Per ripristinare, usa l'opzione **Importa dati** o **Ripristina sessione**
+4. Questo file JSON contiene solo i tuoi dati locali, nessun dato personale sensibile
+    `
+  },
+  {
+    id: "stati-documento",
+    title: "Comprendere gli stati dei documenti",
+    category: "Concetti chiave",
+    content: `
+Nel Manager Curricolo, ogni documento passa attraverso diversi stati durante il suo ciclo di vita. Conoscere questi stati ti aiuta a capire dove sei nel processo e cosa fare successivamente.
+
+### Stati disponibili
+
+**Bozza**
+- Documento di lavoro iniziale o in corso di elaborazione
+- Puoi modificarlo liberamente
+- Non è ancora stato sottoposto a revisione formale
+- Icona: ⚪ (cerchio vuoto)
+
+**In revisione**
+- Documento che è stato condiviso con colleghi o gruppi per feedback
+- Stai ricevendo osservazioni e suggerimenti
+- Ancora modificabile sulla base dei feedback ricevuti
+- Icona: 🔄 (frecce circolari)
+
+**Validato**
+- Documento che è stato controllato e approvato dagli organi preposti (es. referente curricolo, commissione)
+- Contenuto considerato corretto e completo
+- Non dovrebbe subire ulteriori modifiche sostanziali
+- Icona: ✅ (segno di spunta)
+
+**Approvato**
+- Documento che ha ricevuto l'approvazione finale secondo le procedure interne dell'istituto
+- Pronto per l'utilizzo ufficiale e la diffusione
+- Icona: 🏆 (trofeo) o 📎 (graffetta)
+
+**Archiviato**
+- Documento conservato secondo le procedure di archiviazione dell'istituto
+- Non più attivo ma mantenuto per riferimento storico o obblighi di conservazione
+- Icona: 📦 (scatola) or 🗄️ (armadietto)
+
+### Come cambiare lo stato
+Nella maggior parte delle viste, troverai indicatori visuali (badge colorati) che mostrano lo stato corrente di un documento. Per cambiarlo:
+1. Cerca il menu a tendina o i pulsanti di stato accanto al documento
+2. Seleziona lo stato desiderato dall'elenco disponibile
+3. Alcuni cambi di stato potrebbero richiedere conferma o lasciare traccia nel registro delle modifiche
+
+Ricorda: il cambio di stato nel Manager è uno strumento di organizzazione interno. La validazione e approvazione ufficiale devono sempre avvenire secondo le procedure della tua istituzione scolastica.
+    `
+  },
+  {
+    id: "utilizzo-materiali",
+    title: "Come utilizzare i materiali di lavoro",
+    category: "Guide pratiche",
+    content: `
+I materiali che trovi nella sezione "Materiali sorgente" sono punti di partenza per il tuo lavoro, non documenti finali. Ecco come usarli al meglio.
+
+### Cosa sono i materiali sorgente
+- File in formato Markdown (.md) che rappresentano modelli di documenti
+- Contengono placeholder da sostituire con le tue informazioni specifiche
+- Includono avvisi e promemoria sulla necessità di validazione umana
+- Sono intenzionalmente generici per adattarsi a diversi contesti scolastici
+
+### Passaggi per l'utilizzo
+
+1. **Selezione**
+   - Nella sezione Materiali, scegli il template più vicino al documento che devi creare
+   - Leggi attentamente la descrizione per capire se è adatto al tuo scopo
+   - Esempi: se devi creare un documento di dipartimento, cerca "documento-finale-dipartimento"
+
+2. **Copia del contenuto**
+   - Ogni materiale mostra un pulsante "Copia percorso"
+   - Cliccandolo, copia il percorso del file Markdown negli appunti
+   - Apri quel file con qualsiasi editor di testo (Notepad, TextEdit, VS Code, ecc.)
+   - Oppure, se preferisci lavorare direttamente nel browser, copia tutto il contenuto mostrato
+
+3. **Personalizzazione**
+   - Sostituisci tutti i placeholder tratteggiati [DA COMPILARE: ...] con le tue informazioni reali
+   - Mantieni la struttura dei titoli e dei paragrafi finché non sei sicuro di volerla modificare
+   - Elimina le sezioni che non ti servono, ma fai attenzione a non perdere parti obbligatorie secondo le norme della tua scuola
+   - Aggiungi sezioni specifiche se richieste dal tuo PTOF o da altre normative
+
+4. **Validazione**
+   - Prima di considerare il lavoro completo, fai leggere il documento a colleghi o referenti
+   - Verifica la coerenza con il PTOF della scuola, le delibere collegiali e i regolamenti interni
+   - Controlla che non ci siano dati personali sensibili inseriti per errore
+   - Assicurati che il linguaggio sia chiaro e accessibile a tutti i destinatari previsti
+
+5. **Esportazione**
+   - Una volta soddisfatto del contenuto, esporta nel formato desiderato
+   - Per bozze interne: usa Word .doc per facilitare ulteriori modifiche
+   - Per versioni definitive: prova ad esportare in PDF e verifica che l'aspetto sia corretto
+   - Per archiviazione a lungo termine: considera il formato PDF/A se richiesto dalla tua istituzione
+
+### Avvertenze importanti
+- I materiali sorgente sono forniti "così come sono", senza garanzia di aderire pienamente alle normative vigenti
+- È tua responsabilità verificare l'idoneità del contenuto per il tuo specifico contesto istituzionale
+- Non inserire mai dati personali di studenti, famiglie o colleghi senza aver ottenuto le necessarie autorizzazioni
+- Quando hai dubbi, consulta sempre il referente curricolo, il dirigente scolastico o l'ufficio legale della tua istituzione
+    `
+  },
+  {
+    id: "flusso-lavoro",
+    title: "Il percorso di lavoro consigliato",
+    category: "Guida passo-passo",
+    content: `
+Il Manager Curricolo ti guida attraverso un percorso logico per creare e gestire i tuoi documenti istituzionali. Seguire questo flusso ti aiuta a non dimenticare passaggi importanti e a mantenere il lavoro organizzato.
+
+### Fase 1: Preparazione e orientamento
+**Obiettivo:** Familiarizzare con gli strumenti disponibili e pianificare il lavoro
+- Apri il Manager e leggi questa guida introduttiva
+- Esplora la sezione **Materiali** per vedere quali modelli sono disponibili
+- Definisci chiaramente quale documento devi creare e a chi è destinato
+- Controlla le scadenze e le procedure interne della tua scuola
+- *Output consigliato:* Una lista di controllo personale con i documenti da preparare
+
+### Fase 2: Selezione del modello
+**Obiettivo:** Scegliere il punto di partenza più adeguato
+- Nella sezione Materiali, leggi le descrizioni di tutti i template disponibili
+- Se hai dubbi tra due modelli, prova a visualizzarli entrambi (copiando il contenuto)
+- Considera non solo il formato attuale ma anche what you might need to add later
+- Se nessun modello sembra perfetto, scegli quello più vicino e preparati a personalizzarlo
+- *Output consigliato:* Il percorso del file Markdown scelto negli appunti
+
+### Fase 3: Creazione della bozza iniziale
+**Obiettivo:** Trasformare il modello in un documento di lavoro
+- Apri il modello scelto nel tuo editor preferito
+- Inizia a compilare i placeholder [DA COMPILARE: ...] con informazioni reali
+- Procede sezione per sezione, non cercare di finirlo tutto insieme
+- Se incontri parti non chiare, segnala con un commento per approfondire dopo
+- Salva frequentemente il tuo lavoro
+- *Output consigliato:* Una prima versione completa del documento, anche se grezza
+
+### Fase 4: Revisione interna
+**Obiettivo:** Migliorare il documento grazie al feedback collettivo
+- Condividi la bozza con colleghi, dipartimenti o gruppi di lavoro pertinenti
+- Chiedi specificamente feedback su: chiarezza, completezza, coerenza con altri documenti
+- Raccogli tutte le osservazioni in un unico posto per facilitarne l'elaborazione
+- Discuti le eventuali disagreement in modo costruttivo, cercando soluzioni condivise
+- Aggiorna il documento incorporando i cambiamenti ritenuti validi
+- *Output consigliato:* Una seconda versione incorporante il feedback ricevuto
+
+### Fase 5: Validazione formale
+**Obiettivo:** Ottenere l'approvazione secondo le procedure istituzionali
+- Identifica chi ha l'autorità per validare ogni tipo di documento nella tua scuola
+- Prepara una breve nota di accompagnamento che spieghi scopo e contenuto del documento
+- Sottoponi il documento alla procedura di validazione prevista (delibera, voto, firma, ecc.)
+- Rispondi puntualmente a eventuali richieste di modifica o chiarimento
+- Ottieni formalmente l'attestazione di validazione o approvazione
+- *Output consigliato:* Il documento con gli estremi della validazione (data, organo, numero protocollo)
+
+### Fase 6: Pubblicazione e archiviazione
+**Obiettivo:** Rendere il documento disponibile e conservarlo correttamente
+- Se appropriato, pubblica il documento nei canali interni della scuola (sito web, bacheca, intranet)
+- Informa i destinatari previsti della disponibilità del documento
+- Archivia una copia secondo le procedure di conservazione della tua istituzione
+- Nota la data di scadenza o il periodo di validità, se applicabile
+- Aggiorna eventuali registri o inventari di documenti istituzionali
+- *Output consigliato:* Conferma di avvenuta pubblicazione e archiviazione
+
+### Suggerimenti per l'uso efficace del Manager
+- **Lavora in sessioni brevi:** meglio 25 minuti concentrati che 2 ore intervallate da distrazioni
+- **Usa la funzione di esportazione dati** giornaliera per non perdere il lavoro in caso di problemi
+- **Tieni un registro semplificato** delle modifiche importanti fatte fuori dal Manager
+- **Rivisita periodicamente** i documenti già validati per verificare se necessitano di aggiornamento
+- **Non temere di tornare indietro:** nel Manager, puoi sempre riaprire una sezione precedente per aggiungere dettagli
+
+Ricorda: il Manager è uno strumento di supporto. La qualità finale del tuo lavoro dipende dalla tua attenzione, dalle discussioni collettive e dalle procedure della tua istituzione.
+    `
+  }
+];
+
+// Make available globally for use in views
+if (typeof window !== "undefined") {
+  window.WIKI_CATALOG = WIKI_CATALOG;
+}
+</script>
+<script>
+if (window !== window.top && window.location.protocol === "file:") {
+  window.top.location = window.location;
+}
 const STORAGE_KEY = "manager_curricolo_istituto_v3_6";
 const FILE_DB_NAME = "manager_curricolo_istituto_v3_6_files";
 const FILE_STORE = "files";
@@ -524,7 +768,7 @@ function toggleSidebar(){document.body.classList.toggle("nav-open");}
 window.addEventListener("beforeunload", e => { if(dirty){ e.preventDefault(); e.returnValue=""; }});
 document.querySelectorAll("nav button[data-view]").forEach(btn => btn.addEventListener("click",()=>showView(btn.dataset.view)));
 function showView(id){document.querySelectorAll("nav button[data-view]").forEach(b=>b.classList.toggle("active",b.dataset.view===id));document.querySelectorAll("section.view").forEach(s=>s.classList.toggle("active",s.id===id));document.body.classList.remove("nav-open");renderView(id);}
-function renderView(id){({dashboard:renderDashboard,guida:renderGuida,istituto:renderIstituto,fonti:renderFonti,documenti:renderDocumenti,documentiIstituzionali:renderDocumentiIstituzionali,modelliSorgente:renderModelliSorgenteIstituzionali,matrice:renderMatrice,workflow:renderWorkflow,sessione:renderSessione,gruppi:renderGruppi,decisioni:renderDecisioni,infanzia:()=>renderOrdine("infanzia"),primaria:()=>renderOrdine("primaria"),secondaria:()=>renderOrdine("secondaria_i_grado"),discipline:renderDiscipline,tecnologia:renderTecnologia,strumenti:renderStrumenti}[id]||renderDashboard)();}
+function renderView(id){({dashboard:renderDashboard,guida:renderGuida,istituto:renderIstituto,fonti:renderFonti,documenti:renderDocumenti,documentiIstituzionali:renderDocumentiIstituzionali,modelliSorgente:renderModelliSorgenteIstituzionali,matrice:renderMatrice,workflow:renderWorkflow,sessione:renderSessione,gruppi:renderGruppi,decisioni:renderDecisioni,infanzia:()=>renderOrdine("infanzia"),primaria:()=>renderOrdine("primaria"),secondaria:()=>renderOrdine("secondaria_i_grado"),discipline:renderDiscipline,tecnologia:renderTecnologia,strumenti:renderStrumenti,wiki:renderWiki}[id]||renderDashboard)();}
 function renderAll(){ensureScopeDefaults();document.getElementById("appSubtitle").textContent = `${state.istituto.denominazione || "Istituto"} · ${state.istituto.annoScolastico || ""} · ${currentScopeLabel()}`;updateNavigationVisibility();renderView(document.querySelector("section.view.active")?.id || "dashboard");}
 function badge(value){const v=String(value??"");const cls=["canonico","validata","approvato"].includes(v)?"ok":(["alta","urgente","da_verificare","aperta","in_revisione"].includes(v)?"warn":"");return `<span class="badge ${cls}">${esc(v||"-")}</span>`;}
 function renderLink(local, external){
@@ -1539,6 +1783,66 @@ function renderTecnologia(){
 function renderStrumenti(){const v=validateState();document.getElementById("strumenti").innerHTML=`<div class="card"><h2>Salvataggio e controlli</h2><div class="toolbar"><button class="action" onclick="saveNow()">Salva</button><button class="action secondary" onclick="exportJson()">Esporta backup</button><button class="action secondary" onclick="downloadCsv('matrice')">Esporta matrice CSV</button>
   <button class="action secondary" onclick="exportDocument('matrice','print')">Stampa/PDF</button>
   <button class="action secondary" onclick="exportDocument('matrice','word')">Word</button><button class="action secondary" onclick="exportDocument('matrice','docx')">DOCX</button><button class="action secondary" onclick="downloadCsv('documenti')">Esporta documenti CSV</button><button class="action secondary" onclick="exportDocument('curricolo','print')">Report completo PDF</button><button class="action secondary" onclick="exportDocument('curricolo','word')">Report completo Word</button><button class="action danger" onclick="confirmReset()">Reset al seed</button></div><h3>Validazione corrente</h3>${v.errors.length?`<div class="notice danger"><strong>Errori:</strong><ul>${v.errors.map(e=>`<li>${esc(e)}</li>`).join("")}</ul></div>`:`<div class="notice"><strong>Validazione base OK.</strong> Nessun errore bloccante rilevato.</div>`}<h3>Test di accettazione</h3><ul>${(state.testAccettazione||[]).map(t=>`<li><strong>${esc(t.id)}:</strong> ${esc(t.descrizione)} → ${esc(t.esitoAtteso)}</li>`).join("")}</ul></div>`;}
+
+function renderWiki(){document.getElementById("wiki").innerHTML=`<div class="card"><h2>Guida e aiuto</h2><div class="notice">Documentazione completa per utilizzare al meglio il Manager Curricolo d'Istituto.</div>${renderWikiContent()}</div>`;}
+
+function renderWikiContent(){
+  const catalog = window.WIKI_CATALOG || [];
+  // Gruppa i contenuti per categoria per una migliore organizzazione
+  const groupedByCategory = {};
+  catalog.forEach(item => {
+    if (!groupedByCategory[item.category]) {
+      groupedByCategory[item.category] = [];
+    }
+    groupedByCategory[item.category].push(item);
+  });
+
+  // Ordina le categorie in modo logico
+  const categoryOrder = [
+    "Guida iniziale",
+    "Funzionalità",
+    "Concetti chiave",
+    "Guide pratiche",
+    "Guida passo-passo"
+  ];
+
+  return Object.keys(groupedByCategory)
+    .filter(cat => categoryOrder.includes(cat)) // Solo categorie conosciute nell'ordine voluto
+    .concat(Object.keys(groupedByCategory).filter(cat => !categoryOrder.includes(cat))) // Altro
+    .map(category => {
+      const items = groupedByCategory[category];
+      return `
+        <div class="wiki-category-section" style="margin-bottom:24px;">
+          <h2 style="border-bottom:2px solid var(--line); padding-bottom:4px;">${esc(category)}</h2>
+          <div class="wiki-items-grid">
+            ${items.map(item => renderWikiItem(item)).join("")}
+          </div>
+        </div>
+      `;
+    }).join("");
+}
+
+function renderWikiItem(item) {
+  return `
+    <article class="wiki-item-card">
+      <h3>${esc(item.title)}</h3>
+      <div class="wiki-item-content">
+        ${item.content.trim().split('\n\n').map(part => {
+          // Gestione semplice di liste e paragrafi
+          if (part.startsWith('- ') || part.startsWith('* ')) {
+            const lines = part.split('\n').map(line => line.trim());
+            return `<ul>${lines.map(line => `<li>${esc(line.substring(2))}</li>`).join('')}</ul>`;
+          }
+          if (part.startsWith('1. ') || part.startsWith('2. ') || part.startsWith('3. ')) {
+            const lines = part.split('\n').map(line => line.trim());
+            return `<ol>${lines.map(line => `<li>${esc(line.substring(3))}</li>`).join('')}</ol>`;
+          }
+          return `<p>${esc(part)}</p>`;
+        }).join('')}
+      </div>
+    </article>
+  `;
+}
 
 /* Form openings */
 function openFonteForm(index=null){const r=index===null?{id:"",titolo:"",tipo:"fonte_istituzionale",ambito:"generale",stato:"da_verificare",canonico:false,urlEsterna:"",fileLocale:"",noteUso:""}:state.fontiGenerali[index];openModal(index===null?"Aggiungi fonte generale":"Modifica fonte generale","fonte",index,formWrap(field("titolo","Titolo",r.titolo,{required:true,full:true})+field("tipo","Tipo",r.tipo,{required:true})+field("stato","Stato",r.stato,{required:true})+checkField("canonico","Documento/fonte canonica",r.canonico)+field("urlEsterna","Link ufficiale o Drive",r.urlEsterna,{full:true})+field("fileLocale","File o scheda locale",r.fileLocale,{full:true})+textField("noteUso","Note d'uso",r.noteUso,{full:true})));}
