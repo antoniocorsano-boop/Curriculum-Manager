@@ -1,0 +1,31 @@
+CONTROLLO_MGR096A_ACTIVITY_STATE_DEDICATED_VIEW_SMOKE_AUDIT
+====================================================================
+
+Data: 2026-06-15
+MGR: MGR-096A
+Titolo: ACTIVITY_STATE_DEDICATED_VIEW_SMOKE_AUDIT
+Stato: SMOKE AUDIT DOCUMENTATO
+
+CHECKLIST:
+
+[✓] File audit creato: docs/03_execution/MGR-096A.md
+[✓] File report controllo creato: report/CONTROLLO_MGR096A_ACTIVITY_STATE_DEDICATED_VIEW_SMOKE_AUDIT.txt
+[✓] REPO-MOVELOG.md NON modificato (non make entry)
+[✓] Solo file ammessi modificati
+[✓] Nessun file src/** modificato
+[✓] Nessun file index.html modificato
+[✓] Validazioni tecniche eseguite: git diff --check, node --check, guardrail run
+[✓] Guardrail fixture passato
+[✓] Boundary scan completato
+[✓] Vista dedicata raggiungibile dalla UI
+[✓] Vista confermata read-only
+[✓] Nessuno storage/API/backend/cloud/autosave rilevato
+[✓] Nessun dato personale/studente reale
+[✓] Nessuna CTA operativa
+[✓] Navigazione verso altre sezioni funzionante
+[✓] Nessun bug bloccante non documentato
+[✓] Worktree pulita, branch da origin/main
+[✓] Nessuna e86064b contamination
+[✓] Nessun branch storico usato come base
+
+RISULTATO: SMOKE AUDIT MGR-096A COMPLETATO, VISTA PRONTA PER DEMO
