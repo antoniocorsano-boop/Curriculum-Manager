@@ -1,0 +1,31 @@
+CONTROLLO_MGR078_LOCAL_PROFILE_CONTEXT_CONFIGURATION
+=====================================================
+
+Data: 2026-06-15
+MGR: MGR-078
+Titolo: LOCAL_PROFILE_AND_CONTEXT_CONFIGURATION_CONTRACT
+Stato: CONTRATTO DEFINITO
+
+CHECKLIST:
+
+[✓] File contratto creato: docs/02_system/LOCAL-PROFILE-CONTEXT-CONFIGURATION-CONTRACT.md
+[✓] File esecuzione creato: docs/03_execution/MGR-078.md
+[✓] Report controllo creato: report/CONTROLLO_MGR078_LOCAL_PROFILE_CONTEXT_CONFIGURATION.txt
+[✓] REPO-MOVELOG.md aggiornato con sezione MGR-078
+[✓] Solo file docs/report/movelog modificati
+[✓] Nessun file src/** modificato
+[✓] Nessun file index.html modificato
+[✓] Nessun file APRI_MANAGER_CURRICOLO_ISTITUTO.html modificato
+[✓] Nessun backend/API/OAuth/cloud/sync introdotto
+[✓] Nessun DOCX/PDF programmatico introdotto
+[✓] Nessun dato personale/studente reale inserito
+[✓] Campi configurabili definiti come opzionali
+[✓] Principi privacy definiti
+[✓] Relazione con DM221/MGR-077 definita
+[✓] Confini espliciti definiti
+[✓] Cosa abilita/non implementa definito
+[✓] Storage previsto documentato (futuro)
+[✓] Worktree pulita, branch da origin/main
+[✓] Nessuna e86064b contamination
+
+RISULTATO: CONTRATTO MGR-078 DEFINITO E PRONTO PER REVIEW

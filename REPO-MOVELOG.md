@@ -7,6 +7,15 @@
 - Vincolo confermato: nessun claim automatico di conformità; solo `ready_for_human_review` strutturale
 - Output: `docs/02_system/DM221-2025-CURRICULUM-DATA-MODEL-CONTRACT.md`, `docs/03_execution/MGR-077.md`, `report/CONTROLLO_MGR077_DM221_2025_DATA_MODEL.txt`
 
+## MGR-078 (2026-06-15)
+- LOCAL_PROFILE_AND_CONTEXT_CONFIGURATION_CONTRACT definito in modalità docs-only
+- Campi configurazione locale: nome docente (opzionale), disciplina, scuola/plesso, ordine, dipartimento/sezione/intersezione, classi, ruolo operativo, preferenze percorso
+- Principi privacy: dati locali, nessun invio automatico, nessun dato studente, nessun obbligatorio oltre minimo funzionale, reset possibile
+- Relazione DM221: configurazione non sostituisce modello curricolare, filtra/orienta viste
+- Confini: no backend/account/login/OAuth/Drive/cloud/sync/remoto/automazioni nascoste
+- Futuro abilitato: MGR-079 UI onboarding, MGR-080 profilo persistente, MGR-081 routing, MGR-082 gate privacy/reset
+- Output: docs/02_system/LOCAL-PROFILE-CONTEXT-CONFIGURATION-CONTRACT.md, docs/03_execution/MGR-078.md, report/CONTROLLO_MGR078_LOCAL_PROFILE_CONTEXT_CONFIGURATION.txt
+
 ## MGR-074 (2026-06-15)
 - Wiki interna dell'app implementata come guida e aiuto integrato
 - Catalogo dati creato: src/data/wikiCatalog.js
