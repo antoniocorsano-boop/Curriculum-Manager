@@ -1,0 +1,15 @@
+# CONTROLLO MGR-100C-A NAVIGATION SIDEBAR FALLBACK HOTFIX
+
+## Check eseguiti
+- `git diff --check`: Nessun errore bloccante (solo warning CRLF)
+- `node --check src/components/sidebar.js`: OK
+- `node --check src/app.js`: OK
+
+## Modifiche
+Solo `index.html`: aggiunta voce di fallback per 7 pulsanti di navigazione.
+
+## Verifica boundary
+Nessun riferimento a: fetch, XMLHttpRequest, localStorage (nuovo), sessionStorage, indexedDB, OAuth, cloud, backend, autosave, save, DOCX, PDF.
+
+## Verifica smoke
+Da eseguire su http://localhost:5173

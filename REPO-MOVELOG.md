@@ -1,5 +1,13 @@
 # REPO-MOVELOG
 
+## MGR-100C-a (2026-06-15) - NAVIGATION_SIDEBAR_FALLBACK_HOTFIX
+- Fix navigazione: aggiunto fallback statico completo in index.html
+- 7 voci di navigazione nel fallback (Materiali, Documenti, Output, Revisione, Mappa, Stati attività, Wiki)
+- sidebar.js genera dinamicamente le stesse 7 voci
+- Nessun cambiamento a matrice revisione o output center
+- Nessun nuovo storage/API/cloud/Autosave/DOCX/PDF
+- Smoke richiesto su http://localhost:5173
+
 ## MGR-099A (2026-06-15)
 - ACTIVITY_STATE_VIEW_POST_POLISH_SMOKE_AUDIT completato in modalità docs-only/audit-only
 - Baseline confermata da origin/main dopo merge MGR-098A: 7608c54bd5a572324d751e661630514e92e8c101
