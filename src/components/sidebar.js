@@ -7,6 +7,7 @@ function renderSidebar({ activeView = "modelliSorgente" } = {}) {
   const views = [
     { id: "modelliSorgente", label: "Materiali" },
     { id: "documentiIstituzionali", label: "Documenti" },
+    { id: "documentOutputCenter", label: "Output" },
     { id: "matriceRevisione", label: "Revisione" }
   ];
 

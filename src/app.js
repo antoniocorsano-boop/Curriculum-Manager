@@ -33,6 +33,7 @@ function renderView(id) {
   const renderers = {
     modelliSorgente: renderModelliSorgenteView,
     documentiIstituzionali: renderDocumentiIstituzionaliView,
+    documentOutputCenter: renderDocumentOutputCenterView,
     matriceRevisione: renderMatriceRevisioneView
   };
   if (renderers[id]) renderers[id]();

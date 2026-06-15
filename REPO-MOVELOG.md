@@ -95,6 +95,13 @@
 - Aggiunte esc/jsAttr locali in modelliSorgenteView.js
 - App funzionante via file://
 
+## MGR-073 (2026-06-15)
+- Document Output Center implementato nell'app standard
+- Nuova vista Output con riepilogo stati locali documenti
+- Azioni consentite: apri documento, stampa browser, copia riepilogo, segna da rivedere, completato manualmente, reset locale singolo
+- Persistenza solo localStorage, nessun backend/API/OAuth/sync
+- Nessun DOCX/PDF programmatico
+
 ## MGR-053 (2026-06-14)
 - Role work paths completato
 - 4 profili: Docente, Coordinatore, Gruppo curricolo, Staff
