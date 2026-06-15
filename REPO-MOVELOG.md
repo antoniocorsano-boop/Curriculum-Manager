@@ -43,6 +43,16 @@
 - MGR-082 proposta: COMPLETION_MAP_READONLY_UI con confini read-only, dati statici/demo, mount point Home + sidebar
 - Output: docs/03_execution/MGR-081.md, report/MGR_081_COMPLETION_MAP_FIRST_UI_SELECTION_AUDIT.md, report/CONTROLLO_MGR081_COMPLETION_MAP_FIRST_UI_SELECTION.txt
 
+## MGR-082 (2026-06-15)
+- COMPLETION_MAP_READONLY_UI implementata come prima superficie UI read-only
+- Mappa globale completamento Curriculum di Istituto: 8 aree, stati, sintesi, evidenze, documenti collegati
+- Voce sidebar "Mappa", vista completionMap, dati statici locali
+- Nessun autosave, localStorage, sessionStorage, IndexedDB
+- Nessuna presa in carico/subentro/profilo reale/validazione automatica
+- Messaggio prudente: validazione umana/collegiale richiesta
+- File: src/data/completionMapCatalog.js, src/views/completionMapView.js, src/app.js, src/components/sidebar.js, index.html, src/styles.css
+- Output: docs/03_execution/MGR-082.md, report/CONTROLLO_MGR082_COMPLETION_MAP_READONLY_UI.txt
+
 ## MGR-074 (2026-06-15)
 - Wiki interna dell'app implementata come guida e aiuto integrato
 - Catalogo dati creato: src/data/wikiCatalog.js

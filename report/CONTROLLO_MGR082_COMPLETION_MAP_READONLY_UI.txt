@@ -1,0 +1,34 @@
+CONTROLLO_MGR082_COMPLETION_MAP_READONLY_UI
+============================================
+
+Data: 2026-06-15
+MGR: MGR-082
+Titolo: COMPLETION_MAP_READONLY_UI
+Stato: UI IMPLEMENTATA
+
+CHECKLIST:
+
+[✓] File vista creato: src/views/completionMapView.js
+[✓] File catalogo creato: src/data/completionMapCatalog.js
+[✓] File sidebar.js aggiornato con voce "Mappa"
+[✓] File app.js aggiornato con renderer completionMap
+[✓] File index.html aggiornato con sezione completionMap e script nuovi
+[✓] File styles.css aggiornato con stili mappa
+[✓] File esecuzione creato: docs/03_execution/MGR-082.md
+[✓] Report controllo creato: report/CONTROLLO_MGR082_COMPLETION_MAP_READONLY_UI.txt
+[✓] REPO-MOVELOG.md aggiornato con sezione MGR-082
+[✓] Solo file runtime minimi e documentali modificati
+[✓] Nessun autosave implementato
+[✓] Nessun localStorage/sessionStorage/IndexedDB usato
+[✓] Nessuna presa in carico/subentro implementata
+[✓] Nessun profilo reale implementato
+[✓] Nessun backend/API/OAuth/cloud/sync introdotto
+[✓] Nessun fetch/XMLHttpRequest introdotto
+[✓] Nessun DOCX/PDF programmatico introdotto
+[✓] Nessun dato personale/studente reale inserito
+[✓] Dati statici di esempio senza persone reali
+[✓] Messaggio prudente validazione umana presente
+[✓] Worktree pulita, branch da origin/main
+[✓] Nessuna e86064b contamination
+
+RISULTATO: MGR-082 COMPLETATA, MAPPA READ-ONY PRONTA PER REVIEW
