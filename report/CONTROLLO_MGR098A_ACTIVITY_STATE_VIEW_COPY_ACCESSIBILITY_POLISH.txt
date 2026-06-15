@@ -1,0 +1,67 @@
+CONTROLLO MGR-098A — ACTIVITY_STATE_VIEW_COPY_AND_ACCESSIBILITY_POLISH
+Data: 2026-06-15
+Branch: feat/mgr-098a-activity-state-view-copy-accessibility-polish
+Baseline: origin/main, merge commit MGR-097C 9ea07c37e3c397d18d3c2c302feea1ac85b7bbd7 confermato.
+
+SCOPE CHECK
+- Modifiche limitate a copy/accessibilità leggera della vista Stati attività.
+- File runtime modificati:
+  - src/views/activityStateReadOnlyView.js
+  - src/styles.css
+- Fixture non modificata: src/data/activityStateFixtureCatalog.js.
+- Nessun cambio a src/app.js, src/components/sidebar.js, index.html, package.json.
+- Nessun montaggio in completionMapView.js.
+- Nessuna nuova feature, route, pulsante, form, input, CTA, storage, autosave, API, backend, cloud, DOCX o PDF.
+
+COPY / ACCESSIBILITY CHECK
+- Sottotitolo chiarito: dati di esempio, uso orientativo, sola lettura, nessuna sostituzione delle verifiche umane/collegiali/istituzionali.
+- Microcopy card semplificato per docente:
+  - "Riferimenti presenti" invece di "Evidenze".
+  - "Verifica umana richiesta" invece di "Validazione umana richiesta".
+  - "Verifica umana completata (dato di esempio)" invece di wording più tecnico.
+- Nota read-only su ogni card aggiornata: nessun dato reale, nessuna scrittura, nessuna verifica automatica.
+- Footer notice aggiornato: esempi statici, niente scrittura/sincronizzazione, decisioni umane/collegiali.
+- Aggiunte semantiche leggere: aria-label legenda, role=list e role=listitem.
+- Nessuna parola positiva del tipo certificato/conforme/registro ufficiale/validato dal sistema/approvato automaticamente/salvato automaticamente introdotta nella UI.
+
+VALIDAZIONI TECNICHE
+- git diff --check: passato.
+- node --check src/views/activityStateReadOnlyView.js: passato.
+- node --check src/app.js: passato.
+- node --check src/components/sidebar.js: passato.
+- node scripts/guardrails/activityStateFixture.guardrail.js: passato.
+
+SMOKE LOCALE HTTP
+- Server: python -m http.server 5173.
+- URL: http://localhost:5173.
+- Chrome headless CDP:
+  - click sidebar "Stati attività": riuscito.
+  - sezione activityStateReadOnly attiva: sì.
+  - titolo "Stati attività": visibile.
+  - sottotitolo polish: visibile.
+  - controlli interattivi nella sezione: 0.
+  - consoleEvents: nessuno.
+  - networkFailures: nessuno.
+  - unexpectedNetwork: nessuno.
+  - storageWrites localStorage/sessionStorage: nessuno.
+  - indexedDBAccessed: false.
+
+BOUNDARY SCAN
+Termini cercati nei file modificati:
+fetch, XMLHttpRequest, localStorage, sessionStorage, indexedDB, OAuth, cloud, backend, api, autosave, save, DOCX, PDF, subentro, ownership, presa in carico, studenti reali, dati sanitari, token, secret, api key, certificato, conforme, validato dal sistema, registro ufficiale, approvato automaticamente, salvato automaticamente.
+
+Classificazione:
+- Codice modificato: nessun match.
+- Documentazione/report: eventuali occorrenze sono solo boundary negativi o riferimenti di controllo, non copy positivo né comportamento reale.
+- Nessuna scrittura storage/API/backend/cloud/autosave introdotta.
+
+DATI / PRIVACY
+- Nessun dato reale introdotto.
+- Fixture lasciata invariata.
+- Nessun dato studente/personale aggiunto.
+
+VERDETTO
+MGR_098A_BRANCH_READY_FOR_PR
+
+PROSSIMO INCREMENTO SELEZIONATO
+A. MGR-099A — ACTIVITY_STATE_VIEW_POST_POLISH_SMOKE_AUDIT

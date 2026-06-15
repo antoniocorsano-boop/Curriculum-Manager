@@ -1,5 +1,15 @@
 # REPO-MOVELOG
 
+## MGR-098A (2026-06-15)
+- ACTIVITY_STATE_VIEW_COPY_AND_ACCESSIBILITY_POLISH completato
+- Microcopy della vista Stati attività migliorato: dati di esempio, uso orientativo, sola lettura, nessuna verifica automatica
+- Copy card reso più leggibile per docenti: riferimenti presenti, verifica umana richiesta/completata, nota read-only senza dato reale o scrittura
+- Accessibilità leggera rafforzata con aria-label legenda, role=list/listitem e maggiore leggibilità CSS
+- Nessuna nuova feature, route, storage, autosave, API, backend, cloud, DOCX/PDF o modifica fixture
+- Smoke locale completato via http://localhost:5173: vista raggiungibile, sottotitolo visibile, zero controlli interattivi nella sezione, nessun evento console bloccante, nessuna scrittura storage, nessuna network inattesa
+- Prossimo incremento selezionato: MGR-099A — ACTIVITY_STATE_VIEW_POST_POLISH_SMOKE_AUDIT
+- File: src/views/activityStateReadOnlyView.js, src/styles.css, docs/03_execution/MGR-098A.md, report/CONTROLLO_MGR098A_ACTIVITY_STATE_VIEW_COPY_ACCESSIBILITY_POLISH.txt
+
 ## MGR-090A (2026-06-15)
 - ACTIVITY_STATE_READONLY_FIXTURE_PROTOTYPE_CONTRACT definito in modalità docs/contract-only
 - Contratto per primo prototipo read-only stati attività: superficie visiva statica/semi-statica, senza persistenza, senza interazioni di salvataggio
