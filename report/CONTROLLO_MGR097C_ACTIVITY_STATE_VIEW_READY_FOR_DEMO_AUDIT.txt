@@ -1,0 +1,32 @@
+CONTROLLO_MGR097C_ACTIVITY_STATE_VIEW_READY_FOR_DEMO_AUDIT
+====================================================================
+
+Data: 2026-06-15
+MGR: MGR-097C
+Titolo: ACTIVITY_STATE_VIEW_READY_FOR_DEMO_AUDIT
+Stato: DEMO READINESS AUDIT COMPLETATO
+
+CHECKLIST:
+
+[✓] File audit creato: docs/03_execution/MGR-097C.md
+[✓] File report controllo creato: report/CONTROLLO_MGR097C_ACTIVITY_STATE_VIEW_READY_FOR_DEMO_AUDIT.txt
+[✓] REPO-MOVELOG.md NON modificato (non make entry)
+[✓] Solo file ammessi modificati
+[✓] Nessun file src/** modificato
+[✓] Nessun file index.html modificato
+[✓] Validazioni tecniche eseguite: git diff --check, node --check, guardrail run
+[✓] Guardrail fixture passato
+[✓] Boundary scan completato
+[✓] Vista dedicata raggiungibile dalla UI
+[✓] Vista confermata read-only
+[✓] Nessuno storage/API/backend/cloud/autosave rilevato
+[✓] Nessun dato personale/studente reale
+[✓] Nessuna CTA operativa
+[✓] Classificazione demo readiness: DEMO_READY_WITH_MINOR_NOTES
+[✓] Minore nota: subtitle "Veste informativa di example data" potrebbe essere levigato
+[✓] Nessun bug bloccante non documentato
+[✓] Worktree pulita, branch da origin/main
+[✓] Nessuna e86064b contamination
+[✓] Nessun branch storico usato come base
+
+RISULTATO: DEMO READINESS AUDIT MGR-097C COMPLETATO, VISTA DEMO-READY CON MINOR NOTE
