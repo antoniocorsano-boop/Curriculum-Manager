@@ -1,0 +1,27 @@
+CONTROLLO_MGR084B_COMPLETION_MAP_READONLY_CARD_LINKS
+======================================================
+
+Data: 2026-06-15
+MGR: MGR-084B
+Titolo: COMPLETION_MAP_READONLY_CARD_LINKS
+Stato: IMPLEMENTATO
+
+CHECKLIST:
+
+[✓] Card con targetView: discipline, revisione, output
+[✓] Label link: "Apri sezione Documenti/Revisione/Output"
+[✓] Click link usa showView() esistente
+[✓] Nessuna nuova vista inventata
+[✓] Nessun router/storage/stato aggiunto
+[✓] Solo stili .cm-link-btn aggiunti
+[✓] File docs/report/movelog aggiornati
+[✓] git diff --check passed
+[✓] node --check passed su tutti i JS
+[✓] Scan pattern: nessun match non ammesso
+[✓] Nessun backend/API/OAuth/cloud/sync/fetch/XHR
+[✓] Nessun localStorage/sessionStorage/indexedDB
+[✓] Nessun DOCX/PDF programmatico
+[✓] Nessun dato personale/studente reale
+[✓] Nessuna contaminazione e86064b
+
+RISULTATO: MGR-084B COMPLETATA, LINK READ-ONY PRONTI PER REVIEW

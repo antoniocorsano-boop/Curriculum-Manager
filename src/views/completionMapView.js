@@ -43,6 +43,9 @@ function renderCompletionMapView() {
     const documentItems = area.documents.length > 0
       ? `<div class="cm-docs"><strong>Documenti:</strong> ${area.documents.map(_esc).join(", ")}</div>`
       : "";
+    const linkItems = area.targetView
+      ? `<button class="cm-link-btn" data-view="${_esc(area.targetView)}">${_esc(area.targetLabel || "Apri sezione")}</button>`
+      : "";
 
     return `
       <div class="cm-area-card">
@@ -55,6 +58,7 @@ function renderCompletionMapView() {
         ${missingItems}
         ${evidenceItems}
         ${documentItems}
+        ${linkItems}
         <div class="cm-validation-note">${_esc(area.validationNote)}</div>
       </div>
     `;
@@ -106,4 +110,8 @@ function renderCompletionMapView() {
       </div>
     </div>
   `;
+
+  el.querySelectorAll(".cm-link-btn").forEach(btn => {
+    btn.addEventListener("click", () => showView(btn.dataset.view));
+  });
 }

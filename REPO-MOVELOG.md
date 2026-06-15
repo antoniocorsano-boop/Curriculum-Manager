@@ -51,6 +51,18 @@
 - Alternative valutate: MGR-084A (polish UI), MGR-084C (contratto dati), MGR-084D (presa in carico/subentro — da non fare ancora)
 - Output: docs/03_execution/MGR-083.md, report/CONTROLLO_MGR083_COMPLETION_MAP_POST_MERGE_SMOKE.txt
 
+## MGR-084B (2026-06-15)
+- COMPLETION_MAP_READONLY_CARD_LINKS implementata come link read-only dalle card della Mappa a viste esistenti
+- Card "Discipline" → "Apri sezione Documenti" (documentiIstituzionali)
+- Card "Revisione e coerenza" → "Apri sezione Revisione" (matriceRevisione)
+- Card "Output e validazione finale" → "Apri sezione Output" (documentOutputCenter)
+- Solo aree con vista esistente coerente ricevono link; le altre restano senza link
+- Click link usa showView() esistente, senza nuovo router/storage/stato
+- Stili .cm-link-btn aggiunti
+- Confini: nessun salvataggio/autosave/storage/backend/cloud/DOCX/PDF/ownership/subentro/profilo reale
+- File: src/data/completionMapCatalog.js, src/views/completionMapView.js, src/app.js, src/styles.css
+- Output: docs/03_execution/MGR-084B.md, report/CONTROLLO_MGR084B_COMPLETION_MAP_READONLY_CARD_LINKS.txt
+
 ## MGR-082 (2026-06-15)
 - COMPLETION_MAP_READONLY_UI implementata come prima superficie UI read-only
 - Mappa globale completamento Curriculum di Istituto: 8 aree, stati, sintesi, evidenze, documenti collegati
