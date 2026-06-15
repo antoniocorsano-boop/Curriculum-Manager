@@ -1,0 +1,32 @@
+CONTROLLO_MGR080_ACTIVITY_COMPLETION_MAP_DOMAIN
+================================================
+
+Data: 2026-06-15
+MGR: MGR-080
+Titolo: ACTIVITY_AND_COMPLETION_MAP_DOMAIN_MODEL_CONTRACT
+Stato: CONTRATTO DEFINITO
+
+CHECKLIST:
+
+[✓] File contratto creato: docs/02_system/ACTIVITY-COMPLETION-MAP-DOMAIN-CONTRACT.md
+[✓] File esecuzione creato: docs/03_execution/MGR-080.md
+[✓] Report controllo creato: report/CONTROLLO_MGR080_ACTIVITY_COMPLETION_MAP_DOMAIN.txt
+[✓] REPO-MOVELOG.md aggiornato con sezione MGR-080
+[✓] Solo file docs/report/movelog modificati
+[✓] Nessun file src/** modificato
+[✓] Nessun file index.html modificato
+[✓] Nessun file APRI_MANAGER_CURRICOLO_ISTITUTO.html modificato
+[✓] Nessun backend/API/OAuth/cloud/sync introdotto
+[✓] Nessun DOCX/PDF programmatico introdotto
+[✓] Nessun dato personale/studente reale inserito
+[✓] Entità definite: UserProfileContext, CompletionMapNode, Activity, ActivityAssignment, LinkedDocument, Evidence, Reference
+[✓] Stati mappa e attività definiti
+[✓] Transizioni attività definite
+[✓] Visibilità filtrata da profilo definita
+[✓] Mappa globale, documento collegato, evidenze, riferimenti, presa in carico/subentro definiti
+[✓] Confini espliciti rispettati
+[✓] Criteri di accettazione definiti
+[✓] Worktree pulita, branch da origin/main
+[✓] Nessuna e86064b contamination
+
+RISULTATO: CONTRATTO MGR-080 DEFINITO E PRONTO PER REVIEW

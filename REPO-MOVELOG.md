@@ -22,6 +22,20 @@
 - Micro-roadmap: MGR-080 activity/domain model, MGR-081 completion map data, MGR-082 profile-filtered activity list UI, MGR-083 workspace layout, MGR-084 right document panel, MGR-085 local autosave, MGR-086 handover/subentro, MGR-087 contextual Wiki, MGR-088 evidence/status layer
 - Output: docs/02_system/USER-WORKFLOW-COMPLETION-MAP-SPEC.md, docs/03_execution/MGR-079.md, report/CONTROLLO_MGR079_USER_WORKFLOW_COMPLETION_MAP_SPEC.txt
 
+## MGR-080 (2026-06-15)
+- ACTIVITY_AND_COMPLETION_MAP_DOMAIN_MODEL_CONTRACT definito in modalità docs/contract-only
+- Entità definite: UserProfileContext, CompletionMapNode, Activity, ActivityAssignment, LinkedDocument, Evidence, Reference
+- Stati mappa e attività definiti con transizioni ammesse
+- Visibilità filtrata da profilo: mappa globale visibile a tutti, attività pertinenti filtrate
+- Presa in carico/subentro: responsabilità operativa temporanea, non proprietà esclusiva
+- Documento collegato e pannello destro concettualizzato
+- Evidenze e tracciabilità tipizzate
+- Riferimenti normativi/documentali con regole di prudenza
+- Autosalvataggio locale concettuale (no implementazione)
+- Relazione con UI futura: Home, mappa, lista attività, workspace, pannello documento, Wiki, output center, matrice revisione
+- Confini: nessuna UI/persistence/backend/API/OAuth/cloud/DOCX/PDF
+- Output: docs/02_system/ACTIVITY-COMPLETION-MAP-DOMAIN-CONTRACT.md, docs/03_execution/MGR-080.md, report/CONTROLLO_MGR080_ACTIVITY_COMPLETION_MAP_DOMAIN.txt
+
 ## MGR-074 (2026-06-15)
 - Wiki interna dell'app implementata come guida e aiuto integrato
 - Catalogo dati creato: src/data/wikiCatalog.js
