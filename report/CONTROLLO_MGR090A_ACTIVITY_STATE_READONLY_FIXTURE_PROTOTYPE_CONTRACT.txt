@@ -1,0 +1,37 @@
+CONTROLLO_MGR090A_ACTIVITY_STATE_READONLY_FIXTURE_PROTOTYPE_CONTRACT
+====================================================================
+
+Data: 2026-06-15
+MGR: MGR-090A
+Titolo: ACTIVITY_STATE_READONLY_FIXTURE_PROTOTYPE_CONTRACT
+Stato: CONTRATTO DEFINITO
+
+CHECKLIST:
+
+[✓] File contratto creato: docs/02_system/ACTIVITY-STATE-READONLY-FIXTURE-PROTOTYPE-CONTRACT.md
+[✓] File esecuzione creato: docs/03_execution/MGR-090A.md
+[✓] Report controllo creato: report/CONTROLLO_MGR090A_ACTIVITY_STATE_READONLY_FIXTURE_PROTOTYPE_CONTRACT.txt
+[✓] REPO-MOVELOG.md aggiornato con sezione MGR-090A
+[✓] Solo file docs/contract/report/movelog modificati
+[✓] Nessun file src/** modificato
+[✓] Nessun file index.html modificato
+[✓] Nessun file APRI_MANAGER_CURRICOLO_ISTITUTO.html modificato
+[✓] Nessun backend/API/OAuth/cloud/sync introdotto
+[✓] Nessun DOCX/PDF programmatico introdotto
+[✓] Nessun localStorage/sessionStorage/IndexedDB runtime introdotto
+[✓] Nessun salvataggio/autosave/storage runtime introdotto
+[✓] Nessuna ownership/subentro/profilo reale introdotto
+[✓] Nessuna fixture JS/JSON runtime introdotta
+[✓] Prototipo definito come read-only, statico/semi-statico, senza persistenza
+[✓] 9 state categories ammesse e confinate
+[✓] Wording certificativo/conformistico vietato
+[✓] human_validated: non impostabile da interazione
+[✓] Relazione con MGR-086B/087A/088A/089A chiarita
+[✓] Storage prohibition per questa slice confermata
+[✓] Future implementation gates definiti
+[✓] Criteri di accettazione definiti
+[✓] Worktree pulita, branch da origin/main
+[✓] Nessuna e86064b contamination
+[✓] Nessun branch storico usato come base
+
+RISULTATO: CONTRATTO MGR-090A DEFINITO E PRONTO PER REVIEW

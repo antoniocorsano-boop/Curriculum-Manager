@@ -1,69 +1,28 @@
 # REPO-MOVELOG
 
-## MGR-077 (2026-06-15)
-- DM221_2025_CURRICULUM_DATA_MODEL_CONTRACT definito in modalità docs/report-only
-- Entità dati definite: CurriculumSource, DisciplineCurriculum2025, FoundationalNucleus, EssentialKnowledge, CompetenceTarget, AssessmentEvidence, HumanReviewState
-- Regole definite: campi obbligatori per "pronta 2025", campi draft, revisione umana, divieto dati personali/studenti, collegamenti PTOF/RAV/PdM senza dati reali
-- Vincolo confermato: nessun claim automatico di conformità; solo `ready_for_human_review` strutturale
-- Output: `docs/02_system/DM221-2025-CURRICULUM-DATA-MODEL-CONTRACT.md`, `docs/03_execution/MGR-077.md`, `report/CONTROLLO_MGR077_DM221_2025_DATA_MODEL.txt`
+## MGR-090A (2026-06-15)
+- ACTIVITY_STATE_READONLY_FIXTURE_PROTOTYPE_CONTRACT definito in modalità docs/contract-only
+- Contratto per primo prototipo read-only stati attività: superficie visiva statica/semi-statica, senza persistenza, senza interazioni di salvataggio
+- activity state definito come indicatore di avanzamento, non come giudizio di conformità/validazione/certificazione/completamento ufficiale/registro ufficiale/valutazione nominativa
+- 9 state categories ammesse e confinate: not_started, orientation_available, in_progress, evidence_present, needs_review, ready_for_human_validation, human_validated, blocked, not_applicable
+- human_validated: non impostabile da CTA/interazione nel prototipo; transizione riservata a contratto ownership/subentro separato
+- Wording certificativo/conformistico/autoritario/definitivo/registriale vietato
+- Prototipo può mostrare: label stato, descrizione prudente, riferimento a evidenza/documento, indicatore visivo non certificativo, nota di prudenza fissa
+- Prototipo non deve implicare: conformità, approvazione istituzionale, certificazione, completamento ufficiale, registro ufficiale, salvataggio invisibile, registro scolastico ufficiale
+- Storage prohibition per questa slice: nessun localStorage/sessionStorage/IndexedDB/autosave/fetch/API/backend/cloud/sync
+- Relazione con MGR-086B/087A/088A/089A chiarita: rispetta domain, privacy, copy, storage technical contracts
+- Future implementation gates definiti: slice runtime dedicata, contratti ownership/subentro/storage/audit trail approvati, smoke test, test parole vietate, WCAG, privacy/reset, documentazione utente, rollback plan
+- File: docs/02_system/ACTIVITY-STATE-READONLY-FIXTURE-PROTOTYPE-CONTRACT.md, docs/03_execution/MGR-090A.md, report/CONTROLLO_MGR090A_ACTIVITY_STATE_READONLY_FIXTURE_PROTOTYPE_CONTRACT.txt
 
-## MGR-078 (2026-06-15)
-- LOCAL_PROFILE_AND_CONTEXT_CONFIGURATION_CONTRACT definito in modalità docs-only
-- Campi configurazione locale: nome docente (opzionale), disciplina, scuola/plesso, ordine, dipartimento/sezione/intersezione, classi, ruolo operativo, preferenze percorso
-- Principi privacy: dati locali, nessun invio automatico, nessun dato studente, nessun obbligatorio oltre minimo funzionale, reset possibile
-- Relazione DM221: configurazione non sostituisce modello curricolare, filtra/orienta viste
-- Confini: no backend/account/login/OAuth/Drive/cloud/sync/remoto/automazioni nascoste
-- Futuro abilitato: MGR-079 UI onboarding, MGR-080 profilo persistente, MGR-081 routing, MGR-082 gate privacy/reset
-- Output: docs/02_system/LOCAL-PROFILE-CONTEXT-CONFIGURATION-CONTRACT.md, docs/03_execution/MGR-078.md, report/CONTROLLO_MGR078_LOCAL_PROFILE_CONTEXT_CONFIGURATION.txt
-
-## MGR-079 (2026-06-15)
-- USER_WORKFLOW_COMPLETION_MAP_SPEC definito in modalità docs/spec-only
-- Specifica prodotto/workflow: casi d'uso, ruoli, profilo/visibilità, mappa visuale completamento, stati attività, activity card, presa in carico/subentro, workspace operativo, autosalvataggio locale concettuale, evidenze/riferimenti/validazione, relazione con Wiki, riduzione UI, micro-roadmap, criteri di accettazione
-- Micro-roadmap: MGR-080 activity/domain model, MGR-081 completion map data, MGR-082 profile-filtered activity list UI, MGR-083 workspace layout, MGR-084 right document panel, MGR-085 local autosave, MGR-086 handover/subentro, MGR-087 contextual Wiki, MGR-088 evidence/status layer
-- Output: docs/02_system/USER-WORKFLOW-COMPLETION-MAP-SPEC.md, docs/03_execution/MGR-079.md, report/CONTROLLO_MGR079_USER_WORKFLOW_COMPLETION_MAP_SPEC.txt
-
-## MGR-080 (2026-06-15)
-- ACTIVITY_AND_COMPLETION_MAP_DOMAIN_MODEL_CONTRACT definito in modalità docs/contract-only
-- Entità definite: UserProfileContext, CompletionMapNode, Activity, ActivityAssignment, LinkedDocument, Evidence, Reference
-- Stati mappa e attività definiti con transizioni ammesse
-- Visibilità filtrata da profilo: mappa globale visibile a tutti, attività pertinenti filtrate
-- Presa in carico/subentro: responsabilità operativa temporanea, non proprietà esclusiva
-- Documento collegato e pannello destro concettualizzato
-- Evidenze e tracciabilità tipizzate
-- Riferimenti normativi/documentali con regole di prudenza
-- Autosalvataggio locale concettuale (no implementazione)
-- Relazione con UI futura: Home, mappa, lista attività, workspace, pannello documento, Wiki, output center, matrice revisione
-- Confini: nessuna UI/persistence/backend/API/OAuth/cloud/DOCX/PDF
-- Output: docs/02_system/ACTIVITY-COMPLETION-MAP-DOMAIN-CONTRACT.md, docs/03_execution/MGR-080.md, report/CONTROLLO_MGR080_ACTIVITY_COMPLETION_MAP_DOMAIN.txt
-
-## MGR-081 (2026-06-15)
-- COMPLETION_MAP_FIRST_UI_SELECTION_AUDIT completato in modalità audit/selection-only
-- Audit opzioni UI: A (mappa read-only), B (lista attività filtrate), C (workspace), D (pannello documento)
-- Raccomandazione: Opzione A — Mappa globale read-only (basso rischio, massimo valore, nessun autosave/subentro/profilo reale)
-- MGR-082 proposta: COMPLETION_MAP_READONLY_UI con confini read-only, dati statici/demo, mount point Home + sidebar
-- Output: docs/03_execution/MGR-081.md, report/MGR_081_COMPLETION_MAP_FIRST_UI_SELECTION_AUDIT.md, report/CONTROLLO_MGR081_COMPLETION_MAP_FIRST_UI_SELECTION.txt
-
-## MGR-083 (2026-06-15)
-- COMPLETION_MAP_POST_MERGE_SMOKE_AND_NEXT_INCREMENT_SELECTION_AUDIT completato in modalità audit/selection-only
-- Smoke audit post-merge MGR-082: sidebar "Mappa" funziona, vista leggibile, nessuna CTA operativa, nessuno storage/autosave/fetch/backend/cloud/DOCX/PDF
-- Nessuna ridondanza critica con Home/Documenti/Revisione/Wiki
-- Prossimo incremento selezionato: MGR-084B — link read-only dalle card mappa a viste esistenti
-- Alternative valutate: MGR-084A (polish UI), MGR-084C (contratto dati), MGR-084D (presa in carico/subentro — da non fare ancora)
-- Output: docs/03_execution/MGR-083.md, report/CONTROLLO_MGR083_COMPLETION_MAP_POST_MERGE_SMOKE.txt
-
-## MGR-088A (2026-06-15)
-- ACTIVITY_STATE_UI_COPY_CONTRACT definito in modalità docs/contract-only
-- Copy ammesso/vietato per 9 stati: not_started, orientation_available, in_progress, evidence_present, needs_review, ready_for_human_validation, human_validated, blocked, not_applicable
-- Tono ammesso: informativo, orientativo, lavorativo, revisionale, prudente, temporale
-- Tono vietato: certificativo, autoritario, automatico, definitivo, registriale
-- CTA ammesse: "Apri sezione", "Vedi riferimenti", "Vedi evidenze", "Rivedi contenuto", "Prepara per controllo", "Contatta referente"
-- CTA vietate: "Approva", "Certifica", "Rendi conforme", "Completa ufficialmente", "Salva stato", "Prendi in carico", "Conferma validazione", "Registra"
-- human_validated: non impostabile da CTA generica
-- Indicatori visuali: colori/icone di orientamento/lavoro, non certificativi
-- Messaggi di prudenza obbligatori: "bussola di lavoro, non certificazione", "validazione resta umana/collegiale/istituzionale", ecc.
-- Requisiti futuri prima di UI runtime: copy review, smoke test umano, test contro parole vietate, verifica accessibilità, coerenza con MGR-086B/087A
-- Confini: nessun runtime, nessuna UI reale, nessun salvataggio/autosave/storage/backend/API/cloud, nessuna ownership/subentro, nessun dato personale/studente reale
-- File: docs/02_system/ACTIVITY-STATE-UI-COPY-CONTRACT.md, docs/03_execution/MGR-088A.md, report/CONTROLLO_MGR088A_ACTIVITY_STATE_UI_COPY_CONTRACT.txt
+## MGR-089A (2026-06-15)
+- ACTIVITY_STORAGE_TECHNICAL_CONTRACT definito in modalità docs/contract-only
+- Opzioni storage future definite senza implementazione: none, memory-only, localStorage, IndexedDB, local file export/import
+- cloud/sync vietato finché non esiste contratto separato
+- Struttura concettuale futura, namespace/key strategy, versionamento, migrazioni, reset/cancellazione, import/export, backup, error handling, limiti dimensione, comportamento offline definiti
+- Relazione con MGR-086B/087A/088A chiarita
+- Dati vietati: nomi studenti reali, codici fiscali, dati sanitari, BES/DSA/PEI/PDP nominativi, valutazioni nominative, credenziali, token, API key, allegati reali, documenti firmati, registro ufficiale, log non anonimizzati
+- Prerequisiti prima di storage runtime definiti
+- File: docs/02_system/ACTIVITY-STORAGE-TECHNICAL-CONTRACT.md, docs/03_execution/MGR-089A.md, report/CONTROLLO_MGR089A_ACTIVITY_STORAGE_TECHNICAL_CONTRACT.txt
 
 ## MGR-087A (2026-06-15)
 - ACTIVITY_DATA_STORAGE_PRIVACY_CONTRACT definito in modalità docs/contract-only
