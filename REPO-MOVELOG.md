@@ -1,5 +1,11 @@
 # REPO-MOVELOG
 
+## MGR-077 (2026-06-15)
+- DM221_2025_CURRICULUM_DATA_MODEL_CONTRACT definito in modalità docs/report-only
+- Entità dati definite: CurriculumSource, DisciplineCurriculum2025, FoundationalNucleus, EssentialKnowledge, CompetenceTarget, AssessmentEvidence, HumanReviewState
+- Regole definite: campi obbligatori per “pronta 2025”, campi draft, revisione umana, divieto dati personali/studenti, collegamenti PTOF/RAV/PdM senza dati reali
+- Vincolo confermato: nessun claim automatico di conformità; solo `ready_for_human_review` strutturale
+- Output: `docs/02_system/DM221-2025-CURRICULUM-DATA-MODEL-CONTRACT.md`, `docs/03_execution/MGR-077.md`, `report/CONTROLLO_MGR077_DM221_2025_DATA_MODEL.txt`
 ## MGR-072 (2026-06-14)
 - DOCUMENT_OUTPUT_CENTER_CONTRACT definito in modalità docs-only
 - Sei stati output locale: bozza non modificata, modificata localmente, salvata, pronta per stampa, da rivedere, completata manualmente
@@ -94,13 +100,6 @@
 - Rimosso doppio SOURCE_TEMPLATE_CATALOG
 - Aggiunte esc/jsAttr locali in modelliSorgenteView.js
 - App funzionante via file://
-
-## MGR-073 (2026-06-15)
-- Document Output Center implementato nell'app standard
-- Nuova vista Output con riepilogo stati locali documenti
-- Azioni consentite: apri documento, stampa browser, copia riepilogo, segna da rivedere, completato manualmente, reset locale singolo
-- Persistenza solo localStorage, nessun backend/API/OAuth/sync
-- Nessun DOCX/PDF programmatico
 
 ## MGR-053 (2026-06-14)
 - Role work paths completato

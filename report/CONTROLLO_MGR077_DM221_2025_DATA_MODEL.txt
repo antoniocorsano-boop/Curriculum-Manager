@@ -1,0 +1,112 @@
+CONTROLLO MGR-077 — DM221_2025_CURRICULUM_DATA_MODEL_CONTRACT
+================================================================
+
+Verdetto: MGR_077_DM221_2025_DATA_MODEL_CONTRACT_READY
+
+Scopo
+------
+Definire il modello dati curricolare 2025 che Curriculum Manager dovrà usare per rappresentare una disciplina secondo DM 221/2025, senza implementare codice runtime.
+
+Output prodotti
+---------------
+- docs/02_system/DM221-2025-CURRICULUM-DATA-MODEL-CONTRACT.md
+- docs/03_execution/MGR-077.md
+- report/CONTROLLO_MGR077_DM221_2025_DATA_MODEL.txt
+- REPO-MOVELOG.md
+
+Entità definite
+---------------
+A. CurriculumSource
+- id
+- title
+- legalReference
+- sourceType
+- effectiveFromSchoolYear
+- replaces
+- status
+- notes
+
+B. DisciplineCurriculum2025
+- disciplineId
+- disciplineName
+- schoolOrder
+- classesCovered
+- sourceIds
+- ptofLinks
+- ravPdmLinks
+- foundationalNuclei
+- essentialKnowledge
+- expectedCompetences
+- verticalProgression
+- interdisciplinaryLinks
+- inclusionAccessibility
+- assessmentEvidence
+- humanReviewState
+
+C. FoundationalNucleus
+- id
+- title
+- description
+- relatedClasses
+- essentialKnowledgeIds
+- competenceIds
+- evidenceIds
+
+D. EssentialKnowledge
+- id
+- classYear
+- title
+- description
+- prerequisites
+- progressionNotes
+- accessibilityNotes
+
+E. CompetenceTarget
+- id
+- classYear
+- title
+- description
+- profileLink
+- observableEvidenceIds
+
+F. AssessmentEvidence
+- id
+- title
+- observableBehavior
+- rubricLink
+- documentationMethod
+
+G. HumanReviewState
+- status: draft | department_review | collegio_review | approved | archived
+- reviewerRole
+- reviewDate
+- notes
+- approvalReference
+
+Regole definite
+---------------
+- Campi obbligatori per dichiarare una disciplina candidabile a “pronta 2025”
+- Campi ammessi in draft
+- Campi obbligatori prima di department_review
+- Campi obbligatori prima di collegio_review
+- Campi che richiedono revisione umana
+- Campi vietati per dati personali/studenti
+- Collegamento PTOF/RAV/PdM senza importare dati reali
+- Divieto di falsa conformità automatica
+
+Vincoli confermati
+------------------
+- Nessun runtime modificato da MGR-077
+- APRI_MANAGER_CURRICOLO_ISTITUTO.html non modificato da MGR-077
+- index.html non modificato da MGR-077
+- src/ non modificato da MGR-077
+- Nessun export DOCX/PDF
+- Nessun backend/API
+- Nessun dato reale o studente inserito
+- Output Center, Wiki e Matrice Revisione non toccati da MGR-077
+
+Controllo scope
+---------------
+- Runtime preesistenti non MGR-077: presenti nel working tree, da escludere dal commit MGR-077 (APRI_MANAGER_CURRICOLO_ISTITUTO.html, index.html, src/app.js, src/components/layout.js, src/components/noticeBox.js, src/views/documentiIstituzionaliView.js, src/views/matriceRevisioneView.js, src/views/modelliSorgenteView.js, src/views/wikiView.js, src/utils/, src/views/documentOutputCenterView.js)
+- Runtime MGR-077: nessuno
+- Commit ammesso solo se staging contiene esclusivamente i quattro output MGR-077
