@@ -1,5 +1,11 @@
 # REPO-MOVELOG
 
+## MGR-100C-b (2026-06-15) - MATRICE_REVISIONE_RESET_DRAFT_NOTES_BUGFIX
+- Fix runtime: aggiunta funzione `resetAllDraftNotes()` mancante nella Matrice Revisione
+- Chiave localStorage interessata: `cmDraftNotes`
+- Conferma prima del reset, ri-render della vista dopo
+- Nessun nuovo storage/API/cloud/DOCX/PDF
+
 ## MGR-100C-a (2026-06-15) - NAVIGATION_SIDEBAR_FALLBACK_HOTFIX
 - Fix navigazione: aggiunto fallback statico completo in index.html
 - 7 voci di navigazione nel fallback (Materiali, Documenti, Output, Revisione, Mappa, Stati attività, Wiki)
