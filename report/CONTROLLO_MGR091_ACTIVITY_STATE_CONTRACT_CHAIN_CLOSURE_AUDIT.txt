@@ -1,0 +1,30 @@
+CONTROLLO_MGR091_ACTIVITY_STATE_CONTRACT_CHAIN_CLOSURE_AUDIT
+============================================================
+
+Data: 2026-06-15
+MGR: MGR-091
+Titolo: ACTIVITY_STATE_CONTRACT_CHAIN_CLOSURE_AND_NEXT_SELECTION_AUDIT
+Stato: AUDIT COMPLETATO
+
+CHECKLIST:
+
+[✓] File audit creato: docs/03_execution/MGR-091.md
+[✓] File report controllo creato: report/CONTROLLO_MGR091_ACTIVITY_STATE_CONTRACT_CHAIN_CLOSURE_AUDIT.txt
+[✓] REPO-MOVELOG.md aggiornato con sezione MGR-091
+[✓] Solo file docs/contract/report/movelog modificati
+[✓] Nessun file src/** modificato
+[✓] Nessun file index.html modificato
+[✓] Nessun file APRI_MANAGER_CURRICOLO_ISTITUTO.html modificato
+[✓] Nessun backend/API/OAuth/cloud/sync introdotto
+[✓] Nessun DOCX/PDF programmatico introdotto
+[✓] Nessun localStorage/sessionStorage/IndexedDB runtime introdotto
+[✓] Nessun salvataggio/autosave/storage runtime introdotto
+[✓] Nessuna ownership/subentro/profilo reale introdotto
+[✓] Catena contrattuale coerenza verificata
+[✓] Nessuna contraddizione bloccante rilevata
+[✓] Prossimo incremento selezionato: MGR-092A
+[✓] Worktree pulita, branch da origin/main
+[✓] Nessuna e86064b contamination
+[✓] Nessun branch storico usato come base
+
+RISULTATO: AUDIT MGR-091 COMPLETATO, CATENA COERENTE, PROSSIMO INCREMENTO MGR-092A
