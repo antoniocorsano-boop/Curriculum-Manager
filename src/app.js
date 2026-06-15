@@ -35,6 +35,7 @@ function renderView(id) {
     documentiIstituzionali: renderDocumentiIstituzionaliView,
     documentOutputCenter: renderDocumentOutputCenterView,
     matriceRevisione: renderMatriceRevisioneView,
+    completionMap: renderCompletionMapView,
     wiki: renderWikiView
   };
   if (renderers[id]) renderers[id]();

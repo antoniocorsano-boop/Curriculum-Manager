@@ -9,6 +9,7 @@ function renderSidebar({ activeView = "modelliSorgente" } = {}) {
     { id: "documentiIstituzionali", label: "Documenti" },
     { id: "documentOutputCenter", label: "Output" },
     { id: "matriceRevisione", label: "Revisione" },
+    { id: "completionMap", label: "Mappa" },
     { id: "wiki", label: "Wiki" }
   ];
 
