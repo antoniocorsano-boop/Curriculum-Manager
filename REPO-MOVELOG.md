@@ -18,15 +18,18 @@
 - ACTIVITY_STORAGE_TECHNICAL_CONTRACT definito in modalità docs/contract-only
 - Opzioni storage future definite senza implementazione: none, memory-only, localStorage, IndexedDB, local file export/import
 - cloud/sync vietato finché non esiste contratto separato
-- Struttura concettuale futura, namespace/key strategy, versionamento, migrazioni, reset/cancellazione, import/export, backup, error handling, limiti dimensione, comportamento offline definiti
+- Struttura concettuale futura definita: storageVersion, activities, activityId, state, updatedAt, updatedByRole, evidenceRefs, validationRequired, validationStatus, validationNote, blockedReason, metadata, resetAt
+- Namespace/key strategy, versionamento, migrazioni, reset/cancellazione, import/export, backup, error handling, limiti dimensione, comportamento offline definiti
 - Relazione con MGR-086B/087A/088A chiarita
 - Dati vietati: nomi studenti reali, codici fiscali, dati sanitari, BES/DSA/PEI/PDP nominativi, valutazioni nominative, credenziali, token, API key, allegati reali, documenti firmati, registro ufficiale, log non anonimizzati
-- Prerequisiti prima di storage runtime definiti
+- Prerequisiti prima di storage runtime definiti: nuova slice, test, smoke audit, rollback plan, documentazione utente privacy/reset
 - File: docs/02_system/ACTIVITY-STORAGE-TECHNICAL-CONTRACT.md, docs/03_execution/MGR-089A.md, report/CONTROLLO_MGR089A_ACTIVITY_STORAGE_TECHNICAL_CONTRACT.txt
+- Report controllo: MGR_089A_CLOSED_MERGED_REMOTE
+- Raccomandazione prossimo incremento: MGR-090B — ACTIVITY_STORAGE_TECHNICAL_CLOSURE_AUDIT
 
-## MGR-087A (2026-06-15)
-- ACTIVITY_DATA_STORAGE_PRIVACY_CONTRACT definito in modalità docs/contract-only
-- Principio local-first: dati attività locali per dispositivo, nessun sync/cloud/backend in questa fase
+## MGR-088A (2026-06-15)
+- ACTIVITY_STATE_UI_COPY_CONTRACT definito in modalità docs/contract-only
+- Copy ammesso/vietato per 9 stati: not_started, orientation_available, in_progress, evidence_present, needs_review, ready_for_human_validation, human_validated, blocked, not_applicable
 - Categorie dati future: activityId, state, stateUpdatedAt, stateUpdatedByRole, evidenceRefs, validationRequired, validationStatus, validationNote, blockedReason, localDraftMetadata, resetMarker
 - Dati vietati in questa fase: nomi studenti reali, codici fiscali, dati sanitari, BES/DSA/PEI nominativi, valutazioni nominative, credenziali, token, chiavi API, dati sincronizzati cloud, allegati reali, documenti firmati, registro ufficiale
 - Regole di minimizzazione, reset/cancellazione, esportazione futura subordinata a contratto separato
