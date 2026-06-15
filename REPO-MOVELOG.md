@@ -43,6 +43,14 @@
 - MGR-082 proposta: COMPLETION_MAP_READONLY_UI con confini read-only, dati statici/demo, mount point Home + sidebar
 - Output: docs/03_execution/MGR-081.md, report/MGR_081_COMPLETION_MAP_FIRST_UI_SELECTION_AUDIT.md, report/CONTROLLO_MGR081_COMPLETION_MAP_FIRST_UI_SELECTION.txt
 
+## MGR-083 (2026-06-15)
+- COMPLETION_MAP_POST_MERGE_SMOKE_AND_NEXT_INCREMENT_SELECTION_AUDIT completato in modalità audit/selection-only
+- Smoke audit post-merge MGR-082: sidebar "Mappa" funziona, vista leggibile, nessuna CTA operativa, nessuno storage/autosave/fetch/backend/cloud/DOCX/PDF
+- Nessuna ridondanza critica con Home/Documenti/Revisione/Wiki
+- Prossimo incremento selezionato: MGR-084B — link read-only dalle card mappa a viste esistenti
+- Alternative valutate: MGR-084A (polish UI), MGR-084C (contratto dati), MGR-084D (presa in carico/subentro — da non fare ancora)
+- Output: docs/03_execution/MGR-083.md, report/CONTROLLO_MGR083_COMPLETION_MAP_POST_MERGE_SMOKE.txt
+
 ## MGR-082 (2026-06-15)
 - COMPLETION_MAP_READONLY_UI implementata come prima superficie UI read-only
 - Mappa globale completamento Curriculum di Istituto: 8 aree, stati, sintesi, evidenze, documenti collegati

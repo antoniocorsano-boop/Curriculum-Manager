@@ -1,0 +1,29 @@
+CONTROLLO_MGR083_COMPLETION_MAP_POST_MERGE_SMOKE
+=================================================
+
+Data: 2026-06-15
+MGR: MGR-083
+Titolo: COMPLETION_MAP_POST_MERGE_SMOKE_AND_NEXT_INCREMENT_SELECTION_AUDIT
+Stato: AUDIT COMPLETATO
+
+CHECKLIST:
+
+[✓] main sincronizzato con origin/main (c9bba75142b7b439ef8767683ec95f5442615fd8)
+[✓] Merge MGR-082 presente su origin/main
+[✓] Worktree pulita basata su origin/main
+[✓] Smoke audit sidebar: voce "Mappa" presente, click funziona, nessuna CTA operativa
+[✓] Smoke audit vista: titolo, intro, riepilogo, 8 aree, footer read-only, nessun salvataggio
+[✓] Nessun localStorage/sessionStorage/IndexedDB usato
+[✓] Nessun fetch/XMLHttpRequest/API/backend/cloud/OAuth introdotto
+[✓] Nessun DOCX/PDF programmatico introdotto
+[✓] Nessuna presa in carico/subentro/profilo reale/documento laterale
+[✓] Nessuna ridondanza critica con Home/Documenti/Revisione/Wiki
+[✓] Prossimo incremento selezionato: MGR-084B (link read-only card → viste esistenti)
+[✓] Alternative MGR-084A/C/D valutate e motivate
+[✓] Confini MGR-084B definiti
+[✓] Solo file docs/report/movelog modificati
+[✓] Nessun file src/** modificato
+[✓] Nessun file index.html modificato
+[✓] Nessuna e86064b contamination
+
+RISULTATO: AUDIT MGR-083 COMPLETATO, RACCOMANDAZIONE MGR-084B
