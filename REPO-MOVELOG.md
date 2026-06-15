@@ -16,6 +16,12 @@
 - Futuro abilitato: MGR-079 UI onboarding, MGR-080 profilo persistente, MGR-081 routing, MGR-082 gate privacy/reset
 - Output: docs/02_system/LOCAL-PROFILE-CONTEXT-CONFIGURATION-CONTRACT.md, docs/03_execution/MGR-078.md, report/CONTROLLO_MGR078_LOCAL_PROFILE_CONTEXT_CONFIGURATION.txt
 
+## MGR-079 (2026-06-15)
+- USER_WORKFLOW_COMPLETION_MAP_SPEC definito in modalità docs/spec-only
+- Specifica prodotto/workflow: casi d'uso, ruoli, profilo/visibilità, mappa visuale completamento, stati attività, activity card, presa in carico/subentro, workspace operativo, autosalvataggio locale concettuale, evidenze/riferimenti/validazione, relazione con Wiki, riduzione UI, micro-roadmap, criteri di accettazione
+- Micro-roadmap: MGR-080 activity/domain model, MGR-081 completion map data, MGR-082 profile-filtered activity list UI, MGR-083 workspace layout, MGR-084 right document panel, MGR-085 local autosave, MGR-086 handover/subentro, MGR-087 contextual Wiki, MGR-088 evidence/status layer
+- Output: docs/02_system/USER-WORKFLOW-COMPLETION-MAP-SPEC.md, docs/03_execution/MGR-079.md, report/CONTROLLO_MGR079_USER_WORKFLOW_COMPLETION_MAP_SPEC.txt
+
 ## MGR-074 (2026-06-15)
 - Wiki interna dell'app implementata come guida e aiuto integrato
 - Catalogo dati creato: src/data/wikiCatalog.js

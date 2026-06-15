@@ -1,0 +1,26 @@
+CONTROLLO_MGR079_USER_WORKFLOW_COMPLETION_MAP_SPEC
+====================================================
+
+Data: 2026-06-15
+MGR: MGR-079
+Titolo: USER_WORKFLOW_COMPLETION_MAP_SPEC
+Stato: SPECIFICA DEFINITA
+
+CHECKLIST:
+
+[✓] File specifica creato: docs/02_system/USER-WORKFLOW-COMPLETION-MAP-SPEC.md
+[✓] File esecuzione creato: docs/03_execution/MGR-079.md
+[✓] Report controllo creato: report/CONTROLLO_MGR079_USER_WORKFLOW_COMPLETION_MAP_SPEC.txt
+[✓] REPO-MOVELOG.md aggiornato con sezione MGR-079
+[✓] Solo file docs/report/movelog modificati
+[✓] Nessun file src/** modificato
+[✓] Nessun file index.html modificato
+[✓] Nessun file APRI_MANAGER_CURRICOLO_ISTITUTO.html modificato
+[✓] Nessun backend/API/OAuth/cloud/sync introdotto
+[✓] Nessun DOCX/PDF programmatico introdotto
+[✓] Nessun dato personale/studente reale inserito
+[✓] Specifica casi d'uso, ruoli, mappa completamento, stati, activity card, presa in carico/subentro, workspace, autosalvataggio, evidenze, relazione Wiki, riduzione UI, micro-roadmap, criteri accettazione
+[✓] Worktree pulita, branch da origin/main
+[✓] Nessuna e86064b contamination
+
+RISULTATO: SPECIFICA MGR-079 DEFINITA E PRONTA PER REVIEW
