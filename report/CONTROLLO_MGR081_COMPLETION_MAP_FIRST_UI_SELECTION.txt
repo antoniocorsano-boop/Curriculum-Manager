@@ -1,0 +1,30 @@
+CONTROLLO_MGR081_COMPLETION_MAP_FIRST_UI_SELECTION
+==================================================
+
+Data: 2026-06-15
+MGR: MGR-081
+Titolo: COMPLETION_MAP_FIRST_UI_SELECTION_AUDIT
+Stato: AUDIT COMPLETATO
+
+CHECKLIST:
+
+[✓] File audit creato: report/MGR_081_COMPLETION_MAP_FIRST_UI_SELECTION_AUDIT.md
+[✓] File esecuzione creato: docs/03_execution/MGR-081.md
+[✓] Report controllo creato: report/CONTROLLO_MGR081_COMPLETION_MAP_FIRST_UI_SELECTION.txt
+[✓] REPO-MOVELOG.md aggiornato con sezione MGR-081
+[✓] Solo file docs/report/movelog modificati
+[✓] Nessun file src/** modificato
+[✓] Nessun file index.html modificato
+[✓] Nessun file APRI_MANAGER_CURRICOLO_ISTITUTO.html modificato
+[✓] Nessun backend/API/OAuth/cloud/sync introdotto
+[✓] Nessun DOCX/PDF programmatico introdotto
+[✓] Nessun dato personale/studente reale inserito
+[✓] Audit opzioni A/B/C/D completato
+[✓] Raccomandazione: Opzione A (mappa globale read-only)
+[✓] Proposta MGR-082 definita
+[✓] Confini MGR-082 definiti
+[✓] Mount point raccomandato (Home + sidebar)
+[✓] Worktree pulita, branch da origin/main
+[✓] Nessuna e86064b contamination
+
+RISULTATO: AUDIT MGR-081 COMPLETATO, RACCOMANDAZIONE MGR-082

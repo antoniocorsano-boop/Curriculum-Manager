@@ -36,6 +36,13 @@
 - Confini: nessuna UI/persistence/backend/API/OAuth/cloud/DOCX/PDF
 - Output: docs/02_system/ACTIVITY-COMPLETION-MAP-DOMAIN-CONTRACT.md, docs/03_execution/MGR-080.md, report/CONTROLLO_MGR080_ACTIVITY_COMPLETION_MAP_DOMAIN.txt
 
+## MGR-081 (2026-06-15)
+- COMPLETION_MAP_FIRST_UI_SELECTION_AUDIT completato in modalità audit/selection-only
+- Audit opzioni UI: A (mappa read-only), B (lista attività filtrate), C (workspace), D (pannello documento)
+- Raccomandazione: Opzione A — Mappa globale read-only (basso rischio, massimo valore, nessun autosave/subentro/profilo reale)
+- MGR-082 proposta: COMPLETION_MAP_READONLY_UI con confini read-only, dati statici/demo, mount point Home + sidebar
+- Output: docs/03_execution/MGR-081.md, report/MGR_081_COMPLETION_MAP_FIRST_UI_SELECTION_AUDIT.md, report/CONTROLLO_MGR081_COMPLETION_MAP_FIRST_UI_SELECTION.txt
+
 ## MGR-074 (2026-06-15)
 - Wiki interna dell'app implementata come guida e aiuto integrato
 - Catalogo dati creato: src/data/wikiCatalog.js
