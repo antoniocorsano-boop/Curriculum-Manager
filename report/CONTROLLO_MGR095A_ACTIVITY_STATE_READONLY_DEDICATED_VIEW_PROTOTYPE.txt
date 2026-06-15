@@ -1,0 +1,35 @@
+CONTROLLO_MGR095A_ACTIVITY_STATE_READONLY_DEDICATED_VIEW_PROTOTYPE
+====================================================================
+
+Data: 2026-06-15
+MGR: MGR-095A
+Titolo: ACTIVITY_STATE_READONLY_DEDICATED_VIEW_PROTOTYPE
+Stato: VISTA DEDICATA READ-ONLY CREATA
+
+CHECKLIST:
+
+[✓] File view creato: src/views/activityStateReadOnlyView.js
+[✓] File esecuzione creato: docs/03_execution/MGR-095A.md
+[✓] Report controllo creato: report/CONTROLLO_MGR095A_ACTIVITY_STATE_READONLY_DEDICATED_VIEW_PROTOTYPE.txt
+[✓] REPO-MOVELOG.md NON modificato (non make entry)
+[✓] Solo file ammessi modificati
+[✓] src/app.js: solo aggiunta renderer per vista dedicata
+[✓] src/components/sidebar.js: solo aggiunta voce "Stati attività"
+[✓] index.html: sezione view + import script view
+[✓] src/styles.css: stili minimi read-only per la vista dedicata
+[✓] Nessun mount dentro completionMapView.js
+[✓] Nessuna modifica src/data/**
+[✓] Nessun backend/API/OAuth/cloud/sync introdotto
+[✓] Nessun DOCX/PDF programmatico introdotto
+[✓] Nessun localStorage/sessionStorage/IndexedDB runtime introdotto
+[✓] Nessun salvataggio/autosave/storage runtime introdotto
+[✓] Nessuna ownership/subentro/profilo reale introdotto
+[✓] Fixture statica usata solo in lettura
+[✓] Vista puramente informativa, no CTA operativa
+[✓] Guardrail fixture eseguito e passato
+[✓] Validazioni passate: git diff --check, node --check, guardrail run
+[✓] Worktree pulita, branch da origin/main
+[✓] Nessuna e86064b contamination
+[✓] Nessun branch storico usato come base
+
+RISULTATO: VISTA DEDICATA READ-ONLY MGR-095A PRONTA PER REVIEW
