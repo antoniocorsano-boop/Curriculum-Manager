@@ -535,6 +535,21 @@ button.action.secondary {
   color: #253049;
 }
 
+.cm-link-btn {
+  margin-top: 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #f1f5ff;
+  color: var(--primary);
+  padding: 6px 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.cm-link-btn:hover {
+  background: #eef3ff;
+}
+
 @media (max-width: 1000px) {
   .cm-summary { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .cm-areas { grid-template-columns: 1fr; }

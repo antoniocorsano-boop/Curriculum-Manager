@@ -36,7 +36,9 @@ const completionMapCatalog = {
       missing: ["Collegamento a UDA", "Definizione ore/tempi"],
       evidences: ["Dossier per ordine", "Matrici di revisione"],
       documents: ["UDA", "Programmazioni"],
-      validationNote: "Validazione docenti di disciplina richiesta."
+      validationNote: "Validazione docenti di disciplina richiesta.",
+      targetView: "documentiIstituzionali",
+      targetLabel: "Apri sezione Documenti"
     },
     {
       id: "verticalita",
@@ -80,7 +82,9 @@ const completionMapCatalog = {
       missing: ["Controllo coerenza finale", "Sintesi modifiche"],
       evidences: ["Report Normalizzazione Tecnologia", "Checklist revisione"],
       documents: ["Matrici Campi di Esperienza", "Matrici Curricolo"],
-      validationNote: "Validazione referente curricolo richiesta."
+      validationNote: "Validazione referente curricolo richiesta.",
+      targetView: "matriceRevisione",
+      targetLabel: "Apri sezione Revisione"
     },
     {
       id: "output",
@@ -91,7 +95,9 @@ const completionMapCatalog = {
       missing: ["Redazione documento finale", "Approvazione collegio docenti", "Pubblicazione"],
       evidences: [],
       documents: ["Dossier Scuola", "Report complessivo del curricolo"],
-      validationNote: "Validazione istituzionale finale: spetta al collegio docenti e al dirigente."
+      validationNote: "Validazione istituzionale finale: spetta al collegio docenti e al dirigente.",
+      targetView: "documentOutputCenter",
+      targetLabel: "Apri sezione Output"
     }
   ],
   summary: {
