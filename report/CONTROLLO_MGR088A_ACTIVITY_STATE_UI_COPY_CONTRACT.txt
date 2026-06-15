@@ -1,0 +1,35 @@
+CONTROLLO_MGR088A_ACTIVITY_STATE_UI_COPY_CONTRACT
+===================================================
+
+Data: 2026-06-15
+MGR: MGR-088A
+Titolo: ACTIVITY_STATE_UI_COPY_CONTRACT
+Stato: CONTRATTO DEFINITO
+
+CHECKLIST:
+
+[✓] File contratto creato: docs/02_system/ACTIVITY-STATE-UI-COPY-CONTRACT.md
+[✓] File esecuzione creato: docs/03_execution/MGR-088A.md
+[✓] Report controllo creato: report/CONTROLLO_MGR088A_ACTIVITY_STATE_UI_COPY_CONTRACT.txt
+[✓] REPO-MOVELOG.md aggiornato con sezione MGR-088A
+[✓] Solo file docs/contract/report/movelog modificati
+[✓] Nessun file src/** modificato
+[✓] Nessun file index.html modificato
+[✓] Nessun file APRI_MANAGER_CURRICOLO_ISTITUTO.html modificato
+[✓] Nessun backend/API/OAuth/cloud/sync introdotto
+[✓] Nessun DOCX/PDF programmatico introdotto
+[✓] Nessun salvataggio/autosave/storage introdotto
+[✓] Nessuna ownership/subentro/profilo reale introdotto
+[✓] Copy ammesso/vietato definito per tutti e 9 gli stati
+[✓] CTA ammesse/vietate definite
+[✓] Indicatori visuali definiti (colori/icone non certificativi)
+[✓] Messaggi di prudenza obbligatori definiti
+[✓] Differenza avanzamento/evidenza/revisione/validazione chiara
+[✓] Wording vietato elencato: certificato, conforme, approvato automaticamente, validato dal sistema, registro ufficiale, ecc.
+[✓] human_validated: non impostabile da CTA generica
+[✓] Requisiti futuri prima di UI runtime definiti
+[✓] Criteri di accettazione definiti
+[✓] Worktree pulita, branch da origin/main
+[✓] Nessuna e86064b contamination
+
+RISULTATO: CONTRATTO MGR-088A DEFINITO E PRONTO PER REVIEW
