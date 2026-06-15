@@ -1,0 +1,19 @@
+# CONTROLLO MGR-100C-B MATRICE REVISIONE RESET DRAFT NOTES BUGFIX
+
+## Check eseguiti
+- `git diff --check`: OK (solo warning CRLF)
+- `node --check src/views/matriceRevisioneView.js`: OK
+- `node --check src/app.js`: OK
+
+## Modifiche
+Solo `src/views/matriceRevisioneView.js`: aggiunta funzione `resetAllDraftNotes()`.
+
+## Dettaglio
+- Funzione aggiunta dopo `saveDraftNote()`
+- Usa la stessa chiave localStorage `cmDraftNotes` già esistente
+- Conferma prima del reset coerente con altre funzioni di reset dell'app
+- Ri-renderizza la vista tramite `renderMatriceRevisioneView()`
+
+## Boundary
+Nessun fetch/XMLHttpRequest/sessionStorage/indexedDB/OAuth/cloud/backend/autosave/DOCX/PDF/nuovi dati.
+Solo localStorage `cmDraftNotes` già presente nel file.

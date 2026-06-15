@@ -63,7 +63,13 @@ function saveDraftNote(itemId, note) {
   } catch {}
 }
 
-/* Export functions - client-side only, no DOCX/PDF generation */
+function resetAllDraftNotes() {
+   if (!confirm("Resettare tutte le annotazioni locali?")) return;
+   localStorage.removeItem("cmDraftNotes");
+   renderMatriceRevisioneView();
+ }
+
+ /* Export functions - client-side only, no DOCX/PDF generation */
 function exportRevisionMatrixJSON() {
   const catalog = window.REVISION_MATRIX_CATALOG || [];
   const drafts = JSON.parse(localStorage.getItem("cmDraftNotes") || "{}");
