@@ -51,6 +51,18 @@
 - Alternative valutate: MGR-084A (polish UI), MGR-084C (contratto dati), MGR-084D (presa in carico/subentro — da non fare ancora)
 - Output: docs/03_execution/MGR-083.md, report/CONTROLLO_MGR083_COMPLETION_MAP_POST_MERGE_SMOKE.txt
 
+## MGR-087A (2026-06-15)
+- ACTIVITY_DATA_STORAGE_PRIVACY_CONTRACT definito in modalità docs/contract-only
+- Principio local-first: dati attività locali per dispositivo, nessun sync/cloud/backend in questa fase
+- Categorie dati future: activityId, state, stateUpdatedAt, stateUpdatedByRole, evidenceRefs, validationRequired, validationStatus, validationNote, blockedReason, localDraftMetadata, resetMarker
+- Dati vietati in questa fase: nomi studenti reali, codici fiscali, dati sanitari, BES/DSA/PEI nominativi, valutazioni nominative, credenziali, token, chiavi API, dati sincronizzati cloud, allegati reali, documenti firmati, registro ufficiale
+- Regole di minimizzazione, reset/cancellazione, esportazione futura subordinata a contratto separato
+- Divieti: sync/cloud/backend, salvataggio implicito, autosave non visibile, logging dati personali/studenti, tracking utente non anonimizzata
+- Informativa UI futura e audit trail concettuale definiti
+- Prerequisiti runtime definiti: storage tecnico, UI copy/privacy, reset/export, audit trail, ownership/subentro, smoke test, scan privacy
+- Confini: nessun runtime, nessun salvataggio, nessun backend/API/cloud, nessuna ownership/subentro, nessun dato personale/studente reale
+- File: docs/02_system/ACTIVITY-DATA-STORAGE-PRIVACY-CONTRACT.md, docs/03_execution/MGR-087A.md, report/CONTROLLO_MGR087A_ACTIVITY_DATA_STORAGE_PRIVACY_CONTRACT.txt
+
 ## MGR-086B (2026-06-15)
 - ACTIVITY_STATE_DOMAIN_CONTRACT definito in modalità docs/contract-only
 - Stati futuri definiti: not_started, orientation_available, in_progress, evidence_present, needs_review, ready_for_human_validation, human_validated, blocked, not_applicable

@@ -1,0 +1,37 @@
+CONTROLLO_MGR087A_ACTIVITY_DATA_STORAGE_PRIVACY_CONTRACT
+=========================================================
+
+Data: 2026-06-15
+MGR: MGR-087A
+Titolo: ACTIVITY_DATA_STORAGE_PRIVACY_CONTRACT
+Stato: CONTRATTO DEFINITO
+
+CHECKLIST:
+
+[✓] File contratto creato: docs/02_system/ACTIVITY-DATA-STORAGE-PRIVACY-CONTRACT.md
+[✓] File esecuzione creato: docs/03_execution/MGR-087A.md
+[✓] Report controllo creato: report/CONTROLLO_MGR087A_ACTIVITY_DATA_STORAGE_PRIVACY_CONTRACT.txt
+[✓] REPO-MOVELOG.md aggiornato con sezione MGR-087A
+[✓] Solo file docs/contract/report/movelog modificati
+[✓] Nessun file src/** modificato
+[✓] Nessun file index.html modificato
+[✓] Nessun file APRI_MANAGER_CURRICOLO_ISTITUTO.html modificato
+[✓] Nessun backend/API/OAuth/cloud/sync introdotto
+[✓] Nessun DOCX/PDF programmatico introdotto
+[✓] Nessun salvataggio/autosave/storage introdotto
+[✓] Nessuna ownership/subentro/profilo reale introdotto
+[✓] Categorie dati future definite: activityId, state, stateUpdatedAt, stateUpdatedByRole, evidenceRefs, validationRequired, validationStatus, validationNote, blockedReason, localDraftMetadata, resetMarker
+[✓] Dati vietati definiti: nomi studenti reali, codici fiscali, dati sanitari, BES/DSA/PEI nominativi, valutazioni nominative, credenziali, token, chiavi API, dati sincronizzati cloud, allegati reali, documenti firmati, registro ufficiale
+[✓] Principio local-first definito
+[✓] Regole di minimizzazione definite
+[✓] Reset/cancellazione dati definiti
+[✓] Esportazione futura subordinata a contratto separato
+[✓] Divieti espliciti: sync/cloud/backend, salvataggio implicito, autosave non visibile, logging dati personali/studenti, tracking utente non anonimizzata
+[✓] Informativa UI futura definita
+[✓] Audit trail futuro definito come concettuale
+[✓] Prerequisiti runtime definiti
+[✓] Criteri di accettazione definiti
+[✓] Worktree pulita, branch da origin/main
+[✓] Nessuna e86064b contamination
+
+RISULTATO: CONTRATTO MGR-087A DEFINITO E PRONTO PER REVIEW
