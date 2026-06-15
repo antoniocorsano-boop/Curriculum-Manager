@@ -1,5 +1,18 @@
 # REPO-MOVELOG
 
+## MGR-099A (2026-06-15)
+- ACTIVITY_STATE_VIEW_POST_POLISH_SMOKE_AUDIT completato in modalità docs-only/audit-only
+- Baseline confermata da origin/main dopo merge MGR-098A: 7608c54bd5a572324d751e661630514e92e8c101
+- Smoke HTTP locale completato via http://localhost:5173 con Chrome headless CDP
+- Vista raggiungibile, sezione activityStateReadOnly attivabile, titolo e sottotitolo polish visibili
+- Navigazione verso altre sezioni verificata: modelliSorgente, documentiIstituzionali, documentOutputCenter, matriceRevisione, completionMap, wiki
+- Nessun evento console bloccante, nessun network failure, nessuna unexpected network, nessuna scrittura localStorage/sessionStorage, nessun accesso indexedDB
+- Gap bloccante: cardCount 0 nella sezione activityStateReadOnly; la view legge window.activityStateFixtureCatalog mentre il catalogo esiste come globale lessicale, non come window property
+- Classificazione: POST_POLISH_SMOKE_BLOCKED_RUNTIME_FIX_REQUIRED
+- Stop code: STOP_RUNTIME_FIX_REQUIRED
+- Prossimo incremento selezionato: MGR-100B — ACTIVITY_STATE_VIEW_GUARDRAIL_EXTENSION
+- File: docs/03_execution/MGR-099A.md, report/CONTROLLO_MGR099A_ACTIVITY_STATE_VIEW_POST_POLISH_SMOKE_AUDIT.txt
+
 ## MGR-098A (2026-06-15)
 - ACTIVITY_STATE_VIEW_COPY_AND_ACCESSIBILITY_POLISH completato
 - Microcopy della vista Stati attività migliorato: dati di esempio, uso orientativo, sola lettura, nessuna verifica automatica

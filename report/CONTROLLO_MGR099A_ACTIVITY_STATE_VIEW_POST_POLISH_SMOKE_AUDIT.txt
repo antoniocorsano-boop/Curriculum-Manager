@@ -1,0 +1,81 @@
+CONTROLLO MGR-099A — ACTIVITY_STATE_VIEW_POST_POLISH_SMOKE_AUDIT
+Data: 2026-06-15
+Branch: feat/mgr-099a-activity-state-view-post-polish-smoke-audit
+Baseline: origin/main, merge commit MGR-098A 7608c54bd5a572324d751e661630514e92e8c101 confermato.
+
+SCOPE CHECK
+- Audit docs-only/report-only.
+- Nessun file runtime modificato.
+- Nessun file src/** modificato.
+- Nessun index.html/package.json modificato.
+- Nessuna fixture modificata.
+- Nessuna view/sidebar/app/styles modificata da MGR-099A.
+- Nessun storage, autosave, API, backend, cloud, ownership/subentro, DOCX/PDF o dato reale introdotto.
+
+FILES INSPECTED
+- src/views/activityStateReadOnlyView.js
+- src/styles.css
+- src/data/activityStateFixtureCatalog.js
+- scripts/guardrails/activityStateFixture.guardrail.js
+- src/app.js
+- src/components/sidebar.js
+- index.html
+- docs/03_execution/MGR-098A.md
+
+VALIDAZIONI TECNICHE
+- git diff --check: passato.
+- node --check src/views/activityStateReadOnlyView.js: passato.
+- node --check src/app.js: passato.
+- node --check src/components/sidebar.js: passato.
+- node scripts/guardrails/activityStateFixture.guardrail.js: passato.
+
+SMOKE LOCALE HTTP
+- Server: python -m http.server 5173.
+- URL: http://localhost:5173.
+- Chrome headless CDP:
+  - pagina raggiungibile via HTTP;
+  - voce sidebar "Stati attività" raggiungibile;
+  - click su "Stati attività": sezione activeSection activityStateReadOnly corretta;
+  - titolo "Stati attività" visibile quando la sezione è attiva;
+  - sottotitolo polish visibile: dati di esempio, uso orientativo, sola lettura, nessuna sostituzione verifiche umane/collegiali/istituzionali;
+  - interactiveCount nella sezione: 0;
+  - consoleEvents: [];
+  - networkFailures: [];
+  - unexpectedNetwork: [];
+  - storageWrites localStorage/sessionStorage: [];
+  - indexedDBAccessed: false;
+  - navigazione verso altre sezioni verificata: modelliSorgente, documentiIstituzionali, documentOutputCenter, matriceRevisione, completionMap, wiki.
+
+BLOCKING GAP
+- cardCount nella sezione activityStateReadOnly: 0.
+- La fixture activityStateFixtureCatalog.js viene caricata via HTTP e il catalogo globale lessicale è presente nel contesto browser.
+- La view legge window.activityStateFixtureCatalog.
+- Nel browser testato, window.activityStateFixtureCatalog risulta undefined.
+- Conseguenza: la sezione si attiva e mostra titolo/sottotitolo, ma non renderizza le card attività.
+- Questo richiede una patch runtime della view/catalog lookup.
+- MGR-099A è docs-only/audit-only, quindi non è stata applicata patch runtime.
+
+CLASSIFICAZIONE FINALE
+POST_POLISH_SMOKE_BLOCKED_RUNTIME_FIX_REQUIRED
+
+STOP CODE
+STOP_RUNTIME_FIX_REQUIRED
+
+BOUNDARY SCAN
+Termini cercati nei file modificati:
+fetch, XMLHttpRequest, localStorage, sessionStorage, indexedDB, OAuth, cloud, backend, api, autosave, save, DOCX, PDF, subentro, ownership, presa in carico, studenti reali, dati sanitari, token, secret, api key, certificato, conforme, validato dal sistema, registro ufficiale, approvato automaticamente, salvato automaticamente.
+
+Classificazione:
+- Nessun file runtime modificato.
+- Eventuali match nei docs/report/movelog sono solo boundary negativi, termini vietati o riferimenti storici di controllo.
+- Nessun comportamento reale storage/API/backend/cloud/autosave introdotto.
+
+PROSSIMO INCREMENTO SELEZIONATO
+B. MGR-100B — ACTIVITY_STATE_VIEW_GUARDRAIL_EXTENSION
+
+Razionale:
+- Il guardrail attuale protegge la fixture, ma non blocca regressioni di mount/view/catalog binding.
+- Prima di un audit completo del flusso demo, serve estendere il guardrail per prevenire questa classe di regressione.
+
+VERDETTO
+STOP_RUNTIME_FIX_REQUIRED
