@@ -51,6 +51,17 @@
 - Alternative valutate: MGR-084A (polish UI), MGR-084C (contratto dati), MGR-084D (presa in carico/subentro — da non fare ancora)
 - Output: docs/03_execution/MGR-083.md, report/CONTROLLO_MGR083_COMPLETION_MAP_POST_MERGE_SMOKE.txt
 
+## MGR-086B (2026-06-15)
+- ACTIVITY_STATE_DOMAIN_CONTRACT definito in modalità docs/contract-only
+- Stati futuri definiti: not_started, orientation_available, in_progress, evidence_present, needs_review, ready_for_human_validation, human_validated, blocked, not_applicable
+- Stati vietati e wording vietato: compliant, normativamente valido, approvato automaticamente, certificato, conforme al ministero, completato ufficialmente
+- Differenza chiara: avanzamento ≠ evidenza ≠ revisione ≠ validazione umana
+- Validazione sempre umana/collegiale, non automatica
+- Struttura dati concettuale documentata: activityId, state, evidenceRefs, lastUpdatedAt, updatedByRole, requiresHumanValidation, validationNote, blockedReason, sourceView, targetOutput
+- Prerequisiti runtime definiti: storage/autosave, privacy, ownership/subentro, UI copy, smoke audit
+- Confini: nessun runtime, nessun salvataggio, nessun backend/API/cloud, nessuna ownership/subentro
+- File: docs/02_system/ACTIVITY-STATE-DOMAIN-CONTRACT.md, docs/03_execution/MGR-086B.md, report/CONTROLLO_MGR086B_ACTIVITY_STATE_DOMAIN_CONTRACT.txt
+
 ## MGR-084B (2026-06-15)
 - COMPLETION_MAP_READONLY_CARD_LINKS implementata come link read-only dalle card della Mappa a viste esistenti
 - Card "Discipline" → "Apri sezione Documenti" (documentiIstituzionali)
