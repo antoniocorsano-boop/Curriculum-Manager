@@ -1,0 +1,32 @@
+CONTROLLO_MGR086B_ACTIVITY_STATE_DOMAIN_CONTRACT
+===================================================
+
+Data: 2026-06-15
+MGR: MGR-086B
+Titolo: ACTIVITY_STATE_DOMAIN_CONTRACT
+Stato: CONTRATTO DEFINITO
+
+CHECKLIST:
+
+[✓] File contratto creato: docs/02_system/ACTIVITY-STATE-DOMAIN-CONTRACT.md
+[✓] File esecuzione creato: docs/03_execution/MGR-086B.md
+[✓] Report controllo creato: report/CONTROLLO_MGR086B_ACTIVITY_STATE_DOMAIN_CONTRACT.txt
+[✓] REPO-MOVELOG.md aggiornato con sezione MGR-086B
+[✓] Solo file docs/contract/report/movelog modificati
+[✓] Nessun file src/** modificato
+[✓] Nessun file index.html modificato
+[✓] Nessun file APRI_MANAGER_CURRICOLO_ISTITUTO.html modificato
+[✓] Nessun backend/API/OAuth/cloud/sync introdotto
+[✓] Nessun DOCX/PDF programmatico introdotto
+[✓] Nessun salvataggio/autosave/storage introdotto
+[✓] Nessuna ownership/subentro/profilo reale introdotto
+[✓] Stati definiti: not_started, orientation_available, in_progress, evidence_present, needs_review, ready_for_human_validation, human_validated, blocked, not_applicable
+[✓] Stati vietati e wording vietato definiti
+[✓] Differenza avanzamento/evidenza/revisione/validazione chiara
+[✓] Validazione sempre umana/collegiale, non automatica
+[✓] Struttura dati concettuale documentata
+[✓] Prerequisiti runtime definiti
+[✓] Worktree pulita, branch da origin/main
+[✓] Nessuna e86064b contamination
+
+RISULTATO: CONTRATTO MGR-086B DEFINITO E PRONTO PER REVIEW
