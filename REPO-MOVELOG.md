@@ -51,6 +51,20 @@
 - Alternative valutate: MGR-084A (polish UI), MGR-084C (contratto dati), MGR-084D (presa in carico/subentro — da non fare ancora)
 - Output: docs/03_execution/MGR-083.md, report/CONTROLLO_MGR083_COMPLETION_MAP_POST_MERGE_SMOKE.txt
 
+## MGR-088A (2026-06-15)
+- ACTIVITY_STATE_UI_COPY_CONTRACT definito in modalità docs/contract-only
+- Copy ammesso/vietato per 9 stati: not_started, orientation_available, in_progress, evidence_present, needs_review, ready_for_human_validation, human_validated, blocked, not_applicable
+- Tono ammesso: informativo, orientativo, lavorativo, revisionale, prudente, temporale
+- Tono vietato: certificativo, autoritario, automatico, definitivo, registriale
+- CTA ammesse: "Apri sezione", "Vedi riferimenti", "Vedi evidenze", "Rivedi contenuto", "Prepara per controllo", "Contatta referente"
+- CTA vietate: "Approva", "Certifica", "Rendi conforme", "Completa ufficialmente", "Salva stato", "Prendi in carico", "Conferma validazione", "Registra"
+- human_validated: non impostabile da CTA generica
+- Indicatori visuali: colori/icone di orientamento/lavoro, non certificativi
+- Messaggi di prudenza obbligatori: "bussola di lavoro, non certificazione", "validazione resta umana/collegiale/istituzionale", ecc.
+- Requisiti futuri prima di UI runtime: copy review, smoke test umano, test contro parole vietate, verifica accessibilità, coerenza con MGR-086B/087A
+- Confini: nessun runtime, nessuna UI reale, nessun salvataggio/autosave/storage/backend/API/cloud, nessuna ownership/subentro, nessun dato personale/studente reale
+- File: docs/02_system/ACTIVITY-STATE-UI-COPY-CONTRACT.md, docs/03_execution/MGR-088A.md, report/CONTROLLO_MGR088A_ACTIVITY_STATE_UI_COPY_CONTRACT.txt
+
 ## MGR-087A (2026-06-15)
 - ACTIVITY_DATA_STORAGE_PRIVACY_CONTRACT definito in modalità docs/contract-only
 - Principio local-first: dati attività locali per dispositivo, nessun sync/cloud/backend in questa fase
