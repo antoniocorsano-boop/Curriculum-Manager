@@ -3,9 +3,22 @@
 ## MGR-077 (2026-06-15)
 - DM221_2025_CURRICULUM_DATA_MODEL_CONTRACT definito in modalità docs/report-only
 - Entità dati definite: CurriculumSource, DisciplineCurriculum2025, FoundationalNucleus, EssentialKnowledge, CompetenceTarget, AssessmentEvidence, HumanReviewState
-- Regole definite: campi obbligatori per “pronta 2025”, campi draft, revisione umana, divieto dati personali/studenti, collegamenti PTOF/RAV/PdM senza dati reali
+- Regole definite: campi obbligatori per "pronta 2025", campi draft, revisione umana, divieto dati personali/studenti, collegamenti PTOF/RAV/PdM senza dati reali
 - Vincolo confermato: nessun claim automatico di conformità; solo `ready_for_human_review` strutturale
 - Output: `docs/02_system/DM221-2025-CURRICULUM-DATA-MODEL-CONTRACT.md`, `docs/03_execution/MGR-077.md`, `report/CONTROLLO_MGR077_DM221_2025_DATA_MODEL.txt`
+
+## MGR-074 (2026-06-15)
+- Wiki interna dell'app implementata come guida e aiuto integrato
+- Catalogo dati creato: src/data/wikiCatalog.js
+- Vista creata: src/views/wikiView.js
+- Aggiunta sezione wiki in index.html con relativo script
+- Aggiunta route wiki in src/app.js
+- Aggiunta voce "Wiki" nel menu laterale in src/components/sidebar.js
+- Contenuti: guida introduttiva, documenti istituzionali, matrice revisione, output center, validazione umana, sicurezza e limiti
+- Frontend/static/local-only: nessun backend, API, OAuth, cloud o export automatico
+- Spiega solo funzioni realmente presenti nell'applicazione
+- Copy prudente: consulta interna, revisione umana richiesta, nessun invio automatico
+
 ## MGR-072 (2026-06-14)
 - DOCUMENT_OUTPUT_CENTER_CONTRACT definito in modalità docs-only
 - Sei stati output locale: bozza non modificata, modificata localmente, salvata, pronta per stampa, da rivedere, completata manualmente

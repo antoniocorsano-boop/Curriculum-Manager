@@ -1,0 +1,39 @@
+MGR-074 Wiki - Design Plan v2
+
+1. Sezioni Wiki prévues:
+   - Introduzione al Manager Curricolo (cos'è, come iniziare)
+   - Guida ai Materiali Sorgente (come utilizzare i template)
+   - Guida ai Documenti Istituzionali (stati, modifica, esportazione)
+   - Guida alla Matrice di Revisione (come annotare, tenere traccia)
+   - Guida all'Output Center (come esportare, stampare, salvare bozze)
+   - Domande Frequenti (FAQ) sull'utilizzo interno e limitazioni
+
+2. File da toccare:
+   - src/data/wikiCatalog.js (creare nuovo catalogo con contenuti prudenti)
+   - src/views/wikiView.js (creare nuova vista per visualizzare il catalogo)
+   - index.html (aggiungere sezione wiki e script per wikiView.js)
+   - src/app.js (aggiungere route per wiki nella funzione renderView)
+   - src/components/sidebar.js (aggiungere voce "Wiki" o "Guida" nel menu laterale)
+   - src/styles.css (eventuali aggiustamenti minimi per la vista wiki, se necessario)
+   - docs/03_execution/MGR-074.md (documentazione di esecuzione)
+   - REPO-MOVELOG.md (aggiungere entry per MGR-074 al completamento)
+
+3. Cosa NON verrà incluso:
+   - Nessun riferimento a esportazione automatica in cloud o servizi esterni
+   - Nessun riferimento a funzionalità non presenti (es. esportazione DOCX/PDF programmatico senza gate)
+   - Nessun dato personale o sensibile negli esempi
+   - Nessun collegamento a fonti esterne o siti web esterni
+   - Nessun modulo di feedback automatico o integrazione con sistemi di terze parti
+   - Nessun riferimento a funzionalità in sviluppo o non ancora implementate
+
+4. Confini:
+   - Frontend/static/local-only: tutta la wiki è contenuta nel client-side, nessun richiesta di rete
+   - Consultazione interna: la wiki è solo per uso interno dell'utente singolo, nessun condivisione
+   - Revisione umana richiesta: la wiki chiarisce che le esportazioni e le modifiche richiedono validazione umana secondo le procedure istituzionali
+   - Nessun backend, API, OAuth, cloud, export automatico di DOCX/PDF senza gate dedicato
+
+5. Criterio: la Wiki deve spiegare solo funzioni realmente presenti:
+   - Ogni funzionalità descritta deve corrispondere a un pulsante, menu o funzione effettivamente presente nell'applicazione
+   - Nessuna menzione di funzionalità "in arrivo" o "pianificate"
+   - Le descrizioni devono essere verificate contro l'interfaccia corrente dell'applicazione
+   - Se una funzione è presente ma limitata (es. esportazione DOCX solo dopo gate), la wiki deve menzionare il limite
