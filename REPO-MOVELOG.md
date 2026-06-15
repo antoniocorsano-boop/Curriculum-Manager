@@ -1,6 +1,19 @@
 # REPO-MOVELOG
 
-## MGR-077 (2026-06-15)
+## MGR-089A (2026-06-15)
+- ACTIVITY_STORAGE_TECHNICAL_CONTRACT definito in modalità docs/contract-only
+- Opzioni storage future definite senza implementazione: none, memory-only, localStorage, IndexedDB, local file export/import
+- cloud/sync vietato finché non esiste contratto separato
+- Struttura concettuale futura definita: storageVersion, activities, activityId, state, updatedAt, updatedByRole, evidenceRefs, validationRequired, validationStatus, validationNote, blockedReason, metadata, resetAt
+- Namespace/key strategy, versionamento, migrazioni, reset/cancellazione, import/export, backup, error handling, limiti dimensione, comportamento offline definiti
+- Relazione con MGR-086B/087A/088A chiarita
+- Dati vietati: nomi studenti reali, codici fiscali, dati sanitari, BES/DSA/PEI/PDP nominativi, valutazioni nominative, credenziali, token, API key, allegati reali, documenti firmati, registro ufficiale, log non anonimizzati
+- Prerequisiti prima di storage runtime definiti: nuova slice, test, smoke audit, rollback plan, documentazione utente privacy/reset
+- File: docs/02_system/ACTIVITY-STORAGE-TECHNICAL-CONTRACT.md, docs/03_execution/MGR-089A.md, report/CONTROLLO_MGR089A_ACTIVITY_STORAGE_TECHNICAL_CONTRACT.txt
+- Report controllo: MGR_089A_CLOSED_MERGED_REMOTE
+- Raccomandazione prossimo incremento: MGR-090B — ACTIVITY_STORAGE_TECHNICAL_CLOSURE_AUDIT
+
+## MGR-088A (2026-06-15)
 - DM221_2025_CURRICULUM_DATA_MODEL_CONTRACT definito in modalità docs/report-only
 - Entità dati definite: CurriculumSource, DisciplineCurriculum2025, FoundationalNucleus, EssentialKnowledge, CompetenceTarget, AssessmentEvidence, HumanReviewState
 - Regole definite: campi obbligatori per "pronta 2025", campi draft, revisione umana, divieto dati personali/studenti, collegamenti PTOF/RAV/PdM senza dati reali

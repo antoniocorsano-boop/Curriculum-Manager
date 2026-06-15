@@ -1,0 +1,41 @@
+CONTROLLO_MGR089A_ACTIVITY_STORAGE_TECHNICAL_CONTRACT
+=====================================================
+
+Data: 2026-06-15
+MGR: MGR-089A
+Titolo: ACTIVITY_STORAGE_TECHNICAL_CONTRACT
+Stato: CONTRATTO DEFINITO
+
+CHECKLIST:
+
+[✓] File contratto creato: docs/02_system/ACTIVITY-STORAGE-TECHNICAL-CONTRACT.md
+[✓] File esecuzione creato: docs/03_execution/MGR-089A.md
+[✓] Report controllo creato: report/CONTROLLO_MGR089A_ACTIVITY_STORAGE_TECHNICAL_CONTRACT.txt
+[✓] REPO-MOVELOG.md aggiornato con sezione MGR-089A
+[✓] Solo file docs/contract/report/movelog modificati
+[✓] Nessun file src/** modificato
+[✓] Nessun file index.html modificato
+[✓] Nessun file APRI_MANAGER_CURRICOLO_ISTITUTO.html modificato
+[✓] Nessun backend/API/OAuth/cloud/sync introdotto
+[✓] Nessun DOCX/PDF programmatico introdotto
+[✓] Nessun localStorage/sessionStorage/IndexedDB runtime introdotto
+[✓] Nessun salvataggio/autosave/storage runtime introdotto
+[✓] Nessuna ownership/subentro/profilo reale introdotto
+[✓] Opzioni future definite: none, memory-only, localStorage, IndexedDB, local file export/import
+[✓] cloud/sync vietato senza contratto separato
+[✓] Struttura concettuale futura definita senza codice
+[✓] Namespace/key strategy definita come contratto futuro
+[✓] Versionamento e migrazioni definite
+[✓] Reset/cancellazione definiti
+[✓] Import/export e backup definiti come azioni future/esplicite
+[✓] Error handling e limiti dimensionali definiti
+[✓] Comportamento offline definito
+[✓] Relazione con MGR-086B/087A/088A chiarita
+[✓] Prerequisiti prima di storage runtime definiti
+[✓] Dati vietati elencati: nomi studenti, codici fiscali, dati sanitari, BES/DSA/PEI/PDP nominativi, valutazioni nominative, credenziali, token, API key, allegati reali, documenti firmati, registro ufficiale, log non anonimizzati
+[✓] Failure modes futuri definiti
+[✓] Worktree pulita, branch da origin/main
+[✓] Nessuna e86064b contamination
+[✓] Nessun branch storico usato come base
+
+RISULTATO: CONTRATTO MGR-089A DEFINITO E PRONTO PER REVIEW
