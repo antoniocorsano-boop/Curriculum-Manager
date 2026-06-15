@@ -32,6 +32,10 @@ function renderDocumentiIstituzionaliView() {
         <strong>Nota:</strong> ogni documento è una bozza di lavoro fino alla validazione del gruppo.
       </div>
 
+      <div class="toolbar no-print" style="margin-bottom:16px">
+        <button type="button" class="action secondary" onclick="showView('documentOutputCenter')">Apri Centro output documenti</button>
+      </div>
+
       ${guideDoc ? `
         <div class="card institutional-document-guide-card" data-document-id="${_esc(guideDoc.id)}" style="border-left:4px solid var(--primary); margin-bottom:20px">
           <h3 style="margin-top:0">Documento guida del percorso</h3>
@@ -117,6 +121,8 @@ function getDocumentDetailMeta(doc) {
 function showDocumentDetail(docId) {
    const doc = window.INSTITUTIONAL_DOCUMENTS_CATALOG.find(d => d.id === docId);
    if (!doc) return;
+
+   window.DOCUMENT_OUTPUT_CENTER_STATE?.markDocumentOutputOpened?.(docId);
 
    const meta = getDocumentDetailMeta(doc);
    const detailEl = document.getElementById("documentDetail");
@@ -225,7 +231,8 @@ function showDocumentDetail(docId) {
           <button type="button" id="saveDraftButton" class="action">Salva bozza</button>
           <button type="button" id="resetDraftButton" class="action secondary">Ripristina bozza iniziale</button>
           <button type="button" id="printDraftButton" class="action secondary">Stampa bozza</button>
-          <button type="button" id="prepareForRevisionButton" class="action secondary" style="display:none">Pronto per revisione</button>
+          <button type="button" id="markNeedsReviewButton" class="action secondary">Segna da rivedere</button>
+          <button type="button" id="markCompletedButton" class="action secondary">Completato manualmente</button>
           <button type="button" id="openLinkedMatrixButton" class="action secondary">Apri revisione collegata</button>
           <button type="button" id="addDocumentNoteButton" class="action secondary">Aggiungi osservazione</button>
         </div>
@@ -238,6 +245,12 @@ function showDocumentDetail(docId) {
    const saveDraftButton = document.getElementById("saveDraftButton");
    if (saveDraftButton) saveDraftButton.addEventListener("click", () => saveEditableDocumentDraft(docId));
 
+   document.querySelectorAll(`textarea[data-doc="${docId}"]`).forEach(textarea => {
+     textarea.addEventListener("input", () => {
+       window.DOCUMENT_OUTPUT_CENTER_STATE?.markDocumentDraftChanged?.(docId);
+     });
+   });
+
 const resetDraftButton = document.getElementById("resetDraftButton");
     if (resetDraftButton) resetDraftButton.addEventListener("click", () => {
       if (confirm("Riepristinare la bozza iniziale? Perderai tutte le modifiche non salvate.")) {
@@ -247,6 +260,18 @@ const resetDraftButton = document.getElementById("resetDraftButton");
 
     const printDraftButton = document.getElementById("printDraftButton");
     if (printDraftButton) printDraftButton.addEventListener("click", () => window.print());
+
+   const markNeedsReviewButton = document.getElementById("markNeedsReviewButton");
+   if (markNeedsReviewButton) markNeedsReviewButton.addEventListener("click", () => {
+     if (typeof markDocumentNeedsReview === "function") markDocumentNeedsReview(docId);
+     showDocumentDetail(docId);
+   });
+
+   const markCompletedButton = document.getElementById("markCompletedButton");
+   if (markCompletedButton) markCompletedButton.addEventListener("click", () => {
+     if (typeof markDocumentCompletedManually === "function") markDocumentCompletedManually(docId);
+     showDocumentDetail(docId);
+   });
 
     const matrixButton = document.getElementById("openLinkedMatrixButton");
    if (matrixButton) matrixButton.addEventListener("click", () => showView("matriceRevisione"));
@@ -280,6 +305,8 @@ const resetDraftButton = document.getElementById("resetDraftButton");
      window.EDITABLE_DOCUMENT_STATE.saveEditableDraft(docId, draftData);
    }
 
+   window.DOCUMENT_OUTPUT_CENTER_STATE?.markDocumentDraftSaved?.(docId);
+
    const statusEl = document.querySelector(".editable-document-section div:last-child");
    if (statusEl) {
      statusEl.textContent = `Salvato su questo dispositivo: ${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}`;
@@ -293,6 +320,8 @@ const resetDraftButton = document.getElementById("resetDraftButton");
    if (window.EDITABLE_DOCUMENT_STATE && window.EDITABLE_DOCUMENT_STATE.clearEditableDraft) {
      window.EDITABLE_DOCUMENT_STATE.clearEditableDraft(docId);
    }
+
+   window.DOCUMENT_OUTPUT_CENTER_STATE?.resetDocumentOutputState?.(docId);
 
    const statusEl = document.querySelector(".editable-document-section div:last-child");
    if (statusEl) {
