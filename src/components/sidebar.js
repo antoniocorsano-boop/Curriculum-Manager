@@ -8,7 +8,8 @@ function renderSidebar({ activeView = "modelliSorgente" } = {}) {
     { id: "modelliSorgente", label: "Materiali" },
     { id: "documentiIstituzionali", label: "Documenti" },
     { id: "documentOutputCenter", label: "Output" },
-    { id: "matriceRevisione", label: "Revisione" }
+    { id: "matriceRevisione", label: "Revisione" },
+    { id: "wiki", label: "Wiki" }
   ];
 
   const navButtons = views.map(v => `
