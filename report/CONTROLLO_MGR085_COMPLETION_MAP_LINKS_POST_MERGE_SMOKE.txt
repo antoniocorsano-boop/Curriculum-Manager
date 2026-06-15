@@ -1,0 +1,29 @@
+CONTROLLO_MGR085_COMPLETION_MAP_LINKS_POST_MERGE_SMOKE
+========================================================
+
+Data: 2026-06-15
+MGR: MGR-085
+Titolo: COMPLETION_MAP_LINKS_POST_MERGE_SMOKE_AUDIT
+Stato: AUDIT COMPLETATO
+
+CHECKLIST:
+
+[✓] Base branch: main con merge MGR-084B (44f0e67…)
+[✓] Worktree pulita, senza ahead/behind
+[✓] Branch senza contaminazione e86064b
+[✓] Smoke test sidebar "Mappa": link presenti solo su card previste
+[✓] Navigazione: Discipline → Documenti OK, Revisione → Revisione OK, Output → Output OK
+[✓] Ritorno alla Mappa tramite sidebar OK
+[✓] Copy sobria, nessuna CTA operativa
+[✓] Mappa rimane superficie orientamento
+[✓] Nessun salvataggio/autosave/storage
+[✓] Nessun fetch/XMLHttpRequest/API/backend/cloud/OAuth
+[✓] Nessun DOCX/PDF programmatico
+[✓] Nessuna ownership/presa in carico/subentro
+[✓] Nessun profilo reale
+[✓] Nessun documento laterale
+[✓] Prossimo incremento selezionato: MGR-086B (activity state domain contract)
+[✓] Solo file docs/report/movelog modificati
+[✓] Nessun file runtime modificato
+
+RISULTATO: AUDIT MGR-085 OK, LINK FUNZIONANTI, PROSSIMO PASSO MGR-086B
