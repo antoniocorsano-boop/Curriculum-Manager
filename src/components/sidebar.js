@@ -10,6 +10,7 @@ function renderSidebar({ activeView = "modelliSorgente" } = {}) {
     { id: "documentOutputCenter", label: "Output" },
     { id: "matriceRevisione", label: "Revisione" },
     { id: "completionMap", label: "Mappa" },
+    { id: "activityStateReadOnly", label: "Stati attività" },
     { id: "wiki", label: "Wiki" }
   ];
 
