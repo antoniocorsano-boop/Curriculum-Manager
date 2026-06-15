@@ -1,0 +1,38 @@
+CONTROLLO_MGR093A_ACTIVITY_STATE_READONLY_FIXTURE_STATIC_GUARDRAIL
+====================================================================
+
+Data: 2026-06-15
+MGR: MGR-093A
+Titolo: ACTIVITY_STATE_READONLY_FIXTURE_STATIC_GUARDRAIL
+Stato: GUARDRAIL AGGIUNTO
+
+CHECKLIST:
+
+[✓] Guardrail creato: scripts/guardrails/activityStateFixture.guardrail.js
+[✓] File esecuzione creato: docs/03_execution/MGR-093A.md
+[✓] Report controllo creato: report/CONTROLLO_MGR093A_ACTIVITY_STATE_READONLY_FIXTURE_STATIC_GUARDRAIL.txt
+[✓] REPO-MOVELOG.md NON modificato (non make entry)
+[✓] Solo file ammessi modificati
+[✓] Nessun file src/** modificato
+[✓] Nessun file index.html modificato
+[✓] Nessun mount UI aggiunto
+[✓] Nessuna modifica src/app.js
+[✓] Nessuna modifica src/views/**
+[✓] Nessuna modifica src/components/**
+[✓] Nessun backend/API/OAuth/cloud/sync introdotto
+[✓] Nessun DOCX/PDF programmatico introdotto
+[✓] Nessun localStorage/sessionStorage/IndexedDB runtime introdotto
+[✓] Nessun salvataggio/autosave/storage runtime introdotto
+[✓] Nessuna ownership/subentro/profilo reale introdotto
+[✓] 9 stati attivit\u00e0 coperti
+[✓] Flag readonly/exampleData/storageEnabled verificati
+[✓] Campi obbligatori verificati
+[✓] Unicit\u00e0 activityId verificata
+[✓] Termini vietati scannerizzati
+[✓] Guardrail passa sulla fixture esistente
+[✓] Validazioni passate: git diff --check, node --check, guardrail run
+[✓] Worktree pulita, branch da origin/main
+[✓] Nessuna e86064b contamination
+[✓] Nessun branch storico usato come base
+
+RISULTATO: GUARDRAIL MGR-093A AGGIUNTO E VALIDATO
