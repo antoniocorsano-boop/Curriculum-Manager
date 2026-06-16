@@ -1,5 +1,12 @@
 # REPO-MOVELOG
 
+## MGR-105 (2026-06-16) — NEXT_INCREMENT_SELECTION_AUDIT
+- Audit selezione del prossimo incremento completato in modalità audit-only/docs-only
+- Baseline confermata: f0a2fcc (PR #31/MGR-100C-c), 35d03e3 (PR #30/MGR-101A), 8613a07 (PR #29/MGR-100B)
+- Worktree pulita creata da origin/main
+- Matrice candidati valutata: A-G
+- Prossimo incremento selezionato: MGR-106 — LOCAL_DRAFT_WORKFLOW_POLISH
+
 ## MGR-104B (2026-06-16) — APP_WIDE_NAVIGATION_SMOKE_AUDIT
 - Smoke audit navigazione app completato in modalità audit-only/docs-only
 - Baseline confermata da origin/main: f0a2fcc (PR #31/MGR-100C-c), 35d03e3 (PR #30/MGR-101A), 8613a07 (PR #29/MGR-100B)

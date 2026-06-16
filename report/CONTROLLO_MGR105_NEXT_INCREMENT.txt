@@ -1,0 +1,40 @@
+# CONTROLLO MGR105_NEXT_INCREMENT_SELECTION
+
+## Stato repo corrente
+
+Branch: feat/mgr-104b-app-wide-navigation-smoke-audit
+Commit: 0d85f5d
+Remote tracking: origin/feat/mgr-104b-app-wide-navigation-smoke-audit
+Working tree: pulito
+Baseline origin/main: f0a2fcc
+
+## Cosa è stato ispezionato
+
+- REPO-MOVELOG.md
+- Report MGR-100C-a through MGR-104B
+- index.html, src/app.js, src/components/sidebar.js
+- Tutte le views e cataloghi
+
+## Matrice candidati
+
+A. Completion Map polish — valore medio, rischio basso
+B. Output Center polish — valore medio, rischio basso
+C. Local draft workflow polish — valore alto, rischio basso
+D. App-wide navigation refinement — valore basso, rischio medio
+E. Human demo readiness pass — valore medio, rischio molto basso
+F. Export gate next step — valore alto, rischio medio/alto
+G. Maintenance baseline — valore basso, rischio molto basso
+
+## Raccomandazione
+
+MGR-106 — LOCAL_DRAFT_WORKFLOW_POLISH
+
+Motivo:
+- Valore utente più alto
+- Rischio minimo
+- Mantiene local-only behavior
+- Copy/safety polish necessario
+
+## Verdetto
+
+MGR_105_CLOSED_SELECTION_MADE
