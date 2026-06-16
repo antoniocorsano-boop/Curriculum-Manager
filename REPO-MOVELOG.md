@@ -1,5 +1,17 @@
 # REPO-MOVELOG
 
+## MGR-100B (2026-06-15)
+- ACTIVITY_STATE_VIEW_BINDING_FIX_AND_GUARDRAIL_EXTENSION completato
+- Root cause MGR-099A confermata: la view legge window.activityStateFixtureCatalog, ma la fixture non esponeva quel window binding
+- Fix minimo applicato: window.activityStateFixtureCatalog = activityStateFixtureCatalog nella fixture
+- Nessuna modifica a dati/stati della fixture, copy, route, app shell, sidebar, index.html o styles
+- Guardrail esteso per verificare fixture/view binding, rendering di activityStateCatalog.activities, assenza di controlli operativi e forbidden terms su fixture/view
+- Smoke HTTP locale passato via http://localhost:5173: activityStateReadOnly active, titolo/sottotitolo visibili, cardCount 9, interactiveCount 0, catalogWindow object
+- Nessun evento console bloccante, nessun network failure, nessuna unexpected network, nessuna scrittura localStorage/sessionStorage, nessun accesso indexedDB
+- Classificazione: POST_BINDING_FIX_SMOKE_PASS
+- Prossimo incremento selezionato: MGR-101A — ACTIVITY_STATE_VIEW_POST_BINDING_FIX_SMOKE_AUDIT
+- File: src/data/activityStateFixtureCatalog.js, scripts/guardrails/activityStateFixture.guardrail.js, docs/03_execution/MGR-100B.md, report/CONTROLLO_MGR100B_ACTIVITY_STATE_VIEW_BINDING_FIX_GUARDRAIL.txt
+
 ## MGR-099A (2026-06-15)
 - ACTIVITY_STATE_VIEW_POST_POLISH_SMOKE_AUDIT completato in modalità docs-only/audit-only
 - Baseline confermata da origin/main dopo merge MGR-098A: 7608c54bd5a572324d751e661630514e92e8c101
@@ -10,7 +22,7 @@
 - Gap bloccante: cardCount 0 nella sezione activityStateReadOnly; la view legge window.activityStateFixtureCatalog mentre il catalogo esiste come globale lessicale, non come window property
 - Classificazione: POST_POLISH_SMOKE_BLOCKED_RUNTIME_FIX_REQUIRED
 - Stop code: STOP_RUNTIME_FIX_REQUIRED
-- Prossimo incremento selezionato: MGR-100B — ACTIVITY_STATE_VIEW_GUARDRAIL_EXTENSION
+- Prossimo incremento selezionato: MGR-100B — ACTIVITY_STATE_VIEW_BINDING_FIX_AND_GUARDRAIL_EXTENSION
 - File: docs/03_execution/MGR-099A.md, report/CONTROLLO_MGR099A_ACTIVITY_STATE_VIEW_POST_POLISH_SMOKE_AUDIT.txt
 
 ## MGR-098A (2026-06-15)

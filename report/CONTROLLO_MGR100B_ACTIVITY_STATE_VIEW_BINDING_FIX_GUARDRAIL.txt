@@ -1,0 +1,70 @@
+CONTROLLO MGR-100B — ACTIVITY_STATE_VIEW_BINDING_FIX_AND_GUARDRAIL_EXTENSION
+Data: 2026-06-15
+Branch: feat/mgr-100b-activity-state-view-binding-fix-guardrail
+Baseline: origin/main, merge commit MGR-099A 91e2f1c5ab4d9a6233e70854a6c68162145c5e8a confermato.
+
+ROOT CAUSE CONFERMATA
+- activityStateFixtureCatalog.js viene caricato via HTTP come script browser classico.
+- Il catalogo esiste come globale lessicale nel contesto browser.
+- La view activityStateReadOnlyView.js legge window.activityStateFixtureCatalog.
+- Prima della patch, window.activityStateFixtureCatalog era undefined.
+- Conseguenza: titolo/sottotitolo renderizzavano, ma le card attività no (cardCount: 0).
+
+FIX APPLICATO
+- src/data/activityStateFixtureCatalog.js: aggiunta esposizione esplicita window.activityStateFixtureCatalog = activityStateFixtureCatalog;
+- Nessuna modifica a dati/stati della fixture.
+- Nessuna modifica a view copy, route, app shell, sidebar, index.html o styles.
+- Nessuna nuova feature.
+
+GUARDRAIL ESTESO
+- scripts/guardrails/activityStateFixture.guardrail.js ora controlla sia fixture sia view.
+- Fallisce se la fixture non espone window.activityStateFixtureCatalog.
+- Fallisce se la view non legge window.activityStateFixtureCatalog.
+- Fallisce se la view non renderizza activityStateCatalog.activities.
+- Fallisce se la view introduce button/input/form operativi.
+- Fallisce se la fixture non contiene almeno una activity card.
+- Controlla syntax sia per fixture sia per view.
+- Controlla forbidden terms sia su fixture sia su activityStateReadOnlyView.js.
+
+VALIDAZIONI TECNICHE
+- git diff --check: passato.
+- node --check src/data/activityStateFixtureCatalog.js: passato.
+- node --check src/views/activityStateReadOnlyView.js: passato.
+- node --check src/app.js: passato.
+- node --check src/components/sidebar.js: passato.
+- node scripts/guardrails/activityStateFixture.guardrail.js: passato.
+
+SMOKE LOCALE HTTP
+- Server: python -m http.server 5173.
+- URL: http://localhost:5173.
+- Chrome headless CDP:
+  - sezione activityStateReadOnly active: true;
+  - titolo: "Stati attività";
+  - sottotitolo polish visibile;
+  - cardCount: 9;
+  - interactiveCount: 0;
+  - catalogWindow: object;
+  - consoleEvents: [];
+  - networkFailures: [];
+  - unexpectedNetwork: [];
+  - storageWrites localStorage/sessionStorage: [];
+  - indexedDBAccessed: false;
+  - nessun download/export DOCX/PDF osservato.
+
+BOUNDARY SCAN
+Termini cercati nei file modificati:
+fetch, XMLHttpRequest, localStorage, sessionStorage, indexedDB, OAuth, cloud, backend, api, autosave, save, DOCX, PDF, subentro, ownership, presa in carico, studenti reali, dati sanitari, token, secret, api key, certificato, conforme, validato dal sistema, registro ufficiale, approvato automaticamente, salvato automaticamente.
+
+Classificazione:
+- Runtime changes: nessun match comportamentale.
+- Docs/report/movelog: eventuali match sono solo boundary negativi, termini vietati o riferimenti storici di controllo.
+- Nessun comportamento reale storage/API/backend/cloud/autosave introdotto.
+
+CLASSIFICAZIONE FINALE
+POST_BINDING_FIX_SMOKE_PASS
+
+PROSSIMO INCREMENTO SELEZIONATO
+A. MGR-101A — ACTIVITY_STATE_VIEW_POST_BINDING_FIX_SMOKE_AUDIT
+
+VERDETTO
+MGR_100B_BRANCH_READY_FOR_PR
