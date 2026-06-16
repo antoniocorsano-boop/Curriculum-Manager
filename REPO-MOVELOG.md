@@ -1,5 +1,14 @@
 # REPO-MOVELOG
 
+## MGR-107 (2026-06-16) — DEMO_READINESS_GATE_AND_SCRIPT
+- Demo readiness gate completato in modalità audit-only/docs-only
+- Baseline confermata: f0a2fcc (PR #31/MGR-100C-c), 35d03e3 (PR #30/MGR-101A), 8613a07 (PR #29/MGR-100B)
+- Worktree pulita creata da origin/main
+- Percorso demo definito: apertura app, navigazione 7 viste, Matrice Revisione, Output Center, draft locale, export JSON/Markdown
+- Stop rule definita: nessun riferimento a backend/cloud, conferma reset chiara
+- Checklist manuale fornita
+- Verdetto: CURRICULUM_MANAGER_DEMO_READY
+
 ## MGR-100C-c (2026-06-16) — OUTPUT_CENTER_EXPORT_RESET_HOTFIX
 - Hotfix completato: aggiunte funzioni mancanti nell'Output Center
 - Funzioni aggiunte: exportDocumentOutputCenterJSON(), exportDocumentOutputCenterMarkdown(), resetAllDocumentOutputs()

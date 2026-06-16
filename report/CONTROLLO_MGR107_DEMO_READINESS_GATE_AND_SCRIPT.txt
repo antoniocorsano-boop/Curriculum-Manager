@@ -1,0 +1,54 @@
+# CONTROLLO MGR107_DEMO_READINESS_GATE_AND_SCRIPT
+
+## Verifica baseline
+
+Branch: feat/mgr-107-demo-readiness-gate-and-script
+Worktree creata da origin/main.
+
+Commit di riferimento:
+- f0a2fcc — MGR-100C-c / PR #31
+- 35d03e3 — MGR-101A / PR #30
+- 8613a07 — MGR-100B / PR #29
+- b9aaf69 — MGR-100C-b
+- 775a479 — MGR-100C-a
+
+Verdetto baseline: CURRICULUM_MANAGER_DEMO_READY_BASELINE
+
+## Validazioni tecniche
+
+```bash
+git diff --check — PASS
+node --check src/app.js — PASS
+node --check src/components/sidebar.js — PASS
+node --check src/views/documentOutputCenterView.js — PASS
+node --check src/views/matriceRevisioneView.js — PASS
+```
+
+## Stop rule
+
+La demo si ferma se:
+- Vista non si apre
+- Pulsante non produce effetto
+- Riferimento a rete/cloud/backend
+- Export/reset tocca dati fuori perimetro
+- Local-only non chiaro
+- Dati reali presenti
+
+## Rischi residui
+
+Nessun BLOCKER.
+DEMO_RISK minimi non bloccanti.
+
+## Checklist manuale
+
+App aperta senza errori ✅
+7 viste navigabili ✅
+Draft textarea modificabile ✅
+Salvataggio bozza ✅
+Stampa bozza ✅
+Export JSON ✅
+Export Markdown ✅
+
+## Verdetto
+
+CURRICULUM_MANAGER_DEMO_READY
