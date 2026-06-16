@@ -1,0 +1,43 @@
+# CONTROLLO MGR106_LOCAL_DRAFT_WORKFLOW_POLISH
+
+## Stato repo
+
+Branch: feat/mgr-106-local-draft-workflow-polish
+Worktree creata da origin/main.
+Baseline: f0a2fcc
+
+## Audit draft workflow
+
+### Documenti Istituzionali
+
+file: src/views/documentiIstituzionaliView.js
+
+- Status corretto: "Salvato su questo dispositivo: data/ora"
+- Status corretto: "Bozza modificata localmente"
+- Status corretto: "Bozza non modificata"
+- Conferma reset: "Riepristinare la bozza iniziale? Perderai tutte le modifiche non salvate."
+- Copy: "Documento di lavoro, non approvato, non protocollato, non inviato."
+
+### Output Center
+
+file: src/views/documentOutputCenterView.js
+
+- Toolbar presente con export JSON, Markdown, Reset tutti
+- 6 stati output definiti
+- Copy: "Output locale: bozza locale, revisione umana richiesta"
+- Nessun invio automatico
+
+## Polishing suggerito (non implementato)
+
+1. Badge più chiaro per stato bozza modificata
+2. Icona nella card documento per stato bozza
+3. Miglioramento messaggi conferma
+4. Distinzione bozza salvata vs stampata
+
+## Validazioni tecniche
+
+Working tree pulito. Nessuna modifica runtime.
+
+## Verdetto
+
+MGR_106_CLOSED_LOCAL_READY_FOR_SYNC
