@@ -228,14 +228,14 @@ function showDocumentDetail(docId) {
        ${guideHtml}
 
 <div class="toolbar" style="margin-top:16px; gap:8px; flex-wrap:wrap">
-          <button type="button" id="saveDraftButton" class="action">Salva bozza</button>
-          <button type="button" id="resetDraftButton" class="action secondary">Ripristina bozza iniziale</button>
-          <button type="button" id="printDraftButton" class="action secondary">Stampa bozza</button>
-          <button type="button" id="markNeedsReviewButton" class="action secondary">Segna da rivedere</button>
-          <button type="button" id="markCompletedButton" class="action secondary">Completato manualmente</button>
-          <button type="button" id="openLinkedMatrixButton" class="action secondary">Apri revisione collegata</button>
-          <button type="button" id="addDocumentNoteButton" class="action secondary">Aggiungi osservazione</button>
-        </div>
+           <button type="button" id="saveDraftButton" class="action">Salva bozza</button>
+           <button type="button" id="resetDraftButton" class="action secondary">Ripristina bozza iniziale</button>
+           <button type="button" id="printDraftButton" class="action secondary">Stampa bozza</button>
+           <button type="button" id="markNeedsReviewButton" class="action secondary">Prepara per confronto</button>
+           <button type="button" id="markCompletedButton" class="action secondary">Annota per revisione</button>
+           <button type="button" id="openLinkedMatrixButton" class="action secondary">Apri revisione collegata</button>
+           <button type="button" id="addDocumentNoteButton" class="action secondary">Aggiungi alle note</button>
+         </div>
      </div>
    `;
 

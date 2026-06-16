@@ -18,10 +18,14 @@ function renderMatriceRevisioneView() {
    const catalog = window.REVISION_MATRIX_CATALOG || [];
    const el = document.getElementById("matriceRevisione");
 
-el.innerHTML = `
+  el.innerHTML = `
       <div class="card">
         <h2>Lavoro di revisione</h2>
-        <p class="simple-help">Annota osservazioni, integrazioni o modifiche da portare al confronto.</p>
+        <p class="simple-help">Preparazione del confronto collegiale. Raccogli osservazioni operative prima del confronto.</p>
+
+        <div class="notice warn" style="margin-bottom:12px">
+          <strong>Attenzione:</strong> questa sezione non approva documenti. Serve a preparare bozze per il confronto collegiale. Le annotazioni sono locali e non costituiscono validazione formale.
+        </div>
 
         <div class="notice" style="margin-bottom:12px">
           <strong>Nota:</strong> ogni annotazione è una bozza di lavoro fino alla validazione del gruppo.
@@ -134,7 +138,7 @@ function renderRevisionMatrixRow(item) {
       <div class="row"><strong>Quanto è urgente</strong><span class="badge">${priorityLabel}</span></div>
       <div class="row"><strong>Cosa fare ora</strong>${_esc(item.requiredChecks?.[0] || "Nessuna")}</div>
       <div class="row"><strong>Annotazione di lavoro</strong>
-        <textarea class="draft-note-input" data-id="${item.id}" placeholder="Aggiungi osservazione..." style="width:100%;height:60px;font-size:12px;margin-top:4px" onchange="saveDraftNote('${item.id}', this.value)">${_esc(draftNote)}</textarea>
+        <textarea id="draftNote-${_esc(item.id)}" class="draft-note-input" data-id="${_esc(item.id)}" placeholder="Aggiungi osservazione..." style="width:100%;height:60px;font-size:12px;margin-top:4px" onchange="saveDraftNote('${_esc(item.id)}', this.value)">${_esc(draftNote)}</textarea>
       </div>
     </article>
   `;

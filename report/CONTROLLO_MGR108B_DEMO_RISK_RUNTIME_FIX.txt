@@ -1,0 +1,36 @@
+# CONTROLLO MGR108B_DEMO_RISK_RUNTIME_FIX
+
+## Riferimento
+
+MGR-108A — audit-only con verdicto MGR_108A_CLOSED_DEMO_RISK_IDENTIFIED
+
+## Problemi osservati
+
+### Matrice Revisione
+- Notice introduttivo non abbastanza forte
+- Pulsante "Aggiungi osservazione" non funziona (manca id)
+
+### Documenti Istituzionali
+- Pulsanti con copy ambiguo: "Segna da rivedere", "Completato manualmente"
+
+## Modifiche applicate
+
+### src/views/matriceRevisioneView.js
+- Notice warn aggiunto: "Questa sezione non approva documenti..."
+- id aggiunto al textarea per scroll funzionante
+
+### src/views/documentiIstituzionaliView.js
+- Pulsanti rinominati:
+  - "Prepara per confronto" (ex Segna da rivedere)
+  - "Annota per revisione" (ex Completato manualmente)
+  - "Aggiungi alle note" (ex Aggiungi osservazione)
+
+## Conferme
+
+- Nessun backend/cloud/API
+- Nessuna approvazione istituzionale reale
+- Local-only preservato
+
+## Validazioni
+
+PASS

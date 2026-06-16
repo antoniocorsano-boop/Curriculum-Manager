@@ -1,5 +1,14 @@
 # REPO-MOVELOG
 
+## MGR-108B (2026-06-16) — DEMO_RISK_RUNTIME_FIX_REVISION_AND_DOCUMENT_BUTTONS
+- Fix runtime completato per problemi demo-facing
+- Riferimento: MGR-108A audit con DEMO_RISK_IDENTIFIED
+- Matrice Revisione: notice warn aggiunto, id textarea aggiunto per scroll
+- Documenti Istituzionali: pulsanti rinominati per chiarezza
+- Nessun backend/cloud/API introdotto
+- Nessuna approvazione istituzionale reale
+- Verdetto: MGR_108B_CLOSED_LOCAL_READY_FOR_SYNC
+
 ## MGR-100C-c (2026-06-16) — OUTPUT_CENTER_EXPORT_RESET_HOTFIX
 - Hotfix completato: aggiunte funzioni mancanti nell'Output Center
 - Funzioni aggiunte: exportDocumentOutputCenterJSON(), exportDocumentOutputCenterMarkdown(), resetAllDocumentOutputs()
