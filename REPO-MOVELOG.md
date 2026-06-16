@@ -1,5 +1,20 @@
 # REPO-MOVELOG
 
+## MGR-100B-v2 (2026-06-16)
+- ACTIVITY_STATE_VIEW_BINDING_FIX_AND_GUARDRAIL_EXTENSION_REBASELESS_REAPPLY completato
+- Replacement branch creata da origin/main corrente dopo MGR-100C-a/MGR-100C-b, senza usare PR #28
+- Nessun merge/rebase/reset/stash/restore/clean e nessun force push
+- Root cause confermata: view legge window.activityStateFixtureCatalog ma PR #28 non era su main corrente e la fixture non esponeva quel binding
+- Fix minimo applicato: window.activityStateFixtureCatalog = activityStateFixtureCatalog nella fixture
+- Nessuna modifica a dati/stati fixture, copy, route, sidebar, index.html, styles, Output Center o Matrice Revisione
+- Guardrail esteso per verificare fixture/view binding, rendering di activityStateCatalog.activities, assenza di controlli operativi e forbidden terms su fixture/view
+- Smoke HTTP locale passato via http://localhost:5173: activityStateReadOnly active, titolo/sottotitolo visibili, cardCount 9, interactiveCount 0, catalogWindow object
+- Navigazione smoke verificata: Stati attività, Matrice Revisione, Output Center
+- Nessun evento console bloccante, nessun network failure, nessuna unexpected network, nessuna scrittura localStorage/sessionStorage, nessun accesso indexedDB
+- Classificazione: POST_BINDING_FIX_SMOKE_PASS
+- Prossimo incremento selezionato: MGR-101A — ACTIVITY_STATE_VIEW_POST_BINDING_FIX_SMOKE_AUDIT
+- File: src/data/activityStateFixtureCatalog.js, scripts/guardrails/activityStateFixture.guardrail.js, docs/03_execution/MGR-100B.md, report/CONTROLLO_MGR100B_ACTIVITY_STATE_VIEW_BINDING_FIX_GUARDRAIL.txt
+
 ## MGR-100C-b (2026-06-15) - MATRICE_REVISIONE_RESET_DRAFT_NOTES_BUGFIX
 - Fix runtime: aggiunta funzione `resetAllDraftNotes()` mancante nella Matrice Revisione
 - Chiave localStorage interessata: `cmDraftNotes`
