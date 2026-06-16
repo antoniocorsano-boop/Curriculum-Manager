@@ -1,5 +1,14 @@
 # REPO-MOVELOG
 
+## MGR-102A (2026-06-16) — OUTPUT_CENTER_EXPORT_RESET_POST_FIX_SMOKE_AUDIT
+- Smoke audit post-fix completato in modalità audit-only/docs-only
+- Baseline confermata da origin/main: f0a2fcc (PR #31/MGR-100C-c), 35d03e3 (PR #30/MGR-101A), 8613a07 (PR #29/MGR-100B)
+- Worktree pulita creata da origin/main, nessun vecchio branch usato
+- Funzioni verifycate: exportDocumentOutputCenterJSON, exportDocumentOutputCenterMarkdown, resetAllDocumentOutputs
+- Toolbar Output Center visibile con pulsanti export e reset
+- Nessuna modifica a runtime in questa slice
+- Classificazione: POST_FIX_SMOKE_PASS
+
 ## MGR-100C-c (2026-06-16) — OUTPUT_CENTER_EXPORT_RESET_HOTFIX
 - Hotfix completato: aggiunte funzioni mancanti nell'Output Center
 - Funzioni aggiunte: exportDocumentOutputCenterJSON(), exportDocumentOutputCenterMarkdown(), resetAllDocumentOutputs()
