@@ -1,5 +1,18 @@
 # REPO-MOVELOG
 
+## MGR-101A (2026-06-16) — ACTIVITY_STATE_VIEW_POST_BINDING_FIX_SMOKE_AUDIT
+- Smoke audit post-merge su origin/main completato in modalità audit-only/docs-only
+- Baseline confermata da origin/main: 8613a07 (PR #29/MGR-100B), b9aaf69 (MGR-100C-b), 775a479 (MGR-100C-a), 91e2f1c (MGR-099A)
+- Worktree pulita creata da origin/main, nessun vecchio branch usato
+- Validazioni tecniche passate: node --check su tutti i file, guardrail eseguito
+- cardCount confermato: 9
+- interactiveCount: 0
+- catalogWindow: object
+- Nessun modifica a runtime (src/**), index.html, sidebar, Matrice Revisione, Output Center
+- Nessun localStorage/sessionStorage/indexedDB/DOCX/PDF nel view activity state
+- Classificazione: POST_BINDING_FIX_SMOKE_PASS
+- Prossimo incremento selezionato: MGR-100C-c — OUTPUT_CENTER_EXPORT_RESET_HOTFIX
+
 ## MGR-100B-v2 (2026-06-16)
 - ACTIVITY_STATE_VIEW_BINDING_FIX_AND_GUARDRAIL_EXTENSION_REBASELESS_REAPPLY completato
 - Replacement branch creata da origin/main corrente dopo MGR-100C-a/MGR-100C-b, senza usare PR #28

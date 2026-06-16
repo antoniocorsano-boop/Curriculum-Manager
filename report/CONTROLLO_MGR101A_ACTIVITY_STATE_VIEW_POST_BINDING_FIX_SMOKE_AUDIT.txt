@@ -1,0 +1,65 @@
+# CONTROLLO MGR-101A ACTIVITY STATE VIEW POST BINDING FIX SMOKE AUDIT
+
+## Verifica post-merge su origin/main
+
+### Commit baseline
+- 8613a07 Merge pull request #29 da antoniocorsano-boop/feat/mgr-100b-v2-activity-state-view-binding-fix-guardrail
+- b9aaf69 fix: reset matrice revisione draft notes (#27)
+- 775a479 fix: add sidebar fallback navigation (#26)
+- 91e2f1c Merge pull request #25 da antoniocorsano-boop/feat/mgr-099a-activity-state-view-post-polish-smoke-audit
+
+### Validazioni tecniche eseguite
+
+1. git diff --check — nessuna modifica staged/unstaged
+2. node --check src/data/activityStateFixtureCatalog.js — PASS
+3. node --check src/views/activityStateReadOnlyView.js — PASS
+4. node --check src/app.js — PASS
+5. node --check src/components/sidebar.js — PASS
+6. node --check src/views/matriceRevisioneView.js — PASS
+7. node --check src/views/documentOutputCenterView.js — PASS
+8. node scripts/guardrails/activityStateFixture.guardrail.js — PASS
+
+### Risultati guardrail
+
+- Fixture espone: window.activityStateFixtureCatalog = activityStateFixtureCatalog
+- View legge: window.activityStateFixtureCatalog
+- View renderizza: activityStateCatalog.activities
+- Nessun controllo operativo (button/input/form) nella vista
+- cardCount: 9
+- interactiveCount: 0
+- catalogWindow: object
+
+### Smoke HTTP locale (http://localhost:5173)
+
+- Sezione activityStateReadOnly attiva: SI
+- Titolo "Stati attività" visibile: SI
+- Sottotitolo visibile: SI
+- window.activityStateFixtureCatalog object: SI
+- cardCount > 0 (atteso 9): 9
+- interactiveCount = 0: 0
+- Nessun pulsante/input/form operativo: SI
+- Nessun errore console bloccante: SI
+- Nessuna chiamata network inattesa: SI
+- Nessuna scrittura localStorage: SI
+- Nessuna scrittura sessionStorage: SI
+- Nessun accesso indexedDB: SI
+- Nessun download/export DOCX/PDF: SI
+- Navigazione sidebar funzionante: SI
+- Matrice Revisione raggiungibile: SI
+- Output Center raggiungibile: SI
+
+### Boundary scan forbiddens
+
+Nessun termine vietato trovato nei file runtime.
+
+### Classificazione finale
+
+POST_BINDING_FIX_SMOKE_PASS
+
+### Prossimo incremento selezionato
+
+MGR-100C-c — OUTPUT_CENTER_EXPORT_RESET_HOTFIX
+
+### Verdict
+
+MGR_101A_BRANCH_READY_FOR_PR
