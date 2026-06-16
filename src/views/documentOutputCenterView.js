@@ -201,6 +201,61 @@ function copyDocumentOutputSummary(documentId) {
   }
 }
 
+function exportDocumentOutputCenterJSON() {
+  const docs = window.INSTITUTIONAL_DOCUMENTS_CATALOG || [];
+  const map = loadDocumentOutputStateMap();
+  const data = docs.map(doc => ({
+    ...doc,
+    outputState: map[doc.id]?.outputState || "draft_unmodified",
+    needsReview: map[doc.id]?.needsReview || false,
+    completedManually: map[doc.id]?.completedManually || false,
+    lastOpenedAt: map[doc.id]?.lastOpenedAt,
+    lastSavedAt: map[doc.id]?.lastSavedAt,
+    lastMarkedForReviewAt: map[doc.id]?.lastMarkedForReviewAt,
+    lastMarkedCompletedAt: map[doc.id]?.lastMarkedCompletedAt
+  }));
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type: "application/json"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "output-center-stato.json";
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function exportDocumentOutputCenterMarkdown() {
+  const docs = window.INSTITUTIONAL_DOCUMENTS_CATALOG || [];
+  const map = loadDocumentOutputStateMap();
+  let md = "# Stato Output Documenti - Bozza Locale\n\n";
+  md += "Dati di esempio a uso orientativo, in sola lettura. Non equivale ad approvazione istituzionale.\n\n";
+  docs.forEach(doc => {
+    const status = getDocumentOutputStatus(doc.id);
+    md += `## ${doc.title}\n`;
+    md += `**Categoria:** ${doc.category}\n\n`;
+    md += `**Stato output locale:** ${status.label}\n\n`;
+    md += `**Dettaglio:** ${status.detail}\n\n`;
+    md += `**Bozza locale:** documento di lavoro, non approvato, non protocollato, non inviato.\n\n`;
+    md += "---\n\n";
+  });
+  const blob = new Blob([md], {type: "text/markdown"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "output-center-stato.md";
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function resetAllDocumentOutputs() {
+  if (!confirm("Resettare tutti gli stati e le bozze locali dell'Output Center?")) return;
+  localStorage.removeItem(DOCUMENT_OUTPUT_STATE_KEY);
+  const docs = window.INSTITUTIONAL_DOCUMENTS_CATALOG || [];
+  docs.forEach(doc => {
+    window.EDITABLE_DOCUMENT_STATE?.clearEditableDraft?.(doc.id);
+  });
+  renderDocumentOutputCenterView();
+}
+
 function renderDocumentOutputCenterView() {
   const el = document.getElementById("documentOutputCenter");
   if (!el) return;
@@ -221,6 +276,11 @@ function renderDocumentOutputCenterView() {
         <div class="output-summary-item"><strong>${summary.ready}</strong><span>Pronti per stampa</span></div>
         <div class="output-summary-item"><strong>${summary.review}</strong><span>Da rivedere</span></div>
         <div class="output-summary-item"><strong>${summary.completed}</strong><span>Completati manualmente</span></div>
+      </div>
+      <div class="toolbar no-print">
+        <button type="button" class="action secondary" onclick="exportDocumentOutputCenterJSON()">Esporta JSON</button>
+        <button type="button" class="action secondary" onclick="exportDocumentOutputCenterMarkdown()">Esporta Markdown</button>
+        <button type="button" class="action secondary" onclick="resetAllDocumentOutputs()" style="margin-left:8px">Reset tutti</button>
       </div>
     </div>
 
