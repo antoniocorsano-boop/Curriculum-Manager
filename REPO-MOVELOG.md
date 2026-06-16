@@ -1,5 +1,15 @@
 # REPO-MOVELOG
 
+## MGR-100C-c (2026-06-16) — OUTPUT_CENTER_EXPORT_RESET_HOTFIX
+- Hotfix completato: aggiunte funzioni mancanti nell'Output Center
+- Funzioni aggiunte: exportDocumentOutputCenterJSON(), exportDocumentOutputCenterMarkdown(), resetAllDocumentOutputs()
+- Toolbar aggiunta nella vista Output Center con pulsanti export JSON, export Markdown, reset tutti
+- Export locali browser-only (Blob + download), nessun backend/cloud/DOCX/PDF
+- Reset limitato a: curriculumManager.documentOutputState e bozze documenti
+- Nessun impatto su Matrice Revisione, sidebar, Activity State
+- Validazioni tecniche passate: git diff --check, node --check
+- Prossimo incremento: MGR-102A — OUTPUT_CENTER_EXPORT_RESET_POST_FIX_SMOKE_AUDIT
+
 ## MGR-101A (2026-06-16) — ACTIVITY_STATE_VIEW_POST_BINDING_FIX_SMOKE_AUDIT
 - Smoke audit post-merge su origin/main completato in modalità audit-only/docs-only
 - Baseline confermata da origin/main: 8613a07 (PR #29/MGR-100B), b9aaf69 (MGR-100C-b), 775a479 (MGR-100C-a), 91e2f1c (MGR-099A)

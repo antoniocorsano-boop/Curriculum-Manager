@@ -1,0 +1,81 @@
+# CONTROLLO MGR-100C-C OUTPUT_CENTER_EXPORT_RESET_HOTFIX
+
+## Verifica worktree
+
+Worktree creata da origin/main. Baseline confermata:
+- 35d03e3 — MGR-101A merge
+- 8613a07 — MGR-100B
+- b9aaf69 — MGR-100C-b
+- 775a479 — MGR-100C-a
+- 91e2f1c — MGR-099A
+
+Nessun commit e86064b presente. Nessun branch storico usato.
+
+## Hotfix implementato
+
+File: `src/views/documentOutputCenterView.js`
+
+Funzioni aggiunte:
+1. `exportDocumentOutputCenterJSON()` - esporta stato in JSON locale
+2. `exportDocumentOutputCenterMarkdown()` - esporta stato in Markdown locale
+3. `resetAllDocumentOutputs()` - resetta tutti gli output locali
+
+Toolbar aggiunta nella vista con pulsanti:
+- Esporta JSON
+- Esporta Markdown
+- Reset tutti
+
+## Chiavi localStorage interessate
+
+- `curriculumManager.documentOutputState` (rimossa da resetAllDocumentOutputs)
+- `curriculumManager.documentDrafts.<documentId>` (rimossa da resetAllDocumentOutputs)
+
+Nessun impatto su:
+- `cmDraftNotes` (Matrice Revisione)
+- Altri storage dell'app
+
+## Validazioni tecniche
+
+```bash
+git diff --check — PASS (nessun warning)
+node --check src/views/documentOutputCenterView.js — PASS
+node --check src/app.js — PASS
+```
+
+## Boundary scan forbiddens
+
+Nessun termine vietato trovato in `src/views/documentOutputCenterView.js`:
+- fetch, XMLHttpRequest, sessionStorage, indexedDB, OAuth
+- cloud, backend, api, autosave, DOCX, PDF
+- subentro, ownership, presa in carico, studenti reali
+- dati sanitari, token, secret, api key, certificato
+- conforme, validato dal sistema, registro ufficiale
+- approvato automaticamente, salvato automaticamente
+
+## Smoke locale via HTTP (http://localhost:5173)
+
+Verificato:
+- Output Center raggiungibile
+- Toolbar visibile
+- Pulsante "Esporta JSON" funziona
+- Pulsante "Esporta Markdown" funziona
+- Pulsante "Reset tutti" funziona con conferma
+- Reset non tocca Matrice Revisione
+- Reset non tocca sidebar
+- Reset non tocca Activity State
+- Nessun errore console bloccante
+- Nessuna network inattesa
+- Nessun backend/API/cloud
+- Nessun DOCX/PDF programmatico
+
+## Classificazione
+
+`OUTPUT_CENTER_EXPORT_RESET_HOTFIX_COMPLETE`
+
+## Prossimo incremento
+
+MGR-102A — OUTPUT_CENTER_EXPORT_RESET_POST_FIX_SMOKE_AUDIT
+
+## Verdict
+
+`MGR_100C_C_BRANCH_READY_FOR_PR`
