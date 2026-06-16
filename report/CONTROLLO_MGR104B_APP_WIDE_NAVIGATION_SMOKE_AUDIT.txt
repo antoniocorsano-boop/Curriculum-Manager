@@ -1,0 +1,87 @@
+# CONTROLLO MGR-104B APP_WIDE_NAVIGATION_SMOKE_AUDIT
+
+## Verifica baseline
+
+Branch: feat/mgr-104b-app-wide-navigation-smoke-audit
+Worktree creata da origin/main.
+
+Commit di riferimento:
+- f0a2fcc — MGR-100C-c / PR #31
+- 35d03e3 — MGR-101A / PR #30
+- 8613a07 — MGR-100B / PR #29
+- b9aaf69 — MGR-100C-b
+- 775a479 — MGR-100C-a
+
+Nessun commit e86064b presente. Nessun branch storico usato.
+
+## Navigation audit
+
+### Views verificate
+
+File: `src/views/`
+- modelliSorgenteView.js
+- documentiIstituzionaliView.js
+- documentOutputCenterView.js
+- matriceRevisioneView.js
+- completionMapView.js
+- wikiView.js
+- activityStateReadOnlyView.js
+
+### Router verificato
+
+File: `src/app.js`
+- 7 view routes registrate in `renderView()`
+- `showView(id)` toggle classi active
+- Nessun errore di routing
+
+### Sidebar verificata
+
+File: `src/components/sidebar.js`
+- 7 voci: Materiali, Documenti, Output, Revisione, Mappa, Stati attività, Wiki
+- Generazione dinamica con mappatura view ID
+
+### index.html verificato
+
+- 7 sezioni con id univoci
+- Script tags ordinati: catalogs prima, views dopo, app.js ultimo
+
+## Validazioni tecniche
+
+```bash
+git diff --check — PASS
+node --check src/views/documentOutputCenterView.js — PASS
+node --check src/views/matriceRevisioneView.js — PASS
+node --check src/views/activityStateReadOnlyView.js — PASS
+node --check src/app.js — PASS
+node --check src/components/sidebar.js — PASS
+```
+
+## Boundary scan forbiddens
+
+Nessun termine vietato nei file verificati.
+
+## Smoke locale via HTTP (http://localhost:5173)
+
+Verificato:
+- Modelli Sorgente raggiungibile
+- Documenti raggiungibili
+- Output Center raggiungibile
+- Matrice Revisione raggiungibile
+- Mappa raggiungibile
+- Stati attività raggiungibile
+- Wiki raggiungibile
+- Sidebar navigation funzionante
+- Nessun errore console bloccante
+- Nessuna network inattesa
+
+## Classificazione
+
+`APP_WIDE_NAVIGATION_SMOKE_PASS`
+
+## Prossimo incremento
+
+Nessuno richiesto — app stabile.
+
+## Verdict
+
+`MGR_104B_CLOSED_LOCAL_READY_FOR_SYNC`
