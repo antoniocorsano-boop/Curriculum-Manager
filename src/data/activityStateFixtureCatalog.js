@@ -188,3 +188,5 @@ const activityStateFixtureCatalog = {
     }
   ]
 };
+
+window.activityStateFixtureCatalog = activityStateFixtureCatalog;
