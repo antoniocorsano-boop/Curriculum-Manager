@@ -1,5 +1,14 @@
 # REPO-MOVELOG
 
+## MGR-110 (2026-06-17) — SIDEBAR_NAVIGATION_DEMO_RISK_FIX
+- Micro-slice runtime per rischi residui MGR-109
+- Sidebar: verificato che le voci `Materiali`, `Documenti`, `Output`, `Revisione`, `Mappa`, `Stati attività`, `Wiki` siano già presenti e allineate ai renderer esistenti
+- Matrice Revisione: notice aggiornata per chiarire che non costituisce approvazione formale e richiede validazione umana/collegiale
+- Documenti: corretto refuso conferma reset da `testo errato di ripristino` a `Ripristinare`
+- Nessuna nuova vista, nessun nuovo catalogo, nessuna modifica a `index.html`, `src/app.js`, storage, export, backend/cloud/API/OAuth/auth, DOCX/PDF programmatico o AI runtime
+- Validazioni passate: `git diff --check`, `node --check` su sidebar/app/revisione/documenti, scan `testo errato di ripristino` a zero occorrenze in `src/**/*.js`
+- Verdetto: `MGR_110_SIDEBAR_NAVIGATION_DEMO_RISK_FIX_PASS`
+
 ## MGR-109 (2026-06-17) — POST_FIX_DEMO_SMOKE_RUN
 - Smoke demo reale eseguito su `C:\Users\anton\Curriculum-Manager-MGR-108B`
 - Baseline confermata: `70249af` su `feat/mgr-108b-demo-risk-runtime-fix-revision-document-buttons`

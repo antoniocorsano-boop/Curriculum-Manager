@@ -1,0 +1,56 @@
+CONTROLLO MGR-110 — SIDEBAR_NAVIGATION_DEMO_RISK_FIX
+
+Baseline
+- Repo: C:\Users\anton\Curriculum-Manager-MGR-108B
+- Branch: feat/mgr-108b-demo-risk-runtime-fix-revision-document-buttons
+- Commit iniziale: 5b02014 docs: record post-fix demo smoke run
+- Commit MGR-109: MGR_109_DEMO_SMOKE_PASS_WITH_DEMO_RISK
+- Server locale MGR-109: py -m http.server 8000
+- URL MGR-109: http://127.0.0.1:8000/index.html
+
+Ispezione
+- src/components/sidebar.js: contiene già Materiali, Documenti, Output, Revisione, Mappa, Stati attività, Wiki.
+- src/app.js: contiene già renderer per modelliSorgente, documentiIstituzionali, documentOutputCenter, matriceRevisione, completionMap, wiki, activityStateReadOnly.
+- src/views/matriceRevisioneView.js: notice revisione presente, da rendere esplicita su non approvazione formale e validazione umana/collegiale.
+- src/views/documentiIstituzionaliView.js: trovato refuso "testo errato di ripristino la bozza iniziale?".
+- Scan "testo errato di ripristino" su src/**/*.js prima fix: presente nel file documentiIstituzionaliView.js.
+
+Modifiche applicate
+- src/views/matriceRevisioneView.js
+  - Notice aggiornata: revisione non approva documenti, non costituisce approvazione formale, prepara bozze per confronto collegiale, ogni esito richiede validazione umana/collegiale, annotazioni locali non costituiscono validazione formale.
+- src/views/documentiIstituzionaliView.js
+  - Refuso corretto: "Ripristinare la bozza iniziale?"
+- src/components/sidebar.js
+  - Nessuna modifica necessaria: label Mappa, Stati attività, Wiki già presenti e allineate ai renderer esistenti in src/app.js.
+
+Confini rispettati
+- Nessuna nuova vista.
+- Nessun nuovo catalogo dati.
+- Nessuna modifica a index.html.
+- Nessuna modifica a src/app.js.
+- Nessuna modifica a documentOutputCenterView.js.
+- Nessuna modifica a storage/localStorage model.
+- Nessun export aggiunto o modificato.
+- Nessun backend/cloud/API/OAuth/auth introdotto.
+- Nessun DOCX/PDF programmatico.
+- Nessun AI runtime.
+- Nessun piano governance salvato modificato.
+
+Validazioni eseguite
+- git diff --check: PASS
+- node --check src/components/sidebar.js: PASS
+- node --check src/views/matriceRevisioneView.js: PASS
+- node --check src/views/documentiIstituzionaliView.js: PASS
+- node --check src/app.js: PASS
+- Scan "testo errato di ripristino" su src/**/*.js: occurrences=0
+- Verifica statica label sidebar:
+  - Materiali: true
+  - Documenti: true
+  - Output: true
+  - Revisione: true
+  - Mappa: true
+  - Stati attività: true
+  - Wiki: true
+
+Verdict finale
+MGR_110_SIDEBAR_NAVIGATION_DEMO_RISK_FIX_PASS

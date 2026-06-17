@@ -253,7 +253,7 @@ function showDocumentDetail(docId) {
 
 const resetDraftButton = document.getElementById("resetDraftButton");
     if (resetDraftButton) resetDraftButton.addEventListener("click", () => {
-      if (confirm("Riepristinare la bozza iniziale? Perderai tutte le modifiche non salvate.")) {
+      if (confirm("Ripristinare la bozza iniziale? Perderai tutte le modifiche non salvate.")) {
         resetEditableDocumentDraft(docId);
       }
     });

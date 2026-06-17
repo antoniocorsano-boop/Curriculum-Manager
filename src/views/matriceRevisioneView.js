@@ -24,7 +24,7 @@ function renderMatriceRevisioneView() {
         <p class="simple-help">Preparazione del confronto collegiale. Raccogli osservazioni operative prima del confronto.</p>
 
         <div class="notice warn" style="margin-bottom:12px">
-          <strong>Attenzione:</strong> questa sezione non approva documenti. Serve a preparare bozze per il confronto collegiale. Le annotazioni sono locali e non costituiscono validazione formale.
+          <strong>Attenzione:</strong> questa sezione non approva documenti e non costituisce approvazione formale. Serve a preparare bozze per il confronto collegiale; ogni esito richiede validazione umana/collegiale. Le annotazioni sono locali e non costituiscono validazione formale.
         </div>
 
         <div class="notice" style="margin-bottom:12px">
