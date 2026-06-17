@@ -1,9 +1,63 @@
 # REPO-MOVELOG
 
+## MGR-110B (2026-06-17) — REMOTE_SYNC_AND_CLOSURE_AUDIT
+
+* Closure audit completata per `MGR-110`
+* Commit verificato: `e30125f fix: restore demo navigation sidebar entries`
+* Push eseguito su `origin/feat/mgr-108b-demo-risk-runtime-fix-revision-document-buttons` senza force push
+* PR aperta verso `main`: `https://github.com/antoniocorsano-boop/Curriculum-Manager/pull/32`
+* Merge non eseguito
+* Modifiche MGR-109 docs/report classificate come document hygiene collegata al refuso, non runtime change
+* Validazioni passate: `git diff --check HEAD~1..HEAD`, `node --check`, scan `Riepristinare` a zero occorrenze, label sidebar verificate
+* Verdetto: `MGR_110B_REMOTE_SYNC_AND_CLOSURE_AUDIT_PASS`
+
+## MGR-110 (2026-06-17) — SIDEBAR_NAVIGATION_DEMO_RISK_FIX
+
+* Micro-slice runtime per rischi residui MGR-109
+* Sidebar: verificato che le voci `Materiali`, `Documenti`, `Output`, `Revisione`, `Mappa`, `Stati attività`, `Wiki` siano già presenti e allineate ai renderer esistenti
+* Matrice Revisione: notice aggiornata per chiarire che non costituisce approvazione formale e richiede validazione umana/collegiale
+* Documenti: corretto refuso conferma reset da `Riepristinare` a `Ripristinare`
+* Nessuna nuova vista, nessun nuovo catalogo, nessuna modifica a `index.html`, `src/app.js`, storage, export, backend/cloud/API/OAuth/auth, DOCX/PDF programmatico o AI runtime
+* Validazioni passate: `git diff --check`, `node --check` su sidebar/app/revisione/documenti, scan `Riepristinare` a zero occorrenze in repo
+* Verdetto: `MGR_110_SIDEBAR_NAVIGATION_DEMO_RISK_FIX_PASS`
+
+## MGR-109 (2026-06-17) — POST_FIX_DEMO_SMOKE_RUN
+
+* Smoke demo reale eseguito su `C:\Users\anton\Curriculum-Manager-MGR-108B`
+* Baseline confermata: `70249af` su `feat/mgr-108b-demo-risk-runtime-fix-revision-document-buttons`
+* Percorso core passato: Apertura, Materiali, Documenti, Output, Revisione, Draft workflow locale
+* Revisione: notice bozza locale visibile, textarea funzionante, salvataggio `cmDraftNotes` verificato
+* Documenti: apertura dettaglio, salvataggio bozza, reload/ripristino e scroll atteso verificati
+* Output Center: export JSON/Markdown e reset tutti gli output visibili, nessun riferimento cloud/backend/API
+* Rischio demo residuo rilevato e poi risolto in `MGR-110`: sidebar renderizzata esponeva solo 4 voci; `Mappa`, `Stati attività` e `Wiki` non erano raggiungibili da sidebar pur avendo sezioni/renderer
+* Nessuna modifica runtime introdotta in `MGR-109`
+* Verdetto: `MGR_109_DEMO_SMOKE_PASS_WITH_DEMO_RISK`
+
+## MGR-108B (2026-06-16) — DEMO_RISK_RUNTIME_FIX_REVISION_AND_DOCUMENT_BUTTONS
+
+* Fix runtime completato per problemi demo-facing
+* Riferimento: MGR-108A audit con DEMO_RISK_IDENTIFIED
+* Matrice Revisione: notice warn aggiunto, id textarea aggiunto per scroll
+* Documenti Istituzionali: pulsanti rinominati per chiarezza
+* Nessun backend/cloud/API introdotto
+* Nessuna approvazione istituzionale reale
+* Verdetto: MGR_108B_CLOSED_LOCAL_READY_FOR_SYNC
+
+## MGR-109 (2026-06-17) — DOCUMENT_GOVERNANCE_IMPLEMENTATION_PLAN_AND_AGENT_GUARDRAIL
+
+* Piano operativo salvato in `docs/02_system/DOCUMENT-GOVERNANCE-IMPLEMENTATION-PLAN.md`.
+* Aggiornate istruzioni agenti in `AGENTS.md` per rendere il piano fonte operativa corrente.
+* Aggiunte istruzioni VS Code/Copilot in `.github/copilot-instructions.md`.
+* Aggiunte istruzioni Kilo Code in `KILO-CODE-INSTRUCTIONS.md`.
+* Tracciata slice in `docs/03_execution/MGR-109-PLAN-AND-AGENT-GUARDRAIL.md`.
+* Direzione fissata: Fonti -> Impatti -> Attività -> Bozze -> Revisione umana -> Versione consolidata -> Archivio locale.
+* Prossimo incremento obbligatorio: MGR-109A — Remote reconciliation audit.
+* Nessun runtime, UI, route, storage, export, backend, API, cloud, auth, DOCX/PDF o AI runtime modificato.
+
 ## MGR-077 (2026-06-15)
 - DM221_2025_CURRICULUM_DATA_MODEL_CONTRACT definito in modalità docs/report-only
 - Entità dati definite: CurriculumSource, DisciplineCurriculum2025, FoundationalNucleus, EssentialKnowledge, CompetenceTarget, AssessmentEvidence, HumanReviewState
-- Regole definite: campi obbligatori per “pronta 2025”, campi draft, revisione umana, divieto dati personali/studenti, collegamenti PTOF/RAV/PdM senza dati reali
+- Regole definite: campi obbligatori per "pronta 2025", campi draft, revisione umana, divieto dati personali/studenti, collegamenti PTOF/RAV/PdM senza dati reali
 - Vincolo confermato: nessun claim automatico di conformità; solo `ready_for_human_review` strutturale
 - Output: `docs/02_system/DM221-2025-CURRICULUM-DATA-MODEL-CONTRACT.md`, `docs/03_execution/MGR-077.md`, `report/CONTROLLO_MGR077_DM221_2025_DATA_MODEL.txt`
 ## MGR-072 (2026-06-14)
