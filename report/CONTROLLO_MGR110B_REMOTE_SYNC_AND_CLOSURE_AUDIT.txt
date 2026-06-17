@@ -1,0 +1,81 @@
+CONTROLLO MGR-110B — REMOTE_SYNC_AND_CLOSURE_AUDIT
+
+Baseline
+- Repo: C:\Users\anton\Curriculum-Manager-MGR-108B
+- Branch: feat/mgr-108b-demo-risk-runtime-fix-revision-document-buttons
+- Commit MGR-110 atteso: e30125f fix: restore demo navigation sidebar entries
+- Remote: origin https://github.com/antoniocorsano-boop/Curriculum-Manager.git
+
+Preflight eseguito
+- git status --short --branch
+- git log --oneline -5
+- git remote -v
+- git branch -vv
+
+Esito preflight
+- Branch corretto: feat/mgr-108b-demo-risk-runtime-fix-revision-document-buttons.
+- Commit corrente pre-push: e30125f.
+- Remote tracking branch presente: origin/feat/mgr-108b-demo-risk-runtime-fix-revision-document-buttons.
+- Branch ahead rispetto al remote prima del push.
+
+Verifica commit MGR-110
+- Comando: git show --name-status --oneline e30125f
+- Commit verificato: sì.
+- File runtime coerenti:
+  - src/views/matriceRevisioneView.js
+  - src/views/documentiIstituzionaliView.js
+- File docs/report coerenti:
+  - docs/03_execution/MGR-110.md
+  - report/CONTROLLO_MGR110_SIDEBAR_NAVIGATION_DEMO_RISK_FIX.txt
+  - REPO-MOVELOG.md
+- Document hygiene collegata al refuso:
+  - docs/03_execution/MGR-109.md
+  - report/CONTROLLO_MGR109_POST_FIX_DEMO_SMOKE_RUN.txt
+- Nessuna modifica runtime extra.
+
+Validazioni eseguite
+- git diff --check HEAD~1..HEAD: PASS
+- node --check src/components/sidebar.js: PASS
+- node --check src/views/matriceRevisioneView.js: PASS
+- node --check src/views/documentiIstituzionaliView.js: PASS
+- node --check src/app.js: PASS
+- scan repo per il refuso di ripristino: occurrences=0
+- verifica statica sidebar label:
+  - Materiali: true
+  - Documenti: true
+  - Output: true
+  - Revisione: true
+  - Mappa: true
+  - Stati attività: true
+  - Wiki: true
+
+Push
+- Comando eseguito: git push -u origin feat/mgr-108b-demo-risk-runtime-fix-revision-document-buttons
+- Push eseguito: sì.
+- Force push: no.
+- Cancellazione branch: no.
+- Stash pop: no.
+
+PR
+- Verifica PR esistente: nessuna PR aperta trovata prima della creazione.
+- PR creata: https://github.com/antoniocorsano-boop/Curriculum-Manager/pull/32
+- Titolo PR: fix: restore demo navigation sidebar entries
+- Base: main
+- Head: feat/mgr-108b-demo-risk-runtime-fix-revision-document-buttons
+- Stato: OPEN
+- Merge: non eseguito.
+
+Confini rispettati
+- Nessuna nuova funzionalità.
+- Nessuna nuova vista.
+- Nessun nuovo catalogo dati.
+- Nessuna modifica a index.html.
+- Nessuna modifica a src/app.js.
+- Nessun backend/cloud/API/auth/OAuth.
+- Nessun DOCX/PDF programmatico.
+- Nessun nuovo storage/localStorage.
+- Nessun AI runtime.
+- Nessun piano governance modificato.
+
+Verdict finale
+MGR_110B_REMOTE_SYNC_AND_CLOSURE_AUDIT_PASS

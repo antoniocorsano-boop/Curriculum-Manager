@@ -12,8 +12,8 @@ Ispezione
 - src/components/sidebar.js: contiene già Materiali, Documenti, Output, Revisione, Mappa, Stati attività, Wiki.
 - src/app.js: contiene già renderer per modelliSorgente, documentiIstituzionali, documentOutputCenter, matriceRevisione, completionMap, wiki, activityStateReadOnly.
 - src/views/matriceRevisioneView.js: notice revisione presente, da rendere esplicita su non approvazione formale e validazione umana/collegiale.
-- src/views/documentiIstituzionaliView.js: trovato refuso "testo errato di ripristino la bozza iniziale?".
-- Scan "testo errato di ripristino" su src/**/*.js prima fix: presente nel file documentiIstituzionaliView.js.
+- src/views/documentiIstituzionaliView.js: trovato refuso "refuso di ripristino la bozza iniziale?".
+- Scan "refuso di ripristino" su src/**/*.js prima fix: presente nel file documentiIstituzionaliView.js.
 
 Modifiche applicate
 - src/views/matriceRevisioneView.js
@@ -42,7 +42,7 @@ Validazioni eseguite
 - node --check src/views/matriceRevisioneView.js: PASS
 - node --check src/views/documentiIstituzionaliView.js: PASS
 - node --check src/app.js: PASS
-- Scan "testo errato di ripristino" su src/**/*.js: occurrences=0
+- Scan "refuso di ripristino" su src/**/*.js: occurrences=0
 - Verifica statica label sidebar:
   - Materiali: true
   - Documenti: true
