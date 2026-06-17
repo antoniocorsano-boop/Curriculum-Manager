@@ -1,5 +1,17 @@
 # REPO-MOVELOG
 
+## MGR-109 (2026-06-17) — POST_FIX_DEMO_SMOKE_RUN
+- Smoke demo reale eseguito su `C:\Users\anton\Curriculum-Manager-MGR-108B`
+- Baseline confermata: `70249af` su `feat/mgr-108b-demo-risk-runtime-fix-revision-document-buttons`
+- Percorso core passato: Apertura, Materiali, Documenti, Output, Revisione, Draft workflow locale
+- Revisione: notice bozza locale visibile, textarea funzionante, salvataggio `cmDraftNotes` verificato
+- Documenti: apertura dettaglio, salvataggio bozza, reload/ripristino e scroll atteso verificati
+- Output Center: export JSON/Markdown e reset tutti gli output visibili, nessun riferimento cloud/backend/API
+- Rischio demo residuo: sidebar renderizzata espone solo 4 voci; `Mappa`, `Stati attività` e `Wiki` non sono raggiungibili da sidebar pur avendo sezioni/renderer
+- Nessuna modifica runtime introdotta in `MGR-109`
+- Prossima slice consigliata: `MGR-110 — RESTORE_FULL_DEMO_NAVIGATION_READONLY`
+- Verdetto: `MGR_109_DEMO_SMOKE_PASS_WITH_DEMO_RISK`
+
 ## MGR-108B (2026-06-16) — DEMO_RISK_RUNTIME_FIX_REVISION_AND_DOCUMENT_BUTTONS
 - Fix runtime completato per problemi demo-facing
 - Riferimento: MGR-108A audit con DEMO_RISK_IDENTIFIED

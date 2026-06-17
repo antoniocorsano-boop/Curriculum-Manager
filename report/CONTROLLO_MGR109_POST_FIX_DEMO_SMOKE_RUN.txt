@@ -1,0 +1,80 @@
+CONTROLLO MGR-109 — POST_FIX_DEMO_SMOKE_RUN
+
+Baseline
+- Repo usato: C:\Users\anton\Curriculum-Manager-MGR-108B
+- Branch: feat/mgr-108b-demo-risk-runtime-fix-revision-document-buttons
+- Commit baseline: 70249af fix: clarify revision workflow and document actions
+- Server locale: py -m http.server 8000
+- URL: http://127.0.0.1:8000/index.html
+- Browser smoke: Chrome headless CDP 149.0.7827.115
+- Contesto: MGR-107 demo ready, MGR-108A rischi demo identificati, MGR-108B fix principali applicati.
+- Vincoli: nessuna nuova feature, nessuna modifica runtime in MGR-109, nessun backend/cloud/API/auth/deploy, nessun .env/token/secret, nessun dato reale.
+
+Audit cartelle locali
+- Curriculum-Manager-DEMO non usato: HEAD 9ea07c3, non contiene 70249af.
+- Curriculum-Manager-MGR-108B usato: contiene 70249af e branch corretto.
+- git worktree list ha mostrato molte cartelle slice; nessuna cartella è stata cancellata o modificata durante l'audit.
+
+Percorso eseguito
+1. Apertura app su http://127.0.0.1:8000/index.html.
+2. Verifica caricamento iniziale, assenza di errori console/JS e messaggio local-only.
+3. Navigazione core verificata: Materiali, Documenti, Output, Revisione.
+4. Revisione: notice, textarea, salvataggio annotazione locale, pulsanti e scroll.
+5. Documenti: apertura documento, scrittura bozza locale, salvataggio, reload, ripristino.
+6. Output Center: apertura, export JSON, export Markdown, reset completo.
+7. Draft workflow: scrittura bozza locale, salvataggio/ripristino, nessun dato reale.
+
+Esito per vista
+- Materiali: PASS. App caricata, sidebar visibile, copy local-only e validazione umana presenti, nessun errore console.
+- Documenti: PASS. Notice bozza visibile, pulsante Apri Centro output documenti visibile, apertura dettaglio funzionante.
+- Output: PASS. Centro output aperto, export JSON/Markdown e reset tutti visibili, copy local-only chiaro.
+- Revisione: PASS. Notice bozza locale visibile, textarea funzionante, salvataggio localStorage verificato.
+- Mappa: DEMO_RISK. La sidebar renderizzata non espone Mappa; index.html e app.js hanno sezioni/renderer, ma renderSidebar() genera solo 4 voci.
+- Stati attività: DEMO_RISK. La sidebar renderizzata non espone Stati attività; stesso gap di navigazione.
+- Wiki: DEMO_RISK. La sidebar renderizzata non espone Wiki; stesso gap di navigazione.
+
+Esito Revisione
+- Notice visibile: "Nota: ogni annotazione è una bozza di lavoro fino alla validazione del gruppo."
+- Bozza locale chiara: sì, tramite copy bozza/validazione e assenza di approvazione reale.
+- Approvazione formale esclusa: sufficiente per smoke, ma la notice non usa la formula esplicita "non approvazione formale".
+- Textarea funzionante: sì.
+- Salvataggio annotazione: verificato con valore "Bozza locale MGR-109" e chiave cmDraftNotes.
+- Scroll anomalo: no sui controlli testati.
+- Pulsante Mostra percorso: funzionante, delta scroll = 0.
+
+Esito Documenti
+- Pulsanti rinominati visibili nel dettaglio documento:
+  - Prepara per confronto
+  - Annota per revisione
+  - Apri revisione collegata
+  - Aggiungi alle note
+- Nessun pulsante sembra approvare formalmente.
+- Apertura documento: funzionante.
+- Salvataggio bozza: funzionante.
+- Ripristino bozza: funzionante dopo conferma.
+- Scroll anomalo: no; apertura dettaglio produce scroll atteso verso il dettaglio, delta = 541.
+- Nota UX minore: conferma reset riporta "Riepristinare la bozza iniziale?" con refuso.
+
+Esito Output Center
+- Apertura corretta.
+- Export JSON disponibile: pulsante Scarica JSON.
+- Export Markdown disponibile: pulsante Scarica Markdown.
+- Reset completo: pulsante Reset tutti gli output, con conferma esplicita.
+- Nessun riferimento visibile a cloud/backend/API/token/.env/segreti/deploy/rete.
+- Copy local-only chiaro: "Output locale: bozza locale, revisione umana richiesta, nessun invio automatico, nessuna sincronizzazione remota. Non equivale ad approvazione istituzionale."
+
+Problemi trovati
+- DEMO_RISK: sidebar renderizzata incompleta rispetto al percorso smoke richiesto. renderSidebar() genera solo Materiali, Documenti, Output, Revisione; il percorso richiesto include anche Mappa, Stati attività, Wiki.
+- COPY_POLISH: notice Revisione non esplicita il divieto di approvazione formale.
+- UX_POLISH: refuso nella conferma reset documento "Riepristinare la bozza iniziale?".
+
+Screenshot note
+- Nessuno screenshot allegato.
+- Smoke eseguito in browser headless con profilo temporaneo.
+- Nessun dato reale inserito o salvato.
+
+Verdict finale
+MGR_109_DEMO_SMOKE_PASS_WITH_DEMO_RISK
+
+Prossima slice consigliata
+MGR-110 — RESTORE_FULL_DEMO_NAVIGATION_READONLY
